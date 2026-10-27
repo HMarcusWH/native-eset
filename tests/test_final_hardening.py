@@ -360,7 +360,7 @@ def test_git_index_manifest_catches_line_ending_drift(tmp_path, preserve):
     tool = Path(__file__).resolve().parents[1] / "tools/check_manifest.py"
     (tmp_path / "schema.json").write_bytes(b'{"x":1}\r\n')
     attrs = "* text=auto eol=lf\n" + ("schema.json -text\n" if preserve else "")
-    (tmp_path / ".gitattributes").write_text(attrs)
+    (tmp_path / ".gitattributes").write_bytes(attrs.encode("utf-8"))
     subprocess.run([sys.executable, str(tool), "--root", str(tmp_path), "--write"], check=True, capture_output=True)
     subprocess.run(["git", "init", "-q", str(tmp_path)], check=True, capture_output=True)
     subprocess.run(["git", "add", "."], cwd=tmp_path, check=True, capture_output=True)

@@ -84,7 +84,7 @@
     "tests/test_class_reference_blocker.py": "1a6f80eff5e96f8fbd39c4ce1ce26dfaedfa7f0aba61338af34d3c8d524bd6fd",
     "tests/test_controls.py": "3599693549516d9a07e4a1295a68539df93fab1ddb8ef1e7ae0b0216b784887e",
     "tests/test_distribution_contract.py": "696b4ce5ce8bab9d502fd1802a7d2dd929b8e53626291bfd207af4543cd13019",
-    "tests/test_final_hardening.py": "9a2854c515bbecea0f50f5b2a19f66e890df8d12c3033bcce3fc42bd58798307",
+    "tests/test_final_hardening.py": "ee509dc7dfadc9512992a7f5bbcfccccfd6a662b1d9444a489fb9050505a198f",
     "tests/test_gates.py": "309edf0aa7773271730c5e97f9ba7f9cd224b0bb118df83a50dd262c2843b65a",
     "tests/test_identity.py": "ea1876c682d91b502c5724d5ab201da641d8f1a89b1570012da21b35f3fdefe8",
     "tools/build_distributions.py": "1ce81c58864b6b819a17b68943baeda8aeee33738d601888f34c4d685e7d6754",
