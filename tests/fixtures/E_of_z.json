@@ -1,0 +1,35 @@
+{
+  "absolute_tolerance": "0.0000001",
+  "backend_id": "external-gr-lcdm-control",
+  "claim_intent": "CONTROL_ONLY",
+  "coordinate": "redshift",
+  "data_use": "INTERNAL_TEST",
+  "equation_id": "control:gr-flat-lcdm-E2",
+  "equation_source_sha256": "fd823bd215638f394b763220e4d0874952c831ea081a09f445a44c8e30f21b9f",
+  "frame": "GR_REFERENCE_FLRW",
+  "gauge": "NOT_APPLICABLE_BACKGROUND",
+  "model_id": "control:flat-gr-lcdm:om0.3-ol0.7",
+  "numerical_method": "ANALYTIC",
+  "observable": "E_of_z",
+  "parameters": {
+    "omega_lambda": {
+      "unit": "1",
+      "value": "0.7"
+    },
+    "omega_m": {
+      "unit": "1",
+      "value": "0.3"
+    },
+    "omega_r": {
+      "unit": "1",
+      "value": "0"
+    }
+  },
+  "redshifts": [
+    "0",
+    "1",
+    "3"
+  ],
+  "schema": "NATIVE_ESET_RUN_SPEC_V1",
+  "theory_id": "GR_LCDM_REFERENCE"
+}

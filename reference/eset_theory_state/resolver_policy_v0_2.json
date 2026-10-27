@@ -1,0 +1,121 @@
+{
+  "id": "eset:resolver-policy:v0.2",
+  "version": "0.2",
+  "governing_authority": "eset:authority:theory-state-constitution-v0.1",
+  "governing_source": "eset:locator:theory-state:constitution-resolver",
+  "constitutional_basis": [
+    "Article XIX",
+    "Article XX",
+    "Article XXI",
+    "Article XXIV",
+    "Article XXV"
+  ],
+  "principles": [
+    "exact subject before hierarchy propagation",
+    "candidate identity and domain before state",
+    "explicit supersession only; no newest-file-wins",
+    "authority scope controls precedence",
+    "negative history is preserved outside repaired/restricted domains",
+    "dependencies are reported separately from verdict state",
+    "different scoped partitions produce SCOPED_SET rather than synthetic global closure",
+    "unresolved incompatible controlling verdicts fail closed as AUTHORITY_CONFLICT",
+    "missing relevant authority fails closed as AUTHORITY_GAP",
+    "CLOSED_SCOPED/PASS_SCOPED without explicit scope is SCOPE_INCOMPLETE",
+    "no evidence-to-state promotion is inferred by the resolver",
+    "canonical output ordering is independent of JSONL row order and object key order",
+    "subject-axis fail-closed summaries preserve AUTHORITY_CONFLICT versus AUTHORITY_GAP as distinct states",
+    "resolver artifacts carry canonical semantic snapshot and implementation digests for reproducibility"
+  ],
+  "axis_authority_scopes": {
+    "definition_state": [
+      "CLAIM_LANGUAGE",
+      "DEFINITION",
+      "RELEASE"
+    ],
+    "formal_state": [
+      "CLAIM_LANGUAGE",
+      "DEFINITION",
+      "DOMAIN",
+      "FORMAL_STATUS"
+    ],
+    "execution_state": [
+      "FORMAL_STATUS",
+      "IMPLEMENTATION",
+      "RELEASE"
+    ],
+    "physical_claim_state": [
+      "CLAIM_LANGUAGE",
+      "EMPIRICAL_STATUS",
+      "FORMAL_STATUS",
+      "PROVIDER_STATUS"
+    ],
+    "provider_state": [
+      "CLAIM_LANGUAGE",
+      "PROVIDER_STATUS"
+    ],
+    "validation_state": [
+      "CLAIM_LANGUAGE",
+      "DATA_USE",
+      "EMPIRICAL_STATUS"
+    ]
+  },
+  "partition_key": [
+    "subject",
+    "candidate_identity",
+    "axis",
+    "scope",
+    "resolution_facet"
+  ],
+  "facet_rule": {
+    "explicit_property": "resolution_facet",
+    "default": "GENERAL",
+    "meaning": "Separates scientifically distinct obligations sharing subject/axis/domain; does not alter verdict value."
+  },
+  "scope_rule": {
+    "missing_scope_token": "__UNSCOPED__",
+    "scoped_values_requiring_explicit_scope": [
+      "CLOSED_SCOPED",
+      "PASS_SCOPED"
+    ],
+    "generated_warning": "SCOPE_INCOMPLETE"
+  },
+  "conflict_rule": "After explicit supersession filtering, different active verdict values in one exact partition produce AUTHORITY_CONFLICT.",
+  "summary_rule": "Subject-axis summaries preserve partitions. If active partition states differ, summary_state=SCOPED_SET; SCOPED_SET is generated only and never written back as a primary verdict.",
+  "supersession_rule": "An older verdict is removable only within the same exact partition and only when every relevant authority it carries is explicitly superseded by a relevant authority on another verdict.",
+  "effective_date_rule": "Effective date is emitted for audit ordering but never overrides scope or authority and never resolves an otherwise uncontrolled contradiction.",
+  "dependency_rule": "BLOCKS relations are emitted as dependency state; they do not overwrite the resolved verdict axis.",
+  "claim_firewall_rule": "Resolver never upgrades DIAGNOSTIC/CALIBRATED/INTERNAL states to PHYSICAL/PROVIDER_ADMITTED/VALIDATED without an explicit primary Verdict.",
+  "summary_failure_rule": {
+    "precedence": [
+      "AUTHORITY_CONFLICT",
+      "AUTHORITY_GAP",
+      "SINGLE_STATE",
+      "SCOPED_SET"
+    ],
+    "meaning": "Conflicts dominate gaps; gaps remain AUTHORITY_GAP when no conflict is present. Neither is rewritten as the other."
+  },
+  "canonicalization_rule": {
+    "input_semantics": "Resolver semantics are independent of JSONL row order and JSON object key order.",
+    "stable_object_order": "Sort graph rows by object id within each type before resolution.",
+    "stable_list_order": [
+      "active_verdicts",
+      "suppressed_verdicts[*]",
+      "relevant authority rows",
+      "preservation rows",
+      "scope_issue_verdicts",
+      "referential error lists"
+    ],
+    "serialization": "UTF-8 JSON with sorted object keys; compact JSONL for resolved partitions; indented JSON for summaries/audit.",
+    "snapshot_digest": "SHA-256 over canonical sorted list of all graph objects with sorted JSON keys."
+  },
+  "reproducibility_rule": {
+    "required_digests": [
+      "canonical_graph_sha256",
+      "policy_semantic_sha256",
+      "resolver_implementation_sha256",
+      "resolved_output_sha256",
+      "summary_output_sha256"
+    ],
+    "permutation_test": "Shuffling file row order must not change resolved-output, summary-output, or audit semantic hashes."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "schema": "NATIVE_ESET_MODEL_LINEAGE_V1",
+  "models": [
+    {"backend_id":"legacy-june-eset3-4", "theory_identity":"HISTORICAL_ESET3_4", "mode":"SOURCE_RECOVERY_PENDING", "no_parameter_only_to_native":true, "admission":"NOT_AUTHORIZED_BY_THIS_BOOTSTRAP"},
+    {"backend_id":"legacy-june-gd-variable-f", "theory_identity":"HISTORICAL_VARIABLE_F", "mode":"ARCHIVED_GD_601_ROW_CANDIDATE", "no_parameter_only_to_native":true, "admission":"NOT_AUTHORIZED_BY_THIS_BOOTSTRAP"},
+    {"backend_id":"native-v1.7.2-one-map", "theory_identity":"NATIVE_ESET_V172", "mode":"P1R_PHYSICS_NOT_IMPORTED", "no_parameter_only_to_native":false, "admission":"NOT_AUTHORIZED_BY_THIS_BOOTSTRAP"},
+    {"backend_id":"external-gr-lcdm-control", "theory_identity":"GR_LCDM_REFERENCE", "mode":"ANALYTIC_AND_NUMERICAL_REFERENCE_CONTROL", "no_parameter_only_to_native":true, "admission":"NEVER_AN_ESET_PHYSICAL_PROVIDER"}
+  ]
+}

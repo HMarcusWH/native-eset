@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "native-eset"
+version = "0.1.0"
+description = "Source-gated research infrastructure for Native ESET cosmology"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7,<10", "ruff>=0.6,<1", "build>=1,<3", "wheel>=0.40"]
+numerics = ["numpy>=1.24", "scipy>=1.11"]
+
+[project.scripts]
+eset = "native_eset.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"native_eset.graph" = ["resolver_policy_v0_2.json", "vocabulary_v0_7_2.json", "graph_snapshot.lock.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+# External historical ESET resolver is SHA-pinned original, not reformatted.
+exclude = ["reference/", "src/native_eset/graph/theory_state_resolver_v0_2_1.py"]
+
+[tool.ruff.lint]
+select = ["E4", "E9", "F"]

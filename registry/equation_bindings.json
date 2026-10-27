@@ -1,0 +1,35 @@
+{
+  "bindings": [
+    {
+      "equation_id": "control:gr-flat-lcdm-E2",
+      "frame": "GR_REFERENCE_FLRW",
+      "implementation": "native_eset.controls.FlatGRLambdaCDM.E",
+      "implementation_status": "EXECUTABLE_REFERENCE_ONLY_NOT_ESET",
+      "source_path": "src/native_eset/controls.py",
+      "source_sha256": "fd823bd215638f394b763220e4d0874952c831ea081a09f445a44c8e30f21b9f",
+      "theory_id": "GR_LCDM_REFERENCE",
+      "unit_output": "1"
+    },
+    {
+      "equation_id": "eset:equation:material-BAB",
+      "frame": "NATIVE_V172_EINSTEIN_FIXED_MP",
+      "implementation": null,
+      "implementation_status": "NOT_IMPLEMENTED_SOURCE_IMPORT_REQUIRED",
+      "source_path": null,
+      "source_sha256": null,
+      "theory_id": "NATIVE_ESET_V172",
+      "unit_output": null
+    },
+    {
+      "equation_id": "control:gr-flat-lcdm-comoving-distance",
+      "frame": "GR_REFERENCE_FLRW",
+      "implementation": "native_eset.runner.run_control",
+      "implementation_status": "EXECUTABLE_REFERENCE_ONLY_NOT_ESET",
+      "source_path": "src/native_eset/runner.py",
+      "source_sha256": "5bc08440958f8c9c6dd41cb71c2bfc7d7ff6d7d3e9eb24ba1020c24c8e86e57b",
+      "theory_id": "GR_LCDM_REFERENCE",
+      "unit_output": "1"
+    }
+  ],
+  "schema": "NATIVE_ESET_EQUATION_BINDINGS_V1"
+}
