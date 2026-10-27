@@ -1,0 +1,149 @@
+{
+  "$comment": "Runtime also checks exact decimal density sum, source binding, domain, method/observable coupling and tolerance.",
+  "$id": "native-eset:run-spec:v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "absolute_tolerance": {
+      "maxLength": 512,
+      "minLength": 1,
+      "type": "string"
+    },
+    "backend_id": {
+      "const": "external-gr-lcdm-control"
+    },
+    "claim_intent": {
+      "const": "CONTROL_ONLY"
+    },
+    "coordinate": {
+      "const": "redshift"
+    },
+    "data_use": {
+      "const": "INTERNAL_TEST"
+    },
+    "equation_id": {
+      "maxLength": 512,
+      "minLength": 1,
+      "type": "string"
+    },
+    "equation_source_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "frame": {
+      "const": "GR_REFERENCE_FLRW"
+    },
+    "gauge": {
+      "const": "NOT_APPLICABLE_BACKGROUND"
+    },
+    "model_id": {
+      "maxLength": 512,
+      "minLength": 1,
+      "type": "string"
+    },
+    "numerical_method": {
+      "enum": [
+        "ANALYTIC",
+        "SIMPSON_REFINED"
+      ]
+    },
+    "observable": {
+      "enum": [
+        "E_of_z",
+        "chi_dimensionless_of_z"
+      ]
+    },
+    "parameters": {
+      "additionalProperties": false,
+      "properties": {
+        "omega_lambda": {
+          "additionalProperties": false,
+          "properties": {
+            "unit": {
+              "const": "1"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "type": "object"
+        },
+        "omega_m": {
+          "additionalProperties": false,
+          "properties": {
+            "unit": {
+              "const": "1"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "type": "object"
+        },
+        "omega_r": {
+          "additionalProperties": false,
+          "properties": {
+            "unit": {
+              "const": "1"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "value",
+            "unit"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "omega_r",
+        "omega_m",
+        "omega_lambda"
+      ],
+      "type": "object"
+    },
+    "redshifts": {
+      "items": {
+        "type": "string"
+      },
+      "maxItems": 1000,
+      "minItems": 1,
+      "type": "array"
+    },
+    "schema": {
+      "const": "NATIVE_ESET_RUN_SPEC_V1"
+    },
+    "theory_id": {
+      "const": "GR_LCDM_REFERENCE"
+    }
+  },
+  "required": [
+    "absolute_tolerance",
+    "backend_id",
+    "claim_intent",
+    "coordinate",
+    "data_use",
+    "equation_id",
+    "equation_source_sha256",
+    "frame",
+    "gauge",
+    "model_id",
+    "numerical_method",
+    "observable",
+    "parameters",
+    "redshifts",
+    "schema",
+    "theory_id"
+  ],
+  "type": "object"
+}

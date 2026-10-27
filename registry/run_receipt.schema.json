@@ -1,0 +1,95 @@
+{
+  "$comment": "Runtime verifier additionally recomputes RunSpec/model/run identity, exact environment schema, output inventory and role limits. No digital signature.",
+  "$id": "native-eset:run-receipt:v2",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "backend_id": {
+      "type": "string"
+    },
+    "claim_boundary": {
+      "type": "string"
+    },
+    "code_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "data_use": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "object"
+    },
+    "equation_id": {
+      "type": "string"
+    },
+    "equation_source_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "finite_model_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "gate_ledger": {
+      "type": "object"
+    },
+    "model_id": {
+      "type": "string"
+    },
+    "output_files": {
+      "additionalProperties": false,
+      "properties": {
+        "outputs.json": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "run_spec.json": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "outputs.json",
+        "run_spec.json"
+      ],
+      "type": "object"
+    },
+    "run_id": {
+      "pattern": "^control-[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "runtime_contract": {
+      "type": "string"
+    },
+    "schema": {
+      "const": "NATIVE_ESET_RUN_RECEIPT_V2"
+    },
+    "spec_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "theory_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema",
+    "runtime_contract",
+    "run_id",
+    "backend_id",
+    "theory_id",
+    "model_id",
+    "finite_model_sha256",
+    "equation_id",
+    "equation_source_sha256",
+    "code_sha256",
+    "spec_sha256",
+    "data_use",
+    "claim_boundary",
+    "output_files",
+    "environment",
+    "gate_ledger"
+  ],
+  "type": "object"
+}

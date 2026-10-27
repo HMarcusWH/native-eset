@@ -1,0 +1,39 @@
+{
+  "created": "2026-10-27",
+  "purpose": "BOOTSTRAP_ONLY_SEPARATE_FROM_CANONICAL_THEORY_STATE",
+  "models": [
+    {
+      "id": "legacy-june-eset3-4",
+      "run_available": false,
+      "status": "SOURCE_RECOVERY_PENDING",
+      "physical_provider_admitted": false
+    },
+    {
+      "id": "legacy-june-gd-variable-f",
+      "run_available": false,
+      "status": "HISTORICAL_CANDIDATE_SOLVER_RECORDED",
+      "physical_provider_admitted": false
+    },
+    {
+      "id": "native-v1.7.2-one-map",
+      "run_available": false,
+      "status": "SOURCE_IMPORT_PENDING",
+      "physical_provider_admitted": false
+    },
+    {
+      "id": "external-gr-lcdm-control",
+      "run_available": true,
+      "status": "ANALYTIC_AND_NUMERICAL_CONTROL_ONLY",
+      "physical_provider_admitted": false
+    }
+  ],
+  "global_unmet": [
+    "COMPLETE_MICROKINETIC_R01_R10",
+    "P3_PHYSICAL_PROVIDER",
+    "FTH5_UNIFORM_EFT",
+    "PRIMORDIAL_PSD_COVARIANCE",
+    "INDEPENDENT_EMPIRICAL_VALIDATION"
+  ],
+  "authorized_physical_observables": [],
+  "updated": "2026-10-28"
+}

@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.zip binary
+*.whl binary
+*.gz binary
+*.png binary
+*.pdf binary
+# Preserve the original SHA-pinned schema bytes, including historical CRLF.
+reference/eset_theory_state/record_schema_v0_1.json -text

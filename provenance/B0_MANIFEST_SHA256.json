@@ -1,0 +1,29 @@
+{
+  "files": {
+    ".github/workflows/ci.yaml": "70b6edfc9f3e7688c8bfbd73bf471f3789e0503ae7b8159bbf586cb0d350f6f7",
+    ".gitignore": "3be5547f5f15a22020cb50399b4136993a6a260ca5ae1f070cace3b1bfda8aec",
+    "README.md": "e49998af2b622d32b67f236b77ea0bbeee368d2d701b557a686cdc6d3f9efc5f",
+    "config/scientific_state.json": "80b617ed393a2be73eeb4565c589d949d1c52ca7421a9ad3a9552f8e423f3397",
+    "docs/architecture.md": "0146cb4aab8ee0d9ca6958ca544ea3527e732e8edc3f5e73aa14c034494c0d48",
+    "docs/dependencies.md": "32040ff7f72c523fc2605135a1bd092f46be5a677bb8b53bdbbd7a208b040389",
+    "docs/next_pr_plan.md": "4890eb3838d8519d9faff3dd630a3c52f526f3dce084db7f3e35f72397e6a143",
+    "docs/recovery_links.md": "c0d3590fe9c9c4e7ba34022d4400917e1efd8e68b680fdff83114b8fca3d71e5",
+    "pyproject.toml": "51a44537135a6a68609a1de74b739908f9ce7e9892c91626e4f0742e1a477eb9",
+    "src/native_eset/__init__.py": "808887a7be8324cff08a25128dd3493dc004e9ca6ec0843ffad551ee5e8b9e67",
+    "src/native_eset/__main__.py": "bc462bc7548f86b9b0693838a1a5e8be0362f45bbb042319d3687e80b08667c7",
+    "src/native_eset/backends/__init__.py": "158b1aaef391bbdbb43f61d33ecc3ac7cbdaa3483bc5e840d6d49d8c15746869",
+    "src/native_eset/backends/api.py": "11ab3c8f798def73793993130cb6cfe8f212fecb45df3ac34587b92ebbee3b91",
+    "src/native_eset/backends/class_reference.py": "337fd7e63482f8ff5beab6dad31225a2e13b0b1be28fe3e30e91c75671a190bd",
+    "src/native_eset/backends/legacy_june.py": "afaf87d8fc9352cdb6f955d7c256afef0fdcbd77d0362436c8b9c20dcb5aec16",
+    "src/native_eset/backends/v172.py": "b47fa5a49a26b010e2647ef97cbee7a79362d425796dea78cd9121703e4b39c2",
+    "src/native_eset/cli.py": "caa9fb784816dde21ef0286e0f1ee8b49ba2e00c5d310bf2659a77d8380b5933",
+    "src/native_eset/controls.py": "fd823bd215638f394b763220e4d0874952c831ea081a09f445a44c8e30f21b9f",
+    "src/native_eset/gates.py": "c66e35727be3c3b29516e853647cad18be873e7681aa7f06b0acf988a2008cdf",
+    "src/native_eset/identity.py": "c06233ca25abb717c3a0b39937e28d26857928a6bbe2c30f1b1a28700f94009e",
+    "tests/test_backend_blockers.py": "917e7dd25e2c50d19c0f1020828bac7347cf175b6d3451a8821b664f17549b7d",
+    "tests/test_controls.py": "3599693549516d9a07e4a1295a68539df93fab1ddb8ef1e7ae0b0216b784887e",
+    "tests/test_gates.py": "2af4d765c39ca0754ebda6ed5b9ac7a8d2409a6a523aebe67c9c2b974ae6cff3",
+    "tests/test_identity.py": "ea1876c682d91b502c5724d5ab201da641d8f1a89b1570012da21b35f3fdefe8"
+  },
+  "manifest_version": 1
+}

@@ -1,0 +1,41 @@
+# Runtime, bytecode and local tools
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.pyc
+*.egg-info/
+build/
+dist/
+.cache/
+runs/
+# Private research data, archives and source snapshots
+*.fits
+*.fit
+*.fts
+*.zip
+*.sqlite
+*.db
+*.parquet
+*.h5
+*.hdf5
+*.npy
+*.npz
+# raw manuscript and survey data are not normally committed
+*.pdf
+*.ipynb
+*.csv
+# secrets and keys
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+*.key
+id_rsa
+id_ed25519
+credentials.json
+service_account.json
+# reviewed source-baseline exception: verified binary included for rollback
+!provenance/B0_2026-10-27_original.zip

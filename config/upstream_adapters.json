@@ -1,0 +1,13 @@
+{
+  "schema": "NATIVE_ESET_UPSTREAM_REGISTRY_V1",
+  "policy": "EXTERNAL_PINNED_UNMODIFIED_REFS_NO_VENDORED_CODE",
+  "adapters": [
+    {"name":"CLASS", "repository":"https://github.com/lesgourg/class_public", "status":"PLANNED", "source_commit":null, "license_verified":false, "role":"UNMODIFIED_COSMOLOGY_GR_REFERENCE"},
+    {"name":"SUNDIALS", "repository":"https://github.com/LLNL/sundials", "status":"PLANNED", "source_commit":null, "license_verified":false, "role":"NUMERICAL_ODE_DAE_SOLVER"},
+    {"name":"PRIMAT", "repository":"https://github.com/CyrilPitrou/primat", "status":"PLANNED", "source_commit":null, "license_verified":false, "role":"NUCLEAR_BBN_REFERENCE"},
+    {"name":"HYREC-2", "repository":"https://github.com/nanoomlee/HYREC-2", "status":"PLANNED", "source_commit":null, "license_verified":false, "role":"RECOMBINATION_REFERENCE"},
+    {"name":"Cobaya", "repository":"https://github.com/CobayaSampler/cobaya", "status":"PLANNED", "source_commit":null, "license_verified":false, "role":"LIKELIHOOD_AND_INFERENCE"},
+    {"name":"TreeCorr", "repository":"https://github.com/rmjarvis/TreeCorr", "status":"PLANNED", "source_commit":null, "license_verified":false, "role":"OBSERVATIONAL_CORRELATION"},
+    {"name":"lenstronomy", "repository":"https://github.com/lenstronomy/lenstronomy", "status":"PLANNED", "source_commit":null, "license_verified":false, "role":"STRONG_LENS_REFERENCE"}
+  ]
+}
