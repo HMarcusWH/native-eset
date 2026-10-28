@@ -23,6 +23,7 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 "native_eset.graph" = ["resolver_policy_v0_2.json", "vocabulary_v0_7_2.json", "graph_snapshot.lock.json"]
+"native_eset.historical" = ["hist001_approved_lock.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

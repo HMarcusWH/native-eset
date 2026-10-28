@@ -47,6 +47,7 @@ jobs:
           python -m pip uninstall -y native-eset
           python -m pip install dist/*.whl
           python -c "from native_eset.graph.snapshot import GraphSnapshot; from native_eset.runner import RunSpec; print('WHEEL_IMPORT_PASS')"
+          python -I -c "from native_eset.historical import HistoricalRunSpec; from native_eset.historical.hist001_approved import approved_hist001; assert approved_hist001()['source_file_count'] == 46; print('HIST001_A1_INSTALLED_TRUST_ANCHOR_PASS', HistoricalRunSpec.from_mode().spec_sha256)"
           python -m native_eset doctor
           python -m native_eset run --spec tests/fixtures/E_of_z.json --out runs_wheel
           python -m native_eset run --spec tests/fixtures/chi_dimensionless_of_z.json --out runs_wheel
