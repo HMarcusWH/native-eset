@@ -1,0 +1,52 @@
+{
+  "modes": [
+    {
+      "projection_mode": "spherical",
+      "definition": "shadow projection left spherical",
+      "frozen_law": "ra0_gated_geometry_sigmoid_reg_v2",
+      "law_refit": false,
+      "selection_after_outcome": false,
+      "results": {
+        "n_lenses_tested": 6,
+        "n_both_pass": 2,
+        "n_radius_pass": 2,
+        "n_mass_pass": 2,
+        "mean_abs_radius_pull_sigma": 8.168644014357623,
+        "mean_abs_mass_pull_sigma": 3.234216692852517,
+        "failed_lenses": "J0822+1828;J0915+4211;J0930+2855;J1111+2234"
+      }
+    },
+    {
+      "projection_mode": "milder_structured_half_circularization",
+      "definition": "predeclared sensitivity ablation: f=1-0.5*(1-sqrt(q_eff))",
+      "frozen_law": "ra0_gated_geometry_sigmoid_reg_v2",
+      "law_refit": false,
+      "selection_after_outcome": false,
+      "results": {
+        "n_lenses_tested": 6,
+        "n_both_pass": 2,
+        "n_radius_pass": 2,
+        "n_mass_pass": 5,
+        "mean_abs_radius_pull_sigma": 5.582136435311303,
+        "mean_abs_mass_pull_sigma": 1.8743997197121056,
+        "failed_lenses": "J0822+1828;J0915+4211;J0930+2855;J1111+2234"
+      }
+    },
+    {
+      "projection_mode": "current_structured",
+      "definition": "pack-native q_eff circularization f=sqrt(q_eff)",
+      "frozen_law": "ra0_gated_geometry_sigmoid_reg_v2",
+      "law_refit": false,
+      "selection_after_outcome": false,
+      "results": {
+        "n_lenses_tested": 6,
+        "n_both_pass": 6,
+        "n_radius_pass": 6,
+        "n_mass_pass": 6,
+        "mean_abs_radius_pull_sigma": 0.975973270592819,
+        "mean_abs_mass_pull_sigma": 0.5980326367412955,
+        "failed_lenses": ""
+      }
+    }
+  ]
+}

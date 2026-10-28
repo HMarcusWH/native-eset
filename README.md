@@ -71,3 +71,14 @@ Use the supplied `verify_final_bundle.py` on the complete release ZIP before imp
 No open-source license has been selected for new ESET code. Keep the initial repository private pending the owner's licensing/publication review. Do not publish raw scientific graph partitions, private catalogs, credentials or unreviewed third-party code. This build does not change Drive sharing or canonical scientific records.
 
 **Ruff and real GitHub Actions: NOT_RUN.** The local audit uses actual tests, compile checks, graph replay, distribution builds and cold wheel execution; it does not relabel those as a Ruff or Windows CI pass. Full results and exact hashes are supplied in `release/FINAL_BUILD_RECEIPT.json` of the release bundle.
+
+## HIST-001 — original March 2026 J2141 / six-lens SWELLS regression
+
+The source-exact historical DM-A solver has been recovered into `research/legacy/hist001/swells_pack_v2` with SHA locks, frozen J2141/Set A fixtures, negative projection controls and a read-only execution wrapper. This is a historically *fitted regression*, **not** a Native ESET v1.7.2 model or an independent lensing validation.
+
+```bash
+python -m pip install -r requirements/hist001-constraints.txt
+python tools/replay_hist001.py --out runs/hist001 --ablation
+```
+
+See `docs/HIST001_INTEGRATION_PLAN.md` for the detailed next integration steps and negative controls. The original 1,214,157-byte triad archive is retained externally with SHA-256 `283490087c81068286303419afc98fa150c3edf9868d3dc4cb72faba0f9d1a1e`.

@@ -1,0 +1,65 @@
+{
+  "branch_id": "dma_v0p1_test1_axisym_structproj_baryonq",
+  "results_subdir": "j2141_test1_axisym_structproj_baryonq",
+  "cosmology": {
+    "H0": 70.0,
+    "Om0": 0.3
+  },
+  "gate": {
+    "mode": "radius_proxy",
+    "delta_epsilon": 0.86055,
+    "r0_kpc": 2.591843,
+    "n": 4.298296,
+    "epsilon_floor": 0.05,
+    "structure": {
+      "family": "anchor_fixed",
+      "parameters": {}
+    },
+    "charge": {
+      "family": "fixed",
+      "parameters": {}
+    },
+    "local_cutoff": {
+      "family": "none",
+      "parameters": {}
+    },
+    "shadow_density": {
+      "method": "mass_difference_gradient"
+    },
+    "legacy_compat": {
+      "delta_epsilon": 0.86055,
+      "r0_kpc": 2.591843,
+      "n": 4.298296,
+      "epsilon_floor": 0.05
+    }
+  },
+  "j2141_model": {
+    "scale_kpc_per_arcsec": 2.438818565400844,
+    "bulge_profile": "hernquist_proxy",
+    "disk_profile": "freeman_exponential",
+    "stellar_imf": "fit_override",
+    "baryon_override": {
+      "bulge_mass_msun": 11978332906.95458,
+      "bulge_re_kpc": 1.922224989,
+      "disk_mass_msun": 127316270125.85638,
+      "disk_r50_kpc": 13.4268,
+      "disk_axis_ratio_q": 0.31,
+      "bulge_axis_ratio_q": 0.53
+    }
+  },
+  "lensing": {
+    "mode": "axisymmetric_projected",
+    "disk_axis_ratio_q": 0.31,
+    "shadow_projection": "baryon_structure_circularized",
+    "r_dense_max_kpc": 120.0,
+    "r_dense_n": 4000
+  },
+  "notes": [
+    "Replays the stronger first-run branch inside the packaged harness.",
+    "Uses the exact fitted baryon and gate parameters from the first-run recap.",
+    "Applies the axisymmetric same-solution lensing layer to the stronger dynamics branch.",
+    "Replaces the fixed-factor concentration proxy with a local structured shadow projection law.",
+    "The shadow projection follows the circularized local baryonic flattening q_eff(R) built from projected bulge/disk mass weights.",
+    "No free shadow concentration factor is introduced; the mapping uses f(R)=sqrt(q_eff(R))."
+  ]
+}

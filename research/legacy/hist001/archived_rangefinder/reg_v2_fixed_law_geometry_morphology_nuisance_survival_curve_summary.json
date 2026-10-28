@@ -1,0 +1,140 @@
+{
+  "summaries": [
+    {
+      "test_type": "NEW_FIXED_LAW_GEOMETRY_MORPHOLOGY_NUISANCE_SURVIVAL",
+      "candidate_name": "ra0_gated_geometry_sigmoid_reg_v2",
+      "law_modified": false,
+      "projection_modified": false,
+      "scoring_modified": false,
+      "algorithm_validation": "Accelerated evaluator reproduces central pack-native outputs exactly and reproduces original transition-radius grid cell for 600 pre-run perturbed lens cases.",
+      "perturbed_input_fields": [
+        "q_bulge",
+        "q_disc",
+        "Re_bulge_arcsec",
+        "Re_disc_arcsec",
+        "logM_bulge_chabrier_central",
+        "logM_disc_chabrier_central"
+      ],
+      "n_trials": 1000,
+      "rel_width": 0.01,
+      "seed_root": 2141,
+      "n_at_6_of_6": 323,
+      "n_at_5_or_more": 844,
+      "survival_fraction_6_of_6": 0.323,
+      "survival_fraction_5_or_more": 0.844,
+      "mean_abs_radius_pull_sigma_mean": 1.258643766343482,
+      "mean_abs_mass_pull_sigma_mean": 0.6559477697474592,
+      "per_lens_failure_fraction": {
+        "J0822+1828": 0.276,
+        "J0915+4211": 0.0,
+        "J0930+2855": 0.557,
+        "J1021+2028": 0.0,
+        "J1111+2234": 0.0,
+        "J1135+3720": 0.0
+      },
+      "interpretation_scope": "New no-refit input-nuisance stress test only; not an archived result, not a tuning instruction, not promotion."
+    },
+    {
+      "test_type": "NEW_FIXED_LAW_GEOMETRY_MORPHOLOGY_NUISANCE_SURVIVAL",
+      "candidate_name": "ra0_gated_geometry_sigmoid_reg_v2",
+      "law_modified": false,
+      "projection_modified": false,
+      "scoring_modified": false,
+      "algorithm_validation": "Accelerated evaluator reproduces central pack-native outputs exactly and reproduces original transition-radius grid cell for 600 pre-run perturbed lens cases.",
+      "perturbed_input_fields": [
+        "q_bulge",
+        "q_disc",
+        "Re_bulge_arcsec",
+        "Re_disc_arcsec",
+        "logM_bulge_chabrier_central",
+        "logM_disc_chabrier_central"
+      ],
+      "n_trials": 1000,
+      "rel_width": 0.02,
+      "seed_root": 2141,
+      "n_at_6_of_6": 140,
+      "n_at_5_or_more": 631,
+      "survival_fraction_6_of_6": 0.14,
+      "survival_fraction_5_or_more": 0.631,
+      "mean_abs_radius_pull_sigma_mean": 1.7664060255417333,
+      "mean_abs_mass_pull_sigma_mean": 0.7514029844861291,
+      "per_lens_failure_fraction": {
+        "J0822+1828": 0.41,
+        "J0915+4211": 0.104,
+        "J0930+2855": 0.752,
+        "J1021+2028": 0.0,
+        "J1111+2234": 0.011,
+        "J1135+3720": 0.0
+      },
+      "interpretation_scope": "New no-refit input-nuisance stress test only; not an archived result, not a tuning instruction, not promotion."
+    },
+    {
+      "test_type": "NEW_FIXED_LAW_GEOMETRY_MORPHOLOGY_NUISANCE_SURVIVAL",
+      "candidate_name": "ra0_gated_geometry_sigmoid_reg_v2",
+      "law_modified": false,
+      "projection_modified": false,
+      "scoring_modified": false,
+      "algorithm_validation": "Accelerated evaluator reproduces central pack-native outputs exactly and reproduces original transition-radius grid cell for 600 pre-run perturbed lens cases.",
+      "perturbed_input_fields": [
+        "q_bulge",
+        "q_disc",
+        "Re_bulge_arcsec",
+        "Re_disc_arcsec",
+        "logM_bulge_chabrier_central",
+        "logM_disc_chabrier_central"
+      ],
+      "n_trials": 1000,
+      "rel_width": 0.05,
+      "seed_root": 2141,
+      "n_at_6_of_6": 23,
+      "n_at_5_or_more": 239,
+      "survival_fraction_6_of_6": 0.023,
+      "survival_fraction_5_or_more": 0.239,
+      "mean_abs_radius_pull_sigma_mean": 3.4528986646424844,
+      "mean_abs_mass_pull_sigma_mean": 1.0451204619185852,
+      "per_lens_failure_fraction": {
+        "J0822+1828": 0.485,
+        "J0915+4211": 0.41,
+        "J0930+2855": 0.907,
+        "J1021+2028": 0.0,
+        "J1111+2234": 0.332,
+        "J1135+3720": 0.002
+      },
+      "interpretation_scope": "New no-refit input-nuisance stress test only; not an archived result, not a tuning instruction, not promotion."
+    },
+    {
+      "test_type": "NEW_FIXED_LAW_GEOMETRY_MORPHOLOGY_NUISANCE_SURVIVAL",
+      "candidate_name": "ra0_gated_geometry_sigmoid_reg_v2",
+      "law_modified": false,
+      "projection_modified": false,
+      "scoring_modified": false,
+      "algorithm_validation": "Accelerated evaluator reproduces central pack-native outputs exactly and reproduces original transition-radius grid cell for 600 pre-run perturbed lens cases.",
+      "perturbed_input_fields": [
+        "q_bulge",
+        "q_disc",
+        "Re_bulge_arcsec",
+        "Re_disc_arcsec",
+        "logM_bulge_chabrier_central",
+        "logM_disc_chabrier_central"
+      ],
+      "n_trials": 1000,
+      "rel_width": 0.1,
+      "seed_root": 2141,
+      "n_at_6_of_6": 3,
+      "n_at_5_or_more": 69,
+      "survival_fraction_6_of_6": 0.003,
+      "survival_fraction_5_or_more": 0.069,
+      "mean_abs_radius_pull_sigma_mean": 5.198976735729868,
+      "mean_abs_mass_pull_sigma_mean": 1.4927635446563061,
+      "per_lens_failure_fraction": {
+        "J0822+1828": 0.686,
+        "J0915+4211": 0.542,
+        "J0930+2855": 0.941,
+        "J1021+2028": 0.0,
+        "J1111+2234": 0.588,
+        "J1135+3720": 0.104
+      },
+      "interpretation_scope": "New no-refit input-nuisance stress test only; not an archived result, not a tuning instruction, not promotion."
+    }
+  ]
+}

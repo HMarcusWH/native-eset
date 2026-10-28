@@ -1,0 +1,5 @@
+# HIST-001 legacy SciPy/Pandas/NumPy environment for reproducible Windows/Linux CI.
+# This is NOT part of Native v1.7.2 background/perturbation physics.
+numpy==2.2.6
+pandas==2.3.3
+scipy==1.15.3

@@ -1,0 +1,51 @@
+{
+  "benchmark_id": "J2141-0001",
+  "adopted_scale_kpc_per_arcsec": 2.438818565400844,
+  "source_files": {
+    "rotation_curve": "cleaned/j2141_rotation_cu_a8f6d5.csv",
+    "lensing_anchor": "cleaned/j2141_lens_anchor_4d8b24.csv",
+    "swells2_fit_summary": "cleaned/j2141_swells2_fit_66f5e9.csv",
+    "swells4_posteriors": "cleaned/j2141_swells4_pos_0fdbf8.csv",
+    "lens_set_A_reference": "cleaned/lens_set_A_run_fo_74bb5e.csv"
+  },
+  "required_solver_outputs": [
+    "radius_kpc",
+    "predicted_velocity_km_s",
+    "epsilon",
+    "rho_shadow_Msun_per_kpc3",
+    "predicted_einstein_radius_arcsec",
+    "predicted_lensing_mass_1e10Msun",
+    "predicted_eta",
+    "gate_components",
+    "projection_mode",
+    "shadow_density_method"
+  ],
+  "control_thresholds_default": {
+    "max_reduced_chi2_velocity": 2.0,
+    "max_abs_lensing_radius_pull_sigma": 2.0,
+    "max_abs_lensing_mass_pull_sigma": 2.0,
+    "max_abs_eta_minus_1": 0.1
+  },
+  "notes": [
+    "Thresholds are editable controls, not frozen doctrine.",
+    "Rotation-curve target from SWELLS II Table 4.",
+    "Lensing anchor from SWELLS III Table 1.",
+    "Posterior comparison targets from SWELLS IV Table 1.",
+    "J2141 is the gold regression case for the modular DM-A gate update."
+  ],
+  "solver_package": {
+    "config": "configs/j2141_test1_axisy_1689e9.json",
+    "runner": "solv/run_j2141_axisym_lens.py",
+    "support_files": [
+      "raw_support/swells2_table2_bu_c249ce.csv",
+      "raw_support/swells3_table1_modelled_lenses.csv",
+      "raw_support/swells4_table1_combined_analysis_priors_posteriors.csv"
+    ]
+  },
+  "optional_outputs": [
+    "predicted_lensing_mass_at_observed_re_1e10Msun",
+    "j2141_acceptance_scoreboard_filled.csv",
+    "run_manifest.json"
+  ],
+  "regression_baseline": "validation/j2141_regression_b5afd5.json"
+}

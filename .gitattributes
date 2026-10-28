@@ -6,3 +6,5 @@
 *.pdf binary
 # Preserve the original SHA-pinned schema bytes, including historical CRLF.
 reference/eset_theory_state/record_schema_v0_1.json -text
+# Legacy SWELLS historical CSV fixtures have SHA-frozen LF bytes.
+research/legacy/hist001/swells_pack_v2/**/*.csv text eol=lf

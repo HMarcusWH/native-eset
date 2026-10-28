@@ -1,0 +1,85 @@
+{
+  "archived_negative_controls": {
+    "j2141_reg_v2_projection_ablation_summary.json": {
+      "original_master_zip_member": "Native_ESET_Full_Discussion_Tests_Results_Documentation_Master_Packet_v1_1_Canonical_StageC_Contract_Update/02_Verified_Frozen_Triad_Archive_and_Runs/Native_ESET_PreStageC_RangeFinder_Execution_Results_v0_1/03_Fixed_Law_Projection_Ablations/j2141_reg_v2_projection_ablation_summary.json",
+      "sha256": "ab2faa9a7607f9251b21551e74c9abc36338bd7980284771a089106e7598a3de"
+    },
+    "reg_v2_fixed_law_geometry_morphology_nuisance_survival_curve_summary.json": {
+      "original_master_zip_member": "Native_ESET_Full_Discussion_Tests_Results_Documentation_Master_Packet_v1_1_Canonical_StageC_Contract_Update/02_Verified_Frozen_Triad_Archive_and_Runs/Native_ESET_PreStageC_RangeFinder_Execution_Results_v0_1/02_No_Refit_RangeFinder_Survival/reg_v2_fixed_law_geometry_morphology_nuisance_survival_curve_summary.json",
+      "sha256": "ade89fedadc03a8bb3f88ef67016fa318d675856f4e041a1e2a134281fcfa182"
+    },
+    "setA_reg_v2_projection_ablation_summary.json": {
+      "original_master_zip_member": "Native_ESET_Full_Discussion_Tests_Results_Documentation_Master_Packet_v1_1_Canonical_StageC_Contract_Update/02_Verified_Frozen_Triad_Archive_and_Runs/Native_ESET_PreStageC_RangeFinder_Execution_Results_v0_1/03_Fixed_Law_Projection_Ablations/setA_reg_v2_projection_ablation_summary.json",
+      "sha256": "4c322ed5d97ec6653f999fc516de141e28251c27429133dfa5621636fe1ef6b4"
+    }
+  },
+  "current_TheoryState_mutation": false,
+  "data_role": "REGRESSION_OR_ORIGINAL_CALIBRATION_NOT_HELD_OUT",
+  "frozen_candidate": "ra0_gated_geometry_sigmoid_reg_v2",
+  "frozen_config": "configs/j2141_test1_axisy_1689e9.json",
+  "id": "HIST-001-SWELLS-J2141-SETA-FROZEN",
+  "model_identity": "LEGACY_ESET3_DM_A_FITTED_STRUCTURED_PROJECTION",
+  "original_branch": "dma_v0p1_test1_axisym_structproj_baryonq",
+  "physical_provider_admitted": false,
+  "provenance_label": "ARCHIVED_CALIBRATED_REGRESSION_NOT_NATIVE_V172",
+  "source_archive": {
+    "google_drive_url": "https://drive.google.com/file/d/1SFGcJvNGeanT3Ro4OyBxWd5x_oEmhiOk/view",
+    "name": "dma_swells_benchmark_pack_v2_frozen_2026-03-14.zip",
+    "original_master_archive_sha256": "8609eb7896114f26f9355553208930bbdba5402d20a8c3454bc80c114f81f9f0",
+    "sha256": "283490087c81068286303419afc98fa150c3edf9868d3dc4cb72faba0f9d1a1e",
+    "size_bytes": 1214157
+  },
+  "source_exceptions": [
+    "Stage C external survey inputs are not included.",
+    "Contemporaneous RangeFinder 1000-trial numerical runs archived, not newly rerun by quick CI.",
+    "No full v1.7.2 physics source is represented."
+  ],
+  "source_filenames_sha256": {
+    "cleaned/j2141_lens_anchor_4d8b24.csv": "b69f08911c33c898070d2c285de545174a2c86a19180e4ccafa6d451b55ef51f",
+    "cleaned/j2141_rotation_cu_a8f6d5.csv": "2282ca415164cabe82c4574c8f299f7309342d5ca68675d3a849618e0a56ed8a",
+    "cleaned/j2141_swells2_fit_66f5e9.csv": "b3d72001999e0a342ac8909af51c464640dc80275b93bbdcc973ff582157ba3d",
+    "cleaned/j2141_swells4_pos_0fdbf8.csv": "9d86f99f7fa645188f44fd92a90238c7595287799dafaf12046a9e2e3dffe399",
+    "cleaned/lens_set_A_run_fo_74bb5e.csv": "d087578dccfaea72dafb2098c925d4111c41015a56f59ca1292b20eccb797ac8",
+    "cleaned/setA_scale_kpc_per_arcsec.csv": "6a91426ec9818d3d88244e0588c5f2014318cc5077bed0c971d5a02e91efc074",
+    "cleaned/swells_v_basic_pr_b08cd2.csv": "151b7fc846bab07792966d6e3fb79a3cbc7f974caa233ee3aafa51361f35b650",
+    "cleaned/swells_v_ld_masse_96c490.csv": "ad58b2b51720027dce03ff928145f423d17c780822a5b9e9650349caa31e8844",
+    "cleaned/swells_v_targets_b1b88c.csv": "8d0457fe405b5d331d550eddb6976afe197356ec4df2a653e1f0550385f70a71",
+    "configs/j2141_test1_axisy_1689e9.json": "27c2fbe5c50481fa1f859820a8c2572c28d6c93d6a275beb99b29ced98e13f87",
+    "raw_support/swells2_table2_bu_c249ce.csv": "560e04b987812a5d41497fc561dd5c5f913b465608a75edae511273332a91704",
+    "raw_support/swells2_table3_ma_776d9a.csv": "2c4be8feb05e1eb526b1ad9d67efd40f7c64251fdeaf61124072f5cb3ad71ac8",
+    "raw_support/swells2_table4_ob_a3416e.csv": "1a86421594442b45643305959d6a8b49945a461e408cfbe40c191eea19a7bfd6",
+    "raw_support/swells2_table5_fi_81c3f2.csv": "3cce15212c0974013d8b2085e96bae82863e464f050ad1f7fc0048d73e3081df",
+    "raw_support/swells2_tableA1_c_063e56.csv": "4fb903cceda566a0ded0c6660cd9f990dfc363de72c228ef091e608749c67276",
+    "raw_support/swells3_table1_mo_49f704.csv": "28cb5d54d82f211c4f96e32ef7fe0ab8a37c6e96b9cf6b51bc665d3651d5db76",
+    "raw_support/swells3_table3_structure.csv": "ca79bd0613dec8233430ab4479b63f60a307eaa07f983e567f7ed55a1455780b",
+    "raw_support/swells3_table4_st_c3a774.csv": "5d845d9540a6c6ccb7bd53bcbdeda21e50c21f6c176d469fb7a24f6a4f99d2bd",
+    "raw_support/swells4_table1_co_bce275.csv": "738e6daae13a29e136ca6bffd20ac98459f9cfcaebfdd4bafa1967b01dfec609",
+    "raw_support/swells5_table1_ba_ff49a5.csv": "3af07378d00b81f9b56fc7b333eb618fc5bc5a850c25fba839ff07838112aee9",
+    "raw_support/swells5_table2_ld_5ab4e6.csv": "c83ad182c9f467efbf6fc6b42454f28ae70f587ee2cfccc6e78844419f14e093",
+    "raw_support/swells5_table3_da_7692ab.csv": "062557fb6c95d68a086fc73f0dff0f0397e7c4b480c4253e88543e7a149b7bac",
+    "solv/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "solv/baryons.py": "128ab8fe827d161e718001cec58d141fd3ef62e057e2bc51a5799e0dc7b1b1ef",
+    "solv/constants.py": "34d3210728cd319ef3929cbb06015f3710cf5ee3b4300358e9706ecf100115f1",
+    "solv/cosmology.py": "f4f9ed5d2a42db0728c799a02e2dea7587431b5cf9da9db26f27e45efbf3a953",
+    "solv/dmalane.py": "5083e89505afd57c7d4d544bb1a2650765c413c9a7d3e89ecbb4a71edc525eb0",
+    "solv/gate_chg.py": "2285fdefca8c8a6f68cf239494037a72ff65e0499ca2cd362f8c4e2f855bd022",
+    "solv/gate_loc.py": "6862051a20bf8068a0a7f9fa5ea75765e6deafe820c0a6099bac8b30394ce08e",
+    "solv/gate_struct.py": "779aca6cfb2ff95186eff5a6dc702dcd63a1b41c1a8695d20db8a4e8e2cd40c0",
+    "solv/io_utils.py": "0415a8efe4e66f15fa9e88fb9d142d34234a38b249405cef990dee061a72a32f",
+    "solv/run_j2141_axisym_lens.py": "a7b6dd6a4efc43495baa80eb99bf72bcb45d6833ffe1a74fa92b67133aa618c3",
+    "solv/run_j2141_baseline.py": "40056f3d393950b6074ff57b814953cbe120f28f72bec5281ebae5c350dd3e4d",
+    "solv/run_ra0_local_robust.py": "33fd50e56f2dc113b0a0e74da334bde2df4fc6de429e3078bb68aab9afc8a0c9",
+    "solv/run_setA_port_cand.py": "247e0a354588aed488cd1f6aa2548633d3edb876ea913322e08a33669e0fc4c9",
+    "solv/run_stagec_handshake.py": "de504655489ba4a531b69ee87f81bf8027bf60c55f5c256d0b95e030ed4a2f9f",
+    "solv/run_swells_setA_p_c13a1d.py": "6e2b07f7919de1cf30eb8ed21cf542b12b293ffe40ef925c2f4ac30d742f84e1",
+    "solv/run_swells_setA_s_fc0f85.py": "8799df690e800aba02dac4b91d934500fe39ed7683786e320a6227cb0341e844",
+    "solv/run_swells_v_subset.py": "3e9d980305ebda6d92766a85e079af3ad2af160468250342309037d367ecf4f2",
+    "solv/run_v7_regress.py": "7366005842a8d938123a0a65a251fe3a35af87f56fed5eec03f705da88c4bb66",
+    "solv/scoring.py": "444d0e9838b969ea75c8043befbdab3d00583b098573a474a3d86b30b3878946",
+    "solv/shadow_density.py": "1886f6db6e2aab951b542112b5b4b2ee0f41d28bdbed600c1aafd895b293aba5",
+    "solv/stagec.py": "7868e40040e2435efd8bdf9ba565d8a3672e7b2e1b9ebdd14684a9fa354b1724",
+    "solv/stagec_bridge.py": "5087aa89aef5752f19552832957d052d11c865ef6e4ae382c0b305e81d1027d3",
+    "templates/j2141_run_manifest.json": "33bb647d692eca8cc587419f3fc54577344b37e8038a3e7b6c9fe60b529a0d8c",
+    "validation/j2141_regression_b5afd5.json": "f92d45cd0dabe50dba01e6442088ca58986e70c77c610dff25fe33606168182d"
+  }
+}

@@ -1,9 +1,38 @@
 {
-  "schema": "NATIVE_ESET_MODEL_LINEAGE_V1",
   "models": [
-    {"backend_id":"legacy-june-eset3-4", "theory_identity":"HISTORICAL_ESET3_4", "mode":"SOURCE_RECOVERY_PENDING", "no_parameter_only_to_native":true, "admission":"NOT_AUTHORIZED_BY_THIS_BOOTSTRAP"},
-    {"backend_id":"legacy-june-gd-variable-f", "theory_identity":"HISTORICAL_VARIABLE_F", "mode":"ARCHIVED_GD_601_ROW_CANDIDATE", "no_parameter_only_to_native":true, "admission":"NOT_AUTHORIZED_BY_THIS_BOOTSTRAP"},
-    {"backend_id":"native-v1.7.2-one-map", "theory_identity":"NATIVE_ESET_V172", "mode":"P1R_PHYSICS_NOT_IMPORTED", "no_parameter_only_to_native":false, "admission":"NOT_AUTHORIZED_BY_THIS_BOOTSTRAP"},
-    {"backend_id":"external-gr-lcdm-control", "theory_identity":"GR_LCDM_REFERENCE", "mode":"ANALYTIC_AND_NUMERICAL_REFERENCE_CONTROL", "no_parameter_only_to_native":true, "admission":"NEVER_AN_ESET_PHYSICAL_PROVIDER"}
-  ]
+    {
+      "admission": "NOT_AUTHORIZED_BY_THIS_BOOTSTRAP",
+      "backend_id": "legacy-june-eset3-4",
+      "central_regression": "6_OF_6_FROZEN_SET_A",
+      "historical_data_role": "REGRESSION_NOT_HELD_OUT",
+      "historical_source_archive_sha256": "283490087c81068286303419afc98fa150c3edf9868d3dc4cb72faba0f9d1a1e",
+      "historical_source_lock": "research/legacy/hist001/SOURCE_LOCK.json",
+      "mode": "HIST001_HISTORICAL_FROZEN_REGRESSION_RESTORED_EXTERNAL_ADAPTER_PENDING",
+      "no_parameter_only_to_native": true,
+      "spherical_negative": "2_OF_6_NONPROMOTING",
+      "theory_identity": "HISTORICAL_ESET3_4"
+    },
+    {
+      "admission": "NOT_AUTHORIZED_BY_THIS_BOOTSTRAP",
+      "backend_id": "legacy-june-gd-variable-f",
+      "mode": "ARCHIVED_GD_601_ROW_CANDIDATE",
+      "no_parameter_only_to_native": true,
+      "theory_identity": "HISTORICAL_VARIABLE_F"
+    },
+    {
+      "admission": "NOT_AUTHORIZED_BY_THIS_BOOTSTRAP",
+      "backend_id": "native-v1.7.2-one-map",
+      "mode": "P1R_PHYSICS_NOT_IMPORTED",
+      "no_parameter_only_to_native": false,
+      "theory_identity": "NATIVE_ESET_V172"
+    },
+    {
+      "admission": "NEVER_AN_ESET_PHYSICAL_PROVIDER",
+      "backend_id": "external-gr-lcdm-control",
+      "mode": "ANALYTIC_AND_NUMERICAL_REFERENCE_CONTROL",
+      "no_parameter_only_to_native": true,
+      "theory_identity": "GR_LCDM_REFERENCE"
+    }
+  ],
+  "schema": "NATIVE_ESET_MODEL_LINEAGE_V1"
 }
