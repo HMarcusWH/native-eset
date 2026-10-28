@@ -1,0 +1,7 @@
+parameter,description,prior,posterior,posterior_central,posterior_err_plus,posterior_err_minus
+v_vir_km_s^-1,Dark halo virial velocity,"N(255, 45)",242+44/-39,242.0,44.0,39.0
+gamma,Dark halo inner logarithmic slope,"U(0, 2)",0.82+0.65/-0.54,0.82,0.65,0.54
+c_minus2,Dark halo concentration,"U(0, 50)",7.7+4.2/-2.5,7.7,4.2,2.5
+q_h,Dark halo 3D axial ratio,"LN(1, 0.3)",0.75+0.27/-0.16,0.75,0.27,0.16
+Mstar_1e11Msun,Stellar mass,"U(0, 5)",1.32+0.16/-0.25,1.32,0.16,0.25
+b,Orbital anisotropy parameter: sigma_R^2/sigma_z^2,"U(0, 5)",1.77+0.30/-0.29,1.77,0.3,0.29

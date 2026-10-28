@@ -38,3 +38,9 @@ These instructions apply to every human/AI contributor (including Codex/Claude) 
 - Never add credentials, private Drive archives, raw FITS, hidden notebooks or unlicensed third-party source to the public repository.
 - GitHub CI status is `NOT_RUN` until actual workflow evidence exists. Local Python tests do not imply GitHub Linux/Windows acceptance.
 - The first real native ESET physics deliverable is a source-recovered historical solver, not a synthetic GR control.
+
+## HIST-001 historical solver boundary
+
+- `research/legacy/hist001/swells_pack_v2/solv` contains original March 14 source. **Never edit this subtree in place**: new experiments belong to separate derived source identities or wrapper code. `SOURCE_LOCK.json` is authoritative for the 46 byte-preserved imported files.
+- HIST-001 `J2141` central 6/6 Set A and negative spherical 2/6 are **regression and sensitivity results, not independent lensing validation**. The archived 4×1,000 no-refit stress curves are a mandatory documented negative; do not claim newly replayed 1,000-trial outcomes without actually executing them.
+- The radius-proxy/structured-projection law is HISTORICAL_ESET3_4 and distinct from v1.7.2 fixed-M_P one-map field equations. Never route through native physical lensing adapters without source-level compatibility and scientific authority.

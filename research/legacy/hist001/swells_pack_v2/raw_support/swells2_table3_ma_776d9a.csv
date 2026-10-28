@@ -1,0 +1,18 @@
+parameter,description,prior
+Vc_h_km_s^-1,Dark halo asymptotic circular velocity,"N(280, 50^2)"
+q3_h,Dark halo 3D axial ratio,"LN(1, 0.3^2)"
+rc_h_arcsec,Dark halo core radius,"U(0.01, 10)"
+log10_Mstar_Msun,Stellar mass,"U(10.5, 11.4)"
+f_bulge,Bulge stellar mass fraction,"N(0.2, 0.04^2)"
+q_bulge,Bulge 2D axial ratio,"LN(0.53, 0.03^2)"
+R0_bulge_arcsec,Bulge Chameleon size,"LN(0.094, 0.03^2)"
+alpha_bulge,Bulge Chameleon index,0.4892
+q_disc,Disc 2D axial ratio,"LN(0.31, 0.03^2)"
+R0_disc_arcsec,Disc Chameleon size,"LN(1.10, 0.03^2)"
+alpha_disc,Disc Chameleon index,0.63
+cos_i,Cosine of disc inclination angle,0.2
+x_c_arcsec,Spatial offset in x direction,"N(0, 0.01^2)"
+y_c_arcsec,Spatial offset in y direction,"N(0, 0.03^2)"
+theta_deg,Mass-light PA offset,"N(1.7, 2.9^2)"
+gamma_ext,Lens external shear,"N(0, 0.1^2)"
+theta_gamma_deg,PA of external shear,"U(0, 180)"

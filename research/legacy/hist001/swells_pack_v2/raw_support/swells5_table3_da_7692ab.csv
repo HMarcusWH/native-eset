@@ -1,0 +1,9 @@
+model,gamma_prior,nu_prior,r_s_prior,V200_prior
+free,"U(0.0, 2.0)",δ(0.0),r_s(V200),"U(V200_min, V200_max)"
+atlas,"U(0.0, 1.6)",δ(0.0),δ(20 kpc),"U(V200_min, V200_max)"
+mfl,-,-,-,-
+core,δ(0.0),δ(0.0),r_s(V200),"U(V200_min, V200_max)"
+nfw,δ(1.0),δ(0.0),r_s(V200),"U(V200_min, V200_max)"
+weakac,δ(1.0),See text,r_s(V200),"U(V200_min, V200_max)"
+ac,δ(1.0),δ(1.0),r_s(V200),"U(V200_min, V200_max)"
+freeac,δ(1.0),"U(-0.5, 1.0)",r_s(V200),"U(V200_min, V200_max)"

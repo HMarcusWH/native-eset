@@ -1,0 +1,4 @@
+fit_type,log10_Mstar_Msun,Vc_h_km_s,rc_h_kpc,q3_h,log10_Mstar_Msun_central,log10_Mstar_Msun_err_plus,log10_Mstar_Msun_err_minus,Vc_h_km_s_central,Vc_h_km_s_err_plus,Vc_h_km_s_err_minus,rc_h_kpc_central,rc_h_kpc_err_plus,rc_h_kpc_err_minus,q3_h_central,q3_h_err_plus,q3_h_err_minus
+Lensing,11.05+0.08/-0.22,278+51/-71,9.6+5.7/-6.4,0.97+0.30/-0.25,11.05,0.08,0.22,278.0,51.0,71.0,9.6,5.7,6.4,0.97,0.3,0.25
+Kinematics,11.20+0.07/-0.25,275+47/-33,6.1+4.7/-4.7,1.02+0.36/-0.30,11.2,0.07,0.25,275.0,47.0,33.0,6.1,4.7,4.7,1.02,0.36,0.3
+Lensing+kinematics,10.99+0.11/-0.25,276+17/-18,2.35+2.4/-1.5,0.91+0.15/-0.13,10.99,0.11,0.25,276.0,17.0,18.0,2.35,2.4,1.5,0.91,0.15,0.13
