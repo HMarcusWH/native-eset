@@ -141,7 +141,7 @@
     "tests/graph/test_snapshot.py": "98b9ef852f823503e371eed0e79bf487bd05b9dc83857cbe7318ea2e5d06330c",
     "tests/graph/test_source_import.py": "44c270a197d2d4d6c1612dd92b7059c774cdbf71aeb99478f2cc8a61b7bae7fb",
     "tests/historical/test_hist001_execution.py": "c5fc10e5837711bd08bccef14bce8d9ef34f64e48ce6fa1cf258d458cf7bed2a",
-    "tests/historical/test_hist001_receipt.py": "2284cb6755961c348b14d02cd51de1af0f9478d7b669315f378b91353e504c9d",
+    "tests/historical/test_hist001_receipt.py": "83c9e963b39fc06b32905a1099f836f7b2c8bf7ed8dc169ebb0f69e3cabb6033",
     "tests/historical/test_hist001_source.py": "2a95d14212bd711758ee7a01bd946f6fe80e28017a636f1285d8968db8d221de",
     "tests/historical/test_hist001_spec.py": "3c797234780ea886cf851df5e0113ca77a3c59007caf4898329cebc629edc6f4",
     "tests/runner/test_analytic_golden.py": "5d021c48bebe2773d604f971cd8cd82ba67a7fa33faf56daaf70fbde4914b342",

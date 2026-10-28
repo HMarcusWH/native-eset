@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import hashlib
+import csv
 import json
 from pathlib import Path
 import shutil
@@ -29,6 +30,22 @@ def copy_run(original_run: Path, tmp_path: Path) -> Path:
     p = tmp_path / original_run.name
     shutil.copytree(original_run, p)
     return p
+
+
+def alter_parsed_csv_number(path: Path, column: str, delta: float) -> None:
+    """Damage real numeric content, never rely on version-specific float spelling."""
+    with path.open(encoding="utf-8-sig", newline="") as handle:
+        reader = csv.DictReader(handle)
+        fieldnames = reader.fieldnames
+        rows = list(reader)
+    assert fieldnames and rows and column in fieldnames
+    before = float(rows[0][column])
+    rows[0][column] = repr(before + delta)
+    assert float(rows[0][column]) != before
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 def reseal(folder: Path, *modified_files: str) -> None:
@@ -60,18 +77,15 @@ def test_tampered_table_or_summary_denied_even_if_self_resealed(original_run: Pa
     p = folder / file
     # Change a meaningful result, then repair every self-contained digest.
     if file.endswith(".csv"):
-        markers = {
-            "setA_center.csv": ("1.511842807004271", "1.711842807004271"),
-            "setA_spherical.csv": ("-5.260170218706373", "-5.160170218706373"),
-            "j2141/j2141_solver_output_filled.csv": ("212439182.49179", "212439183.49179"),
-            "j2141/j2141_lensing_output_filled.csv": ("0.992112", "0.892112"),
-            "j2141/j2141_acceptance_scoreboard_filled.csv":
-                ("1.1087208637638946", "1.2087208637638946"),
+        modifications = {
+            "setA_center.csv": ("einstein_radius_pull_sigma", 0.2),
+            "setA_spherical.csv": ("einstein_radius_pull_sigma", 0.2),
+            "j2141/j2141_solver_output_filled.csv": ("rho_shadow_Msun_per_kpc3", 1000.0),
+            "j2141/j2141_lensing_output_filled.csv": ("predicted_einstein_radius_arcsec", 0.1),
+            "j2141/j2141_acceptance_scoreboard_filled.csv": ("value", 0.1),
         }
-        before, after = markers[file]
-        original = p.read_text(encoding="utf-8")
-        assert before in original
-        p.write_text(original.replace(before, after, 1), encoding="utf-8")
+        column, delta = modifications[file]
+        alter_parsed_csv_number(p, column, delta)
     else:
         data = json.loads(p.read_text())
         if file == "setA_center.json":
@@ -86,9 +100,7 @@ def test_tampered_table_or_summary_denied_even_if_self_resealed(original_run: Pa
 def test_coordinated_forged_lens_row_pass_with_updated_self_hash(original_run: Path, tmp_path: Path) -> None:
     folder = copy_run(original_run, tmp_path)
     csv_path = folder / "setA_center.csv"
-    old = csv_path.read_text(encoding="utf-8")
-    assert "1.511842807004271" in old
-    csv_path.write_text(old.replace("1.511842807004271", "1.611842807004271"), encoding="utf-8")
+    alter_parsed_csv_number(csv_path, "einstein_radius_pull_sigma", 0.1)
     reseal(folder, "setA_center.csv")
     deny(folder)
 
