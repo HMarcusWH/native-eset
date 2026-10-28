@@ -19,7 +19,7 @@ from typing import Any
 from native_eset.evidence.receipts import canonical_json, digest_bytes, source_tree_digest, write_immutable
 from native_eset.historical.hist001_approved import approved_hist001, SOURCE_LOCK_DIGEST
 from native_eset.historical.hist001_source import verify_hist001_source
-from native_eset.historical.hist001_spec import CENTRAL_SPHERE, HistoricalRunSpec
+from native_eset.historical.hist001_spec import CENTRAL, CENTRAL_SPHERE, HistoricalRunSpec
 from native_eset.historical.hist001_receipt import (
     CLAIM_CAP, GATES, RECEIPT_SCHEMA, RUNTIME_CONTRACT,
     expected_artifacts, historical_run_id, validate_outputs,
