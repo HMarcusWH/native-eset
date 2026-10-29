@@ -170,9 +170,18 @@ def test_receipt_rejects_modified_row_with_repaired_hash(
     target = tmp_path / root.name
     shutil.copytree(root, target)
     out = target / "width_01pct.csv"
-    content = out.read_text(encoding="utf-8")
-    assert "1.400481" in content or "1.4" in content
-    out.write_text(content.replace("1.4", "1.9", 1), encoding="utf-8")
+    with out.open("r", newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        fields = list(reader.fieldnames or [])
+        rows = list(reader)
+    assert fields == list(COLUMNS)
+    rows[0]["mean_abs_radius_pull_sigma"] = str(
+        float(rows[0]["mean_abs_radius_pull_sigma"]) + 0.25
+    )
+    with out.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(rows)
     receipt = json.loads((target / "receipt.json").read_text())
     receipt["output_files"][out.name] = hashlib.sha256(out.read_bytes()).hexdigest()
     _forge_receipt(target, receipt)
