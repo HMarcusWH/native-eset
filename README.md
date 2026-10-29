@@ -97,3 +97,18 @@ eset doctor --historical-source-root research/legacy/hist001
 The historical source pack is **not** installed with the wheel. The command verifies all 46 original source/config/data files and three archived negative records before executing a disposable copy. It then verifies full numerical tables, central Set A 6/6 and spherical 2/6 negative, retains content-addressed receipts, and refuses refits, modified sources, unrestricted physical outputs or false held-out status. The geometry robustness 4×1,000 campaigns remain **archived** pending HIST-001B. See `docs/HIST001A_3_CLI_RELEASE.md`.
 
 The repository's actual GitHub CI gates are recorded on PRs; old B2 predeployment notes above describe the original archived B2 ZIP, not the current merged GitHub code.
+
+## HIST-001C read-only historical model crosswalk
+
+HIST-001C adds a separately pinned, noncanonical J2141/SWELLS Set A equation and
+identity descriptor. It source-verifies nine original numerical statements and
+records eight **unresolved** modern Native ESET v1.7.2 compatibility obligations,
+without editing the sealed 31-file Theory-State graph, inferring a modern
+provider, or claiming independent historical validation. Execute:
+
+    python tools/hist001c_crosswalk.py --source-root research/legacy/hist001
+
+An optional `--graph-dir` replays the approved sealed graph's original resolver
+read-only if those private files are independently available. See
+`docs/HIST001C_READONLY_EQUATION_CROSSWALK.md`. HIST-001B RangeFinder source-
+exact reproduction remains blocked in draft PR #7.
