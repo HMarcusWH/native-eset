@@ -171,3 +171,20 @@ inputs and archived negatives are untouched; no blind holdout is scored.
 See `docs/HIST001D_D2D_FULL_STRUCTURED_ROOT.md` and
 `tools/hist001d_d2d.py`. Independent receipt verification reexecutes the
 whole calculation. This is not Native ESET v1.7.2 physical-provider admission.
+
+## HIST-001D/D2e-A — sampled root topology, original gradient, in-domain cutoff
+
+Source-locked D2e-A compares 45/181/721-point finite-domain root scans of the
+already-fitted Set A independent structured-shadow numerical identity (D2d);
+each has one sampled crossing but positive-slope intervals, so **global root
+uniqueness is NOT proved**. No source shadow-density clips activate on the
+six lenses at the seven tested original grids. The original 180-point
+interpolated density at 0.1 kpc differs from the 11,520-point reference by
+25,000–53,000x: **root stability is NOT uniform density convergence**.
+Removing known outer shadow shells from 80/100–120 kpc changes the root by at
+most 0.02027/0.00636 observational sigma, but **mass beyond 120 kpc is
+unconstrained**. This is a new numerical diagnostic, not a physical Weyl
+prediction, global error theorem or new blind holdout.
+See `docs/HIST001D_D2E_A_ROOT_GRADIENT_DOMAIN_STRESS.md` and
+`tools/hist001d_d2e.py`. All original fitted 6/6 and new D2d 3/6 identities
+remain distinct; scientific D2e certification remains open.
