@@ -64,3 +64,29 @@ held-out validation, no CMB/growth/production scoring, and no Theory-State mutat
    Ubuntu/Windows Python 3.10/3.12/3.13 matrix and post-merge main CI.
 
 HIST-001A is installed and operational; **HIST-001B remains not admitted**.
+
+
+## HIST-001B remediation implementation (follow-on to the original draft)
+
+The new strict runner is `tools/hist001b_run.py`, with
+`tools/hist001b_verify.py` for independent verification. The earlier
+`tools/hist001b_rangefinder.py` remains the **numerical diagnostic worker**,
+not a source-exact authority or final receipt issuer.
+
+A separately pinned archive register (`hist001b_source.py`) verifies the
+original June output ledger, archived CSV/JSON and recovered later scripts,
+without changing the 46-file HIST-001A source lock. `hist001b_compare.py`
+independently verifies each of the 4,000 ordered trials, each six-lens
+failure vector, summary counts, continuous means and per-lens failure
+fractions if a verified external 12-file B oracle is supplied.
+`hist001b_prechecks.py` refuses a fabricated 600-case precheck pass while
+the original accelerated producer and case fixture are absent.
+
+**Mandatory status:** no B run, receipt, source flag or aggregate match may
+emit `HIST001B_SOURCE_EXACT_REPLAY_MATCHED_NOT_VALIDATED` until original
+producer/RNG, original 600 prechecks, all 4,000 ordered rows, immutable
+receipts, and claim caps independently pass. The current code explicitly
+does not authorize that scientific upgrade.
+
+Detailed source register: `docs/HIST001B_SOURCE_AND_RNG_PROVENANCE.md`.
+Release blocker: `docs/HIST001B_RELEASE_DECISION.md`.
