@@ -10,6 +10,7 @@ import argparse
 import csv
 import hashlib
 import json
+import os
 import math
 import sys
 from pathlib import Path
@@ -238,7 +239,12 @@ def replay(source_root: Path, output_root: Path, *,
     # Trust source bytes before importing ANY recovered historical module.
     from native_eset.historical.hist001_source import verify_hist001_source
 
-    source_root = source_root.resolve(strict=True)
+    # Preserve original path spelling long enough to reject symlink roots and
+    # symlink ancestors. Resolving first would erase evidence of a link.
+    raw_root = Path(os.path.abspath(source_root))
+    from native_eset.historical.hist001b_source import require_no_symlink_components
+    require_no_symlink_components(raw_root)
+    source_root = raw_root.resolve(strict=True)
     verified = verify_hist001_source(source_root)
     if verified["frozen_files"] != 46 or verified["archived_negative_records"] != 3:
         raise ValueError("historical source inventory changed")
@@ -293,8 +299,10 @@ def replay(source_root: Path, output_root: Path, *,
         })
     match = all(x["archived_count_match"] for x in results)
     full = not smoke
+    # Aggregate agreement is NEVER a source-exact proof. The authenticated
+    # accelerated original, per-row oracle and 600 prechecks are outstanding.
     status = (
-        "HIST001B_SOURCE_EXACT_REPLAY_MATCHED_NOT_VALIDATED" if full and match
+        "HIST001B_COUNTS_MATCH_SOURCE_EXACT_NOT_ESTABLISHED" if full and match
         else "HIST001B_ARCHIVED_REPLAY_MISMATCH_FAIL_CLOSED" if full
         else "HIST001B_SMOKE_ONLY_NOT_REEXECUTED"
     )
@@ -311,6 +319,11 @@ def replay(source_root: Path, output_root: Path, *,
         "source_original_comparison": "first two trials of each executed width",
         "half_circularization": half,
         "archived_reference_is_new_output": False,
+        "original_accelerated_producer_verified": False,
+        "original_rng_schedule_verified": False,
+        "original_600_prechecks_reproduced": False,
+        "archive_rows_compared": False,
+        "source_exact_replay_authorized": False,
         "physical_provider_admitted": False,
         "native_v172_equivalence_proved": False,
         "empirical_validation": "NOT_ESTABLISHED",
@@ -345,7 +358,7 @@ def main() -> int:
         "results": report["results"],
         "half_circularization": report["half_circularization"],
     }, sort_keys=True))
-    return 0 if args.smoke or all(x["archived_count_match"] for x in report["results"]) else 4
+    return 0 if args.smoke else 4  # exact-source full release blocked until full independent gates
 
 
 if __name__ == "__main__":
