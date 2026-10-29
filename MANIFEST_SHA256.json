@@ -3,6 +3,7 @@
     ".env.example": "62ac70b3f1d73ae3fd485fb1b336c5ac08f6b7822baa2d6189315e93744ec312",
     ".gitattributes": "9e23f4c78a5fbe073aa3847510a05b35c18767e86253f14e3508a6a02c931a65",
     ".github/workflows/ci.yaml": "aa26060cb68f9f41319f1a646e3a8d2e27ebcb0f540f9ba7f0afbe1710353ffb",
+    ".github/workflows/hist001b-diagnostic.yaml": "f98ce25472731665bcf610242133c9de88b775e98d719ac9c8c0e7b6b1021f9f",
     ".github/workflows/hist001b-full.yaml": "c204ea2b84938b116b61927a370604bfa68ba87e6c064e0aff10111f8d722033",
     ".gitignore": "0fc020a952cc1ba9d5b6a873843b5129cfee4a902102bd3196b41c08028ae7fa",
     "AGENTS.md": "ff69f6523a4340e2508353bc9e85940c8a5eb91dcfedc81b1922212c567edb76",
