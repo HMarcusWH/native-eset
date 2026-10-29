@@ -82,3 +82,18 @@ python tools/replay_hist001.py --out runs/hist001 --ablation
 ```
 
 See `docs/HIST001_INTEGRATION_PLAN.md` for the detailed next integration steps and negative controls. The original 1,214,157-byte triad archive is retained externally with SHA-256 `283490087c81068286303419afc98fa150c3edf9868d3dc4cb72faba0f9d1a1e`.
+
+## HIST-001A/3 — Installed historical CLI (source-locked, fitted regression ONLY)
+
+The restored historical J2141 + six-lens SWELLS Set A solver now has a separately scoped installed package command. Install the optional pinned numerical environment, supply a separately verified frozen March source-root, and do not treat its fitted outputs as current v1.7.2 physics:
+
+```bash
+python -m pip install -r requirements/hist001-constraints.txt
+eset historical j2141 --source-root research/legacy/hist001 --out runs --strict --ablation spherical
+eset verify --receipt runs/<hist001-run-id>/receipt.json --source-root research/legacy/hist001 --expected-sha256 <separately-saved-digest>
+eset doctor --historical-source-root research/legacy/hist001
+```
+
+The historical source pack is **not** installed with the wheel. The command verifies all 46 original source/config/data files and three archived negative records before executing a disposable copy. It then verifies full numerical tables, central Set A 6/6 and spherical 2/6 negative, retains content-addressed receipts, and refuses refits, modified sources, unrestricted physical outputs or false held-out status. The geometry robustness 4×1,000 campaigns remain **archived** pending HIST-001B. See `docs/HIST001A_3_CLI_RELEASE.md`.
+
+The repository's actual GitHub CI gates are recorded on PRs; old B2 predeployment notes above describe the original archived B2 ZIP, not the current merged GitHub code.

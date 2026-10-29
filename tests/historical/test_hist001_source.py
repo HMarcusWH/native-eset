@@ -32,7 +32,8 @@ def test_original_source_exact_inventory_lens_set_and_nonpromotion() -> None:
                                    "J1021+2028", "J1111+2234", "J1135+3720"]
     assert report["source_history"] == "ORIGINAL_FITTED_CALIBRATION"
     assert report["data_use"] == "REGRESSION"
-    assert report["capability_executable"] is False
+    assert report["capability_executable"] is True
+    assert report["source_preflight_is_execution"] is False
     assert report["physical_provider_admitted"] is False
     assert report["current_native_v172_equivalence_proved"] is False
     assert report["empirical_validation"] == "NOT_ESTABLISHED"

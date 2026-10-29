@@ -22,9 +22,9 @@ CAPABILITIES = MappingProxyType({
                                             ("E_of_z", "chi_dimensionless_of_z"), "EXTERNAL_REFERENCE_CONTROL_ONLY"),
     "legacy-june-eset3-4": Capability("legacy-june-eset3-4", "HISTORICAL_ESET3_4", False, (), "ARCHIVE_RECOVERY_PENDING"),
     "legacy-hist001-j2141-seta": Capability("legacy-hist001-j2141-seta",
-        "LEGACY_ESET3_DM_A_FITTED_STRUCTURED_PROJECTION", False,
+        "LEGACY_ESET3_DM_A_FITTED_STRUCTURED_PROJECTION", True,
         ("historical_rotation_lensing_regression", "historical_setA_portability"),
-        "HIST001_A1_SOURCE_VERIFICATION_ONLY_EXECUTION_PENDING"),
+        "HIST001_FITTED_HISTORICAL_REGRESSION_ONLY_NOT_PHYSICAL_PROVIDER"),
     "legacy-june-gd-variable-f": Capability("legacy-june-gd-variable-f", "HISTORICAL_VARIABLE_F", False, (), "ARCHIVED_RESULT_NOT_IMPORTED"),
     "native-v1.7.2-one-map": Capability("native-v1.7.2-one-map", "NATIVE_ESET_V172", False, (), "CURRENT_PHYSICS_NOT_IMPORTED"),
 })
