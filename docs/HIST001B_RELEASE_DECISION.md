@@ -86,3 +86,30 @@ Executable: `python tools/hist001b_new600.py --source-root research/legacy/hist0
 A dedicated regression test enforces the 600/600 result and original-precheck
 nonpromotion flags. The original `require_original_600_prechecks()` guard
 continues to fail closed.
+
+## Original-versus-replay width-pair RNG forensics (new evidence)
+
+The four SHA-pinned original 1,000-row CSVs were aligned by trial number.
+Across six width pairs, the archived mean-absolute radius-pull correlations
+range from **-0.03875 to +0.01700**, while the reproduced
+`SeedSequence([2141,trial])` diagnostic ranges from **+0.58211 to +0.89443**.
+Archived mass-pull correlations lie between -0.03332 and +0.02452,
+versus +0.78787 to +0.96167 for the diagnostic.
+
+The same trial number therefore does **not** couple the original width
+records in the same way as the recovered parallel script. This narrows the
+RNG question to distinct width-specific streams, reseeding, or trial-order
+mapping. It does not prove which original seed formula was used or recover
+the accelerated source. The full per-pair JSON analysis is retained
+externally with independent file digests.
+
+Execute using a separate SHA-verified 12-file oracle directory:
+
+```bash
+python tools/hist001b_rng_forensics.py \
+  --oracle-root /path/to/approved-flat-archive \
+  --diagnostic-root /path/to/independent-4-width-CSV
+```
+
+The diagnostic never grants source-exact replay, scientific validation or
+physical provider admission. Keep the original 600-case precheck blocked.
