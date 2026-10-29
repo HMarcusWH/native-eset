@@ -163,7 +163,7 @@
     "tools/check_manifest.py": "496031c50a044e116b0bbfd70722a2d0aecc2acc6cb0a3349573e38fa09052db",
     "tools/hist001_seta_ablation.py": "69bc3fd2f8985770c24c6924869cb39347f45bb6e157f18ef39580ef6ef456c4",
     "tools/hist001_wheel_smoke.py": "e79ba21230077e5a610c06c5ba5e88afdf32ff2881b5dc91e5632dfb3b98309e",
-    "tools/hist001b_rangefinder.py": "dd804427c716f9fcc4bbd9427c4a7a9722daf9b4406d72195a7666d579e9f940",
+    "tools/hist001b_rangefinder.py": "18e8001ae003e4845f6578dd299a4470d9d320cc48bb470fca866dce91405a5d",
     "tools/replay_hist001.py": "ce4ca3fb532d18e94f63c8272670bdfca10ed5daf7d444520a17e652a3babcea",
     "tools/security_audit.py": "5377367977eb4d7824edf906a15d2a5c29ae5823d9279e6698c804653630fc2b",
     "tools/verify_final_bundle.py": "860653e977f373f24f53c2ab4248689ffd4c45f1b199513ebc0fdfef8df949b0",
