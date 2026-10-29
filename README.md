@@ -97,3 +97,30 @@ eset doctor --historical-source-root research/legacy/hist001
 The historical source pack is **not** installed with the wheel. The command verifies all 46 original source/config/data files and three archived negative records before executing a disposable copy. It then verifies full numerical tables, central Set A 6/6 and spherical 2/6 negative, retains content-addressed receipts, and refuses refits, modified sources, unrestricted physical outputs or false held-out status. The geometry robustness 4×1,000 campaigns remain **archived** pending HIST-001B. See `docs/HIST001A_3_CLI_RELEASE.md`.
 
 The repository's actual GitHub CI gates are recorded on PRs; old B2 predeployment notes above describe the original archived B2 ZIP, not the current merged GitHub code.
+
+
+## HIST-001B — independent RangeFinder audit (draft, not scientifically admitted)
+
+The separate [draft PR #7](https://github.com/HMarcusWH/native-eset/pull/7) contains source-locked,
+isolated HIST-001B diagnostic replay code, independent full-trial CSV comparator
+and a **separate** robustness receipt verifier. The 46 original HIST-001A
+solver/input files and GR/HIST-001A verifiers remain untouched.
+
+The independently replayed 1/2/5/10% 1,000-trial six-pass counts
+`328/135/14/4` **do not match** the historical archived `323/140/23/3`.
+The archived accelerated evaluator, original RNG execution identity and 600
+grid-cell prechecks are **not independently recovered**; no current source-exact
+HIST-001B completion is permitted.
+
+Smoke (software diagnostic only):
+
+```bash
+python tools/hist001b_run.py --source-root research/legacy/hist001 --out runs/hist001b --smoke --trials 3
+```
+
+Full diagnostic: add `--oracle-root /path/to/sha-verified/flat/oracle`,
+omit `--smoke`, and expect **exit 4** until source and precheck authority
+are recovered. Receipts can be checked with `tools/hist001b_verify.py`.
+Neither task grants current Native v1.7.2 physical lensing or validation.
+See `docs/HIST001B_RELEASE_DECISION.md` and
+`docs/HIST001B_SOURCE_AND_RNG_PROVENANCE.md`.
