@@ -188,3 +188,7 @@ prediction, global error theorem or new blind holdout.
 See `docs/HIST001D_D2E_A_ROOT_GRADIENT_DOMAIN_STRESS.md` and
 `tools/hist001d_d2e.py`. All original fitted 6/6 and new D2d 3/6 identities
 remain distinct; scientific D2e certification remains open.
+
+## HIST-001D/D2e-B — conditional interval root-exclusion diagnostic
+
+D2e-B bounds the positive baryonic and piecewise-linear finite-domain shadow masses over whole radius **intervals**, including conservative corner bounds on the radius-dependent `q_eff`. It adaptively excludes intervals *outside* a deliberately unresolved 2%-wide D2d-root guard, assuming an explicit **unproven** 1e-6 relative numerical mass error. Any zero-containing, budget-exhausted, or unverified interval remains unresolved. This is strictly stronger structurally than counting signs at dense sample nodes, but **does not prove global root uniqueness or certified numerical error**. Six fitted development lenses only; no theory/physical/held-out admission. See `docs/HIST001D_D2E_B_CONDITIONAL_INTERVAL.md` and `tools/hist001d_d2e_interval.py`.
