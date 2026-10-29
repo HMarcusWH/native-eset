@@ -1,7 +1,6 @@
 """HIST001D: original-source mesh sensitivity, immutable diagnostic receipt, claim caps."""
 from __future__ import annotations
 
-import copy
 import hashlib
 import importlib.util
 import json
