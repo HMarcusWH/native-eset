@@ -17,6 +17,7 @@ from native_eset.historical.hist001b_compare import (
 )
 from native_eset.historical.hist001b_prechecks import (
     OriginalPrechecksUnavailable, require_original_600_prechecks,
+    independently_check_new_600_grid_cases,
 )
 from native_eset.historical.hist001b_receipt import (
     Hist001BReceiptError, verify_hist001b_receipt,
@@ -92,6 +93,23 @@ def test_source_authority_is_separate_and_prechecks_never_forged(tmp_path: Path)
         )
     assert "NOT_RECOVERED" in HISTORICAL_PRODUCER_STATUS
     assert "NOT_REEXECUTED" in PRECHECK_STATUS
+
+
+
+def test_new_independent_600_transition_grid_cases_do_not_promote_archive() -> None:
+    result = independently_check_new_600_grid_cases(SOURCE)
+    assert result["status"] == (
+        "NEW_SYNTHETIC_600_GRID_CELLS_MATCHED_NOT_ORIGINAL_PRECHECKS"
+    )
+    assert result["new_cases_executed"] == 600
+    assert result["new_cases_matched"] == 600
+    assert result["first_six_grid_indices"] == [3584, 3607, 3884, 3638, 3869, 3709]
+    assert len(result["grid_index_sha256"]) == 64
+    assert result["original_archived_cases_executed"] == 0
+    assert result["original_600_prechecks_verified"] is False
+    assert result["original_producer_verified"] is False
+    assert result["source_exact_replay_authorized"] is False
+    assert result["physical_provider_admitted"] is False
 
 
 def test_b_spec_prevents_seed_role_or_provider_override() -> None:
