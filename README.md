@@ -121,7 +121,7 @@ grid-sensitivity test: the original 180-point/120-angle calculation passes 6/6,
 but radial grids of 90 and 360 points pass 2/6 and 3/6 respectively. This
 exposes **numerical sensitivity of the historical projection**, not new
 observational data, Native v1.7.2 falsification, or a physical Weyl solution.
-Run \`python tools/hist001d_convergence.py --source-root
-research/legacy/hist001 --out runs/hist001d_d2\`; inspect
-\`docs/HIST001D_CONVERGENCE_AND_SOURCE_REGISTER.md\`. The independent holdout
+Run `python tools/hist001d_convergence.py --source-root
+research/legacy/hist001 --out runs/hist001d_d2`; inspect
+`docs/HIST001D_CONVERGENCE_AND_SOURCE_REGISTER.md`. The independent holdout
 remains unselected and unscored.
