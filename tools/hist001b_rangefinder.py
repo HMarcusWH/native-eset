@@ -12,13 +12,14 @@ import hashlib
 import json
 import math
 import sys
-# Do not let Python's import cache write __pycache__ into the separately
-# SHA-verified original historical source tree. This CLI owns its process.
-sys.dont_write_bytecode = True
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
+
+# Prevent imports from writing __pycache__ into the SHA-locked original
+# historical source tree. This standalone CLI owns the interpreter process.
+sys.dont_write_bytecode = True
 
 WIDTHS = (0.01, 0.02, 0.05, 0.10)
 SEED_ROOT = 2141
