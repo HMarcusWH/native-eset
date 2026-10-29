@@ -6,6 +6,8 @@ must not substitute newly generated cases and call the archive verified.
 """
 from __future__ import annotations
 
+from pathlib import Path
+
 from native_eset.historical.hist001b_source import (
     HISTORICAL_PRODUCER_STATUS, PRECHECK_STATUS,
 )
@@ -46,7 +48,7 @@ def require_original_600_prechecks(*, producer_sha256: str | None = None,
     )
 
 
-def independently_check_new_600_grid_cases(source_root: str | "Path") -> dict:
+def independently_check_new_600_grid_cases(source_root: str | Path) -> dict:
     """Run NEW deterministic 600-case scalar-vs-vectorized grid diagnostics.
 
     Deliberately NOT the unpreserved original 600 archived acceleration checks.
@@ -55,7 +57,6 @@ def independently_check_new_600_grid_cases(source_root: str | "Path") -> dict:
     """
     import hashlib
     import sys
-    from pathlib import Path
 
     import numpy as np
     from scipy import special

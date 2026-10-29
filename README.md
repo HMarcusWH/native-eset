@@ -124,3 +124,17 @@ are recovered. Receipts can be checked with `tools/hist001b_verify.py`.
 Neither task grants current Native v1.7.2 physical lensing or validation.
 See `docs/HIST001B_RELEASE_DECISION.md` and
 `docs/HIST001B_SOURCE_AND_RNG_PROVENANCE.md`.
+## HIST-001C read-only historical model crosswalk
+
+HIST-001C adds a separately pinned, noncanonical J2141/SWELLS Set A equation and
+identity descriptor. It source-verifies nine original numerical statements and
+records eight **unresolved** modern Native ESET v1.7.2 compatibility obligations,
+without editing the sealed 31-file Theory-State graph, inferring a modern
+provider, or claiming independent historical validation. Execute:
+
+    python tools/hist001c_crosswalk.py --source-root research/legacy/hist001
+
+An optional `--graph-dir` replays the approved sealed graph's original resolver
+read-only if those private files are independently available. See
+`docs/HIST001C_READONLY_EQUATION_CROSSWALK.md`. HIST-001B RangeFinder source-
+exact reproduction remains blocked in draft PR #7.

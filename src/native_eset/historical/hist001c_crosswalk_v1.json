@@ -1,0 +1,293 @@
+{
+  "schema": "NATIVE_ESET_HIST001C_NONCANONICAL_CROSSWALK_V1",
+  "overlay_id": "hist001c:historical-j2141-seta-to-native-v172-v1",
+  "status": "HISTORICAL_SOURCE_EQUATION_CROSSWALK_NOT_CANONICAL_ADMISSION",
+  "scope": "PACKAGED_READ_ONLY_EVIDENCE_DESCRIPTOR",
+  "historical": {
+    "finite_model_id": "HIST-001-SWELLS-J2141-SETA-FROZEN",
+    "backend_id": "legacy-hist001-j2141-seta",
+    "theory_id": "LEGACY_ESET3_DM_A_FITTED_STRUCTURED_PROJECTION",
+    "original_branch": "dma_v0p1_test1_axisym_structproj_baryonq",
+    "frozen_candidate": "ra0_gated_geometry_sigmoid_reg_v2",
+    "source_lock_sha256": "fa7e77300d7a6e5f095d3781c23eb96bc57fea4c38f76b155278079d7f19913a",
+    "original_archive_sha256": "283490087c81068286303419afc98fa150c3edf9868d3dc4cb72faba0f9d1a1e",
+    "frozen_config_sha256": "27c2fbe5c50481fa1f859820a8c2572c28d6c93d6a275beb99b29ced98e13f87",
+    "frame": "HISTORICAL_GEOMETRY_DM_A",
+    "gauge": "QUASISTATIC_SCALAR_CONSTRUCTION",
+    "units": "HIST001_NATIVE_KPC_KMS_MSUN_ARCSEC",
+    "data_use": "REGRESSION_NOT_HELD_OUT"
+  },
+  "graph_reference": {
+    "graph_sha256": "163de068decc50d5339daa0a3fa4d38441f2441bf414a3131267ea02b312bc31",
+    "release_version": "0.16.39",
+    "binding": "APPROVED_SNAPSHOT_DIGEST_ONLY_UNRESOLVED_GRAPH_RECORD_IDS",
+    "requested_graph_record_ids": [],
+    "canonical_records_written": 0,
+    "automatic_relations_written": 0
+  },
+  "declared_interpretation": {
+    "equation": "div(epsilon*grad(Phi))=4*pi*G*rho_b",
+    "source": "docs/HIST001_INTEGRATION_PLAN.md",
+    "source_sha256": "e9543eea4fddec2fa2e384dafda36bd7d18ddc2fbe31284ccef704c58014bf13",
+    "role": "HISTORICAL_PHENOMENOLOGICAL_DECLARATION_NOT_PDE_SOLVER",
+    "source_root_runtime_verification": "NOT_PART_OF_FROZEN_46_SOURCE_FILES",
+    "covariant_equivalence_proved": false
+  },
+  "source_evidence": [
+    {
+      "id": "hist001c:radius-epsilon",
+      "expression": "epsilon(r)=clip(1-delta*r^n/(r^n+r0^n),epsilon_floor,1)",
+      "role": "FITTED_RADIUS_PROXY",
+      "source": {
+        "relative_path": "solv/dmalane.py",
+        "sha256": "5083e89505afd57c7d4d544bb1a2650765c413c9a7d3e89ecbb4a71edc525eb0",
+        "line_range": [
+          20,
+          26
+        ]
+      },
+      "limitation": "Not a covariant sourced constitutive law"
+    },
+    {
+      "id": "hist001c:modular-epsilon",
+      "expression": "r0=r0_base*structure_scale*charge_r0_scale; delta=clip(delta_base*charge_delta_scale)",
+      "role": "FITTED_STRUCTURE_CHARGE_PROXY",
+      "source": {
+        "relative_path": "solv/dmalane.py",
+        "sha256": "5083e89505afd57c7d4d544bb1a2650765c413c9a7d3e89ecbb4a71edc525eb0",
+        "line_range": [
+          48,
+          72
+        ]
+      },
+      "limitation": "Historical charge-named factor is not a physical derived F_charge"
+    },
+    {
+      "id": "hist001c:quasistatic-acceleration",
+      "expression": "g_total=g_baryon/epsilon; v_total=sqrt(g_total*r)",
+      "role": "QUASISTATIC_SCALAR_RECIPE",
+      "source": {
+        "relative_path": "solv/run_j2141_axisym_lens.py",
+        "sha256": "a7b6dd6a4efc43495baa80eb99bf72bcb45d6833ffe1a74fa92b67133aa618c3",
+        "line_range": [
+          177,
+          192
+        ]
+      },
+      "limitation": "No covariant Einstein/Poisson PDE solved numerically here"
+    },
+    {
+      "id": "hist001c:shadow-density",
+      "expression": "M_shadow=clip((g_total-g_baryon)*r^2/G,0,infinity); rho_shadow=clip(dM_shadow/dr/(4*pi*r^2),0,infinity)",
+      "role": "EFFECTIVE_SHADOW_DENSITY_PROXY",
+      "source": {
+        "relative_path": "solv/shadow_density.py",
+        "sha256": "1886f6db6e2aab951b542112b5b4b2ee0f41d28bdbed600c1aafd895b293aba5",
+        "line_range": [
+          9,
+          24
+        ]
+      },
+      "limitation": "Not independently sourced matter stress-energy"
+    },
+    {
+      "id": "hist001c:structured-projection",
+      "expression": "q_eff=clip((q_bulge*M_bulge_projected+q_disc*M_disc_projected)/(M_bulge_projected+M_disc_projected),0.001,1); R -> R/sqrt(q_eff)",
+      "role": "FITTED_AXIS_RATIO_PROJECTION",
+      "source": {
+        "relative_path": "solv/run_j2141_axisym_lens.py",
+        "sha256": "a7b6dd6a4efc43495baa80eb99bf72bcb45d6833ffe1a74fa92b67133aa618c3",
+        "line_range": [
+          124,
+          134
+        ]
+      },
+      "limitation": "Not covariant Weyl-lensing derivation"
+    },
+    {
+      "id": "hist001c:conditional-no-slip",
+      "expression": "Phi(r)=Psi(r)=cumulative_potential(g_total)",
+      "role": "IMPOSED_PHI_EQUALS_PSI",
+      "source": {
+        "relative_path": "solv/run_j2141_axisym_lens.py",
+        "sha256": "a7b6dd6a4efc43495baa80eb99bf72bcb45d6833ffe1a74fa92b67133aa618c3",
+        "line_range": [
+          183,
+          192
+        ]
+      },
+      "limitation": "Phi=Psi assigned in output; no tensor-slip proof"
+    },
+    {
+      "id": "hist001c:seta-candidate",
+      "expression": "candidate=ra0_gated_geometry_sigmoid_reg_v2 with fitted anchor",
+      "role": "HISTORICAL_DEV_FITTED_CANDIDATE",
+      "source": {
+        "relative_path": "solv/run_setA_port_cand.py",
+        "sha256": "247e0a354588aed488cd1f6aa2548633d3edb876ea913322e08a33669e0fc4c9",
+        "line_range": [
+          162,
+          198
+        ]
+      },
+      "limitation": "No blind holdout or current model parameter admission"
+    },
+    {
+      "id": "hist001c:projected-observables",
+      "expression": "projected Einstein-radius and enclosed-mass sigma pulls",
+      "role": "PROJECTED_LENSING_REGRESSION",
+      "source": {
+        "relative_path": "solv/run_setA_port_cand.py",
+        "sha256": "247e0a354588aed488cd1f6aa2548633d3edb876ea913322e08a33669e0fc4c9",
+        "line_range": [
+          202,
+          266
+        ]
+      },
+      "limitation": "Historical projected proxy, not Native v1.7.2 lensing provider"
+    },
+    {
+      "id": "hist001c:dual-two-sigma",
+      "expression": "both_pass=(abs(radius_pull)<=2) and (abs(mass_pull)<=2)",
+      "role": "FITTED_REGRESSION_GATE",
+      "source": {
+        "relative_path": "solv/scoring.py",
+        "sha256": "444d0e9838b969ea75c8043befbdab3d00583b098573a474a3d86b30b3878946",
+        "line_range": [
+          44,
+          56
+        ]
+      },
+      "limitation": "Six fitted development lenses are not independently validated"
+    }
+  ],
+  "regression_evidence": {
+    "source_role": "SIX_FITTED_DEVELOPMENT_LENSES_NOT_HOLDOUT",
+    "lens_ids": [
+      "J0822+1828",
+      "J0915+4211",
+      "J0930+2855",
+      "J1021+2028",
+      "J1111+2234",
+      "J1135+3720"
+    ],
+    "j2141_velocity_chi2_reduced": 1.1087208637638946,
+    "j2141_einstein_radius_pull_sigma": 1.2456888888888888,
+    "j2141_lensing_mass_pull_sigma": 0.20461194029850702,
+    "conditional_slip_zero_by_construction": true,
+    "seta_central_dual_passes": 6,
+    "seta_radius_mean_abs_pull": 0.975973270592819,
+    "seta_mass_mean_abs_pull": 0.5980326367412955,
+    "seta_spherical_ablation_dual_passes": 2,
+    "seta_spherical_radius_mean_abs_pull": 8.168644014357623
+  },
+  "negative_evidence": [
+    {
+      "name": "seta_spherical_projection",
+      "role": "REEXECUTED_HISTORICAL_NEGATIVE",
+      "source_filename": "setA_reg_v2_projection_ablation_summary.json",
+      "sha256": "4c322ed5d97ec6653f999fc516de141e28251c27429133dfa5621636fe1ef6b4"
+    },
+    {
+      "name": "original_rangefinder_survival",
+      "role": "ARCHIVED_NOT_SOURCE_EXACT_REEXECUTED",
+      "widths": [
+        0.01,
+        0.02,
+        0.05,
+        0.1
+      ],
+      "six_lens_pass_counts": [
+        323,
+        140,
+        23,
+        3
+      ],
+      "source_filename": "reg_v2_fixed_law_geometry_morphology_nuisance_survival_curve_summary.json",
+      "sha256": "ade89fedadc03a8bb3f88ef67016fa318d675856f4e041a1e2a134281fcfa182"
+    }
+  ],
+  "compatibility_obligations": [
+    {
+      "id": "hist001c:obligation:covariant-action",
+      "state": "UNRESOLVED",
+      "requirement": "Derive a common legacy-to-Native action with fixed reduced Planck mass and stated domain",
+      "automatic_carryover": false
+    },
+    {
+      "id": "hist001c:obligation:one-material-map",
+      "state": "UNRESOLVED",
+      "requirement": "Derive the Native X=I_struct*F_charge*G_local law and sourced charge dynamics rather than reusing the legacy radius proxy",
+      "automatic_carryover": false
+    },
+    {
+      "id": "hist001c:obligation:conservation-gr-limit",
+      "state": "UNRESOLVED",
+      "requirement": "Prove conservation, constraints, Bianchi identities and the GR/off limit",
+      "automatic_carryover": false
+    },
+    {
+      "id": "hist001c:obligation:slip-derivation",
+      "state": "UNRESOLVED",
+      "requirement": "Derive both metric potentials and slip from equations rather than imposing Phi=Psi",
+      "automatic_carryover": false
+    },
+    {
+      "id": "hist001c:obligation:physical-weyl-lensing",
+      "state": "UNRESOLVED",
+      "requirement": "Derive gauge-consistent Weyl lensing from the same physical solution used for dynamics",
+      "automatic_carryover": false
+    },
+    {
+      "id": "hist001c:obligation:einstein-boltzmann",
+      "state": "UNRESOLVED",
+      "requirement": "Provide current linear Einstein/Boltzmann response and CMB/growth predictions",
+      "automatic_carryover": false
+    },
+    {
+      "id": "hist001c:obligation:independent-observation",
+      "state": "UNRESOLVED",
+      "requirement": "Preregister a genuinely new holdout sample and physical uncertainty/IMF conventions",
+      "automatic_carryover": false
+    },
+    {
+      "id": "hist001c:obligation:historical-rangefinder",
+      "state": "UNRESOLVED",
+      "requirement": "Recover original HIST-001B accelerated source/RNG and original 600 prechecks plus exact 4000 ordered rows",
+      "automatic_carryover": false
+    }
+  ],
+  "candidate_links": [
+    {
+      "source_id": "hist001c:radius-epsilon",
+      "target_theory": "NATIVE_ESET_V172",
+      "graph_record_id": null,
+      "state": "NOT_MAPPED_NO_EQUIVALENCE",
+      "canonical_edge_written": false
+    },
+    {
+      "source_id": "hist001c:structured-projection",
+      "target_theory": "NATIVE_ESET_V172",
+      "graph_record_id": null,
+      "state": "NOT_MAPPED_NO_EQUIVALENCE",
+      "canonical_edge_written": false
+    },
+    {
+      "source_id": "hist001c:conditional-no-slip",
+      "target_theory": "NATIVE_ESET_V172",
+      "graph_record_id": null,
+      "state": "NOT_MAPPED_NO_EQUIVALENCE",
+      "canonical_edge_written": false
+    }
+  ],
+  "claim_ceiling": {
+    "canonical_graph_mutation": false,
+    "physical_provider_admitted": false,
+    "native_v172_equivalence_proved": false,
+    "held_out_validation": false,
+    "empirical_validation": "NOT_ESTABLISHED",
+    "production_scoring_authorized": false,
+    "current_cmb_growth_provider_authorized": false,
+    "original_rangefinder_reproduced": false
+  }
+}
