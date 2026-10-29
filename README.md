@@ -141,3 +141,16 @@ claim is altered. Run `python tools/hist001d_d2b.py --source-root
 research/legacy/hist001 --out runs/hist001d_d2b`. See
 `docs/HIST001D_D2B_PROJECTION_ROOT_AUDIT.md`. Issue #14 tracks remaining
 quantitative quadrature closure; HIST-001B's source-exact blocker remains open.
+
+## HIST-001D/D2c — independent shadow-mass projection and high-grid diagnostic
+
+On the six **fitted development lenses only**, a new SHA-locked diagnostic
+independently integrates the full finite-domain spherical shadow-density
+cylinder mass with a fixed baryon-derived effective aperture. Source 180-point
+K-matrix results differ by +0.71% to +3.79% from independent piecewise-linear
+density quadrature at the same fixed aperture. Source shadow densities refined
+from 180 to 11,520 points pass a 0.05% empirical late-grid Cauchy screen, but
+**not** a global/root error bound or physical Weyl lensing proof. No holdout is
+selected or scored. See `docs/HIST001D_D2C_INDEPENDENT_SHADOW_PROJECTION.md`
+and `tools/hist001d_d2c.py`; source-exact HIST001B and modern ESET provider
+admission remain blocked.
