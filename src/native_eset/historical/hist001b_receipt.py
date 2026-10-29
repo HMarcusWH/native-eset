@@ -93,7 +93,7 @@ def verify_hist001b_receipt(receipt_path: str | Path, *,
         len(expected_sha256) != 64 or actual_digest != expected_sha256
     ):
         raise Hist001BReceiptError("independent B receipt digest mismatch")
-    declared_digest = (root / "receipt.sha256").read_text(encoding="ascii")
+    declared_digest = require_no_symlink_components(root / "receipt.sha256").read_text(encoding="ascii")
     if declared_digest != actual_digest + "\n":
         raise Hist001BReceiptError("B receipt marker mismatch")
     receipt = _load(receipt_file)
@@ -161,10 +161,34 @@ def verify_hist001b_receipt(receipt_path: str | Path, *,
         receipt.get("execution"), dict
     ):
         raise Hist001BReceiptError("missing B numerical environment/execution")
-    if receipt["execution"].get("exit_code") not in (0, 4):
-        raise Hist001BReceiptError("B numerical worker did not execute correctly")
-    if receipt["run_id"] != root.name or not root.name.startswith("hist001b-"):
-        raise Hist001BReceiptError("B output run identity mismatch")
+    if receipt["execution"] != _load(root / "execution.json"):
+        raise Hist001BReceiptError("B execution ledger differs from receipt")
+    execution = receipt["execution"]
+    if execution.get("exit_code") != (0 if spec.raw["mode"] == SMOKE else 4):
+        raise Hist001BReceiptError("B worker returned wrong scoped exit code")
+    if execution.get("source_immutable_after_execution") is not True:
+        raise Hist001BReceiptError("B original-source post-execution check missing")
+    for key in ("stdout_sha256", "stderr_sha256",
+                "worker_implementation_sha256", "driver_implementation_sha256"):
+        raw = execution.get(key)
+        if not isinstance(raw, str) or len(raw) != 64 or any(
+            c not in "0123456789abcdef" for c in raw
+        ):
+            raise Hist001BReceiptError("invalid B execution digest: " + key)
+    # The run identity must bind the fixed RunSpec, source, driver code,
+    # platform/dependencies and oracle-admission state. Not a signature.
+    run_identity = {
+        "spec_sha256": spec.sha256,
+        "original_source_sha256": HIST001A_SOURCE_LOCK_SHA256,
+        "implementation_sha256": execution["driver_implementation_sha256"],
+        "environment": receipt["environment"],
+        "oracle_verified": receipt["oracle_verified"],
+    }
+    computed_id = "hist001b-" + hashlib.sha256(
+        canonical_json(run_identity)
+    ).hexdigest()[:24]
+    if receipt["run_id"] != computed_id or root.name != computed_id:
+        raise Hist001BReceiptError("B run identity is not reproducible")
     if not isinstance(receipt["oracle_verified"], bool):
         raise Hist001BReceiptError("B oracle status must be boolean")
     return {
