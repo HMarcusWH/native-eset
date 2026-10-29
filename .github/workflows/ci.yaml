@@ -62,6 +62,10 @@ jobs:
         run: |
           python tools/hist001d_d2e_error_budget.py --source-root research/legacy/hist001 --out runs/hist001d_d2e_c_ci
           python tools/hist001d_d2e_error_budget.py --source-root research/legacy/hist001 --verify runs/hist001d_d2e_c_ci/receipt.json
+      - name: HIST001D D2e-D fixed-aperture exact-shadow proof and source reexecution
+        run: |
+          python tools/hist001d_d2e_d_exact_projection.py --source-root research/legacy/hist001 --out runs/hist001d_d2e_d_ci
+          python tools/hist001d_d2e_d_exact_projection.py --source-root research/legacy/hist001 --verify runs/hist001d_d2e_d_ci/receipt.json
       - name: HIST-001 original March source lock
         run: python tools/replay_hist001.py --preflight-only
       - name: CLI doctor
@@ -100,6 +104,9 @@ jobs:
             runs/hist001d_d2e_c_ci/report.json
             runs/hist001d_d2e_c_ci/receipt.json
             runs/hist001d_d2e_c_ci/receipt.sha256
+            runs/hist001d_d2e_d_ci/report.json
+            runs/hist001d_d2e_d_ci/receipt.json
+            runs/hist001d_d2e_d_ci/receipt.sha256
           if-no-files-found: error
           retention-days: 30
 # Graph 31-source private cold replay is separately gated, not fetched using CI secrets.
