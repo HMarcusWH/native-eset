@@ -98,6 +98,32 @@ The historical source pack is **not** installed with the wheel. The command veri
 
 The repository's actual GitHub CI gates are recorded on PRs; old B2 predeployment notes above describe the original archived B2 ZIP, not the current merged GitHub code.
 
+
+## HIST-001B — independent RangeFinder audit (draft, not scientifically admitted)
+
+The separate [draft PR #7](https://github.com/HMarcusWH/native-eset/pull/7) contains source-locked,
+isolated HIST-001B diagnostic replay code, independent full-trial CSV comparator
+and a **separate** robustness receipt verifier. The 46 original HIST-001A
+solver/input files and GR/HIST-001A verifiers remain untouched.
+
+The independently replayed 1/2/5/10% 1,000-trial six-pass counts
+`328/135/14/4` **do not match** the historical archived `323/140/23/3`.
+The archived accelerated evaluator, original RNG execution identity and 600
+grid-cell prechecks are **not independently recovered**; no current source-exact
+HIST-001B completion is permitted.
+
+Smoke (software diagnostic only):
+
+```bash
+python tools/hist001b_run.py --source-root research/legacy/hist001 --out runs/hist001b --smoke --trials 3
+```
+
+Full diagnostic: add `--oracle-root /path/to/sha-verified/flat/oracle`,
+omit `--smoke`, and expect **exit 4** until source and precheck authority
+are recovered. Receipts can be checked with `tools/hist001b_verify.py`.
+Neither task grants current Native v1.7.2 physical lensing or validation.
+See `docs/HIST001B_RELEASE_DECISION.md` and
+`docs/HIST001B_SOURCE_AND_RNG_PROVENANCE.md`.
 ## HIST-001C read-only historical model crosswalk
 
 HIST-001C adds a separately pinned, noncanonical J2141/SWELLS Set A equation and

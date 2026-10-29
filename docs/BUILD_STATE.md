@@ -40,3 +40,28 @@ The original B2 archive and its historical NOT_RUN claims above refer to the fro
 **Scope cap:** HIST001_INSTALLED_HISTORICAL_REGRESSION_REPRODUCED_NOT_VALIDATED. The restored central six-lens 6/6 and spherical 2/6 are fitted historical regressions only. Original 4×1,000 geometry stress campaigns remain ARCHIVED, not newly rerun. Native v1.7.2 source equations, independent holdouts, P3 and cosmological perturbation/CMB physical providers still await separate implementation/admission.
 
 See `docs/HIST001A_3_CLI_RELEASE.md`. Only actual green PR and post-merge CI receipts can advance the GitHub known-good pointer.
+
+
+## HIST-001B — post-A/3 independent robustness investigation (current GitHub draft)
+
+The original B2 bootstrap and earlier "historical not imported" notices above
+are archived release-state history. HIST-001A/3 remains merged and installed.
+**HIST-001B is a separate, unmerged draft PR #7**.
+
+The independently implemented four-width no-refit sensitivity replay gives
+6/6 `328/135/14/4` against archived `323/140/23/3`.
+The historical accelerated numerical producer, its exact RNG scheduling and
+the 600 originally claimed transition-radius checks remain unrecovered.
+Code/CI passing cannot create science authority.
+
+The remediation implementation adds supplemental B SHA anchors, original
+source isolation, strict full-row comparisons, a dedicated B diagnostic
+RunSpec and independent receipt verifier, adversarial negative tests and
+immutable fail-closed output. A full run must retain its comparison and exit
+4 while source-exact completion is not authorized.
+
+Current scientific disposition:
+`HIST001B_ARCHIVED_REPLAY_MISMATCH_FAIL_CLOSED`.
+Native ESET physical outputs, holdouts, current v1.7.2 equivalence and
+Theory-State promotion remain blocked. See
+`docs/HIST001B_RELEASE_DECISION.md`.
