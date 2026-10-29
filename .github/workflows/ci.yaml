@@ -85,4 +85,21 @@ jobs:
           python tools/wheel_smoke.py
       - name: Installed wheel historical cold replay outside checkout
         run: python tools/hist001_wheel_smoke.py
+      - name: Upload source-reexecuted D2e release receipts (main only)
+        if: ${{ success() && github.event_name == 'push' }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2 (Node 24)
+        with:
+          name: hist001d-d2e-${{ matrix.os }}-py${{ matrix.python-version }}-${{ github.sha }}
+          path: |
+            runs/hist001d_d2e_ci/report.json
+            runs/hist001d_d2e_ci/receipt.json
+            runs/hist001d_d2e_ci/receipt.sha256
+            runs/hist001d_d2e_b_ci/report.json
+            runs/hist001d_d2e_b_ci/receipt.json
+            runs/hist001d_d2e_b_ci/receipt.sha256
+            runs/hist001d_d2e_c_ci/report.json
+            runs/hist001d_d2e_c_ci/receipt.json
+            runs/hist001d_d2e_c_ci/receipt.sha256
+          if-no-files-found: error
+          retention-days: 30
 # Graph 31-source private cold replay is separately gated, not fetched using CI secrets.
