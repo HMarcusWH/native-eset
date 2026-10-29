@@ -104,6 +104,9 @@ jobs:
             runs/hist001d_d2e_c_ci/report.json
             runs/hist001d_d2e_c_ci/receipt.json
             runs/hist001d_d2e_c_ci/receipt.sha256
+            runs/hist001d_d2e_d_ci/report.json
+            runs/hist001d_d2e_d_ci/receipt.json
+            runs/hist001d_d2e_d_ci/receipt.sha256
           if-no-files-found: error
           retention-days: 30
 # Graph 31-source private cold replay is separately gated, not fetched using CI secrets.
