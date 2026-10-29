@@ -112,3 +112,16 @@ An optional `--graph-dir` replays the approved sealed graph's original resolver
 read-only if those private files are independently available. See
 `docs/HIST001C_READONLY_EQUATION_CROSSWALK.md`. HIST-001B RangeFinder source-
 exact reproduction remains blocked in draft PR #7.
+
+
+## HIST-001D — frozen-model numerical sensitivity (nonpromoting)
+
+The historical six fitted Set A lenses have an executable no-refit radial/angle
+grid-sensitivity test: the original 180-point/120-angle calculation passes 6/6,
+but radial grids of 90 and 360 points pass 2/6 and 3/6 respectively. This
+exposes **numerical sensitivity of the historical projection**, not new
+observational data, Native v1.7.2 falsification, or a physical Weyl solution.
+Run \`python tools/hist001d_convergence.py --source-root
+research/legacy/hist001 --out runs/hist001d_d2\`; inspect
+\`docs/HIST001D_CONVERGENCE_AND_SOURCE_REGISTER.md\`. The independent holdout
+remains unselected and unscored.

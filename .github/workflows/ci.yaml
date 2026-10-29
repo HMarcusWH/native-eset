@@ -33,6 +33,11 @@ jobs:
         run: python -m ruff check src/native_eset tests tools
       - name: Test all synthetic/offline contracts
         run: python -m pytest -q
+      - name: HIST001D frozen-grid sensitivity and independent source reexecution
+        run: |
+          python tools/hist001d_convergence.py --source-root research/legacy/hist001 --out runs/hist001d_ci
+          python tools/hist001d_convergence.py --source-root research/legacy/hist001 --verify runs/hist001d_ci/receipt.json
+
       - name: HIST-001 original March source lock
         run: python tools/replay_hist001.py --preflight-only
       - name: CLI doctor
