@@ -2,7 +2,7 @@
   "files": {
     ".env.example": "62ac70b3f1d73ae3fd485fb1b336c5ac08f6b7822baa2d6189315e93744ec312",
     ".gitattributes": "9e23f4c78a5fbe073aa3847510a05b35c18767e86253f14e3508a6a02c931a65",
-    ".github/workflows/ci.yaml": "84b5f14324a2817e154ddacb9f39a223dec67680a70d908025596cbde9ed8576",
+    ".github/workflows/ci.yaml": "37d1bba4f9d064d58adf1e2c6bf0347f59a7d7510951971f2f7684e947518754",
     ".gitignore": "0fc020a952cc1ba9d5b6a873843b5129cfee4a902102bd3196b41c08028ae7fa",
     "AGENTS.md": "ff69f6523a4340e2508353bc9e85940c8a5eb91dcfedc81b1922212c567edb76",
     "CHANGELOG.md": "e1b145ba7cfe7d36f7aa52f4d060cf597f000dc149c81875cf45d21f0c31a699",
