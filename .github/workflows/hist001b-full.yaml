@@ -1,0 +1,45 @@
+name: HIST001B-full-evidence-gated
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# This intentionally requires an approved research runner holding the
+# separately verified external archive; do not put 34 MB third-party source
+# or private Theory-State snapshots into public GitHub CI.
+jobs:
+  full-historical-evidence:
+    runs-on: [self-hosted, linux, hist001b-evidence]
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+      - name: Install pinned HIST001 research dependencies
+        run: |
+          python -m pip install -r requirements/ci-constraints.txt
+          python -m pip install -r requirements/hist001-constraints.txt
+          python -m pip install --no-build-isolation --no-deps -e .
+      - name: Verify original source and exact git manifest
+        run: |
+          python tools/check_manifest.py --git-index
+          python tools/replay_hist001.py --preflight-only
+      - name: Require authentic original accelerated producer and 600-case prechecks
+        run: |
+          python -c "from native_eset.historical.hist001b_prechecks import require_original_600_prechecks; require_original_600_prechecks()"
+      - name: Reexecute 4000 original-case trials with external verified oracle
+        env:
+          HIST001B_ORACLE_ROOT: /opt/hist001b/approved-archive-flat
+        run: |
+          python tools/hist001b_run.py --source-root research/legacy/hist001 --oracle-root "$HIST001B_ORACLE_ROOT" --out "$RUNNER_TEMP/hist001b-full"
+      - name: Retain audit/failure artifacts when source gate eventually admits producer
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: hist001b-evidence-and-failures
+          path: ${{ runner.temp }}/hist001b-full/
+          if-no-files-found: ignore
+          retention-days: 30
