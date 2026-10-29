@@ -199,6 +199,26 @@ def test_b_runner_rejects_source_overlap_and_symlink_root(tmp_path: Path) -> Non
         require_no_symlink_components(symlink / "swells_pack_v2")
 
 
+def test_recomputed_hash_cannot_forge_historical_600_prechecks(
+    isolated_smoke: dict, tmp_path: Path,
+) -> None:
+    old = Path(isolated_smoke["output_dir"])
+    folder = tmp_path / old.name
+    shutil.copytree(old, folder)
+    audit_file = folder / "audit.json"
+    audit = json.loads(audit_file.read_text(encoding="utf-8"))
+    audit["original_600_prechecks_reproduced"] = True
+    audit_file.write_text(
+        json.dumps(audit, sort_keys=True, separators=(",", ":")),
+        encoding="utf-8",
+    )
+    receipt = json.loads((folder / "receipt.json").read_text(encoding="utf-8"))
+    receipt["output_files"]["audit.json"] = hashlib.sha256(audit_file.read_bytes()).hexdigest()
+    _forge_receipt(folder, receipt)
+    with pytest.raises(Hist001BReceiptError, match="unsupported science"):
+        verify_hist001b_receipt(folder / "receipt.json", source_root=SOURCE)
+
+
 def test_b_verifier_unsupported_schema_or_missing_oracle(
     isolated_smoke: dict, tmp_path: Path,
 ) -> None:

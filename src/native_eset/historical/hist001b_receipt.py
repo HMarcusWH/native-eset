@@ -138,10 +138,13 @@ def verify_hist001b_receipt(receipt_path: str | Path, *,
     if canonical_json(recorded) != canonical_json(inspection):
         raise Hist001BReceiptError("B independent inspection was tampered")
     worker_audit = _load(root / "audit.json")
-    if worker_audit.get("physical_provider_admitted") is not False or (
-        worker_audit.get("source_exact_replay_authorized") is not False
+    for gate in (
+        "physical_provider_admitted", "source_exact_replay_authorized",
+        "original_accelerated_producer_verified", "original_rng_schedule_verified",
+        "original_600_prechecks_reproduced", "archive_rows_compared",
     ):
-        raise Hist001BReceiptError("B worker audit asserts scientific promotion")
+        if worker_audit.get(gate) is not False:
+            raise Hist001BReceiptError("B worker audit asserts unsupported science: " + gate)
     if worker_audit.get("seed_scheme") != "SeedSequence([2141, trial])":
         raise Hist001BReceiptError("B worker seed identity forged")
     if worker_audit.get("archived_reference_is_new_output") is not False:
