@@ -196,3 +196,7 @@ D2e-B bounds the positive baryonic and piecewise-linear finite-domain shadow mas
 ## HIST-001D/D2e-C — gradient and radial-boundary numerical error menu
 
 The source-locked D2e-C tool compares the frozen `np.gradient` shadow density to separately identified edge-order-2 and PCHIP differentiation variants, plus analytic-inner-Hernquist and two explicitly **unauthorized** outer shadow-tail continuation scenarios. It recomputes predicted roots within a fixed ±15% window and projected masses at the observed fitted lens radius, reporting measured shifts in historical observational-sigma units. These are a bounded *menu* of counterfactual numerical sensitivities, not a global or mathematical error bound, physically sourced radial continuation, new observational likelihood or Native ESET provider. Run `tools/hist001d_d2e_error_budget.py`; see `docs/HIST001D_D2E_C_ERROR_MENU.md`.
+
+## Current verified historical D2e software release ledger
+
+The D2e-A/B/C numerical diagnostics have merged with six-platform source-reexecution CI, but **D2e mathematical error certification remains OPEN**. Root uniqueness, global quadrature/derivative error bounds, physical mass beyond 120 kpc, a Weyl lensing field and independent observational validation have not been proved. [Release ledger](docs/HIST001D_D2E_RELEASE_STATUS.md) documents the exact commit chain, authority limits, source hashes and replay commands. Successful `main` GitHub CI now also archives the three D2e report/receipt sets for readback.
