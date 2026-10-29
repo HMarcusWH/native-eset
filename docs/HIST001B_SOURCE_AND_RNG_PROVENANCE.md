@@ -75,3 +75,25 @@ Use `tools/hist001b_run.py` for isolated execution and
 `tools/hist001b_verify.py` for independent receipt checking.
 A hash establishes integrity against an independently known digest; it
 does not certify who authored or executed the original code.
+
+
+### Independent NEW 600-case grid diagnostic (not the historical 600)
+
+A separately implemented deterministic grid-cell check now evaluates **600 newly
+constructed six-lens-derived perturbation cases** (100 per lens), using
+`SeedSequence([2141,0xB001,case])` and cycling the 1/2/5/10% widths.
+Each compares the original frozen transition-radius grid finder against an
+independent direct Bessel/acceleration computation without calling
+`J2141BaryonicModel.total_vbar` on the independent side.
+
+Local execution against the original source: **600/600 exact grid-cell matches**;
+first indices `[3584,3607,3884,3638,3869,3709]`.
+Index-list SHA-256 `ff63c7a7b1acd29d27ce44c6f804b778c3a755ac9d8cac49c513c00fc19f2e57`.
+The new result is verified **only for this new input corpus**. It is not the
+archive's original 600-case input set and not an independently recovered
+original accelerated implementation.
+
+Executable: `python tools/hist001b_new600.py --source-root research/legacy/hist001`.
+A dedicated regression test enforces the 600/600 result and original-precheck
+nonpromotion flags. The original `require_original_600_prechecks()` guard
+continues to fail closed.
