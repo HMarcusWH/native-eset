@@ -54,6 +54,10 @@ jobs:
         run: |
           python tools/hist001d_d2e.py --source-root research/legacy/hist001 --out runs/hist001d_d2e_ci
           python tools/hist001d_d2e.py --source-root research/legacy/hist001 --verify runs/hist001d_d2e_ci/receipt.json
+      - name: HIST001D D2e-B conditional interval root-exclusion source replay
+        run: |
+          python tools/hist001d_d2e_interval.py --source-root research/legacy/hist001 --out runs/hist001d_d2e_b_ci
+          python tools/hist001d_d2e_interval.py --source-root research/legacy/hist001 --verify runs/hist001d_d2e_b_ci/receipt.json
       - name: HIST-001 original March source lock
         run: python tools/replay_hist001.py --preflight-only
       - name: CLI doctor
