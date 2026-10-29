@@ -113,3 +113,36 @@ python tools/hist001b_rng_forensics.py \
 
 The diagnostic never grants source-exact replay, scientific validation or
 physical provider admission. Keep the original 600-case precheck blocked.
+
+
+## Fixed, nonadaptive RNG hypothesis comparison — 2026-10-29
+
+Seven **predeclared** plausible source schedules were evaluated on the first
+recorded trial of each nuisance width, with the original untouched fitted law,
+using the original frozen solver numerics on a disposable source copy:
+
+1. per-trial `SeedSequence([2141,trial])` (trial zero);
+2. scalar `default_rng(2141)` reset independently for each width;
+3. one `default_rng(2141)` stream continued across 1,000-trial campaigns;
+4. scalar seed `2141 + width_index`;
+5. scalar seed `2141 + percent_integer`;
+6. `SeedSequence([2141,width_index,trial])`;
+7. `SeedSequence([2141,percent_integer,trial])`.
+
+**0 of 28 proposed first-trial rows matched archived mean radius, mean mass
+and failed lenses together.** The first two schemes necessarily coincide
+on *trial zero* and therefore are not distinguishable from this probe alone.
+
+This is a bounded *negative* result for these specific seven hypotheses.
+It is neither a retrospective seed search nor proof that the original
+accelerated implementation had identical numerical evaluation.
+No source-exact historical B promotion is authorized.
+
+```bash
+python tools/hist001b_seed_probe.py \
+  --source-root research/legacy/hist001 \
+  --oracle-root /path/to/approved-flat-archive
+```
+
+The original RNG and original accelerated source remain unrecovered. Full
+source-exact B reruns must therefore retain the original hard blocker.
