@@ -154,3 +154,20 @@ from 180 to 11,520 points pass a 0.05% empirical late-grid Cauchy screen, but
 selected or scored. See `docs/HIST001D_D2C_INDEPENDENT_SHADOW_PROJECTION.md`
 and `tools/hist001d_d2c.py`; source-exact HIST001B and modern ESET provider
 admission remain blocked.
+
+## HIST-001D/D2d — independently integrated structured-root numerical diagnostic
+
+The historical fitted six-lens Set A **6/6 at the original 180/120 method**
+remains intact. A new source-locked numerical identity evaluates the
+finite-domain Hernquist bulge and full-periodic disc masses at *each* trial
+radius, recomputes the original fitted q_eff(R) map and full independent
+piecewise-linear shadow cylinder mass at R/sqrt(q_eff(R)), then solves the
+quadratic critical-mass root with a bracketed numerical solver. This new,
+nonrefitted finite-domain implementation yields **3/6 on each of seven source
+density grids (180 through 11,520)**; J0822, J1021 and J1111 fail. The last
+two refinements meet a 0.05σ root and 0.05% mass engineering screen, **not** a
+global mathematical or physical-lensing error certificate. All fitted/source
+inputs and archived negatives are untouched; no blind holdout is scored.
+See `docs/HIST001D_D2D_FULL_STRUCTURED_ROOT.md` and
+`tools/hist001d_d2d.py`. Independent receipt verification reexecutes the
+whole calculation. This is not Native ESET v1.7.2 physical-provider admission.
