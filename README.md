@@ -125,3 +125,19 @@ Run `python tools/hist001d_convergence.py --source-root
 research/legacy/hist001 --out runs/hist001d_d2`; inspect
 `docs/HIST001D_CONVERGENCE_AND_SOURCE_REGISTER.md`. The independent holdout
 remains unselected and unscored.
+
+## HIST-001D/D2b — source-locked projection/root error attribution
+
+A new strictly historical **nonpromoting** 2×2 density-grid versus radial
+projector/root-grid test identifies why the originally fitted 180-point Set A
+calculation passes 6/6 while its 360-point evaluation passes 3/6: the
+projection/root-grid factor determines those failures in the tested factorial
+comparison, not shadow-density grid resolution alone. Independent finite-domain
+Hernquist integration exposes 180-point bulge-mass underintegration, the
+original first-root interpolation differs from a consistent quadratic-target
+bracket root, and the disc trapezoid omits its final periodic angular interval.
+No old source, model fit, blind holdout, canonical graph or physical-provider
+claim is altered. Run `python tools/hist001d_d2b.py --source-root
+research/legacy/hist001 --out runs/hist001d_d2b`. See
+`docs/HIST001D_D2B_PROJECTION_ROOT_AUDIT.md`. Issue #14 tracks remaining
+quantitative quadrature closure; HIST-001B's source-exact blocker remains open.

@@ -38,6 +38,10 @@ jobs:
           python tools/hist001d_convergence.py --source-root research/legacy/hist001 --out runs/hist001d_ci
           python tools/hist001d_convergence.py --source-root research/legacy/hist001 --verify runs/hist001d_ci/receipt.json
 
+      - name: HIST001D D2b independent projection-root numerical receipt
+        run: |
+          python tools/hist001d_d2b.py --source-root research/legacy/hist001 --out runs/hist001d_d2b
+          python tools/hist001d_d2b.py --source-root research/legacy/hist001 --verify runs/hist001d_d2b/receipt.json
       - name: HIST-001 original March source lock
         run: python tools/replay_hist001.py --preflight-only
       - name: CLI doctor
