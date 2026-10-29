@@ -1,0 +1,33 @@
+{
+  "schema": "HIST001D_NONCANONICAL_HOLDOUT_PLAN_V1",
+  "theoretical_branch": "LEGACY_ESET3_DM_A_FITTED_STRUCTURED_PROJECTION",
+  "finite_model_id": "HIST-001-SWELLS-J2141-SETA-FROZEN",
+  "data_scope": "EXISTING_SOURCE_REGRESSION_AND_UNSELECTED_PROSPECTIVE_HOLDOUT_ONLY",
+  "historical_dev_lens_ids": [
+    "J0822+1828",
+    "J0915+4211",
+    "J0930+2855",
+    "J1021+2028",
+    "J1111+2234",
+    "J1135+3720"
+  ],
+  "holdout_status": "NOT_SELECTED_NOT_FROZEN_NOT_SCORED",
+  "proposed_holdout_ids": [],
+  "outcomes_inspected_for_selection": false,
+  "strict_preregistered_selection_protocol_established": false,
+  "published_catalogue_source_rights_cleared": false,
+  "required_before_selection": [
+    "verify disjoint lens IDs across all historical J2141/Set A and SWELLS-V contact",
+    "freeze published primary-source table and independent measurements with SHA and reuse rights",
+    "predeclare observational likelihood and asymmetric/correlated uncertainty strategy",
+    "predeclare inclusion, exclusion, blinding, comparison and numerical-convergence rules",
+    "lock model candidate and executable implementation before viewing withheld outcome",
+    "independent observer audit of all prior data contact and intervention history"
+  ],
+  "current_uncertainty_status": "PRIMARY_LITERATURE_REVIEWED_ROW_COVARIANCES_NOT_VERIFIED",
+  "numerical_gate_status": "D2_DIAGNOSTIC_MESH_SENSITIVITY_OBSERVED_NO_PHYSICS_ADMISSION",
+  "physical_provider_admitted": false,
+  "native_v172_equivalence_proved": false,
+  "empirical_validation": "NOT_ESTABLISHED",
+  "canonical_theory_state_mutation": false
+}
