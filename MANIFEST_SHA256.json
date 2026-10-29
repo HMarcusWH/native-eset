@@ -190,5 +190,6 @@
     "tools/security_audit.py": "5377367977eb4d7824edf906a15d2a5c29ae5823d9279e6698c804653630fc2b",
     "tools/verify_final_bundle.py": "860653e977f373f24f53c2ab4248689ffd4c45f1b199513ebc0fdfef8df949b0",
     "tools/wheel_smoke.py": "9b72835209f4a98546beae06b27246327d54c7aa4fe9fd41a2a3919ecf04d54f"
-  }
+  },
+  "manifest_version": 1
 }
