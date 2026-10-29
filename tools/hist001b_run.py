@@ -172,6 +172,7 @@ def run(*, source_root: str | Path, output_root: str | Path,
             "stdout_sha256": _sha(process.stdout),
             "stderr_sha256": _sha(process.stderr),
             "worker_implementation_sha256": _sha(worker.read_bytes()),
+            "driver_implementation_sha256": implementation,
             "worker_timeout_seconds": 180 if smoke else 1500,
             "source_immutable_after_execution": True,
         }
