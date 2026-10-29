@@ -125,6 +125,8 @@ def verify_hist001_source(source_root: str | Path) -> dict[str, Any]:
         if isinstance(exc, HistoricalSourceIntegrityError):
             raise
         raise HistoricalSourceIntegrityError("HIST-001 source verification failed: " + str(exc)) from exc
+    from native_eset.capabilities import CAPABILITIES
+    enabled = CAPABILITIES[anchor["backend_id"]].executable
     return {"status": "HIST001_FROZEN_SOURCE_BYTES_VERIFIED_NO_EXECUTION",
             "backend_id": anchor["backend_id"], "finite_model_id": anchor["finite_model_id"],
             "source_lock_sha256": SOURCE_LOCK_DIGEST,
@@ -132,6 +134,7 @@ def verify_hist001_source(source_root: str | Path) -> dict[str, Any]:
             "frozen_files": len(files), "archived_negative_records": len(negative),
             "source_bytes": total_bytes, "lens_ids": lens_ids,
             "data_use": anchor["data_use"], "source_history": anchor["source_history"],
-            "capability_executable": False, "physical_provider_admitted": False,
+            "capability_executable": enabled, "source_preflight_is_execution": False,
+            "physical_provider_admitted": False,
             "current_native_v172_equivalence_proved": False,
             "empirical_validation": "NOT_ESTABLISHED"}

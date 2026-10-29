@@ -20,7 +20,9 @@ def _parser() -> argparse.ArgumentParser:
     p=argparse.ArgumentParser(prog="eset")
     sub=p.add_subparsers(dest="command",required=True)
     sub.add_parser("status")
-    sub.add_parser("doctor")
+    doctor=sub.add_parser("doctor")
+    doctor.add_argument("--historical-source-root", default=None,
+                        help="Optional separately verified HIST-001 source pack for read-only preflight")
     co=sub.add_parser("control",help="Independent GR-LambdaCDM comparison only")
     co.add_argument("--z",nargs="+",type=float,default=[0.0,1.0,3.0])
     run=sub.add_parser("run",help="Execute source-locked control RunSpec")
@@ -29,6 +31,16 @@ def _parser() -> argparse.ArgumentParser:
     vr=sub.add_parser("verify",help="Verify locally stored run receipt/artifact hashes")
     vr.add_argument("--receipt",required=True)
     vr.add_argument("--expected-sha256", default=None)
+    vr.add_argument("--source-root", default=None,
+                    help="Required for historical receipts; forbidden for GR reference-control receipts")
+    hist=sub.add_parser("historical",help="Source-locked historical regressions, NOT Native ESET physical predictions")
+    hist_sub=hist.add_subparsers(dest="historical_command",required=True)
+    j2141=hist_sub.add_parser("j2141",help="Frozen March 2026 J2141 and six-lens Set A regression")
+    j2141.add_argument("--source-root",required=True,help="Verified external HIST-001 pack with SOURCE_LOCK.json")
+    j2141.add_argument("--out",default="runs",help="New content-addressed output root; never overwrites a run")
+    j2141.add_argument("--strict",action="store_true",required=True,help="Required frozen no-refit regression")
+    j2141.add_argument("--ablation",choices=("spherical",),default=None,
+                       help="Optional fixed no-refit spherical negative; never recalibrates")
     graph=sub.add_parser("graph",help="Read-only sealed ESET graph")
     g=graph.add_subparsers(dest="graph_command",required=True)
     for cmd in ("status","validate","node","neighbors","path","impact","blockers","explain","diff","prepare"):
@@ -105,12 +117,58 @@ def _graph(args: argparse.Namespace) -> int:
     return 0
 
 
+def _verified_historical_source(root: str) -> dict:
+    from native_eset.historical.hist001_source import verify_hist001_source
+    return verify_hist001_source(Path(root))
+
+
+def _run_historical(args: argparse.Namespace) -> None:
+    from native_eset.capabilities import require_capability
+    from native_eset.historical.hist001_backend import LegacyHistJ2141Backend
+    from native_eset.historical.hist001_spec import (
+        CENTRAL, CENTRAL_SPHERE, HIST001_OUTPUTS, HistoricalRunSpec,
+    )
+    if args.historical_command != "j2141" or not args.strict:
+        raise ValueError("only exact strict J2141/Set A historical regression is supported")
+    mode = CENTRAL_SPHERE if args.ablation == "spherical" else CENTRAL
+    spec = HistoricalRunSpec.from_mode(mode)
+    raw = spec.raw
+    for observable in HIST001_OUTPUTS:
+        require_capability(raw["backend_id"], raw["theory_id"], observable)
+    emit(LegacyHistJ2141Backend().run(spec, source_root=Path(args.source_root),
+                                    output_root=Path(args.out)))
+
+
+def _verify_receipt(args: argparse.Namespace) -> None:
+    from native_eset.serialization import read_json
+    receipt = Path(args.receipt)
+    # This first read is ONLY a bounded schema selector. The selected verifier
+    # performs its own complete re-read and independent semantic/hash checks.
+    record = read_json(receipt, max_bytes=150_000)
+    if not isinstance(record, dict):
+        raise ValueError("receipt must be a JSON object with a supported exact schema")
+    schema = record.get("schema")
+    if schema == "NATIVE_ESET_HIST001_RUN_RECEIPT_V1":
+        if not args.source_root:
+            raise ValueError("historical receipt requires an independently verified --source-root")
+        from native_eset.historical.hist001_receipt import verify_hist001_receipt
+        emit(verify_hist001_receipt(receipt, source_root=Path(args.source_root),
+                                   expected_sha256=args.expected_sha256))
+    elif schema == "NATIVE_ESET_RUN_RECEIPT_V2":
+        if args.source_root is not None:
+            raise ValueError("GR reference-control receipt forbids a historical --source-root")
+        from native_eset.evidence.receipts import verify_run_receipt
+        emit(verify_run_receipt(receipt, expected_sha256=args.expected_sha256))
+    else:
+        raise ValueError("unknown receipt schema; never infer a scientific provider or select a fallback verifier")
+
+
 def main() -> int:
     args=_parser().parse_args()
     try:
         if args.command=="status":
             emit({"repo":"Native ESET bootstrap infrastructure v0.1.0",
-                  "science_status":"INFRASTRUCTURE_ONLY_NOT_ESET_PHYSICS",
+                  "science_status":"HISTORICAL_FITTED_REGRESSION_ONLY_CURRENT_NATIVE_ESET_PHYSICS_NOT_IMPLEMENTED",
                   "backend_capabilities":{k:{"executable":v.executable,"observables":list(v.observables),
                                              "role":v.model_role} for k,v in sorted(CAPABILITIES.items())},
                   "physical_outputs_authorized":[]})
@@ -123,7 +181,13 @@ def main() -> int:
                   "graph_lock_available": True, "graph_source_files_embedded": False,
                   "resolver_script_source_verified": True, "resolver_policy_bytes_verified": True,
                   "approved_graph_sha256": lock["graph_sha256"], "package_sha256": source_tree_digest(),
-                  "historical_ESET_backends": "NOT_IMPORTED", "native_ESET_physics": "NOT_IMPLEMENTED",
+                  "historical_ESET_backends": "HIST001_INSTALLED_HISTORICAL_REGRESSION_ONLY_OTHER_BACKENDS_BLOCKED",
+                  "hist001_executable_registered": CAPABILITIES["legacy-hist001-j2141-seta"].executable,
+                  "hist001_external_source": (
+                      "NOT_CHECKED_SOURCE_ROOT_NOT_SUPPLIED" if args.historical_source_root is None
+                      else _verified_historical_source(args.historical_source_root)
+                  ),
+                  "native_ESET_physics": "NOT_IMPLEMENTED",
                   "GitHub_CI": "NOT_VERIFIED_BY_LOCAL_DOCTOR"})
         elif args.command=="control":
             ctl=FlatGRLambdaCDM()
@@ -133,8 +197,9 @@ def main() -> int:
             from native_eset.runner import RunSpec,run_control
             emit(run_control(RunSpec.read(args.spec),Path(args.out)))
         elif args.command=="verify":
-            from native_eset.evidence.receipts import verify_run_receipt
-            emit(verify_run_receipt(Path(args.receipt), expected_sha256=args.expected_sha256))
+            _verify_receipt(args)
+        elif args.command=="historical":
+            _run_historical(args)
         elif args.command=="graph":return _graph(args)
         return 0
     except (OSError, ValueError, RuntimeError, KeyError, TypeError, ArithmeticError, PermissionError) as exc:
@@ -143,8 +208,13 @@ def main() -> int:
             category = "BLOCKED_NOT_IMPLEMENTED"
         elif type(exc).__name__ == "NumericalNonconvergence":
             category = "NUMERICAL_NONCONVERGENCE"
-        elif type(exc).__name__ in {"GraphIntegrityError", "ReceiptIntegrityError"}:
+        elif type(exc).__name__ in {"GraphIntegrityError", "ReceiptIntegrityError",
+                                    "HistoricalReceiptIntegrityError", "HistoricalSourceIntegrityError"}:
             category = "INTEGRITY_FAILURE"
+        elif type(exc).__name__ == "InvalidHistoricalRunSpec":
+            category = "INVALID_HISTORICAL_SPEC"
+        elif type(exc).__name__ == "HistoricalExecutionError":
+            category = "HISTORICAL_NUMERICAL_EXECUTION_ERROR_NOT_THEORY_FALSIFICATION"
         emit({"status": "FAIL_CLOSED", "failure_category": category,
               "error_type": type(exc).__name__, "message": str(exc)})
         return 2

@@ -32,3 +32,11 @@ Sealed graph SHA256: `163de068decc50d5339daa0a3fa4d38441f2441bf414a3131267ea02b3
 Original resolver SHA256: `54d446a68ed7a981a67e25f882bce9b075f002b29cccb549ff6ae31700a8f32f`.
 
 B0/B1/B1r1 are historical artifacts, not silently replaced. The complete private graph is not included in this release.
+
+## HIST-001A/3 GitHub implementation (supersedes B2 predeployment notes above)
+
+The original B2 archive and its historical NOT_RUN claims above refer to the frozen 28 October 2026 bootstrap release, not the current GitHub source. HIST-001 and HIST-001A/1–2 restored the March 2026 fitted J2141/Set A numerical regression in a separately source-verified lane. This A/3 source enables the installed historical J2141 CLI, schema-tagged receipt routing, externally supplied frozen source-root, narrowly scoped historical capability and independent-cwd installed wheel cold replay. The original 46 historical code/input files, three negative summaries, sealed Theory-State and GR V2 runner/verifier remain unchanged.
+
+**Scope cap:** HIST001_INSTALLED_HISTORICAL_REGRESSION_REPRODUCED_NOT_VALIDATED. The restored central six-lens 6/6 and spherical 2/6 are fitted historical regressions only. Original 4×1,000 geometry stress campaigns remain ARCHIVED, not newly rerun. Native v1.7.2 source equations, independent holdouts, P3 and cosmological perturbation/CMB physical providers still await separate implementation/admission.
+
+See `docs/HIST001A_3_CLI_RELEASE.md`. Only actual green PR and post-merge CI receipts can advance the GitHub known-good pointer.

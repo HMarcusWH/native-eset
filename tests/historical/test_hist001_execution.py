@@ -57,12 +57,11 @@ def test_original_source_unmodified_after_separate_execution(historical_run: dic
     assert status["archived_negative_records"] == 3
 
 
-def test_historical_backend_does_not_activate_public_capability() -> None:
+def test_historical_backend_capability_is_explicitly_scoped() -> None:
     cap = CAPABILITIES["legacy-hist001-j2141-seta"]
-    assert cap.executable is False
+    assert cap.executable is True
     assert set(cap.observables) == {"historical_rotation_lensing_regression", "historical_setA_portability"}
-    with pytest.raises(UnsupportedCapability):
-        require_capability(cap.backend_id, cap.theory_id, "historical_setA_portability")
+    assert require_capability(cap.backend_id, cap.theory_id, "historical_setA_portability") == cap
     with pytest.raises(UnsupportedCapability):
         require_capability(cap.backend_id, cap.theory_id, "CMB_TT")
 

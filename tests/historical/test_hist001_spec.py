@@ -117,11 +117,17 @@ def test_duplicate_keys_non_finite_and_oversized_input_fail_closed(tmp_path: Pat
             HistoricalRunSpec.read(p)
 
 
-def test_capability_exists_but_cannot_dispatch_until_a2_and_a3() -> None:
+def test_capability_activates_only_exact_historical_regression_outputs() -> None:
     cap = CAPABILITIES["legacy-hist001-j2141-seta"]
-    assert cap.executable is False
+    assert cap.executable is True
     assert cap.observables == HIST001_OUTPUTS
     assert cap.theory_id == "LEGACY_ESET3_DM_A_FITTED_STRUCTURED_PROJECTION"
-    for observable in (*HIST001_OUTPUTS, "physical_lensing", "P3_CMB", "native_growth"):
+    assert cap.model_role == "HIST001_FITTED_HISTORICAL_REGRESSION_ONLY_NOT_PHYSICAL_PROVIDER"
+    for observable in HIST001_OUTPUTS:
+        assert require_capability(cap.backend_id, cap.theory_id, observable) == cap
+    for observable in ("physical_lensing", "P3_CMB", "native_growth",
+                       "historical_spherical_projection_negative_control"):
         with pytest.raises(UnsupportedCapability):
             require_capability(cap.backend_id, cap.theory_id, observable)
+    with pytest.raises(UnsupportedCapability):
+        require_capability(cap.backend_id, "NATIVE_ESET_V172", HIST001_OUTPUTS[0])
