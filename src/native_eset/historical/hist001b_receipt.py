@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Any
 
 from native_eset.evidence.receipts import canonical_json
-from native_eset.historical.hist001b_compare import inspect_output, WIDTHS
+from native_eset.historical.hist001b_compare import inspect_output
 from native_eset.historical.hist001b_source import (
     HIST001A_SOURCE_LOCK_SHA256, HISTORICAL_PRODUCER_STATUS,
     PRECHECK_STATUS, require_no_symlink_components, verify_b_oracle,
