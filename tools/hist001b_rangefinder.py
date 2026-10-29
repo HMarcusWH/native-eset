@@ -12,6 +12,9 @@ import hashlib
 import json
 import math
 import sys
+# Do not let Python's import cache write __pycache__ into the separately
+# SHA-verified original historical source tree. This CLI owns its process.
+sys.dont_write_bytecode = True
 from pathlib import Path
 
 import numpy as np
