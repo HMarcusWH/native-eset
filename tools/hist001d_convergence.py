@@ -41,6 +41,10 @@ class Hist001DIntegrityError(ValueError):
 def evaluate(pack: Path, radial_points: int, angular_points: int,
              *, inputs: tuple | None = None) -> list[dict]:
     """Run original, SHA-locked numerical ingredients with explicit resolution."""
+    if (radial_points, angular_points) not in {
+        (n, a) for _, n, a in REGIMES
+    }:
+        raise Hist001DIntegrityError("unregistered grid/angle pair")
     import numpy as np
     import solv.run_setA_port_cand as original
     from solv.baryons import J2141BaryonicModel
@@ -55,10 +59,6 @@ def evaluate(pack: Path, radial_points: int, angular_points: int,
     )
     from solv.shadow_density import compute_shadow_density
 
-    if (radial_points, angular_points) not in {
-        (n, a) for _, n, a in REGIMES
-    }:
-        raise Hist001DIntegrityError("unregistered grid/angle pair")
     if inputs is None:
         seta = original._load_tables(pack)
         anchor, _ = original._build_anchor(pack)

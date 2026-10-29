@@ -169,7 +169,7 @@
     "tools/hist001_seta_ablation.py": "69bc3fd2f8985770c24c6924869cb39347f45bb6e157f18ef39580ef6ef456c4",
     "tools/hist001_wheel_smoke.py": "e79ba21230077e5a610c06c5ba5e88afdf32ff2881b5dc91e5632dfb3b98309e",
     "tools/hist001c_crosswalk.py": "03a57603dd970e1245df8d6b6a1f5492c2958c29da8416095c93bd2cae8a721d",
-    "tools/hist001d_convergence.py": "a6310d1c77b4f0ab807c6d9659648ffc3b0501535c5768e398ef8d4ed9972f40",
+    "tools/hist001d_convergence.py": "50209b774e3d5da67cb66db03991c6de18a251351ef83a12c6c9f940a24b3998",
     "tools/replay_hist001.py": "ce4ca3fb532d18e94f63c8272670bdfca10ed5daf7d444520a17e652a3babcea",
     "tools/security_audit.py": "5377367977eb4d7824edf906a15d2a5c29ae5823d9279e6698c804653630fc2b",
     "tools/verify_final_bundle.py": "860653e977f373f24f53c2ab4248689ffd4c45f1b199513ebc0fdfef8df949b0",
