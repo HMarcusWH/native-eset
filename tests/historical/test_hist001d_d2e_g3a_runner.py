@@ -27,11 +27,12 @@ def test_source_46_plus_three_prerequisite_and_nonpromoting_claims():
     assert G.G2B_SHA256=="37a502ff6e54d3ca9c2e6d49ad21338962f005f4350dfc859cc5b73ea48ec256"
     p=G._load_g2b()
     assert p.SOURCE_SHA256==G.SOURCE_SHA256
-    assert G.CLAIMS["registered_binary64_source_output_error_bounded_pointwise"]
+    assert G.CLAIMS["registered_binary64_D2c_reference_output_error_bounded_pointwise"]
     assert G.ROLES==(
         "observed_fitted_einstein_radius","independent_d2d_11520_root",
     )
     for key in (
+        "original_march_120_angle_numerical_output_error_bounded",
         "source_numerical_error_at_all_radii_certified",
         "original_source_continuum_shadow_error_bounded",
         "source_numeric_qeff_all_radii_certified",
