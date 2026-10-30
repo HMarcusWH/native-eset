@@ -41,6 +41,23 @@ def test_rational_sine_encloses_high_precision_decimal_reference():
             assert val <= Decimal(hi.numerator)/Decimal(hi.denominator)
 
 
+def test_cellwise_curvature_error_is_bounded_by_global_theorem():
+    # At small q the global q^-6 bound is unnecessarily pessimistic.
+    q=.2
+    x=.8
+    n=64
+    out=certified_periodic_exponential_disk_point(
+        2*x,1e11,2.,q,midpoints=n,
+    )
+    alpha=1-q*q
+    k=x*x*(alpha*alpha/q**6 + alpha/q**4)
+    global_error=k*math.pi**2/(96*n*n)
+    assert Decimal(out["midpoint_normalized_error_upper"]) < Decimal.from_float(
+        global_error
+    )
+    assert out["cellwise_curvature_bounds_used"] is True
+
+
 def test_circular_disk_high_precision_exact_binary64_continuum():
     mass=1e10
     scale=3.7
