@@ -37,7 +37,7 @@ def _uniform_annulus_mass(a, b, A):
 def test_exact_uniform_finite_shell_enclosed_and_target_status(A):
     r=np.linspace(.02,4.,61)
     result=enclose_adaptive_convex_shadow(
-        r,np.ones_like(r),A,target_relative_width="1e-8",max_refinement_splits=4096,
+        r,np.ones_like(r),A,target_relative_width="1e-8",max_refinement_splits=16384,
     )
     assert _between(_uniform_annulus_mass(float(r[0]),float(r[-1]),A),result)
     assert Decimal(result["lower_msun"]) <= Decimal(result["upper_msun"])
