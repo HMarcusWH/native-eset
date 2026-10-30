@@ -74,6 +74,10 @@ jobs:
         run: |
           python tools/hist001d_d2e_f_shadow_guard.py --source-root research/legacy/hist001 --out runs/hist001d_d2e_f_ci
           python tools/hist001d_d2e_f_shadow_guard.py --source-root research/legacy/hist001 --verify runs/hist001d_d2e_f_ci/receipt.json
+      - name: HIST001D D2e-G1/G2 certified analytic baryonic source run and replay
+        run: |
+          python tools/hist001d_d2e_g_baryon_boxes.py --source-root research/legacy/hist001 --out runs/hist001d_d2e_g_ci
+          python tools/hist001d_d2e_g_baryon_boxes.py --source-root research/legacy/hist001 --verify runs/hist001d_d2e_g_ci/receipt.json
       - name: HIST-001 original March source lock
         run: python tools/replay_hist001.py --preflight-only
       - name: CLI doctor
@@ -121,6 +125,9 @@ jobs:
             runs/hist001d_d2e_f_ci/report.json
             runs/hist001d_d2e_f_ci/receipt.json
             runs/hist001d_d2e_f_ci/receipt.sha256
+            runs/hist001d_d2e_g_ci/report.json
+            runs/hist001d_d2e_g_ci/receipt.json
+            runs/hist001d_d2e_g_ci/receipt.sha256
           if-no-files-found: error
           retention-days: 30
 # Graph 31-source private cold replay is separately gated, not fetched using CI secrets.
