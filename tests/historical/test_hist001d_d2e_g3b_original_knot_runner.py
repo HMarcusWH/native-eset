@@ -88,6 +88,8 @@ def _test_report():
         "schema": G.SCHEMA, "status": G.STATUS,
         "claims": dict(G.CLAIMS),
         "registered_knot_evaluation_count": 12,
+        "bulge_width_target_met_count": 12,
+        "disk_width_target_met_count": 12,
         "lenses": [{"lens_id": "J0822+1828",
                     "source_bulge_k_matrix_msun_binary64": 1.5}],
     }
