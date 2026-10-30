@@ -12,7 +12,6 @@ origin of the parameters, observational uncertainties or physical Weyl field.
 from __future__ import annotations
 
 import heapq
-import math
 from decimal import Context, Decimal, InvalidOperation, ROUND_CEILING, ROUND_FLOOR
 from fractions import Fraction
 
