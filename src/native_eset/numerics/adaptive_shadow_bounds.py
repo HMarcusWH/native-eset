@@ -11,7 +11,6 @@ root topology, missing radial mass, physical Weyl lensing or observations.
 from __future__ import annotations
 
 import heapq
-import math
 from decimal import Context, Decimal, InvalidOperation, ROUND_CEILING, ROUND_FLOOR
 from fractions import Fraction
 
