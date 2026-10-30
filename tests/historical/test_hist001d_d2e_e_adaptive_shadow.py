@@ -54,7 +54,6 @@ def test_convex_tangent_and_chord_bound_at_each_sample_point():
     lo,hi=_convex_outer_cell(a,b,Fraction(100),Fraction(40),A,88)
     assert 0<=lo<=hi
     for i in range(1001):
-        x=float(a)+(float(b)-float(a))*i/1000
         rho=100+(40-100)*i/1000
         # Concavity/convexity only diagnosed here numerically. The
         # mathematical bound derives from analytic g'' positivity.
