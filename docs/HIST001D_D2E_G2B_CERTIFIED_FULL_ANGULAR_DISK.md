@@ -75,6 +75,8 @@ The explicit analytic midpoint remainder is subtracted from the lower bound and 
 - Existing G1 finite-analytic Hernquist bounds and exact-rational D2e-F four-corner q_eff mapping then give an improved mathematical *analytic-continuum* aperture interval over the fixed ±2% D2d guard.
 - No bound here has yet established the original 1,024-angle **floating implementation's** numerical error. Existing source output is only compared as an empirical diagnostic, never substituted for certified mathematics.
 
+**Computational reproducibility:** rational sine midpoint and right-cell endpoint inputs repeat across lenses and trial radii. Their exact `Fraction`-keyed sine enclosures are memoized (at most 16,384 entries) without rounding or changing the mathematical result. The full suite and source reexecution remain mandatory on all six CI jobs. CI permits up to 45 minutes per job because the original-source calculation and an independent repeat of this rational proof are computationally intensive; extending the time budget does **not** relax the 1% mass interval target, alter data or suppress failing tests.
+
 ## 5. Implementation, evidence and negative controls
 
 ```bash
