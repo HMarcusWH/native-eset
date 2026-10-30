@@ -41,6 +41,8 @@ python tools/hist001d_d2e_g3a_pointwise_baryons.py --source-root research/legacy
 python tools/hist001d_d2e_g3a_pointwise_baryons.py --source-root research/legacy/hist001 --verify runs/hist001d_d2e_g3a/receipt.json
 ```
 
+**Exact-head CI timing contract:** The initial 60-minute G3a run #41004646634 completed Ubuntu/Python 3.13 but timed out on five other platforms during the independently repeated source-reexecution stage. Windows/Python 3.10 had already emitted the 12 registered pointwise outputs before its verifier was interrupted. The per-job budget is now 120 minutes to permit both full source runs and every earlier G2b predecessor replay; no numerical threshold, frozen input, source algorithm, receipt verification, or scientific claim was relaxed. G2b PR #29 is still a separate mandatory release gate.
+
 A canonical report and receipt with SHA-256 of source-locked runner, frozen G2b prerequisite and proof helper is generated. A second **independent source reexecution** validates every numerical field in the report and rejects self-rehashed forgery. Synthetic tests cover exact dyadic distance inequalities, directed ratio upper bounds, zero/unordered inputs, false physics/provider promotion and unexpected receipt files. Six-platform CI (Ubuntu/Windows × Python 3.10/3.12/3.13) retains all preceding HIST-001D numerical tests, source replays and manifest/security/lint checks.
 
 ## Scientific gate disposition
