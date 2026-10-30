@@ -1,6 +1,8 @@
-# HIST-001D/D2e-G3a — pointwise source-output discrepancy bounds
+# HIST-001D/D2e-G3a — pointwise D2c reference-output discrepancy bounds
 
-**Scope:** exact a posteriori numerical-output discrepancy for the frozen historical bulge, disk and baryon-weighted q_eff calculations at **12 preregistered radii** (observed Einstein radius and independently pinned D2d 11,520-node root for each of six **already fitted development lenses**).
+**Scope:** exact a posteriori numerical-output discrepancy for the independent D2c numerical reference bulge, full-period 1,024-angle disk and baryon-weighted q_eff calculations at **12 preregistered radii** (observed Einstein radius and independently pinned D2d 11,520-node root for each of six **already fitted development lenses**).
+
+**Critical provenance:** D2c `reference_bulge_finite` and `reference_periodic_disk(...,ntheta=1024)` are independent source-equivalent reference algorithms; the latter integrates the full period, unlike the original March 120-angle/omitted-arc implementation. This PR **does not certify any binary64 outputs of the original March 120-angle algorithm**. Its pointwise certificate applies to the recorded independent D2c outputs only.
 
 This is a distinct software/proof identity, not a full-radius error certificate, a probability-calibrated observational uncertainty estimate, proof of a physically sourced Weyl lensing metric, or contemporary Native ESET v1.7.2 admission.
 
@@ -16,11 +18,11 @@ This inequality is elementary and **does not require certifying the internals of
 
 If `L>0`, then `E_max/L` bounds the relative error compared to the unknown positive true analytic value. If `V>0`, `E_max/V` bounds the error relative to the returned number. Both are computed in exact rational arithmetic, rounded only **upward** for a Decimal display. When `L=0`, the true-relative error is withheld, not fabricated.
 
-**Important source identity:** The analytic target is for *exact frozen binary64 scalars* computed from the historical input table: `M_b=10**logMb`, `a=(Re_bulge_arcsec*scale)/1.8153`, `M_d=10**logMd`, `s=(Re_disc_arcsec*scale)/1.67835`, and input `q_b,q_d`. The source returned `reference_bulge_finite` and full-period `reference_periodic_disk(ntheta=1024)` numbers. This bounds discrepancy **relative to the mathematical model represented by those exact frozen scalars**, not numerical errors in the earlier derivation of the model parameters or any physical boundary continuation.
+**Important source identity:** The analytic target is for *exact frozen binary64 scalars* computed from the historical input table: `M_b=10**logMb`, `a=(Re_bulge_arcsec*scale)/1.8153`, `M_d=10**logMd`, `s=(Re_disc_arcsec*scale)/1.67835`, and input `q_b,q_d`. The **independent D2c reference** returned `reference_bulge_finite` and full-period `reference_periodic_disk(ntheta=1024)` numbers. These are NOT the original March 180/120 execution's numerical outputs. This bounds discrepancy **relative to the mathematical model represented by those exact frozen scalars**, not numerical errors in the earlier derivation of the model parameters or any physical boundary continuation.
 
 ## Q_eff with a mathematical target interval
 
-For exact analytic continuum bulge/disk mass ranges `B∈[B_l,B_h]`, `D∈[D_l,D_h]` and exact frozen axis factors `q_b,q_d`, the `q_eff=clip[1e-3,1]((q_b B+q_d D)/(B+D))` extrema lie at the four positive mass-box corners. The original source implementation returns a distinct rounded binary64 q computed from its own two source numerical mass outputs.
+For exact analytic continuum bulge/disk mass ranges `B∈[B_l,B_h]`, `D∈[D_l,D_h]` and exact frozen axis factors `q_b,q_d`, the `q_eff=clip[1e-3,1]((q_b B+q_d D)/(B+D))` extrema lie at the four positive mass-box corners. The independent D2c reference implementation returns a distinct rounded binary64 q computed from its own two source numerical mass outputs.
 
 The same exact rational pointwise-discrepancy construction produces a **single-source-call q_eff error upper bound** relative to the analytic mathematical interval. It does not bound the q_eff calculation for any other radius, establish correlation/covariance, or certify propagation to root position.
 
@@ -47,4 +49,4 @@ A canonical report and receipt with SHA-256 of source-locked runner, frozen G2b 
 
 **Still unproved:** a uniform error envelope for every R in the Einstein-root guard, mass dependence across neighboring radii, complete model residual and radius propagation, Sigma_crit source numerical/physical accuracy, full root topology including tangencies, shadow density continuum, matter outside [0.02,120] kpc, physical metric/Weyl lensing, D3 covariance, D4 outcome-blinded truly disjoint holdout, Native v1.7.2 theory transport, no-particle-CDM and empirical validation.
 
-**Prohibition:** numerical software green CI or source-reexecuted agreement must never be promoted to evidence of physical/empirical agreement. The original historical 180/120 fitted 6/6 and separately computed D2d finite-source 3/6 remain distinct identities.
+**Prohibition:** numerical software green CI or source-reexecuted agreement must never be promoted to evidence of physical/empirical agreement. The original historical 180/120 fitted 6/6 and separately computed D2d finite-source 3/6 remain distinct identities. **Original-March output pointwise errors remain unbounded by G3a.**
