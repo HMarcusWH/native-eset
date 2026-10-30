@@ -146,7 +146,7 @@
     "src/native_eset/identity.py": "c3d8f71df89b43a209e357dae528e2311289ad94bcdcd54682e27be84e0dbc05",
     "src/native_eset/numerics/__init__.py": "574c18739b86e4e0d661dcc4380b1e632942bb88a2a96f2316acca8f80e8c000",
     "src/native_eset/numerics/adaptive_shadow_bounds.py": "9b825b2c0fcb7c0ee19570684672b319012a3c67ea1cb35cc81791d4675500fa",
-    "src/native_eset/numerics/certified_baryon_mass.py": "22a42f144a75e15a425a7f51f32c2f92d113c95e115a51b323cbea1ae4079f28",
+    "src/native_eset/numerics/certified_baryon_mass.py": "5291886f941822790d773276cadf198a570c10326af87621b95207074524c948",
     "src/native_eset/numerics/exact_shadow_bounds.py": "8926984abf6f8826d6d1cb21e91ecb0587cbfdcd347144566e77795324acdfea",
     "src/native_eset/numerics/integrators.py": "4aa971255869eb447ae944b3c510e9e277f837318b6003b621c49454fcc122f4",
     "src/native_eset/numerics/shadow_aperture_intervals.py": "731c1321d26b39853a7cd9fdc673ce63defd2b6afe69ed4546fcf6bbe99efa2b",
