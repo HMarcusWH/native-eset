@@ -18,7 +18,6 @@ import json
 import math
 import shutil
 import sys
-from decimal import Decimal
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
