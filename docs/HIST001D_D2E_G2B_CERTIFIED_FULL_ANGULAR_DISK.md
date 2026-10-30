@@ -41,14 +41,23 @@ Since `H'(v)=v*exp(-v)`, `|H'(v)|<=v<=x/q`, and `H''(v)=(1-v)*exp(-v)` obeys `|H
 |h''(phi)| <= K = x^2*(alpha^2/q^6 + alpha/q^4).
 ```
 
-The standard composite midpoint identity, derived by Taylor remainder integration on each subinterval, then bounds the difference between the true *mean* and the N-midpoint mean:
+The standard composite midpoint identity, derived by Taylor remainder integration on each subinterval, gives the global bound
 
 ```
 |D(R)/M - (1/N)*sum_{j=0}^{N-1} h((2j+1)*pi/(4N))|
      <= K*pi^2/(96*N^2).
 ```
 
-The code treats `K` as an **exact rational function of the exact binary64 input scalars**, pi using the established rational Machin bounds, and the error as an **outward** rational-to-Decimal bound. This is a mathematical truncation bound, not a statistical error bar or an observed mesh convergence estimate. For near-circular q, K vanishes smoothly.
+**The implemented bound is stronger and remains rigorous:** on each angular cell (j), `d(phi)` is decreasing, so evaluate a rational *upper* bound on `sin(phi)` at the cell's right endpoint (the last physical endpoint uses the exact identity `sin(pi/2)=1`). Thus the certified `dmin_j = 1-alpha*sin_upper_j^2 >= q^2` is a valid all-cell lower bound. Replace the global `K` by
+
+```
+K_j = x^2*(alpha^2/dmin_j^3 + alpha/dmin_j^2).
+|normalized midpoint error|
+    <= pi^2/(96*N^3) * sum_{j=0}^{N-1} K_j
+    <= K*pi^2/(96*N^2).
+```
+
+The program rounds each cell's rational error *upward* and accumulates it with a directed Decimal context; no huge cross-cell rational denominator is needed. The original global `K` is preserved in the receipt as an auditable fallback theoretical bound, not used to dilute the tighter interval. Both are mathematical truncation guarantees, not statistical error bars or observed mesh convergence estimates. For near-circular q, both bounds vanish smoothly.
 
 ## 3. Certified midpoint values
 
