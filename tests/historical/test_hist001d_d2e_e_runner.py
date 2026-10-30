@@ -79,7 +79,7 @@ def test_source_reexecution_comparison_rejects_rehashed_numerics(tmp_path,monkey
 
 
 def test_fake_provider_claim_and_extra_receipt_file_rejected(tmp_path,monkeypatch):
-    source_report={"schema":E.SCHEMA,"status":E.STATUS,"claims":dict(E.CLAIMS),"fixed_aperture_count":0}
+    source_report={"schema":E.SCHEMA,"status":E.STATUS,"claims":dict(E.CLAIMS),"fixed_aperture_count":0,"fixed_aperture_target_met_count":0}
     monkeypatch.setattr(E,"execute",lambda source:source_report)
     source=tmp_path/"baseline"
     E.run(SOURCE,source)
