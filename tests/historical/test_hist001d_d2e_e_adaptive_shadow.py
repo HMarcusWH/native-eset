@@ -11,6 +11,7 @@ from scipy.integrate import quad
 
 from native_eset.numerics.exact_shadow_bounds import (
     ShadowEnclosureError,
+    _pi_fraction_bounds,
     enclose_finite_cylinder_mass,
     guaranteed_pointwise_error,
 )
@@ -39,7 +40,18 @@ def test_exact_uniform_finite_shell_enclosed_and_target_status(A):
     result=enclose_adaptive_convex_shadow(
         r,np.ones_like(r),A,target_relative_width="1e-8",max_refinement_splits=16384,
     )
-    assert _between(_uniform_annulus_mass(float(r[0]),float(r[-1]),A),result)
+    if A == float(r[-1]):
+        # The true binary64 input times exact pi is far narrower than a
+        # double-precision math.pi reference: verify rational pi bounds.
+        volume=Fraction(4,3)*(
+            Fraction.from_float(float(r[-1]))**3
+            - Fraction.from_float(float(r[0]))**3
+        )
+        pi_lower, pi_upper = _pi_fraction_bounds()
+        assert Fraction(Decimal(result["lower_msun"])) <= volume*pi_lower
+        assert Fraction(Decimal(result["upper_msun"])) >= volume*pi_upper
+    else:
+        assert _between(_uniform_annulus_mass(float(r[0]),float(r[-1]),A),result)
     assert Decimal(result["lower_msun"]) <= Decimal(result["upper_msun"])
     if 0 < A <= 4:
         assert result["target_met"] is True
