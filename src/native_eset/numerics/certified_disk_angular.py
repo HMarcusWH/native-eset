@@ -139,7 +139,13 @@ def certified_periodic_exponential_disk_point(
         low_sum = lc.add(low_sum, _directed(h_lo, lc))
         high_sum = uc.add(high_sum, _directed(h_hi, uc))
         right_angle_upper = pi_hi * Fraction(j+1, 2*midpoints)
-        _, sine_upper = _sin_rational_bounds(right_angle_upper)
+        # The final physical endpoint is exactly pi/2, where sin=1.
+        # The rational upper pi bound is slightly above pi/2; do not
+        # depend on monotonicity across that tiny extraneous interval.
+        if j == midpoints-1:
+            sine_upper = Fraction(1)
+        else:
+            _, sine_upper = _sin_rational_bounds(right_angle_upper)
         dmin = 1-alpha*sine_upper*sine_upper
         if not q*q <= dmin <= 1:
             raise ShadowEnclosureError("invalid cellwise geometric denominator")
