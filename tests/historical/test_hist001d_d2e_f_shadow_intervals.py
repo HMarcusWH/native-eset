@@ -28,8 +28,8 @@ def test_q_corner_interval_bounds_every_positive_mass_in_rectangle():
         lo, hi = _q_from_pair(box["q_min"]), _q_from_pair(box["q_max"])
         for b in (3., 3.1, 5., 9.):
             for d in (2., 2.1, 4., 17.):
-                b, d = Fraction.from_float(b), Fraction.from_float(d)
-                actual = (Fraction.from_float(qb)*b + Fraction.from_float(qd)*d)/(b+d)
+                bf, df = Fraction.from_float(float(b)), Fraction.from_float(float(d))
+                actual = (Fraction.from_float(qb)*bf + Fraction.from_float(qd)*df)/(bf+df)
                 assert lo <= actual <= hi
         assert box["valid_given_mass_box"] is True
         assert box["assumption"].startswith("INPUT_BARYON_MASS_INTERVALS")
