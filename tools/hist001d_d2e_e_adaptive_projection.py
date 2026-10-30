@@ -162,7 +162,7 @@ def one_lens(row,anchor,gate,d,d2c):
         })
     return {"lens_id":lid,"fitted_development_lens":True,"samples":sample,
             "both_nodal_discrete_targets_met":all(
-                s["new_adaptive_convex_bound"]["target_met"] for s in sample,
+                s["new_adaptive_convex_bound"]["target_met"] for s in sample
             )}
 
 
@@ -214,7 +214,7 @@ def execute(source_root:str|Path)->dict:
         "original_source_fitted_development_lenses_only":True,
         "fixed_aperture_count":len(all_samples),
         "fixed_aperture_target_met_count":sum(
-            s["new_adaptive_convex_bound"]["target_met"] for s in all_samples,
+            s["new_adaptive_convex_bound"]["target_met"] for s in all_samples
         ),
         "maximum_achieved_relative_interval_width_upper":str(max(
             Decimal(s["new_adaptive_convex_bound"]["relative_interval_width_upper"])
