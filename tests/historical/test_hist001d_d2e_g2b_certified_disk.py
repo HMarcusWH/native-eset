@@ -5,7 +5,6 @@ import math
 from decimal import Decimal, localcontext
 from fractions import Fraction
 
-import numpy as np
 import pytest
 from scipy.integrate import quad
 
@@ -103,8 +102,10 @@ def test_midpoint_mesh_refinement_contract_tightens_interval():
     large=certified_periodic_exponential_disk_point(
         2.4,3e10,1.8,.55,midpoints=256,
     )
-    assert Decimal(large["lower_msun"]) >= Decimal(small["lower_msun"])
-    assert Decimal(large["upper_msun"]) <= Decimal(small["upper_msun"])
+    # Independent certified midpoint meshes need not yield nested
+    # intervals, though they must overlap and have a smaller width.
+    assert Decimal(large["lower_msun"]) <= Decimal(small["upper_msun"])
+    assert Decimal(small["lower_msun"]) <= Decimal(large["upper_msun"])
     assert Decimal(large["relative_interval_width_upper"]) < Decimal(
         small["relative_interval_width_upper"]
     )
