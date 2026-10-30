@@ -178,7 +178,7 @@
     "tests/historical/test_hist001d_d2e_error_budget.py": "9223a24d388c2a1aa206b12563d5f45310d65e17dc2ada4a3b79019c1baf96eb",
     "tests/historical/test_hist001d_d2e_f_runner.py": "6aad1dce6b033f9244f744c2bd7c5e6b16129b8f88feb61e27287061ab7565ab",
     "tests/historical/test_hist001d_d2e_f_shadow_intervals.py": "6300aa8f3d02275600fadf5c6620a17735746ae1d82520635adddc96c7bea25c",
-    "tests/historical/test_hist001d_d2e_g_baryon_proof.py": "106fb75ad5b189d55bf689ac5c07935e5637e2a605703990913ec307b588c0b4",
+    "tests/historical/test_hist001d_d2e_g_baryon_proof.py": "e952a0c5c287475a71bbe71a3dbb781dbcf148ef1b29eb55e01a4a7828d897e2",
     "tests/historical/test_hist001d_d2e_g_runner.py": "a9670ab99e0b298369f6a6ff3b97a53b4793b652db2bbe52b2649253e0e098b7",
     "tests/historical/test_hist001d_d2e_interval.py": "c78782c1970d388ec175d1a23983a195c12b4687d1bf99345246ffff9e43a8e9",
     "tests/runner/test_analytic_golden.py": "5d021c48bebe2773d604f971cd8cd82ba67a7fa33faf56daaf70fbde4914b342",
