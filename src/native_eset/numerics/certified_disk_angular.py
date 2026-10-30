@@ -120,21 +120,32 @@ def certified_periodic_exponential_disk_point(
     # H'(v)=v*exp(-v), |H''(v)|=|1-v|*exp(-v)<=1.
     # d=cos^2(phi)+q^2 sin^2(phi) in [q^2,1], v=x/d^1/2.
     # |d'|<=alpha, |d''|<=2*alpha imply
-    # |(H(v))''| <= K = x^2*(alpha^2/q^6 + alpha/q^4).
-    # Composite midpoint error for the normalized [0,pi/2] average:
-    # <= K*pi^2/(96*midpoints^2).
+    # |(H(v))''| <= K_global = x^2*(alpha^2/q^6 + alpha/q^4).
+    # A tighter, equally rigorous LOCAL bound replaces q^2 with the
+    # minimum denominator over each angular cell:
+    # K_j = x^2*(alpha^2/dmin_j^3 + alpha/dmin_j^2).
+    # d(phi)=1-alpha*sin^2(phi) decreases on [0,pi/2]; outward-bound
+    # sin(phi) at the cell's RIGHT endpoint to obtain dmin_j.
+    # The normalized composite midpoint error is no more than
+    # (pi^2/(96*N^3))*sum_j(K_j), with pi upper-bounded rationally.
     K = x*x*(alpha*alpha/q**6 + alpha/q**4)
     _, pi_hi = _pi_fraction_bounds()
-    err = K*pi_hi*pi_hi/(96*midpoints*midpoints)
 
     lc = Context(prec=DECIMAL_DIGITS, rounding=ROUND_FLOOR)
     uc = Context(prec=DECIMAL_DIGITS, rounding=ROUND_CEILING)
-    low_sum, high_sum = Decimal(0), Decimal(0)
+    low_sum, high_sum, error_upper = Decimal(0), Decimal(0), Decimal(0)
     for j in range(midpoints):
         h_lo, h_hi = _h_at_angular_midpoint(j, midpoints, x, q)
         low_sum = lc.add(low_sum, _directed(h_lo, lc))
         high_sum = uc.add(high_sum, _directed(h_hi, uc))
-    error_upper = _directed(err, uc)
+        right_angle_upper = pi_hi * Fraction(j+1, 2*midpoints)
+        _, sine_upper = _sin_rational_bounds(right_angle_upper)
+        dmin = 1-alpha*sine_upper*sine_upper
+        if not q*q <= dmin <= 1:
+            raise ShadowEnclosureError("invalid cellwise geometric denominator")
+        Klocal = x*x*(alpha*alpha/dmin**3 + alpha/dmin**2)
+        local_error = Klocal*pi_hi*pi_hi/(96*midpoints**3)
+        error_upper = uc.add(error_upper, _directed(local_error, uc))
     average_low = lc.subtract(lc.divide(low_sum, Decimal(midpoints)), error_upper)
     average_high = uc.add(uc.divide(high_sum, Decimal(midpoints)), error_upper)
     factor_low = max(Decimal(0), average_low)
@@ -159,7 +170,8 @@ def certified_periodic_exponential_disk_point(
             "numerator": str(K.numerator), "denominator": str(K.denominator),
         },
         "math_model": "EXACT_BINARY64_ELLIPTICAL_EXPONENTIAL_DISK_FULL_CONTINUUM_AZIMUTH",
-        "method": "QUADRANT_TAN_SUBSTITUTION_RATIONAL_SINE_EXP_AND_CERTIFIED_MIDPOINT_ERROR",
+        "method": "QUADRANT_TAN_SUBSTITUTION_RATIONAL_SINE_EXP_CELLWISE_CURVATURE_MIDPOINT",
+        "cellwise_curvature_bounds_used": True,
         "source_periodic1024_floating_quadrature_error_certified": False,
         "source_cosmological_physics_certified": False,
     }
