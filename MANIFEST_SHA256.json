@@ -2,7 +2,7 @@
   "files": {
     ".env.example": "62ac70b3f1d73ae3fd485fb1b336c5ac08f6b7822baa2d6189315e93744ec312",
     ".gitattributes": "9e23f4c78a5fbe073aa3847510a05b35c18767e86253f14e3508a6a02c931a65",
-    ".github/workflows/ci.yaml": "2216a6fd192a8ce66ff042e429d4501ec95c56a622367ad37176937d15457118",
+    ".github/workflows/ci.yaml": "f1402ce899fc5e086bdcc7bf4e4f0c1f9b8c05909bda6cbb5e7c5e40bfa1450c",
     ".gitignore": "0fc020a952cc1ba9d5b6a873843b5129cfee4a902102bd3196b41c08028ae7fa",
     "AGENTS.md": "ff69f6523a4340e2508353bc9e85940c8a5eb91dcfedc81b1922212c567edb76",
     "CHANGELOG.md": "e1b145ba7cfe7d36f7aa52f4d060cf597f000dc149c81875cf45d21f0c31a699",
@@ -233,7 +233,13 @@
     "tools/replay_hist001.py": "ce4ca3fb532d18e94f63c8272670bdfca10ed5daf7d444520a17e652a3babcea",
     "tools/security_audit.py": "5377367977eb4d7824edf906a15d2a5c29ae5823d9279e6698c804653630fc2b",
     "tools/verify_final_bundle.py": "860653e977f373f24f53c2ab4248689ffd4c45f1b199513ebc0fdfef8df949b0",
-    "tools/wheel_smoke.py": "9b72835209f4a98546beae06b27246327d54c7aa4fe9fd41a2a3919ecf04d54f"
+    "tools/wheel_smoke.py": "9b72835209f4a98546beae06b27246327d54c7aa4fe9fd41a2a3919ecf04d54f",
+    "src/native_eset/numerics/hist001d_g4b_root_intervals.py": "cdb3b9260efdf16e5389c73a122ec33a314414b8f2b63208258efb485dcc244c",
+    "tests/historical/test_hist001d_g4b0_root_intervals.py": "5c3658ecb1063904dd1d72d159719df545634003c751b5e7a5c914589754fba7",
+    "registry/hist001d_g4b0_root_partition_v1.json": "86f78ae0583799542241046f3642008c596ee4769b8534e31b641f886beb8035",
+    "tools/hist001d_d2e_g4b0_root_partition.py": "f3fd267efb2d95ea56ff737cc808f6a16a5f41eb76115a2be31a16b701a2c602",
+    "tests/historical/test_hist001d_g4b0_runner.py": "d05a9983c1119354af8d821b56a5515f53303d73b109fc3c34f46ca4f8c5d820",
+    "docs/HIST001D_D2E_G4B0_FROZEN_EXACT_PARTITION.md": "665786c407763b6a7cc4f17f6688bca79992b6ed70602219d3685bacf0f1ef88"
   },
   "manifest_version": 1
 }
