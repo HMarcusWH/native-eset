@@ -21,6 +21,7 @@ source input generation, outer physical mass, or Einstein root topology.
 from __future__ import annotations
 
 from decimal import Context, Decimal, ROUND_CEILING, ROUND_FLOOR
+from functools import lru_cache
 from fractions import Fraction
 
 from native_eset.numerics.certified_baryon_mass import _disk_integral_fraction
@@ -37,8 +38,14 @@ SQRT_BITS = 100
 DECIMAL_DIGITS = 65
 
 
+@lru_cache(maxsize=16384)
 def _sin_rational_bounds(x: Fraction):
-    """Alternating sine-series rational bounds for 0 <= x <= pi/2."""
+    """Alternating sine-series rational bounds for 0 <= x <= pi/2.
+
+    The angular knots depend on mesh and rational pi bounds, not on lens
+    parameters. Cache identical exact Fraction inputs across every lens and
+    source-run radius; no floats or approximation values are cached.
+    """
     _, pi_hi = _pi_fraction_bounds()
     if not 0 <= x <= pi_hi/2:
         raise ShadowEnclosureError("sine proof argument outside first quadrant")
