@@ -89,9 +89,17 @@ def _convex_outer_cell(a, b, ya, yb, aperture, bits):
     right = _product_of_linears(
         ym, yb, mid_lower, mid_lower+derivative_lower*(b-mid), b-mid,
     )
-    lower = max(Fraction(0), left+right)
+    # The midpoint tangent is rigorous but may be looser than the older
+    # monotone minimum-kernel lower bound on part of a source cell.
+    # Intersect two independently valid rational enclosures so that
+    # adaptive refinement NEVER weakens D2e-D's earlier shell bound.
+    mass = (ya+yb)*(b-a)/2
+    g_min, _ = _g_bounds(b, aperture, bits)
+    _, g_max = _g_bounds(a, aperture, bits)
+    lower = max(Fraction(0), left+right, mass*g_min)
+    upper = min(upper, mass*g_max)
     if lower < 0 or upper < lower:
-        raise ShadowEnclosureError("invalid convex shell enclosure")
+        raise ShadowEnclosureError("invalid convex/monotone intersected shell enclosure")
     return lower, upper
 
 
