@@ -96,7 +96,7 @@ def test_fake_provider_claim_and_extra_receipt_file_rejected(tmp_path,monkeypatc
 
 
 def test_bad_source_symlink_and_duplicate_output(tmp_path,monkeypatch):
-    report={"schema":E.SCHEMA,"status":E.STATUS,"claims":dict(E.CLAIMS),"fixed_aperture_count":0}
+    report={"schema":E.SCHEMA,"status":E.STATUS,"claims":dict(E.CLAIMS),"fixed_aperture_count":0,"fixed_aperture_target_met_count":0}
     monkeypatch.setattr(E,"execute",lambda source:report)
     destination=tmp_path/"out"
     E.run(SOURCE,destination)
