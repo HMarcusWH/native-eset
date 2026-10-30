@@ -1,11 +1,12 @@
 """D2e-G3a: SHA-locked a posteriori POINTWISE numerical source output bounds.
 
-Compare the exact binary64 number RETURNED by the frozen historical D2c
-bulge/disc projector at predeclared observed and D2d-root radii against
+Compare exact binary64 outputs RETURNED by the independent source-locked
+D2c full-period reference bulge/disc projector at predeclared observed and D2d-root radii against
 independently certified G1 Hernquist and G2b analytic exponential-disk
 mass intervals. The exact-rational maximum endpoint distance is a
 valid numerical discrepancy bound AT THESE SOURCE CALLS ONLY.
 
+This is NOT the original March 120-angle numerical disk implementation.
 No global continuous-R implementation error, sigma_crit source error,
 root-uniqueness theorem, original density continuum or Weyl lensing.
 """
@@ -41,12 +42,13 @@ LENS_IDS = ("J0822+1828", "J0915+4211", "J0930+2855",
             "J1021+2028", "J1111+2234", "J1135+3720")
 CANDIDATE = "ra0_gated_geometry_sigmoid_reg_v2"
 ROLES = ("observed_fitted_einstein_radius", "independent_d2d_11520_root")
-SCHEMA = "NATIVE_ESET_HIST001D_D2E_G3A_POINTWISE_SOURCE_BARYON_ERRORS_V1"
+SCHEMA = "NATIVE_ESET_HIST001D_D2E_G3A_POINTWISE_D2C_REFERENCE_ERRORS_V1"
 RECEIPT_SCHEMA = "NATIVE_ESET_HIST001D_D2E_G3A_SOURCE_OUTPUT_RECEIPT_V1"
-STATUS = "G3A_CERTIFIED_POINTWISE_SOURCE_OUTPUT_VS_ANALYTIC_MATH_NOT_ROOT"
+STATUS = "G3A_CERTIFIED_POINTWISE_D2C_REFERENCE_VS_ANALYTIC_MATH_NOT_ROOT"
 CLAIMS = {
     "frozen_development_lenses_only": True,
-    "registered_binary64_source_output_error_bounded_pointwise": True,
+    "registered_binary64_D2c_reference_output_error_bounded_pointwise": True,
+    "original_march_120_angle_numerical_output_error_bounded": False,
     "analytic_target_hernquist_finite_mass_rigorous": True,
     "analytic_target_disk_full_azimuth_rigorous": True,
     "original_source_46_plus_three_verified": True,
@@ -170,9 +172,9 @@ def one_lens(row, g2b, g1, d2c, d2d_roots):
         output.append({
             "radius_role":role,
             "radius_kpc_frozen_binary64":R,
-            "source_returned_bulge_msun":source_b,
-            "source_returned_disk_msun":source_d,
-            "source_returned_qeff_binary64":source_q,
+            "D2c_reference_bulge_returned_binary64_msun":source_b,
+            "D2c_reference_disk_returned_binary64_msun":source_d,
+            "D2c_reference_qeff_returned_binary64":source_q,
             "analytic_finite_bulge_enclosure":analytic_b,
             "analytic_full_azimuth_disk_enclosure":analytic_d_fine,
             "analytic_coarse_disk_crosscheck":analytic_d_coarse,
@@ -252,12 +254,12 @@ def execute(source_root: str | Path):
         "G2b_disk_width_target_met_count":sum(bool(
             p["analytic_full_azimuth_disk_enclosure"]["target_met"]
         ) for p in points),
-        "source_output_bulge_inside_analytic_enclosure_count":sum(bool(
+        "D2c_reference_bulge_inside_analytic_enclosure_count":sum(bool(
             p["pointwise_bulge_discrepancy_proof"][
                 "source_returned_inside_analytic_target_enclosure"
             ]
         ) for p in points),
-        "source_output_disk_inside_analytic_enclosure_count":sum(bool(
+        "D2c_reference_disk_inside_analytic_enclosure_count":sum(bool(
             p["pointwise_disk_discrepancy_proof"][
                 "source_returned_inside_analytic_target_enclosure"
             ]
@@ -267,7 +269,7 @@ def execute(source_root: str | Path):
         "environment":{"python":sys.version.split()[0],
                        "numpy":np.__version__,"pandas":pd.__version__,
                        "scipy":scipy.__version__},
-        "limitations":"Exact dyadic a posteriori numeric-output discrepancies at 12 registered fitted development radii relative to exact-parameter analytic continuum mass models. Neither the source algorithm's general input-error theorem, future/other environment, sigma_crit, source shadow continuum nor full Einstein-root/physical Weyl is bounded.",
+        "limitations":"Exact dyadic a posteriori discrepancies of INDEPENDENT D2c SciPy finite bulge and full-period 1024-angle disk reference outputs at 12 development radii against exact-parameter analytic targets. NOT the original March 120-angle disk implementation, not a universal implementation error theorem, other environment or radii, sigma_crit or Weyl/root physics.",
     }
 
 
