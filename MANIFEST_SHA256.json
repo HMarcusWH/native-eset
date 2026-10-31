@@ -242,7 +242,10 @@
     "docs/HIST001D_D2E_G4B0_FROZEN_EXACT_PARTITION.md": "665786c407763b6a7cc4f17f6688bca79992b6ed70602219d3685bacf0f1ef88",
     "src/native_eset/numerics/hist001d_g4b1_boundary_bridge.py": "bfd0184603b09ab938c981969ac35a87ef52b2f99e006114e252b9109998e9dc",
     "tests/historical/test_hist001d_g4b1_boundary_bridge.py": "d56e4b593fd1436aaf5803e545e7e1bd9c83d59bf8c5b61fe6f0f8455e4b350c",
-    "docs/HIST001D_D2E_G4B1_EXACT_BOUNDARY_BRIDGE_STACKED_DRAFT.md": "98167f8ba883004ac5cfdb5355a4820aed24df37ace5b2ebea07836538c54a22"
+    "docs/HIST001D_D2E_G4B1_EXACT_BOUNDARY_BRIDGE_STACKED_DRAFT.md": "98167f8ba883004ac5cfdb5355a4820aed24df37ace5b2ebea07836538c54a22",
+    "src/native_eset/numerics/hist001d_g4b1a_cell_baryon_boxes.py": "954204fa11dc49be70b011185a8f0d29de23943640cac66996df28d65a61ae39",
+    "tests/historical/test_hist001d_g4b1a_cell_baryon_boxes.py": "60b3994acca9920c665e387eff31aa2a38c122158e3eb71f3a6e01a14dd44332",
+    "docs/HIST001D_D2E_G4B1A_CERTIFIED_REAL_CELL_BARYON_BOXES_STACKED_DRAFT.md": "ca5a2a472d86a437bcb5d9d7484cc5c0a121f044b57ab396c632fdcba405964f"
   },
   "manifest_version": 1
 }
