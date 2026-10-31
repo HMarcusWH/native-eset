@@ -74,6 +74,27 @@ def test_dropped_duplicated_unsorted_tampered_leaves_rejected():
         split_leaf(Leaf("00:", R_MIN, R_MIN))
 
 
+
+def test_large_integer_interval_is_exact_not_rounded_via_binary64():
+    # The original helper wrongly coerced this legitimate exact integer via
+    # float(), silently erasing its least significant unit.
+    from native_eset.numerics.exact_shadow_bounds import _pi_fraction_bounds
+
+    large = 2**53 + 1
+    cell = leaf_from_path("00:")
+    box = conditional_H_box(
+        cell, (large, large), (1, 1), (0, 0), (1, 1),
+    )
+    pi_lo, pi_hi = _pi_fraction_bounds()
+    lower = box["H_lower_exact_rational"]
+    upper = box["H_upper_exact_rational"]
+    actual_lower = Fraction(int(lower["num"]), int(lower["den"]))
+    actual_upper = Fraction(int(upper["num"]), int(upper["den"]))
+    assert actual_lower == Fraction(large + 1) - pi_hi * cell.right**2
+    assert actual_upper == Fraction(large + 1) - pi_lo * cell.left**2
+    with pytest.raises(G4b0Error, match="resource bound"):
+        conditional_H_box(cell, (2**3000, 2**3000), (1, 1), (0, 0), (1, 1))
+
 def test_conditional_exact_H_signs_and_root_nonclaims():
     cell = leaf_from_path("63:")
     negative = conditional_H_box(cell, ("1","1"), ("1","1"), ("0","0"), ("1e20","1e20"))

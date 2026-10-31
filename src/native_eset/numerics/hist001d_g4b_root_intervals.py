@@ -40,14 +40,14 @@ def _fraction(value: object) -> Fraction:
     """Use exact rationals for floats and decimal strings; never trust bool."""
     if isinstance(value, Fraction):
         result = value
-    elif type(value) in (int, float):
-        try:
-            v = float(value)
-        except (OverflowError, ValueError) as exc:
-            raise G4b0Error("unsupported numeric input") from exc
-        if not math.isfinite(v):
+    elif type(value) is int:
+        # An exact integer is already rational: float() would silently round
+        # representable-but-inexact integers above 2**53.
+        result = Fraction(value)
+    elif type(value) is float:
+        if not math.isfinite(value):
             raise G4b0Error("nonfinite numeric input")
-        result = Fraction.from_float(v)
+        result = Fraction.from_float(value)
     elif type(value) is str and 0 < len(value) <= 200:
         try:
             dec = Decimal(value)
