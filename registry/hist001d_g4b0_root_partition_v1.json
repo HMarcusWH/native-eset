@@ -1,0 +1,61 @@
+{
+  "claims": {
+    "all_R_root_isolation_completed": false,
+    "canonical_theory_state_mutated": false,
+    "empirical_validation": "NOT_ESTABLISHED",
+    "full_radial_cell_coverage_by_input_plan": true,
+    "input_only_original_source_lock_verified": true,
+    "new_independent_blinded_holdout_scored": false,
+    "original_source_all_radius_numerical_error_bounded": false,
+    "original_source_modified": false,
+    "physical_provider_admitted": false,
+    "root_existence_certified": false,
+    "root_tangencies_excluded": false,
+    "root_uniqueness_certified": false,
+    "same_source_physical_weyl_lensing": false,
+    "source_gradient_continuum_certified": false
+  },
+  "d2d_finite_root_anchors_kpc_for_provenance_only": {
+    "J0822+1828": 1.9335521276132295,
+    "J0915+4211": 1.4631260001592172,
+    "J0930+2855": 4.6762553596681755,
+    "J1021+2028": 1.362052753088748,
+    "J1111+2234": 4.05118631644928,
+    "J1135+3720": 2.3003465922369593
+  },
+  "finite_original_source_radial_domain_kpc": [
+    0.02,
+    120
+  ],
+  "initial_cells": 64,
+  "lens_ids": [
+    "J0822+1828",
+    "J0915+4211",
+    "J0930+2855",
+    "J1021+2028",
+    "J1111+2234",
+    "J1135+3720"
+  ],
+  "max_dyadic_depth": 8,
+  "max_leaf_budget": 16384,
+  "plan": {
+    "coverage_gate": "exact-adjacent rational intervals spanning full source domain; fail on any gap overlap omission",
+    "optional_refinement": "dyadic exact path i:0101.. up to depth 8; never drop cells",
+    "root_anchor_use": "provenance labels only; selection does not use observational pass/fail or source mass values",
+    "selection": "entire exact rational binary64 source finite interval [0.02,120] with 64 exact uniform initial cells",
+    "starting_root_claim": "NO_ROOT_EXCLUSION_OR_COUNT"
+  },
+  "root_anchors_only_not_proof": true,
+  "schema": "HIST001D_D2E_G4B0_SOURCE_ONLY_PARTITION_REGISTRATION_V1",
+  "source_domain_exact_dyadic": {
+    "lower": "5764607523034235/288230376151711744",
+    "upper": "120"
+  },
+  "source_file_sha256": {
+    "research/legacy/hist001/swells_pack_v2/cleaned/lens_set_A_run_fo_74bb5e.csv": "d087578dccfaea72dafb2098c925d4111c41015a56f59ca1292b20eccb797ac8",
+    "tools/hist001d_d2e_g4a_flatlcdm_sigma.py": "63d0b78115a3f44914e27bdf3646eebc37cca30a6c8e31bece81c4a5efe11b3b",
+    "tools/hist001d_d2e.py": "ea0aaebc74738524f7bf071e7594cf2c275d5f9b9aff1f75d04051b7c1f876f2"
+  },
+  "source_lock_sha256": "fa7e77300d7a6e5f095d3781c23eb96bc57fea4c38f76b155278079d7f19913a",
+  "status": "FROZEN_INPUT_PARTITION_ONLY_NO_RESIDUAL_ROOT_CERTIFICATE"
+}
