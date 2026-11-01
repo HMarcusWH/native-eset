@@ -248,7 +248,10 @@
     "docs/HIST001D_D2E_G4B1A_CERTIFIED_REAL_CELL_BARYON_BOXES_STACKED_DRAFT.md": "ca5a2a472d86a437bcb5d9d7484cc5c0a121f044b57ab396c632fdcba405964f",
     "src/native_eset/numerics/hist001d_g4b1b_supplied_finite_H.py": "3bca8df03ab1a5d256999c265dfc61bbb2a0834ee63ba9a35ff0da4bb3a6e54b",
     "tests/historical/test_hist001d_g4b1b_supplied_finite_H.py": "75cab5e7a461e0a6394c0a0884cc393ad303db43501ea58fddc5b7d05e7ffd50",
-    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34"
+    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34",
+    "tools/g4b1c_evidence_replay_gate.py": "1e4a4bd51b5c571afa8da9ff3fff89a317ce806b5c7fa451ba94545ba70e4c79",
+    "tests/historical/test_g4b1c_evidence_replay_gate.py": "a405be7751af686aa961dbd6d73092de44fb61a5532b817100b2443ed802b065",
+    "docs/HIST001D_D2E_G4B1C_EXTERNAL_KIT_REPLAY_GATE_CANDIDATE.md": "0c5ada70a794e16a38431dd71f9fa635afe6cf9296fa0b1261db37be0bc4c7ff"
   },
   "manifest_version": 1
 }
