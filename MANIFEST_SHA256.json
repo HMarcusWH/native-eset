@@ -245,7 +245,10 @@
     "docs/HIST001D_D2E_G4B1_EXACT_BOUNDARY_BRIDGE_STACKED_DRAFT.md": "98167f8ba883004ac5cfdb5355a4820aed24df37ace5b2ebea07836538c54a22",
     "src/native_eset/numerics/hist001d_g4b1a_cell_baryon_boxes.py": "954204fa11dc49be70b011185a8f0d29de23943640cac66996df28d65a61ae39",
     "tests/historical/test_hist001d_g4b1a_cell_baryon_boxes.py": "60b3994acca9920c665e387eff31aa2a38c122158e3eb71f3a6e01a14dd44332",
-    "docs/HIST001D_D2E_G4B1A_CERTIFIED_REAL_CELL_BARYON_BOXES_STACKED_DRAFT.md": "ca5a2a472d86a437bcb5d9d7484cc5c0a121f044b57ab396c632fdcba405964f"
+    "docs/HIST001D_D2E_G4B1A_CERTIFIED_REAL_CELL_BARYON_BOXES_STACKED_DRAFT.md": "ca5a2a472d86a437bcb5d9d7484cc5c0a121f044b57ab396c632fdcba405964f",
+    "src/native_eset/numerics/hist001d_g4b1b_supplied_finite_H.py": "3bca8df03ab1a5d256999c265dfc61bbb2a0834ee63ba9a35ff0da4bb3a6e54b",
+    "tests/historical/test_hist001d_g4b1b_supplied_finite_H.py": "75cab5e7a461e0a6394c0a0884cc393ad303db43501ea58fddc5b7d05e7ffd50",
+    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34"
   },
   "manifest_version": 1
 }
