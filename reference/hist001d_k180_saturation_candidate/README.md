@@ -118,3 +118,21 @@ python verify_archive.py
 All external original input archives remain nested and SHA-protected; no original data are required in public GitHub. `results/` and manifest entries are deterministic. **No promotion** to the original March 180×120 floating algorithm's arbitrary-radius behavior, same-source physical Weyl lensing, current Native ESET v1.7.2 equations, D3/D4 observational validation, cosmology/no-CDM provider or canonical Theory-State graph. Original development-lens fitted 6/6 and separate D2d 11,520-node numerical 3/6 remain different identities. `physical_provider_admitted=false`, `empirical_validation=NOT_ESTABLISHED`, Theory-State v0.16.39 unchanged.
 
 **Next scientific target:** cancellation-sensitive, source-derived **interval integration** of `g(r)phi(A,r)` on the six **root-relevant A-bands**, allowing the integrable `r=A` kernel cusp without a global M2 majorant; a separate validated SciPy/NumPy and clipping operation budget; only then total H and derivative/variation root transport. If source physical/microphysical selection cannot be justified, the result remains mathematical/phenomenological.
+
+## 5. v1r1 source-review correction (2 November 2026; no claim promotion)
+
+The originally archived v1 producer used the field name
+`source_float_S0_at_Rmax_minus_exact_K180_integer_micro_Msun` for an interval
+that actually enclosed **K180 minus recorded source S0**. The v1r1 producer
+preserves that legacy field, adds the correctly signed and explicitly labeled
+`source_float_S0_at_Rmax_minus_exact_K180_CORRECTED_integer_micro_Msun`,
+and asserts the exact interval-negation relation. Historical v1 files remain
+immutable. The producer does not modify the original March inputs or the six
+certified absolute endpoint discrepancy ceilings.
+
+The v1r1 QA now separately requires *all four* six-lens result lists to be
+complete, unique and aligned (rather than using chained `!=` for lengths).
+It rejects **26/26** adversarial claims, including missing, empty, duplicated,
+extra and incorrectly signed records. The source-free suite runs **51 tests**
+including the new signed-interval migration contract. This source-review
+repair is nonpromoting and does not establish a root-aperture error bound.

@@ -7,6 +7,7 @@ import zipfile,io,json,struct,hashlib
 from fractions import Fraction as F
 from pathlib import Path
 from all180_math import euler_gamma, source_mass
+from signed_gap_contract import source_return_minus_k180_from_legacy
 ROOT=Path(__file__).resolve().parent
 TOP_SHA='3cc0f201c40c7b260d8700b1be54709b7643d82eafceb0dc6022d95a4b1ccf18'
 SOURCE_SHA='fa7e77300d7a6e5f095d3781c23eb96bc57fea4c38f76b155278079d7f19913a'
@@ -59,6 +60,7 @@ def calculate():
         h=[r[i+1]-r[i] for i in range(179)]
         wmath=[h[0]/2]+[(h[i-1]+h[i])/2 for i in range(1,179)]+[h[-1]/2]
         weightdelta=sum((abs(w[i]-wmath[i])*C*r[i]**2*rho[i] for i in range(180)),F())
+        legacy_signed_gap=[floor(source_report_gap*10**6),ceil(source_report_gap*10**6)]
         v={
             'lens_id':c['lens_id'], 'source_180_node_sha256':c['node_sha256'],
             'original_exact_binary64_R0':r[0].hex() if hasattr(r[0],'hex') else rows[0][0].hex(),
@@ -67,7 +69,9 @@ def calculate():
             'selected_mathematical_Msh_mass_change_interval_integer_Msun':[floor(continuous_mass.low()),ceil(continuous_mass.high())],
             'recorded_original_S0_at_Rmax_source_binary64_Msun':rows[-1][5].hex(),
             'K180_original_stored_weight_exact_rational_minus_continuum_mass_interval_integer_micro_Msun':[floor(discrepancy.low()*10**6),ceil(discrepancy.high()*10**6)],
-            'source_float_S0_at_Rmax_minus_exact_K180_integer_micro_Msun':[floor(source_report_gap*10**6),ceil(source_report_gap*10**6)],
+            'source_float_S0_at_Rmax_minus_exact_K180_integer_micro_Msun':legacy_signed_gap,
+            'source_float_S0_at_Rmax_minus_exact_K180_CORRECTED_integer_micro_Msun':source_return_minus_k180_from_legacy(legacy_signed_gap),
+            'legacy_signed_field_warning':'V1_LEGACY_KEY_IS_K180_MINUS_S0_NOT_S0_MINUS_K180',
             'original_weight_vs_ideal_exact_mesh_weight_error_upper_micro_Msun':ceil(weightdelta*10**6),
             'source_specific_K180_vs_smooth_M_endpoints_absolute_error_upper_milli_Msun':ceil(discrepancy.bound_abs()*10**3),
             'original_source_S0_at_Rmax_vs_smooth_M_endpoints_absolute_error_upper_milli_Msun':ceil((continuous_mass-F.from_float(rows[-1][5])).bound_abs()*10**3),

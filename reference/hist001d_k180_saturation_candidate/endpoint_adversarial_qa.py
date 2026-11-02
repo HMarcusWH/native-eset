@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Fail-closed identity/claim/bound checks for a narrow endpoint-only math certificate."""
 import hashlib,json,copy
+from signed_gap_contract import source_return_minus_k180_from_legacy
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 SOURCE='fa7e77300d7a6e5f095d3781c23eb96bc57fea4c38f76b155278079d7f19913a'
@@ -21,10 +22,13 @@ def validate(results):
     if c['original_source_true_physical_continuum_bound_proved'] or c['useful_full_March_H_root_error_proved'] or d['original_continuous_root_theorem_proved']:raise ValueError('scope BV')
     if e['selected_smooth_Msh_law_preserved_by_bump'] or e['physical_density_source_admitted'] or e['continuum_projected_mass_difference_exact_Msun']!='1000000000':raise ValueError('counterexample scope')
     if any(q.get('physical_provider_admitted') is not False or q.get('empirical_validation')!='NOT_ESTABLISHED' for q in [a,b,c,d]):raise ValueError('physical claim')
-    if len(a['lenses'])!=len(b['lenses'])!=len(c['lenses'])!=len(d['lenses'])!=6:raise ValueError('lens length')
-    if {x['lens_id'] for x in a['lenses']}!=LENSES or {x['lens_id'] for x in b['lenses']}!=LENSES:raise ValueError('lens set')
+    lens_lists=[a['lenses'],b['lenses'],c['lenses'],d['lenses']]
+    if any(len(xs)!=6 for xs in lens_lists):raise ValueError('lens length')
+    if any({x['lens_id'] for x in xs}!=LENSES for xs in lens_lists):raise ValueError('lens set')
     for x,y,z,w in zip(a['lenses'],b['lenses'],c['lenses'],d['lenses']):
         if x['lens_id']!=y['lens_id'] or z['lens_id']!=x['lens_id'] or w['lens_id']!=x['lens_id']:raise ValueError('lens alignment')
+        if x['source_float_S0_at_Rmax_minus_exact_K180_CORRECTED_integer_micro_Msun'] != source_return_minus_k180_from_legacy(x['source_float_S0_at_Rmax_minus_exact_K180_integer_micro_Msun']):raise ValueError('signed field inversion')
+        if x.get('legacy_signed_field_warning')!='V1_LEGACY_KEY_IS_K180_MINUS_S0_NOT_S0_MINUS_K180':raise ValueError('legacy sign convention')
         if x['source_specific_K180_vs_smooth_M_endpoints_absolute_error_upper_milli_Msun']>=100:raise ValueError('saturated error cap')
         if y['independent_K180_absolute_error_upper_milli_Msun']>x['source_specific_K180_vs_smooth_M_endpoints_absolute_error_upper_milli_Msun']:raise ValueError('producer understated')
         if y['independent_original_S0_absolute_error_upper_milli_Msun']>x['original_source_S0_at_Rmax_vs_smooth_M_endpoints_absolute_error_upper_milli_Msun']:raise ValueError('original S0 understated')
@@ -59,6 +63,16 @@ def main():
     tamper('bump_claim_not_exact',lambda x:x[4].update(continuum_projected_mass_difference_exact_Msun='999999999'))
     tamper('independent_S0_more_than_producer',lambda x:x[1]['lenses'][0].update(independent_original_S0_absolute_error_upper_milli_Msun=200))
     tamper('wrong_result_schema',lambda x:x[2].update(schema='not-the-model'))
+    tamper('missing_cellwise_lens',lambda x:x[2]['lenses'].pop())
+    tamper('missing_independent_BV_lens',lambda x:x[3]['lenses'].pop())
+    tamper('empty_cellwise_lenses',lambda x:x[2].update(lenses=[]))
+    tamper('empty_independent_BV_lenses',lambda x:x[3].update(lenses=[]))
+    tamper('duplicate_cellwise_lens',lambda x:x[2]['lenses'][0].update(lens_id=x[2]['lenses'][1]['lens_id']))
+    tamper('duplicate_independent_BV_lens',lambda x:x[3]['lenses'][0].update(lens_id=x[3]['lenses'][1]['lens_id']))
+    tamper('extra_cellwise_lens',lambda x:x[2]['lenses'].append(copy.deepcopy(x[2]['lenses'][0])))
+    tamper('extra_independent_BV_lens',lambda x:x[3]['lenses'].append(copy.deepcopy(x[3]['lenses'][0])))
+    tamper('wrong_signed_gap',lambda x:x[0]['lenses'][0].update(source_float_S0_at_Rmax_minus_exact_K180_CORRECTED_integer_micro_Msun=[0,0]))
+    tamper('missing_signed_warning',lambda x:x[0]['lenses'][0].pop('legacy_signed_field_warning'))
     result={'schema':'HIST001D_MARCH180_K180_SATURATION_QA_V1','cases':cases,'all_rejected':True,
             'physical_provider_admitted':False,'empirical_validation':'NOT_ESTABLISHED'}
     path=ROOT/'endpoint_adversarial_qa.json';path.write_bytes((json.dumps(result,sort_keys=True,indent=2)+'\n').encode())
