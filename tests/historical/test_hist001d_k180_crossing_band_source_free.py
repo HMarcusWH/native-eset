@@ -11,7 +11,7 @@ import pytest
 HERE=Path(__file__).resolve().parents[2]/'reference'
 sys.path.insert(0,str(HERE/'hist001d_k180_crossing_band_candidate'))
 sys.path.insert(0,str(HERE/'hist001d_k180_root_aperture_candidate'))
-from crossing_band_certifier import min_quad,certify_panel,q_and_gradient
+from crossing_band_certifier import min_quad,certify_panel,q_and_gradient  # noqa: E402
 from verify_band_witness import exact_panel_floor,check_lens  # noqa: E402
 from root_aperture_certifier import Iv  # noqa: E402
 

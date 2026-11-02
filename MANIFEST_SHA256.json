@@ -274,7 +274,7 @@
     "reference/hist001d_k180_crossing_band_candidate/crossing_band_certifier.py": "86a3185b73ff2a02a3ae443a09f165e2622e6976e78cadb7000a7e7267b0877b",
     "reference/hist001d_k180_crossing_band_candidate/selected_mass_prime_positive.py": "bad59082a950c67d3d433500419fea43cd22abbd1edb3a5fdc560c6346cadc61",
     "reference/hist001d_k180_crossing_band_candidate/verify_band_witness.py": "791243223a074b3026cd824e17ad2aa23faac4ac3a3eacb1c1b15b28b7a36375",
-    "tests/historical/test_hist001d_k180_crossing_band_source_free.py": "59dc0f47d025d74b18a62550a3d50cf9977092cc1b848d814c6053a96fcda761"
+    "tests/historical/test_hist001d_k180_crossing_band_source_free.py": "873efb794c83cc60236a93e9c45023209774848c51efcef3497934f0aed291d9"
   },
   "manifest_version": 1
 }
