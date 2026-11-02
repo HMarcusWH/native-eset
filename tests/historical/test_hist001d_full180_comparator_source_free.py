@@ -1,6 +1,7 @@
 """Source-free arithmetic and scientific claim-firewall tests; not a proof of original source or physics."""
 from __future__ import annotations
-import math,sys
+import math
+import sys
 from fractions import Fraction as F
 from pathlib import Path
 import pytest
