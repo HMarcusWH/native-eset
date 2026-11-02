@@ -257,7 +257,7 @@
     "reference/hist001d_march_c3_candidate/independent_verify.py": "f9e6f0f335dd41798a33f4edb72bc3848bd704ced792c171c3236da5c40b355e",
     "reference/hist001d_march_c3_candidate/produce.py": "fae606ad83ee9bb6c54ad4d5e61258f1438653532283e08c27ad5c5b9816aeb6",
     "reference/hist001d_march_c3_candidate/verify_archive.py": "0e752087ba6b7bbe7439680260eba323bb3623f06be28ff764c10520920acc5f",
-    "tests/historical/test_hist001d_march_c3_source_free.py": "b153a8bb7422e08eca1916ba3e5609e1967e76901328750297df64f75ece8c61"
+    "tests/historical/test_hist001d_march_c3_source_free.py": "14f0e42d902b73c2bbb02f8a0dc5d3ab8e958fa7e1646da71c17efdd5521e3f5"
   },
   "manifest_version": 1
 }
