@@ -1,7 +1,6 @@
 """Source-free algebra/contract checks only; no implicit historical source replay."""
 from __future__ import annotations
 import importlib.util
-import json
 import struct
 from fractions import Fraction
 from pathlib import Path
