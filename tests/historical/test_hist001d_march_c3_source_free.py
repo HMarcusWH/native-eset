@@ -7,7 +7,8 @@ import pytest
 ARCHIVE_SRC=Path(__file__).resolve().parents[1]/'src'
 REPO_SRC=Path(__file__).resolve().parents[2]/'reference'/'hist001d_march_c3_candidate'
 sys.path.insert(0,str(ARCHIVE_SRC if ARCHIVE_SRC.is_dir() else REPO_SRC))
-from c3_envelope import (ceil_sqrt_fraction,K_half_polynomial,bound_F_derivative,
+from c3_envelope import (  # noqa: E402 - path points to original frozen reference source
+    ceil_sqrt_fraction,K_half_polynomial,bound_F_derivative,
                          bound_acceleration_baryon_derivatives,bound_gate_derivatives,
                          bound_shadow_M_derivatives,split_interval,certify_mesh)
 
@@ -93,7 +94,8 @@ def test_gate_disallows_unvalidated_n_and_delta():
 
 
 def test_claim_firewall_source_free_static():
-    import inspect, produce
+    import inspect
+    import produce
     assert produce.EXPECTED_46P3 == 'fa7e77300d7a6e5f095d3781c23eb96bc57fea4c38f76b155278079d7f19913a'
     source=inspect.getsource(produce.build)
     for key in ('float_operation_error_certified',
