@@ -267,7 +267,14 @@
     "tests/historical/test_hist001d_k180_signed_gap_source_free.py": "a987b6104a8d1ff2c94acac51a091805923a2baf24b8c4b596f0d4904933d605",
     "reference/hist001d_k180_root_aperture_candidate/root_aperture_certifier.py": "3924e14d0a8de9a71d2ae13da2a1a51a1c9836f459c2aaa2b2613a141bef33ab",
     "tests/historical/test_hist001d_k180_root_aperture_source_free.py": "3aee32f01b19e775c6f2f49b14f299dc600d61a7f0e26e368d27d53c69c85c57",
-    "docs/HIST001D_ROOT_APERTURE_FIXED_DIAGNOSTIC_INTERVAL_NONPROMOTING.md": "745868a083c16027eee1f01013e8c6f44d2a51b52a4c2dff98450d7e0199d1aa"
+    "docs/HIST001D_ROOT_APERTURE_FIXED_DIAGNOSTIC_INTERVAL_NONPROMOTING.md": "745868a083c16027eee1f01013e8c6f44d2a51b52a4c2dff98450d7e0199d1aa",
+    "docs/HIST001D_K180_SIX_CROSSING_BANDS_SCOPE.md": "b88991005a834decd384eb518f308a1305ebdd9823ad3ed457867a579bd64bed",
+    "reference/hist001d_k180_crossing_band_candidate/README.md": "e109e9a5d3a3b41f9ad9d7400f5206772d1c6ebaed2169a2fcb7797f1dff4669",
+    "reference/hist001d_k180_crossing_band_candidate/assemble_receipt.py": "9bb4a47bf51d98eef95609278818b7719f893f07810a3012cd13c824a4d18321",
+    "reference/hist001d_k180_crossing_band_candidate/crossing_band_certifier.py": "86a3185b73ff2a02a3ae443a09f165e2622e6976e78cadb7000a7e7267b0877b",
+    "reference/hist001d_k180_crossing_band_candidate/selected_mass_prime_positive.py": "bad59082a950c67d3d433500419fea43cd22abbd1edb3a5fdc560c6346cadc61",
+    "reference/hist001d_k180_crossing_band_candidate/verify_band_witness.py": "791243223a074b3026cd824e17ad2aa23faac4ac3a3eacb1c1b15b28b7a36375",
+    "tests/historical/test_hist001d_k180_crossing_band_source_free.py": "873efb794c83cc60236a93e9c45023209774848c51efcef3497934f0aed291d9"
   },
   "manifest_version": 1
 }
