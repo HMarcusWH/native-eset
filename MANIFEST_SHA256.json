@@ -260,7 +260,7 @@
     "reference/hist001d_bridge_candidate/src/source_replay_from_archives.py": "6ce7600847a1ac1cdfc2fa77fee76bb8fee0ed1dec51c1d0329350acd95f5d60",
     "reference/hist001d_bridge_candidate/src/target_quadratic_exact.py": "427c9699ef4a6e3ab62a8bd615aab3de09744097dd388a7ea0600cf83c8aa444",
     "reference/hist001d_bridge_candidate/src/target_quadratic_independent.py": "3c43637d530ddef3292d71ced9263e79f24c18c2f99f6c6e47e91c56bac86f45",
-    "tests/historical/test_hist001d_source_bridge_math_source_free.py": "63c6ac72cd2a57ac142616c48203b9952a821c1caa8f9e78991c5dfb90b37349"
+    "tests/historical/test_hist001d_source_bridge_math_source_free.py": "fcdc5957436a9182f45e0c66a7f2e5593100daa259f94941d9e67a31f834fe18"
   },
   "manifest_version": 1
 }
