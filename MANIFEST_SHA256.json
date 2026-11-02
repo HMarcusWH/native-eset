@@ -264,7 +264,10 @@
     "tests/historical/test_hist001d_k180_conservation_source_free.py": "c1ecf4c3c497e1e14d36295b5ba6ba4ea4af776bd262d4ef41426e6a6223c3cb",
     "tests/historical/test_hist001d_k180_bv_source_free.py": "167f7397f1825bf2b86ef4d426ccc474052871876385aecb439185df54ab408c",
     "reference/hist001d_k180_saturation_candidate/signed_gap_contract.py": "91f126b4152d70e61e2fe33122acd9e87277055e65d88b028949661610324313",
-    "tests/historical/test_hist001d_k180_signed_gap_source_free.py": "a987b6104a8d1ff2c94acac51a091805923a2baf24b8c4b596f0d4904933d605"
+    "tests/historical/test_hist001d_k180_signed_gap_source_free.py": "a987b6104a8d1ff2c94acac51a091805923a2baf24b8c4b596f0d4904933d605",
+    "reference/hist001d_k180_root_aperture_candidate/root_aperture_certifier.py": "3924e14d0a8de9a71d2ae13da2a1a51a1c9836f459c2aaa2b2613a141bef33ab",
+    "tests/historical/test_hist001d_k180_root_aperture_source_free.py": "3aee32f01b19e775c6f2f49b14f299dc600d61a7f0e26e368d27d53c69c85c57",
+    "docs/HIST001D_ROOT_APERTURE_FIXED_DIAGNOSTIC_INTERVAL_NONPROMOTING.md": "745868a083c16027eee1f01013e8c6f44d2a51b52a4c2dff98450d7e0199d1aa"
   },
   "manifest_version": 1
 }
