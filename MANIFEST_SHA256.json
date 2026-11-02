@@ -248,7 +248,16 @@
     "docs/HIST001D_D2E_G4B1A_CERTIFIED_REAL_CELL_BARYON_BOXES_STACKED_DRAFT.md": "ca5a2a472d86a437bcb5d9d7484cc5c0a121f044b57ab396c632fdcba405964f",
     "src/native_eset/numerics/hist001d_g4b1b_supplied_finite_H.py": "3bca8df03ab1a5d256999c265dfc61bbb2a0834ee63ba9a35ff0da4bb3a6e54b",
     "tests/historical/test_hist001d_g4b1b_supplied_finite_H.py": "75cab5e7a461e0a6394c0a0884cc393ad303db43501ea58fddc5b7d05e7ffd50",
-    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34"
+    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34",
+    "docs/HIST001D_D2E_ORIGINAL_MARCH_BESSEL_DERIVATIVE_SUPREMA_CANDIDATE.md": "84c7d1c3d10a6c0c36a8a33e8f1cf2e9b7c76323a7872a45ea08e95c9609513c",
+    "reference/hist001d_march_c3_candidate/README.md": "86846b52412162974312135021af50cdad0d518b853bccb0a4acd5758658cac8",
+    "reference/hist001d_march_c3_candidate/adversarial_qa.py": "1f2f3a55e35c07112614442529e1e89d92088df9d61e6480bca9175bf31fda5b",
+    "reference/hist001d_march_c3_candidate/c3_envelope.py": "d744571e1a0202dc3c3f640ddf7d4dca5dd969a2210b7f5fca75bec2e001c512",
+    "reference/hist001d_march_c3_candidate/highprecision_sanity.py": "71d13ebe125a1391af424b55482854b7cfe5c1a8307ee22214d28a804c3fe3fd",
+    "reference/hist001d_march_c3_candidate/independent_verify.py": "f9e6f0f335dd41798a33f4edb72bc3848bd704ced792c171c3236da5c40b355e",
+    "reference/hist001d_march_c3_candidate/produce.py": "fae606ad83ee9bb6c54ad4d5e61258f1438653532283e08c27ad5c5b9816aeb6",
+    "reference/hist001d_march_c3_candidate/verify_archive.py": "0e752087ba6b7bbe7439680260eba323bb3623f06be28ff764c10520920acc5f",
+    "tests/historical/test_hist001d_march_c3_source_free.py": "b153a8bb7422e08eca1916ba3e5609e1967e76901328750297df64f75ece8c61"
   },
   "manifest_version": 1
 }
