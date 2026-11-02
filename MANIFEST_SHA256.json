@@ -248,7 +248,16 @@
     "docs/HIST001D_D2E_G4B1A_CERTIFIED_REAL_CELL_BARYON_BOXES_STACKED_DRAFT.md": "ca5a2a472d86a437bcb5d9d7484cc5c0a121f044b57ab396c632fdcba405964f",
     "src/native_eset/numerics/hist001d_g4b1b_supplied_finite_H.py": "3bca8df03ab1a5d256999c265dfc61bbb2a0834ee63ba9a35ff0da4bb3a6e54b",
     "tests/historical/test_hist001d_g4b1b_supplied_finite_H.py": "75cab5e7a461e0a6394c0a0884cc393ad303db43501ea58fddc5b7d05e7ffd50",
-    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34"
+    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34",
+    "docs/HIST001D_12_CROSSING_NODE_RATIONAL_GRADIENT_SOURCE_REVIEW.md": "28b20acaaeb547a85d69edf1415a9ff2975dedca5b9c25860e42ae2300d8ea0b",
+    "reference/hist001d_crossing_12node_rational_candidate/README.md": "d5a7d07fa0cc4b5cb816bf706e1c2a153c6200f56a6338512c3723df5b2bfa22",
+    "reference/hist001d_crossing_12node_rational_candidate/first_node_certificate.py": "50a58a7c16f3c81be494ea9f73f4d2e7a4fb14cd3d89770a896ac361a06a36ce",
+    "reference/hist001d_crossing_12node_rational_candidate/independent_first_node.py": "aa19e21af40574741bfa0ee1984a95d37aaaa014fa86db07f3c05c5cf9e83c81",
+    "reference/hist001d_crossing_12node_rational_candidate/crossing_node_producer.py": "267d21f8342714ddd3b1ef6318dff0c7af48d2d772a06126c2b21502d2bea575",
+    "reference/hist001d_crossing_12node_rational_candidate/crossing_node_independent.py": "0dbd5b95e538eeb8775a2932b29e55a56220ab2d79539f7246a204d5709a9661",
+    "reference/hist001d_crossing_12node_rational_candidate/adversarial_crossing_node.py": "1dfd4a868455c147e99d04483e5a0a72edc005ec2b273dc03d01f3466e9fae62",
+    "reference/hist001d_crossing_12node_rational_candidate/verify_archive.py": "3b44b98750e0fdc82f814fbbd4af1414b3e3a631cbbd572d5f2746f49a9e8911",
+    "tests/historical/test_hist001d_crossing_12node_rational_sourcefree.py": "396517bd360acaef7a6bcb1822f519e67e29e74e6243a371fae8d9c467342a00"
   },
   "manifest_version": 1
 }
