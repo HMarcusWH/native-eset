@@ -248,7 +248,19 @@
     "docs/HIST001D_D2E_G4B1A_CERTIFIED_REAL_CELL_BARYON_BOXES_STACKED_DRAFT.md": "ca5a2a472d86a437bcb5d9d7484cc5c0a121f044b57ab396c632fdcba405964f",
     "src/native_eset/numerics/hist001d_g4b1b_supplied_finite_H.py": "3bca8df03ab1a5d256999c265dfc61bbb2a0834ee63ba9a35ff0da4bb3a6e54b",
     "tests/historical/test_hist001d_g4b1b_supplied_finite_H.py": "75cab5e7a461e0a6394c0a0884cc393ad303db43501ea58fddc5b7d05e7ffd50",
-    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34"
+    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34",
+    "docs/HIST001D_MARCH_VS_PROXY_DISCREPANCY_SOURCE_REVIEW.md": "356bd4ff71178b6ead5e1016ce11f5e39ef23f0ff6a3cd6c42bd6ae9053e33ce",
+    "reference/hist001d_bridge_candidate/src/bridge_adversarial_qa.py": "ffec7b6a0172733996e4b0918ea471416e8d9fc331521efe2cc5cd0be69de926",
+    "reference/hist001d_bridge_candidate/src/bridge_exact.py": "ec62be84a883b343583a9e53e1d5d3566c476ac2e1ab06394b8e1b3b3a29cd98",
+    "reference/hist001d_bridge_candidate/src/bridge_independent.py": "d29ba2c0331dd5169b765fad57cd26da2ae3f48d9cb8efa163681a870de50ea6",
+    "reference/hist001d_bridge_candidate/src/component_independent.py": "878026a458f95abcb664b0e204ddb80647a16a91f18e28dfd8ec6c5f32bd445b",
+    "reference/hist001d_bridge_candidate/src/component_interval.py": "bdbbcc7a577c750e53ade72b31a9deaa1c5b8675e5bde14efeab2a9728cab950",
+    "reference/hist001d_bridge_candidate/src/original_component_trace.py": "979243876c427db3c21cf772814895cb4200f87b1bef2f9bb086d133ecf087b3",
+    "reference/hist001d_bridge_candidate/src/reproduce_bridge.py": "084f4959068245d9295e724f7ba95e637cd8af2841c1e8048c0510ae30c1f458",
+    "reference/hist001d_bridge_candidate/src/source_replay_from_archives.py": "6ce7600847a1ac1cdfc2fa77fee76bb8fee0ed1dec51c1d0329350acd95f5d60",
+    "reference/hist001d_bridge_candidate/src/target_quadratic_exact.py": "427c9699ef4a6e3ab62a8bd615aab3de09744097dd388a7ea0600cf83c8aa444",
+    "reference/hist001d_bridge_candidate/src/target_quadratic_independent.py": "3c43637d530ddef3292d71ced9263e79f24c18c2f99f6c6e47e91c56bac86f45",
+    "tests/historical/test_hist001d_source_bridge_math_source_free.py": "fcdc5957436a9182f45e0c66a7f2e5593100daa259f94941d9e67a31f834fe18"
   },
   "manifest_version": 1
 }
