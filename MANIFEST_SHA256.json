@@ -248,7 +248,15 @@
     "docs/HIST001D_D2E_G4B1A_CERTIFIED_REAL_CELL_BARYON_BOXES_STACKED_DRAFT.md": "ca5a2a472d86a437bcb5d9d7484cc5c0a121f044b57ab396c632fdcba405964f",
     "src/native_eset/numerics/hist001d_g4b1b_supplied_finite_H.py": "3bca8df03ab1a5d256999c265dfc61bbb2a0834ee63ba9a35ff0da4bb3a6e54b",
     "tests/historical/test_hist001d_g4b1b_supplied_finite_H.py": "75cab5e7a461e0a6394c0a0884cc393ad303db43501ea58fddc5b7d05e7ffd50",
-    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34"
+    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34",
+    "docs/HIST001D_ORIGINAL_MARCH180_SHADOW_GRADIENT_ANALYTIC_SOURCE_GAP_CANDIDATE.md": "1fe866f5dc79c040cf029c9793e865659e17e15ac0aa4224a0af9137250dbf62",
+    "reference/hist001d_smooth_msh_gradient_candidate/README.md": "371e1cdd4f59a70843508fcd920f3df6a15a1b90d99390b07cccc2b5eef82cf6",
+    "reference/hist001d_smooth_msh_gradient_candidate/adversarial_qa.py": "056d72cdbcfcf198e56bb3e31d944fb444e253e3b482c552701d857e93c7ebba",
+    "reference/hist001d_smooth_msh_gradient_candidate/independent_verify.py": "7f7393ef886715c0b50bd320083c11c07e1851891420c7b3532edfcf8558e6e0",
+    "reference/hist001d_smooth_msh_gradient_candidate/producer.py": "b114fcdea4b652fe85cd1f675c598d0617d75530a925c9fb8833567c207b4b21",
+    "reference/hist001d_smooth_msh_gradient_candidate/smooth_math.py": "cb79165ed76dc8a88dc218615d0357bcdaf60e0354655cd3c83b1e74408b2061",
+    "reference/hist001d_smooth_msh_gradient_candidate/verify.py": "14075cc2dd3be7d52f4e9082673905ce333c1b20b99a5dafe9fe7ea9d2d38a56",
+    "tests/historical/test_hist001d_source_smooth_shadow_gradient_sourcefree.py": "75d62404effaa5da13bc6b4f30f8f72f24fdbed1bcc9bddac2344c33d7d64c48"
   },
   "manifest_version": 1
 }
