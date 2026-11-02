@@ -248,7 +248,21 @@
     "docs/HIST001D_D2E_G4B1A_CERTIFIED_REAL_CELL_BARYON_BOXES_STACKED_DRAFT.md": "ca5a2a472d86a437bcb5d9d7484cc5c0a121f044b57ab396c632fdcba405964f",
     "src/native_eset/numerics/hist001d_g4b1b_supplied_finite_H.py": "3bca8df03ab1a5d256999c265dfc61bbb2a0834ee63ba9a35ff0da4bb3a6e54b",
     "tests/historical/test_hist001d_g4b1b_supplied_finite_H.py": "75cab5e7a461e0a6394c0a0884cc393ad303db43501ea58fddc5b7d05e7ffd50",
-    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34"
+    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34",
+    "reference/hist001d_k180_saturation_candidate/README.md": "1f343330b98122443f19e3c0b70e399171d19392dc339f1f21e79420f2bf1606",
+    "reference/hist001d_k180_saturation_candidate/all180_independent.py": "478f96c15fc177653f7d257383479bef4850fb71bc54cdd2f21fd67ef492ab0e",
+    "reference/hist001d_k180_saturation_candidate/all180_math.py": "d24f96b3715a1a6f64a22bf2d3f24f1d3cbaa7413b521b8f68b7d760a4eb6864",
+    "reference/hist001d_k180_saturation_candidate/all_aperture_bv.py": "2acdaa1e0c1dc254c8e04a7597fdbb65eb06a166a2fb252eb07f85bfc50ea53f",
+    "reference/hist001d_k180_saturation_candidate/all_aperture_bv_independent.py": "03fada9b5529afe74ab8f4b0cad7eab7ac92e0861185864c397da509f47258c2",
+    "reference/hist001d_k180_saturation_candidate/conservation_identity.py": "262cbce7c7d40c7ba8c464659befbee3c310611382f4ff955d4918ee6cf9722f",
+    "reference/hist001d_k180_saturation_candidate/endpoint_adversarial_qa.py": "12e437d645c0bd4c907bbd79ea5d70f7f3549c89df0b495b066df78b84801e40",
+    "reference/hist001d_k180_saturation_candidate/endpoint_independent.py": "38c6b062de82ec256dd6652a9428dc8492c3cf84995cf532abd49a8df2057d64",
+    "reference/hist001d_k180_saturation_candidate/endpoint_producer.py": "594853743959946936e84f524b898aff414e2df90a69c4055b719656e95fa115",
+    "reference/hist001d_k180_saturation_candidate/node_identifiability_obstruction.py": "ad98e74ed03df99bba74c151db12dc6fc46ce0cb46c36cc55665e2b468ec95c5",
+    "reference/hist001d_k180_saturation_candidate/verify_archive.py": "d64f4754faeef8a3082ce3ff47e9498dd47d1e1553095c2ce82fe1a96af1dc43",
+    "tests/historical/test_hist001d_k180_bv_source_free.py": "167f7397f1825bf2b86ef4d426ccc474052871876385aecb439185df54ab408c",
+    "tests/historical/test_hist001d_k180_conservation_source_free.py": "c1ecf4c3c497e1e14d36295b5ba6ba4ea4af776bd262d4ef41426e6a6223c3cb",
+    "docs/HIST001D_MARCH180_K180_SATURATED_ENDPOINT_IDENTITY_SCOPE.md": "6280c5b422cceab5c99be4ae3b1ea080f3ac7ec4ce36d9d3d3c5b793dfc1ece3"
   },
   "manifest_version": 1
 }
