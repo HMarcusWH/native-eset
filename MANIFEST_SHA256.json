@@ -256,7 +256,7 @@
     "reference/hist001d_full180_comparator_candidate/independent_verify.py": "9e22b6fadcf45e7e22c5430a5c313267caab8413c308c259b23bdb2969f87af2",
     "reference/hist001d_full180_comparator_candidate/producer.py": "f4b8edfbaeee674ba3fda7a01f5365ea7f3db47c31ec21ac0d0f9d433947c758",
     "reference/hist001d_full180_comparator_candidate/verify_bundle.py": "7405b219cebad5ea25c32507c445458a096d56865887105c316357a6d93d6ae3",
-    "tests/historical/test_hist001d_full180_comparator_source_free.py": "bcefbae48b7678661b8d9cd31350f76c8e4021ebff122ce97d138d79404939a3"
+    "tests/historical/test_hist001d_full180_comparator_source_free.py": "6d7fbd4f9649dbeed6c902034b052133f0a73463baafd1fd56e33d2a5f7d866b"
   },
   "manifest_version": 1
 }
