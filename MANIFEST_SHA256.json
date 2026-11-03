@@ -284,7 +284,15 @@
     "reference/hist001d_full_h_bridge_candidate/validate_bridge_summary.py": "16e78e8903e8a3e803b25c6b8a99cf2d51da439838435ee3ad11dc87c35b6ca0",
     "reference/hist001d_full_h_bridge_candidate/verify_full_h_witness.py": "76d25a10ee9d2d50a2819975162356af68d1020833d7069e68838427c8d2714d",
     "reference/hist001d_full_h_bridge_candidate/verify_release.py": "bd5ffc453d40264d0ff8e689fad1577c812cd60b73d14af9ee374f41975c5bb6",
-    "tests/historical/test_hist001d_full_h_bridge_source_free.py": "18046808aa5e59ff93af111f9be3add3f73971798302a661abbb7d0a0bfdd98c"
+    "tests/historical/test_hist001d_full_h_bridge_source_free.py": "18046808aa5e59ff93af111f9be3add3f73971798302a661abbb7d0a0bfdd98c",
+    "docs/HIST001D_ORIGINAL_FLOAT_POSTPROCESSING_SCOPE.md": "94c2b9c0b54ddc2dd00dd328fed1cd76c2a6c5bbb24b546056c88048a230bba7",
+    "reference/hist001d_original_float_bridge_candidate/README.md": "e9c81a4898a0f6d231db32a033fe9e3b6ec8f3fe7b1863cbf8f3e24b7f82887c",
+    "reference/hist001d_original_float_bridge_candidate/adversarial_qa.py": "8cdbb9e87edc8df226a8dedc08d48bbdb1fe48cbae9c1aa92f68c6ca49b63356",
+    "reference/hist001d_original_float_bridge_candidate/claim_guard.py": "3b67f2bab5a4d25c87423a59519c7441ef3e5746821034430ed54e33bf45e3bc",
+    "reference/hist001d_original_float_bridge_candidate/float_bridge.py": "3c747459003bce08a57f36e460281c6d1deb6e2dd3ee4c7dfe0882682646519a",
+    "reference/hist001d_original_float_bridge_candidate/independent_float_check.py": "3f7d01be081e565b8390b16145341f7bf1796ccb953434b094d8bd8e6f4c5e03",
+    "reference/hist001d_original_float_bridge_candidate/verify_release.py": "fdbd5b60ecbf81585d47f6b54ef3be5026e1bf4a2e1832571b491cc11df004c7",
+    "tests/historical/test_hist001d_original_float_bridge_source_free.py": "3c6c8cb3622703a7317397df0af7369a5d4d1e853dca905798cdd054dc5fd38e"
   },
   "manifest_version": 1
 }
