@@ -307,7 +307,14 @@
     "reference/hist001d_upstream_bessel_candidate/independent_stencil_check.py": "3c94a28cbee8b0e4d24116df794325a6f9964860dfb3a8ebaedb5ecbe1bb973d",
     "reference/hist001d_upstream_bessel_candidate/upstream_float_split.py": "b1fb42a387dea3f0cbad543015a5873627faec9b05cba2d49f11506a8c3e5e6a",
     "reference/hist001d_upstream_bessel_candidate/verify_release.py": "ae04a6bec0d1c3c2d3ab99eb4c724482abf9b4d282534c8cefeeb1f0fdd4f434",
-    "tests/historical/test_hist001d_upstream_bessel_mass_sourcefree.py": "daf2cc91b39973d25cf7c1f4617e8cd22e9398a2a81263f167a99cfaf727b0c4"
+    "tests/historical/test_hist001d_upstream_bessel_mass_sourcefree.py": "daf2cc91b39973d25cf7c1f4617e8cd22e9398a2a81263f167a99cfaf727b0c4",
+    "docs/HIST001D_K180_SIGNED_STENCIL_QUADRATURE_DECOMPOSITION_SCOPE.md": "042802c81637fa491bfa6142d45670b77c0f6607aca6e9bdef80c1fd7cbfefc5",
+    "reference/hist001d_k180_signed_stencil_candidate/README.md": "c08739c7e983ce7f8f2833ad6f4893029cf72ae1ca3db127416690a21d5f53f6",
+    "reference/hist001d_k180_signed_stencil_candidate/adversarial_signed_bias.py": "46960754429e76e383863c7213407ba9f58a4e34ac3cbde0b9598944db28f6b3",
+    "reference/hist001d_k180_signed_stencil_candidate/finite_difference_bias.py": "263c239be1f9ba09641672fb57f6c07b366f092b556592a82967c9c0d0092cea",
+    "reference/hist001d_k180_signed_stencil_candidate/verify_release.py": "55b9bbe9d16d12450fb81587f7e51bd8bc100847d673f7f414d97711eccd8bba",
+    "reference/hist001d_k180_signed_stencil_candidate/verify_signed_bias.py": "6336699f12f392472f37d7d41675fb4ab459013690b530781ad749b89f1df02d",
+    "tests/historical/test_hist001d_k180_signed_stencil_source_free.py": "fcff028d2a1241796e050cb4444f431dc29c311d874a36ab4391294097238bc6"
   },
   "manifest_version": 1
 }
