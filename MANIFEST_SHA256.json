@@ -335,7 +335,15 @@
     "reference/hist001d_k180_inter_node_candidate/verify_band_bv.py": "b10a426c32898fb7a08a54a72cc948023d6ed86ec8f77eef5fefe2e80505a5cc",
     "reference/hist001d_k180_inter_node_candidate/verify_inter_node.py": "20ad814bf96c451d13bc9c5edbdde49c0a1d1898aa023bec8425cfe2f9523f7b",
     "reference/hist001d_k180_inter_node_candidate/verify_release.py": "64019e7ec5e90ce67064111b5705dba7fd0eb667524f99fb71c6cba9c40e0d04",
-    "tests/historical/test_hist001d_k180_inter_node_source_free.py": "c6fb6f57543547ebd6de968f798543d4403dc581dfb9e2c8e57afaeac79b6baf"
+    "tests/historical/test_hist001d_k180_inter_node_source_free.py": "c6fb6f57543547ebd6de968f798543d4403dc581dfb9e2c8e57afaeac79b6baf",
+    "docs/HIST001D_CANCEL_AWARE_AFFINE_MASS_BAND_SCOPE.md": "5a12d270c46ccc8a1d80a905f85c7614d71fedadd236bc4fa986885a0587b1e9",
+    "reference/hist001d_k180_cancel_aware_candidate/adversarial_affine.py": "02ce9afccf95f54bce4522e0876768e096e1b5a1190f52e1190bfc5f1f5a61c5",
+    "reference/hist001d_k180_cancel_aware_candidate/affine_kernel.py": "fc65c7a32a2ae6d59307683898063e6a4102dfba6494675e7583b15ea5ad08d6",
+    "reference/hist001d_k180_cancel_aware_candidate/assemble_affine.py": "8fd673173a0a729e4694f1fb2a5727c0e183573b2dfc9f19f0a3185c2e5ea4d0",
+    "reference/hist001d_k180_cancel_aware_candidate/signed_affine_producer.py": "dbaa9fe1ae26919b433153070dc25726bc05e49f32bd61a873def462f358815b",
+    "reference/hist001d_k180_cancel_aware_candidate/verify_affine_signed.py": "e9d838425ab5ee5ea16ffd0031698258404ceaeae8dabac7ce597f4d5c9d57db",
+    "reference/hist001d_k180_cancel_aware_candidate/verify_release.py": "e9fa4aae7d442ba9cd08c1dd9f0e5242a0ea9282df3fef9efb326ca7e00691b8",
+    "tests/historical/test_hist001d_cancel_affine_source_free.py": "85d21bc6b61e728f7046268166468898d91fbd8113e71b4ef0ac789e77c21efa"
   },
   "manifest_version": 1
 }
