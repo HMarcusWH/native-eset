@@ -274,7 +274,17 @@
     "reference/hist001d_k180_crossing_band_candidate/crossing_band_certifier.py": "86a3185b73ff2a02a3ae443a09f165e2622e6976e78cadb7000a7e7267b0877b",
     "reference/hist001d_k180_crossing_band_candidate/selected_mass_prime_positive.py": "bad59082a950c67d3d433500419fea43cd22abbd1edb3a5fdc560c6346cadc61",
     "reference/hist001d_k180_crossing_band_candidate/verify_band_witness.py": "791243223a074b3026cd824e17ad2aa23faac4ac3a3eacb1c1b15b28b7a36375",
-    "tests/historical/test_hist001d_k180_crossing_band_source_free.py": "873efb794c83cc60236a93e9c45023209774848c51efcef3497934f0aed291d9"
+    "tests/historical/test_hist001d_k180_crossing_band_source_free.py": "873efb794c83cc60236a93e9c45023209774848c51efcef3497934f0aed291d9",
+    "docs/HIST001D_FULL_H_BRIDGE_SCOPE.md": "debf91403345a6593f574ac3e227719ba3f421e4dd09fd62865590d6977bbee2",
+    "reference/hist001d_full_h_bridge_candidate/README.md": "e2c11855815b35e4557b493e62e08a36f2477a6aaa4c42a6fe272eb3ac3bb60f",
+    "reference/hist001d_full_h_bridge_candidate/assemble_full_h_bridge.py": "1028a2a372c275386bab6d573e71dd4757d467a5a160b2ae529c62b049e66c1d",
+    "reference/hist001d_full_h_bridge_candidate/continuum_endpoint.py": "0b82f59248678a9114a518b5fa6bee6731c9d1f545d632fa1f82fab14712b173",
+    "reference/hist001d_full_h_bridge_candidate/full_h_finite_source.py": "4aa7ad25bd41cb06d25399780d1d2b35625ea600bc84de9002ccfa526661fe79",
+    "reference/hist001d_full_h_bridge_candidate/replay_source_locked.py": "0681409ec9546e5455534b73c1248520b280ddb1f97c295897f0430cf09b5d03",
+    "reference/hist001d_full_h_bridge_candidate/validate_bridge_summary.py": "16e78e8903e8a3e803b25c6b8a99cf2d51da439838435ee3ad11dc87c35b6ca0",
+    "reference/hist001d_full_h_bridge_candidate/verify_full_h_witness.py": "76d25a10ee9d2d50a2819975162356af68d1020833d7069e68838427c8d2714d",
+    "reference/hist001d_full_h_bridge_candidate/verify_release.py": "bd5ffc453d40264d0ff8e689fad1577c812cd60b73d14af9ee374f41975c5bb6",
+    "tests/historical/test_hist001d_full_h_bridge_source_free.py": "18046808aa5e59ff93af111f9be3add3f73971798302a661abbb7d0a0bfdd98c"
   },
   "manifest_version": 1
 }
