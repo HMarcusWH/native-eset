@@ -300,7 +300,14 @@
     "reference/hist001d_d120_seam_candidate/source_seam_replay.py": "d33092cd2282c626a248c4efc849b975a5b4fb6fa1e4f48a4a5c3bac03070377",
     "reference/hist001d_d120_seam_candidate/verify_release.py": "1ae824e76cfc88d8af4f7b596e7e11dce8a57bb85c539255c7190b0117e9e6b9",
     "reference/hist001d_d120_seam_candidate/verify_seam.py": "fba6e1ab0184cad4e9319ee2449fda51c05e5feffbd271d502f6c15522403692",
-    "tests/historical/test_hist001d_d120_seam_source_free.py": "7fc7bab6ad6d5d10162c0f931440e5e24eab555f4a6facf83d35a0236da6b841"
+    "tests/historical/test_hist001d_d120_seam_source_free.py": "7fc7bab6ad6d5d10162c0f931440e5e24eab555f4a6facf83d35a0236da6b841",
+    "docs/HIST001D_ORIGINAL_BESSEL_MASS_GRADIENT_K180_FLOAT_SPLIT_SCOPE.md": "211626a6fda6abde56386f71abb7a42fae218af9be903af519c3b4da4fcc0755",
+    "reference/hist001d_upstream_bessel_candidate/README.md": "91c90632cbb856e1fa05e9ffaf6d9e79a3bbcd8f9b8a54b0695bc0a5054d7456",
+    "reference/hist001d_upstream_bessel_candidate/adversarial_qa.py": "3ed8190eaf73c35c4ba8f6354afa1329ed741239fb5bae129dbd637de7e0a5b8",
+    "reference/hist001d_upstream_bessel_candidate/independent_stencil_check.py": "3c94a28cbee8b0e4d24116df794325a6f9964860dfb3a8ebaedb5ecbe1bb973d",
+    "reference/hist001d_upstream_bessel_candidate/upstream_float_split.py": "b1fb42a387dea3f0cbad543015a5873627faec9b05cba2d49f11506a8c3e5e6a",
+    "reference/hist001d_upstream_bessel_candidate/verify_release.py": "ae04a6bec0d1c3c2d3ab99eb4c724482abf9b4d282534c8cefeeb1f0fdd4f434",
+    "tests/historical/test_hist001d_upstream_bessel_mass_sourcefree.py": "daf2cc91b39973d25cf7c1f4617e8cd22e9398a2a81263f167a99cfaf727b0c4"
   },
   "manifest_version": 1
 }
