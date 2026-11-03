@@ -324,7 +324,18 @@
     "reference/hist001d_k180_bessel_integral_candidate/source_audit.py": "db836d0a41c4134a8a0528314b8cc23c31f0f94696da03924f04e14d605d07cb",
     "reference/hist001d_k180_bessel_integral_candidate/stencil_verify.py": "dbe9da621cfba15ec7149ecec65881e152cefa0f4a448e9d8653b349c1617070",
     "reference/hist001d_k180_bessel_integral_candidate/verify_release.py": "a17b531139ca9a262bb4c5e03bb9b63e49a8d0d2d6a1754c0994298ef70d755a",
-    "tests/historical/test_hist001d_bessel_integral_source_free.py": "3e2c65cceb1fcd70face9a013bdb0206ebb4c465c764d7181746c3dd66d8cfc1"
+    "tests/historical/test_hist001d_bessel_integral_source_free.py": "3e2c65cceb1fcd70face9a013bdb0206ebb4c465c764d7181746c3dd66d8cfc1",
+    "docs/HIST001D_INDEPENDENT_K_BESSEL_REAL_RADIUS_MPRIME_BV_SCOPE.md": "9c104e1f603ef9273609a41910c3145ff19fe31cb623c3956582c0bac122e676",
+    "reference/hist001d_k180_inter_node_candidate/README.md": "f460549bd31e37780512481510c81f95f5f98d2b3eda367031257de451963873",
+    "reference/hist001d_k180_inter_node_candidate/assemble_inter_node.py": "2f99301ec67eac9812ed03daa8dede8a6753bdd917ae56b332f4a1f1739f443e",
+    "reference/hist001d_k180_inter_node_candidate/band_bv_producer.py": "9a4e975bf97f96bedc826e1c02d4284553cb2046767fa836d084ea1410020762",
+    "reference/hist001d_k180_inter_node_candidate/inter_node_adversarial_qa.py": "5f00a98235d062bfbf78c9f702ff79e55fc3ba894c6a04fc7044760b9adf8704",
+    "reference/hist001d_k180_inter_node_candidate/inter_node_claim_guard.py": "d8fc5e9798c081d41ab710b8e0060800edf6ad595fa4a5ebd835c9073a3c0327",
+    "reference/hist001d_k180_inter_node_candidate/inter_node_producer.py": "56067043c45d63a041854254de88808a3cb0bee83106b939303506c56df89e41",
+    "reference/hist001d_k180_inter_node_candidate/verify_band_bv.py": "b10a426c32898fb7a08a54a72cc948023d6ed86ec8f77eef5fefe2e80505a5cc",
+    "reference/hist001d_k180_inter_node_candidate/verify_inter_node.py": "20ad814bf96c451d13bc9c5edbdde49c0a1d1898aa023bec8425cfe2f9523f7b",
+    "reference/hist001d_k180_inter_node_candidate/verify_release.py": "64019e7ec5e90ce67064111b5705dba7fd0eb667524f99fb71c6cba9c40e0d04",
+    "tests/historical/test_hist001d_k180_inter_node_source_free.py": "c6fb6f57543547ebd6de968f798543d4403dc581dfb9e2c8e57afaeac79b6baf"
   },
   "manifest_version": 1
 }
