@@ -361,7 +361,21 @@
     "reference/hist001d_k180_zero_extension_candidate/extra_sign_producer.py": "0c10d582792216e0b6aafa7e9c55d678d006aa1c9fed9ee8dc77e5e5f48636e0",
     "reference/hist001d_k180_zero_extension_candidate/verify_extra_sign.py": "ec8150c9f810be7bceaf948e01ae0e33207a8d34a074c2e78f091f4475c6f065",
     "reference/hist001d_k180_zero_extension_candidate/verify_release.py": "b7e1da6908eb86c228fec88ec9f3dea6ecfd344cbab02fc67f46f8275341d990",
-    "tests/historical/test_hist001d_zero_extension_source_free.py": "40166c321ceb6a09b52597f1f6b97a7072eb293d9aa303f94b7289c57f9e8c51"
+    "tests/historical/test_hist001d_zero_extension_source_free.py": "40166c321ceb6a09b52597f1f6b97a7072eb293d9aa303f94b7289c57f9e8c51",
+    "docs/HIST001D_SELECTED_MSTAR_KNOT_SAFE_EXACT_16_SCOPE.md": "07f7084c3f0d92bda221db34d0232ec16bc478374eea7c850fe545790605c9ec",
+    "reference/hist001d_k180_exact_count_candidate/README.md": "d634dd727934e8eede693b5f44ee327be122dd8e1f1e56299e8ff3f79604536f",
+    "reference/hist001d_k180_exact_count_candidate/adversarial_exact_count.py": "ef864fea3f6e356e9081cdb7b7e159e81c4f17a0d78152e5c9dcabc0d36ee69b",
+    "reference/hist001d_k180_exact_count_candidate/assemble_exact_count.py": "2d30d3bfed8d7bfc597a5eed016ecb6bba01c3d2f80a422af91c647827d7a6d1",
+    "reference/hist001d_k180_exact_count_candidate/certify_local_uniqueness.py": "551c619418b29e8b6c6ef1baf6b396672fbe469ddef9ea2816974f4096dccd69",
+    "reference/hist001d_k180_exact_count_candidate/exclude_gaps.py": "7d4b7fd3231291d8a644993b2ebc7ba5cffd13fd1d4a7ac8ca60339f214ae968",
+    "reference/hist001d_k180_exact_count_candidate/independent_knot_verify.py": "2492b55bcd3b5e85b427c89ed33df81788d6edd28f1bf7c3eb7d7f7feb0d359c",
+    "reference/hist001d_k180_exact_count_candidate/knot_count_contract.py": "8931dc34b2243c5c660d4b5e9f64b35ad3458c549c65be4675936fbc4212a702",
+    "reference/hist001d_k180_exact_count_candidate/knot_derivative.py": "7db5544b5c0ab5a1cd734b2fe3b31911bd38c72d054dc56f763cc35f28d661e0",
+    "reference/hist001d_k180_exact_count_candidate/materialize_inputs.py": "cde37ce418075138235937fc4e150fe01507f1f6275995d118b74d19a31b0d20",
+    "reference/hist001d_k180_exact_count_candidate/prepare_parent.py": "454ccead914dd681a476b55f44d9cbf9c2170c2f8c5896b41566ccdd2f8a5553",
+    "reference/hist001d_k180_exact_count_candidate/quadrature_points.py": "375aa68fbdf8db356d3f2ffd58feab28443855a1cf1ea7082007ec3b6c056106",
+    "reference/hist001d_k180_exact_count_candidate/verify_release.py": "ca866bf0e23043e8e34a79e1e86453dde5d512b0ce5d893bd4616b5c67d39a42",
+    "tests/historical/test_hist001d_knot_exact_count_source_free.py": "ecd34097dc2a82b316b95dffc8ecb0650b408a8485839998bcd93b1b835a96d4"
   },
   "manifest_version": 1
 }
