@@ -1,13 +1,20 @@
 """Pure mathematical/claim/coverage tests without access to frozen March data."""
 from __future__ import annotations
 import math
-import sys
 from fractions import Fraction as F
 from pathlib import Path
+from runpy import run_path
 import pytest
 SOURCE=Path(__file__).resolve().parents[2]/'reference'/'hist001d_k180_zero_extension_candidate'
-sys.path.insert(0,str(SOURCE))
-from claim_guard import count_sign_flips,EXTRA_INDEX,BASE_COUNTS,EXPECTED_COUNTS,ceil,floor  # noqa: E402
+# This checkout has several historical modules named claim_guard.py. Resolve
+# THIS one by exact path to avoid sys.modules import-cache collisions in CI.
+_guard=run_path(str(SOURCE/'claim_guard.py'))
+count_sign_flips=_guard['count_sign_flips']
+EXTRA_INDEX=_guard['EXTRA_INDEX']
+BASE_COUNTS=_guard['BASE_COUNTS']
+EXPECTED_COUNTS=_guard['EXPECTED_COUNTS']
+ceil=_guard['ceil']
+floor=_guard['floor']
 
 @pytest.mark.parametrize('old,new,witness',[
     ([(0,-1),(89,-1),(118,1),(128,1)],[(0,-1),(25,1),(89,-1),(118,1),(128,1)],25),
