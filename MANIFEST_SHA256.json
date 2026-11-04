@@ -352,7 +352,16 @@
     "reference/hist001d_k180_targeted_candidate/verify_release.py": "96213ba6d1c7c6e472f44f61bc8c1f87bf06cbdc061a47511fd58447851bae63",
     "reference/hist001d_k180_targeted_candidate/verify_targeted.py": "f02580f7385e5f85974db5fcabd76c1ead4c62265de4de86c58e43e9c8d0b04b",
     "reference/hist001d_k180_targeted_candidate/witness_contract.py": "1653746e043d409881cd54c82911afd83616d95f03dcafceb88d8f590291996b",
-    "tests/historical/test_hist001d_targeted_zero_source_free.py": "e32bc84169fe4056d3c1ca57046f736041ad1381773cac3e93530b17e9c11295"
+    "tests/historical/test_hist001d_targeted_zero_source_free.py": "e32bc84169fe4056d3c1ca57046f736041ad1381773cac3e93530b17e9c11295",
+    "docs/HIST001D_MSTAR_SIXTEEN_ZERO_LOWER_BOUND_EXTENSION.md": "1180c540011631616a2af4c09f2e74ddc335b3df0d3dcd075dc1037e9714d58b",
+    "reference/hist001d_k180_zero_extension_candidate/README.md": "4c9b54ea7ed42cde77157749b50d4273b108d3c138791cb1a52569b301ee5dea",
+    "reference/hist001d_k180_zero_extension_candidate/adversarial_extra.py": "369233d2434830d86609bef69bb358f1c155659a5c08c650c4781f059e325e73",
+    "reference/hist001d_k180_zero_extension_candidate/assemble_brackets.py": "416e2284302ee96fd0d68da31fd54782092a4ad5682a039afef346be5aa67a6d",
+    "reference/hist001d_k180_zero_extension_candidate/claim_guard.py": "18267d599bfca9c7dec471c1a2f24bf62520fa43c3f7c50ce532ccbad62daa9a",
+    "reference/hist001d_k180_zero_extension_candidate/extra_sign_producer.py": "0c10d582792216e0b6aafa7e9c55d678d006aa1c9fed9ee8dc77e5e5f48636e0",
+    "reference/hist001d_k180_zero_extension_candidate/verify_extra_sign.py": "ec8150c9f810be7bceaf948e01ae0e33207a8d34a074c2e78f091f4475c6f065",
+    "reference/hist001d_k180_zero_extension_candidate/verify_release.py": "b7e1da6908eb86c228fec88ec9f3dea6ecfd344cbab02fc67f46f8275341d990",
+    "tests/historical/test_hist001d_zero_extension_source_free.py": "40166c321ceb6a09b52597f1f6b97a7072eb293d9aa303f94b7289c57f9e8c51"
   },
   "manifest_version": 1
 }
