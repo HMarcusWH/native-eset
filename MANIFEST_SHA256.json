@@ -361,7 +361,7 @@
     "reference/hist001d_k180_zero_extension_candidate/extra_sign_producer.py": "0c10d582792216e0b6aafa7e9c55d678d006aa1c9fed9ee8dc77e5e5f48636e0",
     "reference/hist001d_k180_zero_extension_candidate/verify_extra_sign.py": "ec8150c9f810be7bceaf948e01ae0e33207a8d34a074c2e78f091f4475c6f065",
     "reference/hist001d_k180_zero_extension_candidate/verify_release.py": "b7e1da6908eb86c228fec88ec9f3dea6ecfd344cbab02fc67f46f8275341d990",
-    "tests/historical/test_hist001d_zero_extension_source_free.py": "cd915d92df75bccfe0cd0f09e1b42ae342926d6ad6f379312f0ba49502f9b0be"
+    "tests/historical/test_hist001d_zero_extension_source_free.py": "fe89a9f590ee40c943821bb9fadb3e18e567ddad6c1c3bc4eafb148fd8103d81"
   },
   "manifest_version": 1
 }
