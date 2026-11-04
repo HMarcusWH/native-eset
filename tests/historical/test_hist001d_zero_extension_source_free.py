@@ -1,6 +1,7 @@
 """Pure mathematical/claim/coverage tests without access to frozen March data."""
 from __future__ import annotations
-import math,sys
+import math
+import sys
 from fractions import Fraction as F
 from pathlib import Path
 import pytest
