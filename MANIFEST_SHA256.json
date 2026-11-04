@@ -343,7 +343,16 @@
     "reference/hist001d_k180_cancel_aware_candidate/signed_affine_producer.py": "dbaa9fe1ae26919b433153070dc25726bc05e49f32bd61a873def462f358815b",
     "reference/hist001d_k180_cancel_aware_candidate/verify_affine_signed.py": "e9d838425ab5ee5ea16ffd0031698258404ceaeae8dabac7ce597f4d5c9d57db",
     "reference/hist001d_k180_cancel_aware_candidate/verify_release.py": "e9fa4aae7d442ba9cd08c1dd9f0e5242a0ea9282df3fef9efb326ca7e00691b8",
-    "tests/historical/test_hist001d_cancel_affine_source_free.py": "85d21bc6b61e728f7046268166468898d91fbd8113e71b4ef0ac789e77c21efa"
+    "tests/historical/test_hist001d_cancel_affine_source_free.py": "85d21bc6b61e728f7046268166468898d91fbd8113e71b4ef0ac789e77c21efa",
+    "docs/HIST001D_TARGETED_PEANO_SIGN_REVERSALS_SCOPE.md": "f39d2b491426bd936e4258bb5cd2e8c8aee2eb815915c03a6603d9cd3a456414",
+    "reference/hist001d_k180_targeted_candidate/README.md": "c1fa193109525420fa8cd07dcd0e0d8ac3df765a743c65ab24340a9639676f2e",
+    "reference/hist001d_k180_targeted_candidate/adversarial_targeted.py": "5b65a9cbde8fb7342a0a33ee709fd8d96e374dd68b2cbbb0de3664089789860e",
+    "reference/hist001d_k180_targeted_candidate/assemble_targeted.py": "3a15d3c5abf64869e4272fcc472130f2aaa482152d77c42f48b94a1144876d61",
+    "reference/hist001d_k180_targeted_candidate/targeted_refine.py": "f62a01ceb7ecc6dac1cfc8db0fbedaa74f843c413b1d88cda0c8a1e83fb351a9",
+    "reference/hist001d_k180_targeted_candidate/verify_release.py": "96213ba6d1c7c6e472f44f61bc8c1f87bf06cbdc061a47511fd58447851bae63",
+    "reference/hist001d_k180_targeted_candidate/verify_targeted.py": "f02580f7385e5f85974db5fcabd76c1ead4c62265de4de86c58e43e9c8d0b04b",
+    "reference/hist001d_k180_targeted_candidate/witness_contract.py": "1653746e043d409881cd54c82911afd83616d95f03dcafceb88d8f590291996b",
+    "tests/historical/test_hist001d_targeted_zero_source_free.py": "e32bc84169fe4056d3c1ca57046f736041ad1381773cac3e93530b17e9c11295"
   },
   "manifest_version": 1
 }
