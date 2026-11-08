@@ -1,0 +1,31 @@
+name: HIST001D upstream March K180 float-mass v1r2 source-free
+on:
+  push:
+    branches:
+      - hist001d/march180-bessel-float-mass-gradient-k180-review-2026-11-03
+  pull_request:
+    paths:
+      - 'reference/hist001d_upstream_bessel_candidate/**'
+      - 'tests/historical/test_hist001d_upstream_bessel*'
+      - '.github/workflows/hist001d_upstream_bessel_float_v1r2_attested.yml'
+jobs:
+  source-only:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.10','3.12','3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Source-free testing dependencies only
+        run: python -m pip install pytest
+      - name: Synthetic source-free arithmetic and attestor regressions
+        run: python -m pytest -q tests/historical/test_hist001d_upstream_bessel_mass_sourcefree.py tests/historical/test_hist001d_upstream_v1r2_attested.py
+      - name: Optimized Python source-free tests
+        run: python -OO -m pytest -q tests/historical/test_hist001d_upstream_bessel_mass_sourcefree.py tests/historical/test_hist001d_upstream_v1r2_attested.py
+      - name: Unpinned full replay must never pass
+        run: python -c "import subprocess,sys; p=subprocess.run([sys.executable,'-OO','reference/hist001d_upstream_bessel_candidate/verify_release.py','--full'],capture_output=True,text=True); assert p.returncode==2 and 'UNRESOLVED' in p.stdout, (p.returncode,p.stdout,p.stderr)"
