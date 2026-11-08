@@ -1,0 +1,26 @@
+{
+  "schema": "HIST001D_SOURCE_ONLY_CERTIFIED_BINARY64_SCANNER_CONTRACT_V1",
+  "date": "2026-11-07",
+  "model_id": "HIST001D_MARCH180_SOURCE_CONNECTED_K180_D120_EXACT_REAL_HNEW",
+  "mathematical_scope": "CONDITIONAL_HISTORICAL_EXACT_REAL_ONLY",
+  "historical_original_46_plus_3_composite_sha256": "fa7e77300d7a6e5f095d3781c23eb96bc57fea4c38f76b155278079d7f19913a",
+  "provided_root_bracketing_package_sha256": "252d502a1a6607751c5604de221767a10ff6f28e253b0c92d4988773e65ebb29",
+  "global_uniqueness_parent_sha256": null,
+  "global_uniqueness_parent_status": "EXTERNAL_SOURCE_BOUND_REPLAY_REQUIRED",
+  "root_bracketing_parent_status": "EXTERNAL_SOURCE_BOUND_REPLAY_REQUIRED",
+  "sign_authority": "EXISTING_TWO_ENGINE_STRICT_EXACT_RATIONAL_INTERVAL_API_ONLY",
+  "domain": {
+    "lo_is_stored_binary64_0_02": true,
+    "hi_is_stored_binary64_120": true,
+    "require_positive_finite": true,
+    "kernel_source": "original 180 frozen radial nodes and 119 D120 angular trapezoid segments"
+  },
+  "required_statuses": ["CERTIFIED_CONDITIONAL", "UNRESOLVED"],
+  "fail_closed_exit_code": 2,
+  "advertised_source_free_test_count": 67,
+  "advertised_adversarial_mutation_count": 36,
+  "current_status": "SOURCE_ONLY_SCANNER_IMPLEMENTED_PARENT_SOURCE_REPLAY_PENDING",
+  "scientific_authority_promoted": false,
+  "physical_provider_admitted": false,
+  "empirical_validation": "NOT_ESTABLISHED"
+}

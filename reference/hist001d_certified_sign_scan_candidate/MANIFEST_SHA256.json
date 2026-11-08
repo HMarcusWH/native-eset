@@ -1,0 +1,21 @@
+{
+  "file_count": 14,
+  "files": {
+    "CONTRACT.json": "59eea38fe1c065410f55786d97992ac3d7a2ac6e16a4eb75da417b49297d8bc8",
+    "README.md": "815c11bdcac401823b13b5b4a964a1d0ace2fc830f82e312109fd309bb8ca32e",
+    "RELEASE_DISPOSITION.md": "307ec2294345c99f35c13eb637ce1680b855628b4801f452450f65668ad314af",
+    "TEST_RUN_RECEIPT.json": "178b3fade6a67fbbc3f923e4bfa882aa259d25ade4bbf54b9040003705222d30",
+    "adversarial_audit.json": "911580f657980f3d912ca58eb3155e9c09230713408b1bf4b08f50579ac4f8b8",
+    "adversarial_qa.py": "bc4de8fe92e89cfece7e18d315158edf482afddd8c5bb023e7df454b02077462",
+    "bridge_adapter_template.py": "82732a0af95512f9585c47b3c52ee4841bc2897035140205179231fb342b83cb",
+    "build_release.py": "9b2a3e3759035f9605a47709b48827aea08a041092da670f8110decaddf96c4c",
+    "certified_sign_scan.py": "619c843e15fc2746271c592fab118bdc184e98f9e77b1af708f115bfc71f86d9",
+    "scan_cli.py": "6ca07c811540e2daadfec9d23664d539457cb9cee29b83ccb556bce9010291a4",
+    "synthetic_adaptive_receipt.json": "454adc7e832fba14ed3a8de8e0754e0da9d421384a9f436680e36a7020dcaaf0",
+    "synthetic_theorem_receipt.json": "ea0ac486a06337cfa6231f8eb2d3afe669c002dbf34ddecef2b2c4263b26c645",
+    "test_certified_sign_scan.py": "06e187b7d3fcc276b1a65b67b5cf2da24995b1185e26753b443b54178034dcd2",
+    "verify_release.py": "d593665387bd95d654c59185129dcde1d3ea5545b0801d9e5effe9c9f16983a5"
+  },
+  "schema": "HIST001D_SOURCE_ONLY_RELEASE_SHA256_MANIFEST_V1",
+  "scope": "SOURCE_ONLY_NONPROMOTING_NO_PROTECTED_ARRAYS"
+}
