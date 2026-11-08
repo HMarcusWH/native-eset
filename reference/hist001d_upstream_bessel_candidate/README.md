@@ -19,3 +19,21 @@ python reference/hist001d_upstream_bessel_candidate/verify_release.py --root . -
 ```
 
 The original 46+3 source and binary64 arrays remain **only in the protected ZIP**; the public PR adds no protected inputs or mathematical result JSON.
+
+## 8 November 2026 — v1r2 authenticated replay
+
+The legacy `verify_release.py --root . --full` call is intentionally **disabled**
+without an independent release ZIP SHA. Its direct local module imports were
+vulnerable to a replaced independent checker plus local SHA-manifest update.
+Use the source-only `attested_replay_v1r2.py` instead:
+
+```bash
+python -OO reference/hist001d_upstream_bessel_candidate/attested_replay_v1r2.py \
+  --archive /secure/HIST001D_MARCH180_BESSEL_FLOAT_MASS_GRADIENT_K180_v1r2.zip \
+  --expected-sha256 <independently-authenticated-whole-ZIP-SHA>
+```
+
+The replay preserves all six exact frozen binary64 source-density and
+Bessel mass/stencil results under the stated runtime and never promotes the
+selected mathematical shadow mass to physical lensing. Protected data and
+saved results remain outside public GitHub.

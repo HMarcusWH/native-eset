@@ -1,26 +1,37 @@
-# HIST-001D original D120 omitted-seam candidate — mathematical + numerical method audit
+# HIST-001D original D120 119-segment angular seam audit
 
-NONPROMOTING. The protected archive carries the original SHA-authenticated March data; public GitHub carries **only** these source-only modules, synthetic tests and a scope note.
+**DRAFT / mathematical source audit / NONPROMOTING.** The original March
+120 sampled angular nodes and 119 trapezoid segments are preserved, including
+the original source-frozen circularization and stored source radii. The proposed
+periodic seam is a *different fixed-sample comparison stencil*, not the source's
+original result, a certified full-azimuth continuum integral or a physical
+provider/observational validation.
 
-- `seam_math.py` — two distinct exact-rational exponential interval methods; rigorous endpoint seam bounds and analytic positivity/monotonicity identity.
-- `source_seam_replay.py` — data-dependent original frozen binary64 D120, q/S and H replay, plus a newly defined *counterfactual* periodic seam. It uses protected SAT v1r1 and full H v1r1 parents; never reruns a refit.
-- `verify_seam.py` — independent positive-series exponential bounds, source identity/percent audit and independent counterfactual numerical reconstruction.
-- `adversarial_seam.py` — reject both semantic overclaims and source-specific tampering.
-- `verify_release.py` — ZIP manifest and clean-input reproducibility checker.
-- `tests/historical/test_hist001d_d120_seam_source_free.py` — 26 tests, no protected parents required.
+- `seam_math.py`: exact-rational interval constructions from two different
+  exponential enclosures; no new physics parameters.
+- `source_seam_replay.py`: frozen historical D120, circularized S and H sampled
+  array replay; no refitting or original March source mutation.
+- `verify_seam.py`: independent positive-series/reciprocal bounds and source
+  input/receipt checks. Its exact executed bytes must be authenticated.
+- `adversarial_seam.py`: 30 historical mutation/overclaim rejections.
+- `attested_replay_v1r2.py`: required externally pinned whole-ZIP,
+  executable-source-attested clean replay (recommended only source-bound entry).
+- `verify_release.py`: deprecated legacy entrypoint now delegates to the
+  fail-closed v1r2 attestor; no unpinned full PASS allowed.
+- `tests/historical/test_hist001d_d120_v1r2_attestation.py`: source-free
+  optimized-Python/provenance/negative-control regression tests.
 
-Original angular routine uses 120 points but integrates 119 trapezoid intervals because of `endpoint=False`. The alternative closure is source-defined, with frozen step `h=theta[1]-theta[0]`, and is **not** an exact full-azimuth integral or a physical model.
+Execute protected replay only after obtaining the protected release from
+**authorized original source**, with its SHA from a separate trusted record:
 
-Protected replay:
-
-```sh
-python reference/hist001d_d120_seam_candidate/source_seam_replay.py \
-  --saturation inputs/saturation_v1r1.zip --finite-h inputs/full_h_v1r1.zip \
-  --out results/recomputed.json
-python reference/hist001d_d120_seam_candidate/verify_seam.py \
-  --saturation inputs/saturation_v1r1.zip --finite-h inputs/full_h_v1r1.zip \
-  --receipt results/recomputed.json
-python -m pytest -q tests/historical/test_hist001d_d120_seam_source_free.py
+```bash
+python -OO reference/hist001d_d120_seam_candidate/attested_replay_v1r2.py \
+  --archive /protected/HIST001D_D120_v1r2.zip \
+  --expected-sha256 <independently-known-release-sha256>
 ```
 
-All new root corrections are *diagnostics of the new stencil* only. The original 6/6 development fit is not D3/D4 validation. No physical provider, no full original off-grid error theorem, no cosmology validation.
+Both v1r1 results (six-lens seam source JSON and 30-case adversarial JSON) are
+immutable and source-dependent. A full replay is not justified by manifest
+self-consistency, source-free tests, a new hand-authored hash or a matching
+printed label alone. Scientific and publication rights/review gates remain
+open; physical provider admission and empirical validation remain blocked.

@@ -36,7 +36,8 @@ def sqrt_rational_bounds(x:F, bits=112):
     a=isqrt(n//x.denominator)
     low=F(a,1<<bits)
     high=F(a if a*a*x.denominator==n else a+1,1<<bits)
-    assert low*low<=x<=high*high
+    if not low*low<=x<=high*high:
+        raise ValueError('unproved rational square-root enclosure')
     return low,high
 
 class FiniteLens:
