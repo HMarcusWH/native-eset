@@ -271,7 +271,17 @@
     "tests/historical/test_hist001d_k180_root_aperture_source_free.py": "3aee32f01b19e775c6f2f49b14f299dc600d61a7f0e26e368d27d53c69c85c57",
     "docs/HIST001D_FIXED_A_V1R2_FAILCLOSED_VERIFIER_REPAIR.md": "3a3851b9f5541828d53835a3a84fbce70af9fb8eacce58dca74804016e53c01a",
     "reference/hist001d_k180_root_aperture_candidate/protected_verifier_v1r2.py": "a1393a3516ce36f37d5e6e81b29919965a8df6ef745972f2a762605781d43ac7",
-    "tests/historical/test_hist001d_fixed_a_archive_verify_failclosed.py": "3c9049520945bede3365ef8f7282aaf1af22ed3eb229e9d33695ddb2e9a75c83"
+    "tests/historical/test_hist001d_fixed_a_archive_verify_failclosed.py": "3c9049520945bede3365ef8f7282aaf1af22ed3eb229e9d33695ddb2e9a75c83",
+    "docs/HIST001D_K180_SIX_CROSSING_BANDS_SCOPE.md": "b88991005a834decd384eb518f308a1305ebdd9823ad3ed457867a579bd64bed",
+    "reference/hist001d_k180_crossing_band_candidate/README.md": "e109e9a5d3a3b41f9ad9d7400f5206772d1c6ebaed2169a2fcb7797f1dff4669",
+    "reference/hist001d_k180_crossing_band_candidate/assemble_receipt.py": "9bb4a47bf51d98eef95609278818b7719f893f07810a3012cd13c824a4d18321",
+    "reference/hist001d_k180_crossing_band_candidate/crossing_band_certifier.py": "86a3185b73ff2a02a3ae443a09f165e2622e6976e78cadb7000a7e7267b0877b",
+    "reference/hist001d_k180_crossing_band_candidate/selected_mass_prime_positive.py": "bad59082a950c67d3d433500419fea43cd22abbd1edb3a5fdc560c6346cadc61",
+    "reference/hist001d_k180_crossing_band_candidate/verify_band_witness.py": "791243223a074b3026cd824e17ad2aa23faac4ac3a3eacb1c1b15b28b7a36375",
+    "tests/historical/test_hist001d_k180_crossing_band_source_free.py": "873efb794c83cc60236a93e9c45023209774848c51efcef3497934f0aed291d9",
+    "docs/HIST001D_SIX_CROSSING_BANDS_V1R3_ATTESTED_CHECKER_SCOPE.md": "55188957e7d15cd7078c7fecc77bff7f27da99ad27b173a38f468caf25de57c9",
+    "reference/hist001d_k180_crossing_band_candidate/verify_release_hardened_v1r3.py": "4e8ef84991f029565ddd8bebef04f8b692ee9b96c9b93fe382772f1756ec6e5b",
+    "tests/historical/test_verified_checker_source_v1r3.py": "ac33bcf8c17196b6e8c47ce72b900c2442ed477ff3389db30e927eff100cc6f5"
   },
   "manifest_version": 1
 }
