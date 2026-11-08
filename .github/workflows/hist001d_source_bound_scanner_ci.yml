@@ -1,0 +1,30 @@
+name: HIST001D source-bound scanner adapter source-free
+on:
+  push:
+    branches:
+      - hist001d/source-bound-certified-sign-scanner-integration-2026-11-08
+  pull_request:
+    paths:
+      - 'reference/hist001d_certified_sign_scan_parent_integration_v1/**'
+      - '.github/workflows/hist001d_source_bound_scanner_ci.yml'
+jobs:
+  source-only:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.10', '3.12', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Original scanner source-free suite (67)
+        run: python -m unittest -q test_certified_sign_scan.py
+        working-directory: reference/hist001d_certified_sign_scan_candidate
+      - name: Adapter source-free suite (17)
+        run: python -m unittest -q test_source_bound_adapter_v1.py
+        working-directory: reference/hist001d_certified_sign_scan_parent_integration_v1
+        env:
+          PYTHONPATH: ${{ github.workspace }}/reference/hist001d_certified_sign_scan_candidate
