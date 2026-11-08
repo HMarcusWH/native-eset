@@ -265,7 +265,13 @@
     "tests/historical/test_hist001d_k180_bv_source_free.py": "167f7397f1825bf2b86ef4d426ccc474052871876385aecb439185df54ab408c",
     "reference/hist001d_k180_saturation_candidate/signed_gap_contract.py": "91f126b4152d70e61e2fe33122acd9e87277055e65d88b028949661610324313",
     "tests/historical/test_hist001d_k180_signed_gap_source_free.py": "a987b6104a8d1ff2c94acac51a091805923a2baf24b8c4b596f0d4904933d605",
-    "tests/historical/test_hist001d_k180_archive_verify_failclosed.py": "74f2d6c9b835e0de9e6b2ef5e2f3fb8d8abda10bd26d3061924b0ef1b32948f6"
+    "tests/historical/test_hist001d_k180_archive_verify_failclosed.py": "74f2d6c9b835e0de9e6b2ef5e2f3fb8d8abda10bd26d3061924b0ef1b32948f6",
+    "docs/HIST001D_ROOT_APERTURE_FIXED_DIAGNOSTIC_INTERVAL_NONPROMOTING.md": "745868a083c16027eee1f01013e8c6f44d2a51b52a4c2dff98450d7e0199d1aa",
+    "reference/hist001d_k180_root_aperture_candidate/root_aperture_certifier.py": "3924e14d0a8de9a71d2ae13da2a1a51a1c9836f459c2aaa2b2613a141bef33ab",
+    "tests/historical/test_hist001d_k180_root_aperture_source_free.py": "3aee32f01b19e775c6f2f49b14f299dc600d61a7f0e26e368d27d53c69c85c57",
+    "docs/HIST001D_FIXED_A_V1R2_FAILCLOSED_VERIFIER_REPAIR.md": "3a3851b9f5541828d53835a3a84fbce70af9fb8eacce58dca74804016e53c01a",
+    "reference/hist001d_k180_root_aperture_candidate/protected_verifier_v1r2.py": "a1393a3516ce36f37d5e6e81b29919965a8df6ef745972f2a762605781d43ac7",
+    "tests/historical/test_hist001d_fixed_a_archive_verify_failclosed.py": "3c9049520945bede3365ef8f7282aaf1af22ed3eb229e9d33695ddb2e9a75c83"
   },
   "manifest_version": 1
 }
