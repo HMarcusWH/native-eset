@@ -22,7 +22,9 @@ def floor_sqrt_different(x):
     if x<0:raise ValueError('negative')
     n,d=x.numerator,x.denominator
     bottom=isqrt((n*d) << (2*BITS))//d
-    assert P(bottom,2**BITS)**2<=x<P(bottom+1,2**BITS)**2
+    # A proof guard, not a debug assertion: must survive python -O/-OO.
+    if not P(bottom,2**BITS)**2<=x<P(bottom+1,2**BITS)**2:
+        raise ValueError('UNRESOLVED: invalid integer sqrt enclosure')
     return P(bottom,2**BITS),P(bottom+1,2**BITS)
 
 def rational_pl(rs,ms,A):
