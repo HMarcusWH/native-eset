@@ -14,6 +14,7 @@ from source_bound_adapter_v1 import (
 )
 from certified_sign_scan import SourceContract, guard_sign, MODEL_ID, bit_of
 from global_independent_verify_v1 import EXPECTED, PROOF_FILES
+from verify_integrated_release_v1 import compare_root_replay_wrapper
 
 
 class AdapterSourceOnlyTests(unittest.TestCase):
@@ -85,6 +86,27 @@ class AdapterSourceOnlyTests(unittest.TestCase):
         self.assertIn('NONPROMOTING',ROOT_NAME)
         self.assertEqual(len(PROOF_FILES),8)
         self.assertEqual(sum(EXPECTED.values()),1400)
+
+    def test_root_wrapper_time_variation_not_scientific(self):
+        source={'status':'PASS_NONPROMOTING_RELEASE_CHECKS',
+                'integrity':{'archive_sha256':'abc'},
+                'local_text_and_source_files_matched':17,
+                'full_source_bound_replay_performed':True,
+                'source_root_uniqueness_reproved':False,
+                'source_free_tests':{'status':'PASS',
+                                     'unittest_stderr':'Ran 31 tests in 0.008s'},
+                'source_bound':{'status':'PASS_FULL_REPLAY_BYTE_IDENTICAL',
+                    'source_bound_results_sha256':'7c7e98844c06ed3478d8adf2137d3dbbcddeca66a71a2119220659fe3211c67c',
+                    'independent_guard_calls':112,'six_adjacent_root_brackets':6},
+                'physical_provider_admitted':False,
+                'scientific_authority_promoted':False,
+                'empirical_validation':'NOT_ESTABLISHED'}
+        altered=copy.deepcopy(source)
+        altered['source_free_tests']['unittest_stderr']='Ran 31 tests in 0.123s'
+        compare_root_replay_wrapper(altered,source)
+        altered['source_bound']['source_bound_results_sha256']='0'*64
+        with self.assertRaises(ValueError):
+            compare_root_replay_wrapper(altered,source)
 
     def test_original_sign_api_not_generated_in_this_module(self):
         # Engine functions are imported from SHA-pinned external source,

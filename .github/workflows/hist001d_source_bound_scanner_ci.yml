@@ -23,7 +23,7 @@ jobs:
       - name: Original scanner source-free suite (67)
         run: python -m unittest -q test_certified_sign_scan.py
         working-directory: reference/hist001d_certified_sign_scan_candidate
-      - name: Adapter source-free suite (17)
+      - name: Adapter source-free suite (18)
         run: python -m unittest -q test_source_bound_adapter_v1.py
         working-directory: reference/hist001d_certified_sign_scan_parent_integration_v1
         env:

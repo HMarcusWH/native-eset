@@ -82,6 +82,33 @@ def check_zip(archive:Path):
                 'zip_sha256':sha(archive.read_bytes())}
 
 
+
+def compare_root_replay_wrapper(current:dict, archived:dict) -> None:
+    """Preserve exact mathematical receipts, ignore volatile unittest elapsed text.
+
+    The parent verifier includes a Python unittest timing line in its
+    wrapper JSON; that diagnostic is not scientific or canonical data.
+    NEVER weaken the comparison of the source-bound result SHA,
+    adversarial SHA, guard count, parent hashes or promotion flags.
+    """
+    for key in ("status", "integrity", "local_text_and_source_files_matched",
+                "full_source_bound_replay_performed", "source_root_uniqueness_reproved",
+                "source_bound", "physical_provider_admitted",
+                "scientific_authority_promoted", "empirical_validation"):
+        if current.get(key) != archived.get(key):
+            raise ValueError("ROOT_PROOF_REPLAY_STABLE_FIELD_MISMATCH_" + key)
+    if current.get("source_free_tests",{}).get("status")!="PASS":
+        raise ValueError("ROOT_SOURCE_FREE_SUITE_NOT_PASS")
+    if current.get("source_bound",{}).get("status")!="PASS_FULL_REPLAY_BYTE_IDENTICAL":
+        raise ValueError("ORIGINAL_BRACKET_SOURCE_REPLAY_NOT_BYTE_IDENTICAL")
+    if (current["source_bound"].get("source_bound_results_sha256")!=
+        "7c7e98844c06ed3478d8adf2137d3dbbcddeca66a71a2119220659fe3211c67c"):
+        raise ValueError("ROOT_PROOF_NUMERICAL_SHA_MISMATCH")
+    if (current["source_bound"].get("independent_guard_calls")!=112 or
+        current["source_bound"].get("six_adjacent_root_brackets")!=6):
+        raise ValueError("ROOT_SIGN_GUARD_OR_BRACKET_COUNT_MISMATCH")
+
+
 def safe_extract(archive:Path,dest:Path):
     with zipfile.ZipFile(archive) as z:
         if len(z.namelist())!=len(set(z.namelist())) or z.testzip() is not None:
@@ -134,7 +161,7 @@ def test_release(archive:Path, full:bool=False):
         # Unit source-free tests run on both scanner original and new adapter.
         _,stderr=subprocess_run(['-m','unittest','-q','test_certified_sign_scan.py'],cwd=scan_dir,env=env,timeout=65)
         _,stderr2=subprocess_run(['-m','unittest','-q','test_source_bound_adapter_v1.py'],cwd=source,env=env,timeout=65)
-        result['source_free_unittest_groups']='67_scanner_and_17_integration_source_only'
+        result['source_free_unittest_groups']='67_scanner_and_18_integration_source_only'
         # Full global independence: two separate rational engines, 1400 leaves.
         new_global=w/'global_recomputed.json'
         subprocess_run([str(source/'global_independent_verify_v1.py'),
@@ -149,8 +176,8 @@ def test_release(archive:Path, full:bool=False):
         subprocess_run([str(root/'verify_release.py'),'--archive',str(bracket),
                        '--work-dir',str(root),'--parent-dir',str(parents),'--full',
                        '--out',str(root_audit)],cwd=root,env=env,timeout=110)
-        if root_audit.read_bytes()!=(w/'results/parent_root_replay.json').read_bytes():
-            raise ValueError('sealed bracketer not byte-identical')
+        compare_root_replay_wrapper(json.loads(root_audit.read_bytes()),
+                                   json.loads((w/'results/parent_root_replay.json').read_bytes()))
         result['root_source_replayed']=True
         # Adapter imports only pinned proof engine code and does independent
         # source-authenticated point evaluation (not compiled float signs).

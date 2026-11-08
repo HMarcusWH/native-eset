@@ -28,7 +28,7 @@ The source-only v0.1 scanner must be importable as `certified_sign_scan`; use `P
 Run source-only tests (no protected data needed):
 
 ```bash
-python -m unittest -q test_source_bound_adapter_v1.py  # 17 tests
+python -m unittest -q test_source_bound_adapter_v1.py  # 18 tests
 ```
 
 Run protected scanner when all parents are available:
@@ -60,7 +60,7 @@ python verify_integrated_release_v1.py \
 - 6/6 source-bound theorem-mode sign-coverage records, 12 original-API point guards
 - Complete positive-finite original binary64 support: `340337023840388388` input bit patterns across six distinct mathematical functions (compact contiguous segment representation, not an exhaustive per-float evaluation)
 - 1400/1400 original whole-real source-domain exclusion panels independently replayed
-- New adapter 17/17 source-free tests + inherited scanner 67/67
+- New adapter 18/18 source-free tests + inherited scanner 67/67
 - Protected adversarial QA: 28/28 scoped checks (including baseline and fail-closed operational checks); two self-rehashed numerical forgeries rejected by source replay
 - Exact source-dependent replay byte-for-byte; SHA digests in private sealed release.
 
