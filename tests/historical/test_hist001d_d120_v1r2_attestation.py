@@ -6,7 +6,6 @@ Any numerical/physical source certificate requires separate protected replay.
 from __future__ import annotations
 
 import hashlib
-import io
 import json
 import subprocess
 import sys

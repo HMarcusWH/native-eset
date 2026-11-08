@@ -245,7 +245,7 @@
     "tests/historical/test_hist001c_crosswalk.py": "2f0294c81e52a1bbfb56f12511fc57a2cdc459080a48d89c5dd83680fcac0769",
     "tests/historical/test_hist001d_convergence.py": "85b9ebf4dec02df53a9e142bec86e2015091a2d22830cd6f64dfdad430fd7b08",
     "tests/historical/test_hist001d_d120_seam_source_free.py": "7fc7bab6ad6d5d10162c0f931440e5e24eab555f4a6facf83d35a0236da6b841",
-    "tests/historical/test_hist001d_d120_v1r2_attestation.py": "a58a4f67ce7104be99f1a1f5edbbcdba3a9b2f1096b36c4512073d120612c5ac",
+    "tests/historical/test_hist001d_d120_v1r2_attestation.py": "0947a3162e696b1cb3eb9a23c1c7bddf3186ad0dcc30893e93c6a3d5921d96db",
     "tests/historical/test_hist001d_d2b.py": "1e63a1975bb2ec648ca3214126a0f100b892e984848fcf7792ef5667496b1200",
     "tests/historical/test_hist001d_d2c.py": "9ad2f7ad8e69fe532bca97abb6f348b9de55fa6842fd5bebe740f2a5a0e9618c",
     "tests/historical/test_hist001d_d2d.py": "5e8e125b0f860c2fe63a00a6605e83a4d397f30d0947d1cbd69f3ca42a8d3031",
