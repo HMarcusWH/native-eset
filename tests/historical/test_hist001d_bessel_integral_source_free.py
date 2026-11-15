@@ -81,3 +81,53 @@ def test_trapezoid_error_upper_is_explicit_and_positive():
 def test_non_promoting_source_metadata():
     from source_audit import SAT_SHA, SOURCE_SHA
     assert len(SAT_SHA)==64 and len(SOURCE_SHA)==64
+
+# Source-identity guards remain active when Python discards language asserts.
+def test_source_audit_rejects_mismatched_lens_identity():
+    from source_audit import audit_lens
+    with pytest.raises(ValueError, match="lens identity mismatch"):
+        audit_lens(None, {"lens_id": "J0822+1828"}, {"lens_id": "J0915+4211"}, None)
+
+def test_source_audit_rejects_bad_original_node_bytes():
+    from source_audit import audit_lens
+    class FakeSource:
+        def read(self, name):
+            return b"short"
+    c={"lens_id": "J0822+1828", "node_file": "fake.be64", "node_sha256": "0"*64}
+    with pytest.raises(ValueError, match="180-node source bytes"):
+        audit_lens(FakeSource(), c, {"lens_id": c["lens_id"]}, None)
+
+def test_source_audit_rejects_wrong_inherited_node_sha():
+    import hashlib, json
+    from source_audit import audit_lens
+    raw=bytes(180*64)
+    digest=hashlib.sha256(raw).hexdigest()
+    c={"lens_id": "J0822+1828", "node_file": "nodes", "node_sha256": digest}
+    a={"lens_id": c["lens_id"], "source_scalar_binary64_hex": {
+        k: "0x1.0000000000000p+0" for k in
+        ("Mb", "Md", "a", "Rd", "delta", "r0", "n", "C4pi")}}
+    class FakeSource:
+        def read(self, name):
+            return raw
+    class FakePrevious:
+        def read(self, name):
+            return json.dumps({"source_180_node_sha256": "f"*64}).encode()
+    with pytest.raises(ValueError, match="inherited 180-node SHA"):
+        audit_lens(FakeSource(), c, a, FakePrevious())
+
+def test_quick_verifier_rejects_failed_claim_guard_under_optimized_python(monkeypatch, tmp_path):
+    import json
+    import verify_release as vr
+    result={"synthetic": True}
+    evidence=tmp_path/"results"
+    evidence.mkdir()
+    (tmp_path/"inputs").mkdir()
+    (evidence/"stencil_summary.json").write_text(json.dumps(result,sort_keys=True,indent=2)+"\n")
+    for i in range(6):
+        (evidence/f"lens_{i}.json").write_text("{}")
+    (evidence/"cross_resolution.json").write_text("{}")
+    monkeypatch.setattr(vr, "ROOT", tmp_path)
+    monkeypatch.setattr(vr, "verify", lambda *args: result)
+    monkeypatch.setattr(vr, "validate", lambda *args: False)
+    with pytest.raises(ValueError, match="claim guard rejected"):
+        vr.run_quick()
