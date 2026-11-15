@@ -78,3 +78,17 @@ The second command **reexecutes** the adapter and compares entire canonical JSON
 No original compiled NumPy/libm evaluator sign guarantees; no proof the original March reported sampled-root interpolation yields any new exact-real off-grid root; no third independently derived Bessel proof; no physical Weyl/Native ESET v1.7.2 provider or same-solution dynamics+lensing map; no new observational holdout; no empirical validation; no no-particle-CDM/full-cosmology claim; no changes to canonical Theory-State, GitHub `main`, or the frozen original source.
 
 **Scientific disposition:** `SOURCE_ONLY_SCANNER_IMPLEMENTED`, `PARENT_SOURCE_REPLAY_PENDING`, `physical_provider_admitted=false`, `empirical_validation=NOT_ESTABLISHED`.
+
+## November 16 PR-review corrections (source-only; nonpromoting)
+
+The GitHub branch's source-replayed receipts now bind the executing scanner
+implementation SHA-256. Archived V1 synthetic receipts remain byte-identical,
+and the immutable protected v0.1 release has **not** been regenerated.
+The reviewed source-only tests increase from the original 67 to 69 by
+exercising implementation identity and exclusive-create release packaging.
+Parent-corruption tests now initialize their parent oracle and verify the
+specific rejection reason. The previously archived source-only run receipt
+remains the historical November 7 record, not a new execution claim.
+
+No current physical lensing, independent holdout, canonical Theory-State
+change, or model validation is asserted by these corrections.
