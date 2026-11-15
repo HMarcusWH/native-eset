@@ -7,6 +7,8 @@ OUT=ROOT.parent/'HIST001D_CERTIFIED_BINARY64_SIGN_SCANNER_SOURCE_ONLY_v0_1_2026_
 INVENTORY=ROOT/'MANIFEST_SHA256.json'
 
 def main():
+    if OUT.exists() or OUT.is_symlink():
+        raise SystemExit('REFUSE_IMMUTABLE_RELEASE_OVERWRITE')
     files=sorted(p for p in ROOT.iterdir() if p.is_file() and p.name!='MANIFEST_SHA256.json')
     if not files or any('SOURCE_BOUND' in p.name for p in files):
         raise SystemExit('REJECT_UNSAFE_INVENTORY')
@@ -16,7 +18,7 @@ def main():
               'file_count':len(hashes),'files':hashes}
     INVENTORY.write_text(json.dumps(manifest,sort_keys=True,indent=2,ensure_ascii=True)+'\n',encoding='ascii')
     entries=sorted([*files,INVENTORY],key=lambda p:p.name)
-    with zipfile.ZipFile(OUT,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
+    with zipfile.ZipFile(OUT,'x',compression=zipfile.ZIP_DEFLATED,compresslevel=9) as z:
         for p in entries:
             zi=zipfile.ZipInfo('hist001d_certified_sign_scan_v0_1/'+p.name)
             zi.date_time=(2026,11,7,0,0,0)
