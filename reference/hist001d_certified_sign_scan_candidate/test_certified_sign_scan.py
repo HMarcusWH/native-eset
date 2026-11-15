@@ -7,6 +7,8 @@ import os
 import subprocess
 import sys
 import unittest
+import tempfile
+from unittest import mock
 from fractions import Fraction
 from pathlib import Path
 
@@ -32,6 +34,7 @@ class CorruptOracle(SyntheticOracle):
 
 class ParentCorruptOracle(SyntheticOracle):
     def __init__(self,key,value):
+        super().__init__()
         self.key=key;self.value=value
     def replay_parents(self,contract):
         data=super().replay_parents(contract)
@@ -112,15 +115,25 @@ class SourceOnlyTests(unittest.TestCase):
         c=SourceContract(model_id='DIFFERENT_MODEL',uniqueness_sha256='e'*64,scope='SYNTHETIC_TEST_ONLY')
         self.assertEqual(scan(self.api,c)['status'],'UNRESOLVED')
     def test_parent_source_wrong_unresolved(self):
-        self.assertEqual(scan(ParentCorruptOracle('source_sha256','0'*64),C)['status'],'UNRESOLVED')
+        receipt=scan(ParentCorruptOracle('source_sha256','0'*64),C)
+        self.assertEqual(receipt['status'],'UNRESOLVED')
+        self.assertIn('PARENT_ATTESTATION_INVALID_source_sha256',receipt['lens_results'][0]['reason'])
     def test_parent_theorem_wrong_unresolved(self):
-        self.assertEqual(scan(ParentCorruptOracle('theorem_claim','UNIQUE_WITHOUT_PROOF'),C)['status'],'UNRESOLVED')
+        receipt=scan(ParentCorruptOracle('theorem_claim','UNIQUE_WITHOUT_PROOF'),C)
+        self.assertEqual(receipt['status'],'UNRESOLVED')
+        self.assertIn('PARENT_ATTESTATION_INVALID_theorem_claim',receipt['lens_results'][0]['reason'])
     def test_parent_scope_wrong_unresolved(self):
-        self.assertEqual(scan(ParentCorruptOracle('scope','SOURCE_REPLAYED_CANDIDATE_MATH'),C)['status'],'UNRESOLVED')
+        receipt=scan(ParentCorruptOracle('scope','SOURCE_REPLAYED_CANDIDATE_MATH'),C)
+        self.assertEqual(receipt['status'],'UNRESOLVED')
+        self.assertIn('PARENT_ATTESTATION_INVALID_scope',receipt['lens_results'][0]['reason'])
     def test_parent_domain_wrong_unresolved(self):
-        self.assertEqual(scan(ParentCorruptOracle('domain_lo_hex','0x1.0p+0'),C)['status'],'UNRESOLVED')
+        receipt=scan(ParentCorruptOracle('domain_lo_hex','0x1.0p+0'),C)
+        self.assertEqual(receipt['status'],'UNRESOLVED')
+        self.assertIn('PARENT_ATTESTATION_INVALID_domain_lo_hex',receipt['lens_results'][0]['reason'])
     def test_parent_verifier_hash_missing_unresolved(self):
-        self.assertEqual(scan(ParentCorruptOracle('verifier_sha256',''),C)['status'],'UNRESOLVED')
+        receipt=scan(ParentCorruptOracle('verifier_sha256',''),C)
+        self.assertEqual(receipt['status'],'UNRESOLVED')
+        self.assertIn('PARENT_ATTESTATION_MISSING_verifier_sha256',receipt['lens_results'][0]['reason'])
     def test_insufficient_budget_unresolved(self):
         self.assertEqual(scan(self.api,C,max_evals_per_lens=1)['status'],'UNRESOLVED')
     def test_zero_budget_unresolved(self):
@@ -236,5 +249,40 @@ class SourceOnlyTests(unittest.TestCase):
         result=subprocess.run([sys.executable,str(base/'scan_cli.py'),'--check-receipt',str(path)],capture_output=True,text=True)
         self.assertEqual(result.returncode,0)
         self.assertIn('STRUCTURE_ONLY_PASS',result.stdout)
+
+    def test_source_replayed_receipt_binds_scanner_source_hash(self):
+        # Synthetic test oracle only: never publish this as a source proof.
+        from certified_sign_scan import scanner_implementation_sha256
+        class FakeSourceParent(SyntheticOracle):
+            def replay_parents(self, contract):
+                evidence=super().replay_parents(contract)
+                evidence['scope']=contract.scope
+                evidence['verification_result']='PASS_SOURCE_REPLAY'
+                return evidence
+        c=SourceContract(uniqueness_sha256='e'*64,
+                         scope='SOURCE_REPLAYED_CANDIDATE_MATH')
+        receipt=scan(FakeSourceParent(),c)
+        self.assertEqual(receipt['scanner_implementation_sha256'],
+                         scanner_implementation_sha256())
+        attacked=copy.deepcopy(receipt)
+        attacked['scanner_implementation_sha256']='0'*64
+        reh(attacked)
+        with self.assertRaisesRegex(Unresolved,'SCANNER_EXECUTED_SOURCE_MISMATCH'):
+            validate_receipt(attacked,require_real_source=True)
+
+    def test_versioned_release_archive_cannot_be_overwritten(self):
+        import build_release as builder
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp)
+            (root/'fixture.py').write_text('print("toy")\n')
+            out=root/'versioned.zip'
+            with mock.patch.object(builder,'ROOT',root), \
+                 mock.patch.object(builder,'OUT',out), \
+                 mock.patch.object(builder,'INVENTORY',root/'MANIFEST_SHA256.json'):
+                builder.main()
+                original=out.read_bytes()
+                with self.assertRaisesRegex(SystemExit,'REFUSE_IMMUTABLE_RELEASE_OVERWRITE'):
+                    builder.main()
+                self.assertEqual(out.read_bytes(),original)
 
 if __name__=='__main__': unittest.main(verbosity=2)
