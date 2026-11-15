@@ -302,7 +302,7 @@
     "tests/historical/test_hist001d_k180_signed_stencil_source_free.py": "fcff028d2a1241796e050cb4444f431dc29c311d874a36ab4391294097238bc6",
     "tests/historical/test_hist001d_original_float_bridge_source_free.py": "3c6c8cb3622703a7317397df0af7369a5d4d1e853dca905798cdd054dc5fd38e",
     "tests/historical/test_hist001d_original_float_bridge_v1r2_failclosed.py": "736637a420f08a00d0ee03be18e6830d1e3f9fb44b68c80e87ab2b2da46c1b40",
-    "tests/historical/test_hist001d_signed_stencil_v1r2_failclosed.py": "cec51b27d57f92f8d71cb71b02778854da70bf5cbc27cb225229228b7423cf60",
+    "tests/historical/test_hist001d_signed_stencil_v1r2_failclosed.py": "c8a00362d04d511de3b845dd4d07655db05f815aceda724cec9d38f9a0ffb1ea",
     "tests/historical/test_hist001d_upstream_bessel_mass_sourcefree.py": "daf2cc91b39973d25cf7c1f4617e8cd22e9398a2a81263f167a99cfaf727b0c4",
     "tests/historical/test_hist001d_upstream_v1r2_attested.py": "8869c54d534690d737fc242b734da077c9de61a6e272098bd1258b3855842a52",
     "tests/historical/test_verified_checker_source_v1r3.py": "ac33bcf8c17196b6e8c47ce72b900c2442ed477ff3389db30e927eff100cc6f5",

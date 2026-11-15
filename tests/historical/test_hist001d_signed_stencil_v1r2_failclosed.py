@@ -6,6 +6,7 @@ when both -O and -OO strip the language-level assertion bytecode.
 from __future__ import annotations
 from fractions import Fraction as F
 from hashlib import sha256
+import importlib.util
 from pathlib import Path
 from unittest import TestCase, main, mock
 import stat
@@ -19,7 +20,14 @@ PROOF=ROOT/'reference/hist001d_k180_signed_stencil_candidate'
 sys.path.insert(0,str(PROOF))
 import finite_difference_bias as producer  # noqa: E402
 import verify_signed_bias as independent  # noqa: E402
-import attested_replay_v1r2 as att  # noqa: E402
+# Several stacked historical packages share this module's basename. Import
+# by an isolated, unique module identity so whole-suite pytest collection
+# cannot accidentally reuse another package's sys.modules entry.
+_att_spec=importlib.util.spec_from_file_location(
+    'hist001d_pr59_signed_stencil_attestor_for_tests',
+    PROOF/'attested_replay_v1r2.py')
+att=importlib.util.module_from_spec(_att_spec)
+_att_spec.loader.exec_module(att)
 
 
 class TestHIST001DPR59FailClosed(TestCase):
