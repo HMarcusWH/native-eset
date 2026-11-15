@@ -1,4 +1,4 @@
-"""Source-only quick verification: SHA manifest + 67 tests + 36 mutations.
+"""Source-only quick verification: SHA manifest + 69 tests + 36 mutations.
 
 Not a replacement for protected-data source re-execution.
 """
@@ -38,7 +38,7 @@ def main():
             return 2
     result=subprocess.run([sys.executable,'-m','unittest','-q','test_certified_sign_scan.py'],cwd=ROOT,
                           capture_output=True,text=True)
-    if result.returncode or 'Ran 67 tests' not in result.stderr or 'OK' not in result.stderr:
+    if result.returncode or 'Ran 69 tests' not in result.stderr or 'OK' not in result.stderr:
         print('UNRESOLVED: SOURCE_FREE_UNIT_TESTS_FAILED\n'+result.stdout+'\n'+result.stderr,file=sys.stderr)
         return 2
     audit=qa()
@@ -53,7 +53,7 @@ def main():
         print('UNRESOLVED: SYNTHETIC_RECEIPT_MISMATCH',file=sys.stderr)
         return 2
     print('PASS_SOURCE_FREE_ONLY: sha_manifest='+str(len(files))+'/'
-          +str(len(files))+', tests=67/67, structural_attack_rejections=35/35, '
+          +str(len(files))+', tests=69/69, structural_attack_rejections=35/35, '
           'replay_required_attack=1, operational_fail_closed=3/3. '
           'PROTECTED_PARENT_SOURCE_REPLAY=NOT_RUN.')
     return 0
