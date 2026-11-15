@@ -64,9 +64,25 @@ class AttestationSourceFreeTests(unittest.TestCase):
                 att.check_member_inventory(z)
 
     def test_unsafe_member_rejected(self):
-        for name in ('../../escape.py','/etc/test.py','a/./b','a//b','a\\b'):
+        # ZipInfo normalizes backslashes on Windows while *constructing* a ZIP.
+        # Test the path guard independently rather than mistaking that
+        # platform transformation for a validator failure.
+        self.assertFalse(att.safe_path('a\\b'))
+        for name in ('../../escape.py','/etc/test.py','a/./b','a//b'):
             with self.subTest(name=name),zipfile.ZipFile(io.BytesIO(make_zip({name:b'bad'}))) as z:
                 with self.assertRaises(ValueError):att.check_member_inventory(z)
+
+    def test_raw_backslash_zip_member_where_exposed(self):
+        # Modify both headers' filename bytes, not ZipInfo (which rewrites
+        # backslashes on Windows). No CRC covers these filename bytes.
+        raw=make_zip({'a/b':b'bad'}).replace(b'a/b',b'a\\b')
+        with zipfile.ZipFile(io.BytesIO(raw)) as z:
+            if z.namelist()==['a\\b']:
+                with self.assertRaises(ValueError):att.check_member_inventory(z)
+            else:
+                # Windows ZipInfo canonicalizes the *read* name too; the raw
+                # encoded path has already been tested by safe_path above.
+                self.assertEqual(z.namelist(),['a/b'])
 
     def test_symlink_rejected(self):
         buf=io.BytesIO()
