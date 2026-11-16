@@ -104,3 +104,16 @@ def test_claim_firewall_source_free_static():
                 'source_offgrid_clip_branch_certified'):
         assert f"'{key}':False" in source
     assert "'external_mathematical_review':'NOT_DONE'" in source
+
+
+import subprocess as _hist_subprocess
+import sys as _hist_sys
+
+@pytest.mark.parametrize("module",["reference/hist001d_march_c3_candidate/produce.py"])
+def test_historical_proof_module_rejects_optimized_python(module):
+    path=Path(__file__).resolve().parents[2]/module
+    p=_hist_subprocess.run([_hist_sys.executable,"-OO","-c",
+       "import runpy,sys;runpy.run_path(sys.argv[1])",str(path)],
+       capture_output=True,text=True,timeout=15)
+    assert p.returncode!=0
+    assert "HIST001D_MARCH_C3_OPTIMIZED_EXECUTION_REJECTED" in p.stderr

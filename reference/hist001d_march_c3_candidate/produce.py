@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Source-authenticated exact-rational Bessel-envelope supplier; no empirical/physical promotion."""
 from __future__ import annotations
+
+# Historical proof assertions require nonoptimized Python, or fail closed.
+if not __debug__:
+    raise RuntimeError('HIST001D_MARCH_C3_OPTIMIZED_EXECUTION_REJECTED')
 import hashlib, io, json, struct, zipfile, sys, time
 from fractions import Fraction as Q
 from pathlib import Path

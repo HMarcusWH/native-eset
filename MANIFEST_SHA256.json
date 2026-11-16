@@ -255,9 +255,9 @@
     "reference/hist001d_march_c3_candidate/c3_envelope.py": "d744571e1a0202dc3c3f640ddf7d4dca5dd969a2210b7f5fca75bec2e001c512",
     "reference/hist001d_march_c3_candidate/highprecision_sanity.py": "71d13ebe125a1391af424b55482854b7cfe5c1a8307ee22214d28a804c3fe3fd",
     "reference/hist001d_march_c3_candidate/independent_verify.py": "f9e6f0f335dd41798a33f4edb72bc3848bd704ced792c171c3236da5c40b355e",
-    "reference/hist001d_march_c3_candidate/produce.py": "fae606ad83ee9bb6c54ad4d5e61258f1438653532283e08c27ad5c5b9816aeb6",
+    "reference/hist001d_march_c3_candidate/produce.py": "466041e6867f9aa9f7d6dc2161634778c70d38732a4de6232a7888ad7e6364c6",
     "reference/hist001d_march_c3_candidate/verify_archive.py": "0e752087ba6b7bbe7439680260eba323bb3623f06be28ff764c10520920acc5f",
-    "tests/historical/test_hist001d_march_c3_source_free.py": "14f0e42d902b73c2bbb02f8a0dc5d3ab8e958fa7e1646da71c17efdd5521e3f5"
+    "tests/historical/test_hist001d_march_c3_source_free.py": "2d8a944a96509b85d6306372c4d8d4921a4d1561df36014c3bae106559af3c48"
   },
   "manifest_version": 1
 }
