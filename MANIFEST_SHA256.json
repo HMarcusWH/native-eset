@@ -324,7 +324,7 @@
     "reference/hist001d_k180_bessel_integral_candidate/source_audit.py": "b6c40976518f963783a97350da07d6c9a5d51385bd8688be341d0ad4dbae8d10",
     "reference/hist001d_k180_bessel_integral_candidate/stencil_verify.py": "dbe9da621cfba15ec7149ecec65881e152cefa0f4a448e9d8653b349c1617070",
     "reference/hist001d_k180_bessel_integral_candidate/verify_release.py": "affb0df7daf8a273bf14e129abc314b81804c859e9e056db2f6070e0bd45c779",
-    "tests/historical/test_hist001d_bessel_integral_source_free.py": "f52c3fb3615594a1622de142917b9c76633a7064d3a44d6167f43486f57ff731"
+    "tests/historical/test_hist001d_bessel_integral_source_free.py": "3faa954a8684f82ed5bf19c9ebd8f2da1f055ee807e0221455a85519e202a156"
   },
   "manifest_version": 1
 }
