@@ -4,6 +4,9 @@ No actual March source data; protected operational checks are separate.
 """
 import copy
 import os
+import sys
+import tempfile
+from pathlib import Path
 import unittest
 from fractions import Fraction as F
 from unittest.mock import patch
@@ -124,5 +127,28 @@ class AdapterSourceOnlyTests(unittest.TestCase):
         import inspect,source_bound_adapter_v1
         self.assertIn('contract.scope != "SOURCE_REPLAYED_CANDIDATE_MATH"',inspect.getsource(source_bound_adapter_v1))
 
+
+    def test_execution_provenance_records_runtime_and_numeric_libraries(self):
+        from verify_integrated_release_v1 import execution_environment
+        detail=execution_environment()
+        self.assertIn('python_version',detail)
+        self.assertEqual(detail['float_radix'],sys.float_info.radix)
+        self.assertEqual(detail['binary64_mantissa_bits'],sys.float_info.mant_dig)
+        for name in ('numpy','scipy','mpmath'):
+            self.assertIn(name,detail['numeric_library_versions'])
+
+    def test_subprocess_provenance_records_actual_command_and_diagnostics(self):
+        from verify_integrated_release_v1 import subprocess_run
+        with tempfile.TemporaryDirectory() as temp:
+            audit=[]
+            out,err=subprocess_run(['-c','print("PROVENANCE_TOY_OK")'],
+                                   cwd=Path(temp),audit=audit)
+            self.assertEqual(out,'PROVENANCE_TOY_OK')
+            self.assertEqual(err,'')
+            self.assertEqual(len(audit),1)
+            self.assertEqual(audit[0]['argv'][0],sys.executable)
+            self.assertEqual(audit[0]['exit_code'],0)
+            self.assertIn('PROVENANCE_TOY_OK',audit[0]['stdout_last_2000'])
+            self.assertEqual(len(audit[0]['stdout_sha256']),64)
 
 if __name__=='__main__':unittest.main()
