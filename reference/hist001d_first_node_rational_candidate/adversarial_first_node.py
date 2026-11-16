@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """Fail-closed altered-claim tests for the source-locked first-node candidate."""
 from __future__ import annotations
+
+# Historical proof assertions require nonoptimized Python, or fail closed.
+if not __debug__:
+    raise RuntimeError('HIST001D_FIRST_NODE_OPTIMIZED_EXECUTION_REJECTED')
 import copy, hashlib, json, io, zipfile
 from pathlib import Path
 import independent_first_node as second

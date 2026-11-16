@@ -253,9 +253,9 @@
     "reference/hist001d_first_node_rational_candidate/README.md": "65889df0a1c488223a407fbf5cacfcc26e4582f2844bf865a815d828d469ec87",
     "reference/hist001d_first_node_rational_candidate/first_node_certificate.py": "50a58a7c16f3c81be494ea9f73f4d2e7a4fb14cd3d89770a896ac361a06a36ce",
     "reference/hist001d_first_node_rational_candidate/independent_first_node.py": "aa19e21af40574741bfa0ee1984a95d37aaaa014fa86db07f3c05c5cf9e83c81",
-    "reference/hist001d_first_node_rational_candidate/adversarial_first_node.py": "951319f3ab4fc8f55d9611e34bde882ff93ba5360cc4f56fc4fe1a7cd140ffdf",
+    "reference/hist001d_first_node_rational_candidate/adversarial_first_node.py": "3b10a01021418a94805c288899065cf474005c3a5b62a4ca9af5551c6c8f04d8",
     "reference/hist001d_first_node_rational_candidate/verify_archive.py": "c3e008008154986165ff6517f6e2885f59db5d4f02e2ea0a5341e0f04163698c",
-    "tests/historical/test_hist001d_firstnode_rational_source_free.py": "136e89f34d409b978bd7c09a3b85648b28df14c9da18db43f454fc13a1e1225d"
+    "tests/historical/test_hist001d_firstnode_rational_source_free.py": "71dad55d4474cb35741e283c9fd121dc3179edb2df661992a472c89b1d70b88c"
   },
   "manifest_version": 1
 }

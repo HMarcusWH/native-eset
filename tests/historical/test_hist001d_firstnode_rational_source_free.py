@@ -86,3 +86,16 @@ def test_model_claim_firewall_source_free():
                   'original_full_H_or_root_count_certified','physical_provider_admitted'):
         assert "'"+field+"':False" in s
     assert "'empirical_validation':'NOT_ESTABLISHED'" in s
+
+
+import subprocess as _hist_subprocess
+import sys as _hist_sys
+
+@pytest.mark.parametrize("module",["reference/hist001d_first_node_rational_candidate/adversarial_first_node.py"])
+def test_historical_proof_module_rejects_optimized_python(module):
+    path=Path(__file__).resolve().parents[2]/module
+    p=_hist_subprocess.run([_hist_sys.executable,"-OO","-c",
+       "import runpy,sys;runpy.run_path(sys.argv[1])",str(path)],
+       capture_output=True,text=True,timeout=15)
+    assert p.returncode!=0
+    assert "HIST001D_FIRST_NODE_OPTIMIZED_EXECUTION_REJECTED" in p.stderr
