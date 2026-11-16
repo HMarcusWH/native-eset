@@ -3,6 +3,11 @@
 No imports from producer or original source; rereads source ZIP and immutable original 180 arrays.
 """
 from __future__ import annotations
+
+# Historical assertion-dependent proof calculations are not executable under
+# optimized Python; refuse -O/-OO until every guard is unconditional.
+if not __debug__:
+    raise RuntimeError('HIST001D_COMMON180_OPTIMIZED_EXECUTION_REJECTED')
 from pathlib import Path
 import json,io,hashlib,zipfile,struct,math
 from fractions import Fraction as Fr

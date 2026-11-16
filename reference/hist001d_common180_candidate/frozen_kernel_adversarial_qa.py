@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Fail-closed schema/numerical receipts tests; not a new independent proof."""
 from __future__ import annotations
+
+# Historical assertion-dependent proof calculations are not executable under
+# optimized Python; refuse -O/-OO until every guard is unconditional.
+if not __debug__:
+    raise RuntimeError('HIST001D_COMMON180_OPTIMIZED_EXECUTION_REJECTED')
 import copy,hashlib,json,struct
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]

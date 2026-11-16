@@ -250,13 +250,13 @@
     "tests/historical/test_hist001d_g4b1b_supplied_finite_H.py": "75cab5e7a461e0a6394c0a0884cc393ad303db43501ea58fddc5b7d05e7ffd50",
     "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34",
     "docs/HIST001D_ORIGINAL_MARCH_180_FROZEN_STENCIL_SCOPE_CANDIDATE.md": "8689be0b36f21558f42a293c20f2fb47d2584b0caf0b2acfa095a4e847dff853",
-    "reference/hist001d_common180_candidate/capture_original_180.py": "deecf7462e46a8b4735a8587ed9d663fb79b85052428682a0871780150eff106",
-    "reference/hist001d_common180_candidate/frozen_kernel_adversarial_qa.py": "493d2b77bbe55bf750298574f62450e864689c6bddb017d9d083a07a726b874e",
-    "reference/hist001d_common180_candidate/frozen_kernel_exact_producer.py": "c539d74ef4f681311dbb19235d4c5b690059a054bf32fe904d530c5a5a1fd297",
-    "reference/hist001d_common180_candidate/frozen_kernel_independent_checker.py": "cf97375564ad121d03ef15a3714c5cb85191535993d10f931915e4ee9b70c699",
+    "reference/hist001d_common180_candidate/capture_original_180.py": "d223b74e2b80cdaaa2163d87967503996be75ae0a79d40f299b8224b5a6a2a12",
+    "reference/hist001d_common180_candidate/frozen_kernel_adversarial_qa.py": "0089d2dd3cefff6123f31ff0fc81838feaf110a766eafa0781e83e9ff82d995c",
+    "reference/hist001d_common180_candidate/frozen_kernel_exact_producer.py": "b377104aa7c7e688e7e93968bde7aa9abf34f1b6358870af66a989d7ea1c0b18",
+    "reference/hist001d_common180_candidate/frozen_kernel_independent_checker.py": "ce792dc3ace9939c4b3ed003f4ca624df42365310c6ea50e1023076be2c9a9c1",
     "reference/hist001d_common180_candidate/reproduce.py": "4ed59537dcbb9d1ad0d7941ab494bebf7e1aa238e128ada5bffe486517ac8707",
     "reference/hist001d_common180_candidate/verify_archive.py": "0f9e7c174d039039ba224ba0e82306390e867aac9b691287f1a526c2097b2246",
-    "tests/historical/test_hist001d_common180_source_free.py": "ca7e62fbbd983eda4687dc376cdb4b3031c30d29ac145bb2faac75d0f7eeff96"
+    "tests/historical/test_hist001d_common180_source_free.py": "808a88c97b69daba566ca82f2faafd57276c27d2a83bbfad7c189b9a5fd9f956"
   },
   "manifest_version": 1
 }

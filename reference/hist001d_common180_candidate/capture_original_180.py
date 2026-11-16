@@ -3,6 +3,11 @@
 This script never changes the original source; NONPROMOTING HISTORICAL NUMERICAL EVIDENCE.
 """
 from __future__ import annotations
+
+# Historical assertion-dependent proof calculations are not executable under
+# optimized Python; refuse -O/-OO until every guard is unconditional.
+if not __debug__:
+    raise RuntimeError('HIST001D_COMMON180_OPTIMIZED_EXECUTION_REJECTED')
 import io, json, hashlib, tempfile, zipfile, os, sys, struct
 from pathlib import Path
 import numpy as np

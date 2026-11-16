@@ -5,6 +5,11 @@ MATHEMATICAL/NUMERICAL SCOPED ONLY. Not quadrature accuracy against an unknown
 physical continuum density, not original 180x120 H(R) root certification.
 """
 from __future__ import annotations
+
+# Historical assertion-dependent proof calculations are not executable under
+# optimized Python; refuse -O/-OO until every guard is unconditional.
+if not __debug__:
+    raise RuntimeError('HIST001D_COMMON180_OPTIMIZED_EXECUTION_REJECTED')
 import json,struct,hashlib,math
 from pathlib import Path
 from fractions import Fraction as Q

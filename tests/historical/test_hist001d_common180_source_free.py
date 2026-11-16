@@ -119,3 +119,15 @@ def test_source180_archive_fails_closed_under_optimized_python():
     p=subprocess.run(cmd,capture_output=True,text=True,timeout=15)
     assert p.returncode != 0
     assert 'SIX_FROZEN_SOURCE_NODE_FILES_REQUIRED' in p.stderr
+
+
+@pytest.mark.parametrize('module',[
+    'capture_original_180.py','frozen_kernel_adversarial_qa.py',
+    'frozen_kernel_exact_producer.py','frozen_kernel_independent_checker.py'])
+def test_common180_assert_dependent_modules_reject_optimized_python(module):
+    import subprocess,sys
+    p=subprocess.run([sys.executable,'-OO','-c',
+                      'import runpy,sys;runpy.run_path(sys.argv[1])',
+                      str(SRC/module)],capture_output=True,text=True,timeout=15)
+    assert p.returncode!=0
+    assert 'HIST001D_COMMON180_OPTIMIZED_EXECUTION_REJECTED' in p.stderr
