@@ -2,7 +2,7 @@
   "files": {
     ".env.example": "62ac70b3f1d73ae3fd485fb1b336c5ac08f6b7822baa2d6189315e93744ec312",
     ".gitattributes": "9e23f4c78a5fbe073aa3847510a05b35c18767e86253f14e3508a6a02c931a65",
-    ".github/workflows/ci.yaml": "f1402ce899fc5e086bdcc7bf4e4f0c1f9b8c05909bda6cbb5e7c5e40bfa1450c",
+    ".github/workflows/ci.yaml": "3d0012861f5798b135a5bd944822da31d50a355063f02078e633751a5d02c90a",
     ".gitignore": "0fc020a952cc1ba9d5b6a873843b5129cfee4a902102bd3196b41c08028ae7fa",
     "AGENTS.md": "ff69f6523a4340e2508353bc9e85940c8a5eb91dcfedc81b1922212c567edb76",
     "CHANGELOG.md": "e1b145ba7cfe7d36f7aa52f4d060cf597f000dc149c81875cf45d21f0c31a699",
@@ -37,6 +37,7 @@
     "docs/HIST001D_D2E_G4A_FLAT_LCDM_SIGMA_MATH_CERTIFICATE_DRAFT.md": "28591a17aa6b6c8c9418c1a23884a5f82d10cc4188b4face2f1f83ac8807c40c",
     "docs/HIST001D_D2E_RELEASE_STATUS.md": "b45f4b174ae2a14051c76d1c2c1f160e4a2ac0abc345541d74da474f131853d1",
     "docs/HIST001_INTEGRATION_PLAN.md": "e9543eea4fddec2fa2e384dafda36bd7d18ddc2fbe31284ccef704c58014bf13",
+    "docs/HIST001_CI_AND_MERGE_GATES.md": "9ee2af43f8b098c2361eb38493bcb4480695b233f5a5829f77ed28ba0bc04819",
     "docs/RELEASE_PROTOCOL.md": "6e46e3443c0ed49128b930eb4a095f64c327daec2a1ee432d65047c3ac47365d",
     "docs/THREAT_MODEL.md": "20312bdaee294c9a4472d12a092954bd7cea3eaf5037fcbe946e426e6b0adae0",
     "docs/architecture.md": "0146cb4aab8ee0d9ca6958ca544ea3527e732e8edc3f5e73aa14c034494c0d48",
