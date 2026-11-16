@@ -22,6 +22,18 @@ def _load_local_claim_guard():
     return module.validate
 
 validate = _load_local_claim_guard()
+
+def _load_local_adversarial_run():
+    # Never trust the top-level adversarial_qa module cache.
+    path = Path(__file__).resolve().with_name("adversarial_qa.py")
+    spec = _hist_importlib_util.spec_from_file_location(
+        "hist001d_k180_bessel_integral_adversarial_qa", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("K180 sibling adversarial QA cannot be loaded")
+    module = _hist_importlib_util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.run
+
 ROOT=Path(__file__).resolve().parents[2]
 
 def sha(data):return hashlib.sha256(data).hexdigest()
@@ -54,8 +66,7 @@ def run_quick():
     overlap=compare_old(ROOT/'inputs/saturation_parent_v1r1.zip',ROOT/'results')
     if (json.dumps(overlap,sort_keys=True,indent=2)+'\n').encode()!=(ROOT/'results/prior_power_series_overlap.json').read_bytes():
         raise ValueError('prior 512-bit power-series overlap changed')
-    from adversarial_qa import run
-    qa=run()
+    qa=_load_local_adversarial_run()()
     actual=(ROOT/'results/adversarial_qa.json').read_bytes()
     if actual!=(json.dumps(qa,sort_keys=True,indent=2)+'\n').encode():raise ValueError('QA result changed')
     result=subprocess.run([sys.executable,'-m','pytest','-q','tests/historical/test_hist001d_bessel_integral_source_free.py'],cwd=ROOT,check=False,capture_output=True,text=True)
