@@ -91,3 +91,15 @@ def test_forbidden_claims_do_not_follow_from_fixed_node_math():
            'original_full_H_root_theorem':False,
            'physical_provider_admitted':False}
     assert all(v is False for v in flags.values())
+
+
+@pytest.mark.parametrize('module',[
+    'all180_adversarial_qa.py','crossing_band_bound.py'])
+def test_original_all180_assert_dependent_sources_reject_optimized_python(module):
+    import subprocess
+    path=Path(__file__).resolve().parents[2]/'reference'/'hist001d_all180_bessel_candidate'/module
+    p=subprocess.run([sys.executable,'-OO','-c',
+                      'import runpy,sys;runpy.run_path(sys.argv[1])',
+                      str(path)],capture_output=True,text=True,timeout=15)
+    assert p.returncode!=0
+    assert 'HIST001D_ALL180_OPTIMIZED_EXECUTION_REJECTED' in p.stderr

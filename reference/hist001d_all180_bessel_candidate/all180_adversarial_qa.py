@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Adversarial JSON/integrity contract tests; not extra independent math proofs."""
 from __future__ import annotations
+
+# Retain mathematical/source integrity when Python strips assert statements.
+# Until unconditional guards are independently reviewed, reject -O and -OO.
+if not __debug__:
+    raise RuntimeError('HIST001D_ALL180_OPTIMIZED_EXECUTION_REJECTED')
 import copy,hashlib,json,zipfile
 from pathlib import Path
 from all180_aggregate import inspect_pair,aggregate

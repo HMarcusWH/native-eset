@@ -6,6 +6,11 @@ rational difference intervals. Does not re-evaluate mathematical Bessel function
 does not claim original March continuous-root/physical provider identity.
 """
 from __future__ import annotations
+
+# Retain mathematical/source integrity when Python strips assert statements.
+# Until unconditional guards are independently reviewed, reject -O and -OO.
+if not __debug__:
+    raise RuntimeError('HIST001D_ALL180_OPTIMIZED_EXECUTION_REJECTED')
 import zipfile,io,struct,json,hashlib,math
 from fractions import Fraction as Q
 from pathlib import Path
