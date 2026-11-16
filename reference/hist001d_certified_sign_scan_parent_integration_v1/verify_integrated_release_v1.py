@@ -7,8 +7,10 @@ original March arbitrary-input floating-point sign topology, or validation.
 from __future__ import annotations
 import argparse
 import hashlib
+from importlib import metadata
 import json
 import os
+import platform
 from pathlib import Path, PurePosixPath
 import shutil
 import subprocess
@@ -120,8 +122,37 @@ def safe_extract(archive:Path,dest:Path):
         z.extractall(dest)
 
 
-def subprocess_run(argv:list[str],*,cwd:Path|None=None,env:dict|None=None,timeout:int=250):
-    p=subprocess.run([sys.executable,*argv],cwd=cwd,env=env,text=True,capture_output=True,timeout=timeout)
+def execution_environment() -> dict:
+    """Actual audit environment, separate from deterministic math receipts."""
+    packages={}
+    for name in ('numpy','scipy','mpmath'):
+        try:
+            packages[name]=metadata.version(name)
+        except metadata.PackageNotFoundError:
+            packages[name]='NOT_INSTALLED'
+    allowed=('PYTHONHASHSEED','OPENBLAS_NUM_THREADS','OMP_NUM_THREADS',
+             'MKL_NUM_THREADS','NUMEXPR_NUM_THREADS','VECLIB_MAXIMUM_THREADS')
+    return {'python_version':sys.version,'python_executable':sys.executable,
+            'python_implementation':platform.python_implementation(),
+            'system':platform.platform(),'machine':platform.machine(),
+            'libc':platform.libc_ver(),
+            'binary64_mantissa_bits':sys.float_info.mant_dig,
+            'float_radix':sys.float_info.radix,
+            'numeric_library_versions':packages,
+            'numerical_environment':{k:os.environ.get(k) for k in allowed}}
+
+
+def subprocess_run(argv:list[str],*,cwd:Path|None=None,env:dict|None=None,
+                   timeout:int=250,audit:list|None=None):
+    command=[sys.executable,*argv]
+    p=subprocess.run(command,cwd=cwd,env=env,text=True,capture_output=True,timeout=timeout)
+    if audit is not None:
+        audit.append({'argv':command,'cwd':str(cwd) if cwd else os.getcwd(),
+                      'timeout_seconds':timeout,'exit_code':p.returncode,
+                      'stdout_sha256':sha(p.stdout.encode('utf-8')),
+                      'stderr_sha256':sha(p.stderr.encode('utf-8')),
+                      'stdout_last_2000':p.stdout[-2000:],
+                      'stderr_last_2000':p.stderr[-2000:]})
     if p.returncode!=0:
         raise RuntimeError('subprocess failed '+str(argv[:3])+': '+p.stderr[-900:]+p.stdout[-900:])
     return p.stdout.strip(),p.stderr.strip()
@@ -140,6 +171,13 @@ def test_release(archive:Path, full:bool=False):
             'scientific_authority_promoted':False}
     if not full:
         result['status']='SOURCE_ARCHIVE_AND_SCOPE_ONLY_PASS';return result
+    result['execution_provenance']={
+        'role':'NONCANONICAL_EXECUTION_AUDIT_NOT_MATHEMATICAL_RECEIPT',
+        'environment':execution_environment(),
+        'source_archive_sha256':result['archive_integrity']['zip_sha256'],
+        'commands':[]}
+    def recorded(argv,**kwargs):
+        return subprocess_run(argv,audit=result['execution_provenance']['commands'],**kwargs)
     with tempfile.TemporaryDirectory(prefix='hist001d_protected_clean_replay_') as tmp:
         w=Path(tmp)
         safe_extract(archive,w)
@@ -159,12 +197,12 @@ def test_release(archive:Path, full:bool=False):
                    HIST001D_GLOBAL_AUDIT=str((w/'results/global_independent_audit.json').resolve()),
                    PYTHONPATH=os.pathsep.join([str(source.resolve()),str(scan_dir.resolve())]))
         # Unit source-free tests run on both scanner original and new adapter.
-        _,stderr=subprocess_run(['-m','unittest','-q','test_certified_sign_scan.py'],cwd=scan_dir,env=env,timeout=65)
-        _,stderr2=subprocess_run(['-m','unittest','-q','test_source_bound_adapter_v1.py'],cwd=source,env=env,timeout=65)
+        _,stderr=recorded(['-m','unittest','-q','test_certified_sign_scan.py'],cwd=scan_dir,env=env,timeout=65)
+        _,stderr2=recorded(['-m','unittest','-q','test_source_bound_adapter_v1.py'],cwd=source,env=env,timeout=65)
         result['source_free_unittest_groups']='67_scanner_and_18_integration_source_only'
         # Full global independence: two separate rational engines, 1400 leaves.
         new_global=w/'global_recomputed.json'
-        subprocess_run([str(source/'global_independent_verify_v1.py'),
+        recorded([str(source/'global_independent_verify_v1.py'),
                        '--engine-dir',str(globaldir),'--parent-dir',str(parents),
                        '--archive',str(globalzip),'--out',str(new_global)],cwd=source,env=env,timeout=240)
         saved_global=(w/'results/global_independent_audit.json').read_bytes()
@@ -173,7 +211,7 @@ def test_release(archive:Path, full:bool=False):
         result['global_independent_audit_sha256']=sha(saved_global)
         # Parent bracketer full replay and adversarial equality.
         root_audit=w/'root_replay.json'
-        subprocess_run([str(root/'verify_release.py'),'--archive',str(bracket),
+        recorded([str(root/'verify_release.py'),'--archive',str(bracket),
                        '--work-dir',str(root),'--parent-dir',str(parents),'--full',
                        '--out',str(root_audit)],cwd=root,env=env,timeout=110)
         compare_root_replay_wrapper(json.loads(root_audit.read_bytes()),
@@ -184,15 +222,15 @@ def test_release(archive:Path, full:bool=False):
         new_scan=w/'new_source_coverage.json'
         base=[str(scan_dir/'scan_cli.py'),'--adapter','source_bound_adapter_v1:make_adapter',
               '--uniqueness-parent-sha256',GLOBAL_SHA,'--mode','theorem']
-        subprocess_run(base+['--out',str(new_scan)],cwd=scan_dir,env=env,timeout=160)
+        recorded(base+['--out',str(new_scan)],cwd=scan_dir,env=env,timeout=160)
         if new_scan.read_bytes()!=(w/'results/source_bound_coverage.json').read_bytes():
             raise ValueError('coverage source replay differs from protected receipt')
-        subprocess_run(base+['--replay-receipt',str(new_scan)],cwd=scan_dir,env=env,timeout=160)
+        recorded(base+['--replay-receipt',str(new_scan)],cwd=scan_dir,env=env,timeout=160)
         result['all_12_new_endpoint_guards_replayed']=True
         result['coverage_sha256']=sha(new_scan.read_bytes())
         # Mutated self-rehashed numerical results MUST be caught by replay.
         new_adv=w/'new_adversarial.json'
-        subprocess_run([str(source/'protected_adversarial_v1.py'),
+        recorded([str(source/'protected_adversarial_v1.py'),
                        '--expected',str(new_scan),'--engine',str(root),'--parents',str(parents),
                        '--root',str(bracket),'--global-audit',str(new_global),
                        '--scanner-dir',str(scan_dir),'--out',str(new_adv)],cwd=source,env=env,timeout=180)
