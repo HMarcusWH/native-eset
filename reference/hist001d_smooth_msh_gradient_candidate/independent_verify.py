@@ -6,6 +6,10 @@ ivp/kvp path plus mp.diff of the full Bessel MASS function at selected knots.
 These are numerical high-precision comparisons, NOT validated interval bounds.
 """
 from __future__ import annotations
+
+# Historical proof checks use assertions; optimized Python must fail closed.
+if not __debug__:
+    raise RuntimeError('HIST001D_SHADOW_GRADIENT_OPTIMIZED_EXECUTION_REJECTED')
 import hashlib,io,json,math,struct,zipfile
 from fractions import Fraction
 from pathlib import Path

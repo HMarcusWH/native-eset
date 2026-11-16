@@ -252,11 +252,11 @@
     "docs/HIST001D_ORIGINAL_MARCH180_SHADOW_GRADIENT_ANALYTIC_SOURCE_GAP_CANDIDATE.md": "1fe866f5dc79c040cf029c9793e865659e17e15ac0aa4224a0af9137250dbf62",
     "reference/hist001d_smooth_msh_gradient_candidate/README.md": "371e1cdd4f59a70843508fcd920f3df6a15a1b90d99390b07cccc2b5eef82cf6",
     "reference/hist001d_smooth_msh_gradient_candidate/adversarial_qa.py": "056d72cdbcfcf198e56bb3e31d944fb444e253e3b482c552701d857e93c7ebba",
-    "reference/hist001d_smooth_msh_gradient_candidate/independent_verify.py": "7f7393ef886715c0b50bd320083c11c07e1851891420c7b3532edfcf8558e6e0",
+    "reference/hist001d_smooth_msh_gradient_candidate/independent_verify.py": "819a8a38e738793ae8fe0bedbaf483fb7d9760a3407d9f06a47240b258f27864",
     "reference/hist001d_smooth_msh_gradient_candidate/producer.py": "b114fcdea4b652fe85cd1f675c598d0617d75530a925c9fb8833567c207b4b21",
     "reference/hist001d_smooth_msh_gradient_candidate/smooth_math.py": "cb79165ed76dc8a88dc218615d0357bcdaf60e0354655cd3c83b1e74408b2061",
     "reference/hist001d_smooth_msh_gradient_candidate/verify.py": "14075cc2dd3be7d52f4e9082673905ce333c1b20b99a5dafe9fe7ea9d2d38a56",
-    "tests/historical/test_hist001d_source_smooth_shadow_gradient_sourcefree.py": "75d62404effaa5da13bc6b4f30f8f72f24fdbed1bcc9bddac2344c33d7d64c48"
+    "tests/historical/test_hist001d_source_smooth_shadow_gradient_sourcefree.py": "430f334a617519bc1d4f3fcb783ba773a739f1d9a220d370e13912cc1910eab4"
   },
   "manifest_version": 1
 }

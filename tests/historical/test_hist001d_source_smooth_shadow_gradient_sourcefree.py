@@ -71,3 +71,16 @@ def test_invalid_parameter_or_domain_rejected():
     args=dict(Mb=1e10,Md=1e10,a=1.,Rd=2.,delta=.8,r0=5.,n=4.)
     with pytest.raises(ValueError):source_mass_and_analytic_gradient(np.array([0.]),**args)
     with pytest.raises(ValueError):source_mass_and_analytic_gradient(np.array([2.]),**(args|{'delta':1.1}))
+
+
+import subprocess as _hist_subprocess
+import sys as _hist_sys
+
+@pytest.mark.parametrize("module",["reference/hist001d_smooth_msh_gradient_candidate/independent_verify.py"])
+def test_historical_optimized_python_is_forbidden_for_assert_guards(module):
+    path=Path(__file__).resolve().parents[2]/module
+    p=_hist_subprocess.run([_hist_sys.executable,"-OO","-c",
+       "import runpy,sys;runpy.run_path(sys.argv[1])",str(path)],
+       capture_output=True,text=True,timeout=15)
+    assert p.returncode!=0
+    assert "HIST001D_SHADOW_GRADIENT_OPTIMIZED_EXECUTION_REJECTED" in p.stderr
