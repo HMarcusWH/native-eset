@@ -90,3 +90,19 @@ def test_quadratic_Bernstein_aperture_derivative_algebra():
         lhs = 2 * n * p - r * C / h
         rhs = coeff[0] * (1 - t) ** 2 + 2 * coeff[1] * t * (1 - t) + coeff[2] * t**2
         assert lhs == rhs
+
+
+def test_d120_archive_manifest_schema_rejected_under_optimized_python(tmp_path):
+    # Purely synthetic; no historical source-parent files required.
+    import json, subprocess, sys
+    (tmp_path/'MANIFEST_SHA256.json').write_text(
+        json.dumps({'schema':'INVALID_SCHEMA','files':{}}))
+    script=("import runpy,sys; from pathlib import Path;"
+            "ns=runpy.run_path(sys.argv[1]);"
+            "ns['check'].__globals__['ROOT']=Path(sys.argv[2]);"
+            "ns['check']()")
+    p=subprocess.run([sys.executable,'-OO','-c',script,
+                      str(SOURCE/'verify_archive.py'),str(tmp_path)],
+                     capture_output=True,text=True,timeout=15)
+    assert p.returncode!=0
+    assert 'D120_Q_MANIFEST_SCHEMA_MISMATCH' in p.stderr

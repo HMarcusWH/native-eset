@@ -11,10 +11,14 @@ def file_map():
 def check():
  expected=json.loads((ROOT/'MANIFEST_SHA256.json').read_text())
  live=file_map()
- assert expected['schema']=='HIST001D_D120_Q_ORIGINAL_MARCH180_CANDIDATE_SHA_MANIFEST_v1'
- assert live==expected['files'],f'file mismatch {set(expected["files"])^set(live)}'
- assert sha(ROOT/'inputs/original_march180_parent_v1r1.zip')=='0a643e81a9ab542dce8f158bc5135d94478d9145ab33036aae5813907f3655a1'
- for name,h in json.loads((ROOT/'RESULT_HASHES.json').read_text())['files'].items():assert sha(ROOT/name)==h,(name,'result sha mismatch')
+ if expected.get('schema')!='HIST001D_D120_Q_ORIGINAL_MARCH180_CANDIDATE_SHA_MANIFEST_v1':
+  raise ValueError('D120_Q_MANIFEST_SCHEMA_MISMATCH')
+ if live!=expected.get('files'):
+  raise ValueError('D120_Q_MANIFEST_SOURCE_HASH_MISMATCH')
+ if sha(ROOT/'inputs/original_march180_parent_v1r1.zip')!='0a643e81a9ab542dce8f158bc5135d94478d9145ab33036aae5813907f3655a1':
+  raise ValueError('D120_Q_PROTECTED_SOURCE_PARENT_SHA_MISMATCH')
+ for name,h in json.loads((ROOT/'RESULT_HASHES.json').read_text())['files'].items():
+  if sha(ROOT/name)!=h:raise ValueError('D120_Q_RESULT_SHA_MISMATCH '+name)
  print('MANIFEST_AND_RESULT_HASHES_PASS',len(live));return True
 
 def stage(which):
@@ -35,12 +39,14 @@ def stage(which):
  elif which=='aggregate':names=['results/independent_six_lens_aggregate.json']
  elif which=='qa':names=['results/adversarial_qa.json']
  else:names=['results/independent_verifier_'+which.replace('+','p')+'.json']
- for name in names:assert sha(ROOT/name)==expected[name],(which,name,'replay SHA mismatch')
+ for name in names:
+  if sha(ROOT/name)!=expected[name]:raise ValueError('D120_Q_REPLAY_SHA_MISMATCH '+which+' '+name)
  print('STAGE_REPLAY_PASS',which,'outputs',len(names))
 
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--check',action='store_true');ap.add_argument('--stage')
- args=ap.parse_args();assert args.check!=bool(args.stage)
+ args=ap.parse_args()
+ if args.check==bool(args.stage):raise ValueError('D120_Q_CHOOSE_EXACTLY_ONE_MODE')
  if args.check:check()
  else:stage(args.stage)
 if __name__=='__main__':main()
