@@ -250,7 +250,7 @@
     "src/native_eset/numerics/hist001d_g4b1b_supplied_finite_H.py": "3bca8df03ab1a5d256999c265dfc61bbb2a0834ee63ba9a35ff0da4bb3a6e54b",
     "tests/historical/test_hist001d_g4b1b_supplied_finite_H.py": "75cab5e7a461e0a6394c0a0884cc393ad303db43501ea58fddc5b7d05e7ffd50",
     "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34",
-    "docs/HIST001D_D2E_G4B1C_GLOBAL_ROOT_COUNT_MATH_CANDIDATE.md": "d9a1b9984d8c92eaf2f02eafe14c0a46e863ceb8b19a07c7675c19b526487e3e",
+    "docs/HIST001D_D2E_G4B1C_GLOBAL_ROOT_COUNT_MATH_CANDIDATE.md": "9fd4b53811357eee43cd414e33323c220568e522934378a2d25c855deac6ee57",
     "research/historical/g4b1c_global_math_candidate/README_GLOBAL_FINITE_PROXY_ROOT_COUNT_CANDIDATE.md": "e4cbfd323d1aea484bbddb20c0d717073ce3e0cd9dcb5c067555a220bf042b9b",
     "research/historical/g4b1c_global_math_candidate/g4b1c_global_adversarial_qa.py": "31feb52b2b2ba6251d8edb2cb3c3ee268097ca58122de24e5d931127c2089cc2",
     "research/historical/g4b1c_global_math_candidate/g4b1c_global_independent_verifier.py": "8807b61ad743035a17aa74d775c95c6b55cc8c7bf2077e40b9aedd80c9bee9b5",
@@ -258,7 +258,7 @@
     "research/historical/g4b1c_global_math_candidate/g4b1c_global_rootcount_producer.py": "0520b0ddec25db68ccc29e15806d8cffe869673602145d7f43b59ee489573d6d",
     "research/historical/g4b1c_global_math_candidate/reproduce_g4b1c_global_finite_proxy_v1.py": "914b5cced57c030c176c7548ae6b505e68688907b4c5f5aa3780c36cbe033c91",
     "research/historical/g4b1c_global_math_candidate/source_input_adapter.py": "38813d07b6ade04a08d5dcdb864cf1cd63a285efc535df707b1e9fcaaf089584",
-    "tests/historical/test_g4b1c_global_math_candidate_source_free.py": "ccf3f3b3d207574447ca045c61a519cf8800f6b238fe743db968c11ce22682f4"
+    "tests/historical/test_g4b1c_global_math_candidate_source_free.py": "ad35822bf9e5105d1cf56106201a9b5b03d7f9e933badec78f8c315eb4d26aea"
   },
   "manifest_version": 1
 }

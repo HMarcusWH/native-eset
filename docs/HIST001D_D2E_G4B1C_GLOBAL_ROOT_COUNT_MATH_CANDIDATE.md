@@ -28,6 +28,26 @@ Full source-bound candidate proof kit: [canonical nonpromoting Drive ZIP](https:
 
 Repository-only CI independently checks exact imported-source SHA, directed arithmetic invariants, analytic circular-disk and constant-density-cylinder special cases, the mass-weighted q identity, and absence of source arrays or physical-claim flags. Decimal sanity tests are deliberately *not proof* and do not substitute for the exact-rational source-bound replay.
 
+### Archived-source integrity versus optimized Python
+
+The reviewed `g4b1c_global_math_lib.py` is restored to its original
+SHA-256 `7985255688073ebf63e4f723c424a05995c04e5edf3c7b095f8978b40f953b2d`.
+The immutable source is **not** patched to change Python execution behavior.
+In the public repository, the supported *source-free* entrypoint is
+`python tools/g4b1c_candidate_loader.py`; the pytest math checks also use
+`load_candidate()` from that separate guard. The guard rejects `-O` and
+`-OO`, checks the exact archived SHA before loading, and executes only
+those authenticated source bytes (not a second disk read). Regression tests
+verify the normal path, optimized rejection, and tamper rejection.
+
+**Limit:** direct imports, `runpy` execution, or manual invocation of the
+immutable historical producer/math modules can bypass this entrypoint.
+Such execution is unsupported; no repository-wide Python sandbox or
+universal assertion-safety guarantee is claimed. External source-bound
+release-kit replay remains a separate, gated operation with its own
+integrity checks. Passing this guard does not validate mathematical
+claims, physical providers, or observational evidence.
+
 ## Explicit scientific firewall
 
 Historical March fitted **6/6** development regression differs from D2d independent finite 11,520-node **3/6**. The current source-only candidate **does not** prove original March 180/120 numerical all-real root counts, a uniform numerical-to-mathematical error bound, physical Einstein/Weyl lensing, Native ESET v1.7.2 action/field equivalence, independent D3/D4 holdout, dark-matter replacement, empirical validation, or canonical Theory-State provider admission. `physical_provider_admitted=false`, `empirical_validation=NOT_ESTABLISHED`, `external_mathematical_peer_review_completed=false`. Canonical graph v0.16.39 unchanged. Last independently archived software release remains G4b.1b. Draft PR #40 remains a separate evidence-handling increment; its CI and merges cannot promote the global mathematical theorem.

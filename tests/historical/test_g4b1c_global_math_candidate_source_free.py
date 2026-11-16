@@ -7,8 +7,6 @@ rigorous certificate replays or a peer review.
 from __future__ import annotations
 
 import hashlib
-import importlib.util
-import sys
 import subprocess as _hist_subprocess
 import sys as _hist_sys
 from decimal import Decimal, localcontext
@@ -16,6 +14,13 @@ from fractions import Fraction as F
 from pathlib import Path
 
 import pytest
+
+from tools.g4b1c_candidate_loader import (
+    EXPECTED_SOURCE_SHA256,
+    SOURCE,
+    SOURCE_HASH_MISMATCH,
+    load_candidate,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 PROOF = ROOT / "research" / "historical" / "g4b1c_global_math_candidate"
@@ -31,15 +36,8 @@ ARCHIVED = {
 
 
 def m():
-    # Import only the pure arithmetic module. In particular, never execute
-    # the producer or source_input_adapter.py during repository-only CI.
-    name = "g4b1c_global_candidate_pure_math"
-    spec = importlib.util.spec_from_file_location(name, PROOF / "g4b1c_global_math_lib.py")
-    assert spec is not None and spec.loader is not None
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[name] = module
-    spec.loader.exec_module(module)
-    return module
+    # The only supported source-free import; checks source bytes and flags.
+    return load_candidate()
 
 
 def test_exact_archived_source_byte_hashes():
@@ -156,11 +154,60 @@ def test_fail_closed_without_external_source_bundle():
     assert "MARCH_180x120_NOT_PROVED" in doc
 
 
-@pytest.mark.parametrize("module",["research/historical/g4b1c_global_math_candidate/g4b1c_global_math_lib.py"])
-def test_historical_optimized_python_is_forbidden_for_assert_guards(module):
-    path=Path(__file__).resolve().parents[2]/module
-    p=_hist_subprocess.run([_hist_sys.executable,"-OO","-c",
-       "import runpy,sys;runpy.run_path(sys.argv[1])",str(path)],
-       capture_output=True,text=True,timeout=15)
-    assert p.returncode!=0
-    assert "HIST001D_G4B1C_GLOBAL_OPTIMIZED_EXECUTION_REJECTED" in p.stderr
+
+def test_guard_loader_matches_archived_source_identity():
+    assert SOURCE == PROOF / "g4b1c_global_math_lib.py"
+    assert EXPECTED_SOURCE_SHA256 == ARCHIVED["g4b1c_global_math_lib.py"]
+    assert load_candidate().PI_LOW < load_candidate().PI_HIGH
+
+
+def test_guard_normal_python_cli_accepts_archived_source():
+    runner = ROOT / "tools" / "g4b1c_candidate_loader.py"
+    process = _hist_subprocess.run(
+        [_hist_sys.executable, str(runner)],
+        cwd=ROOT, capture_output=True, text=True, timeout=15,
+    )
+    assert process.returncode == 0, process.stderr
+    assert "HIST001D_G4B1C_GLOBAL_SOURCE_GUARD_PASS" in process.stdout
+
+
+@pytest.mark.parametrize("flag", ["-O", "-OO"])
+def test_historical_optimized_python_is_forbidden_for_assert_guards(flag):
+    # Do not execute the byte-frozen historical module directly with -O/-OO.
+    runner = ROOT / "tools" / "g4b1c_candidate_loader.py"
+    process = _hist_subprocess.run(
+        [_hist_sys.executable, flag, str(runner)],
+        cwd=ROOT, capture_output=True, text=True, timeout=15,
+    )
+    assert process.returncode != 0
+    assert "HIST001D_G4B1C_GLOBAL_OPTIMIZED_EXECUTION_REJECTED" in process.stderr
+
+
+def test_guard_rejects_tampered_bytes_before_executing(tmp_path):
+    marker = tmp_path / "executed.txt"
+    tampered = tmp_path / "g4b1c_global_math_lib.py"
+    tampered.write_text(
+        "from pathlib import Path\n"
+        + f"Path({str(marker)!r}).write_text('unsafe')\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match=SOURCE_HASH_MISMATCH):
+        load_candidate(tampered)
+    assert not marker.exists()
+
+
+@pytest.mark.parametrize("flag", ["-O", "-OO"])
+def test_guard_rejects_optimization_before_source_read(flag, tmp_path):
+    missing = tmp_path / "missing_source.py"
+    code = (
+        "import sys; "
+        "from tools.g4b1c_candidate_loader import load_candidate; "
+        "load_candidate(sys.argv[1])"
+    )
+    process = _hist_subprocess.run(
+        [_hist_sys.executable, flag, "-c", code, str(missing)],
+        cwd=ROOT, capture_output=True, text=True, timeout=15,
+    )
+    assert process.returncode != 0
+    assert "HIST001D_G4B1C_GLOBAL_OPTIMIZED_EXECUTION_REJECTED" in process.stderr
+    assert "FileNotFoundError" not in process.stderr
