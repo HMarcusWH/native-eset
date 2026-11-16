@@ -65,3 +65,15 @@ def test_archived_exact_source_references_are_immutable():
     assert m.MARCH_SHA=='7b4e29bd4048a8558af5e7985a9a6ada529e27a7ef4eb068f892f5f3a7bc24b1'
     assert m.NARROW_SHA=='138669c971b07652d24b76c34e32cb0a74c3cbc893de3d254c7a5170eec08bb5'
     assert m.SOURCE_LOCK=='fa7e77300d7a6e5f095d3781c23eb96bc57fea4c38f76b155278079d7f19913a'
+
+
+@pytest.mark.parametrize('module',[
+    'component_independent.py','component_interval.py',
+    'target_quadratic_exact.py','target_quadratic_independent.py'])
+def test_source_bridge_proof_scripts_reject_optimized_python(module):
+    import subprocess,sys
+    p=subprocess.run([sys.executable,'-OO','-c',
+                      'import runpy,sys;runpy.run_path(sys.argv[1])',
+                      str(ARCH/module)],capture_output=True,text=True,timeout=15)
+    assert p.returncode!=0
+    assert 'HIST001D_SOURCE_BRIDGE_OPTIMIZED_EXECUTION_REJECTED' in p.stderr

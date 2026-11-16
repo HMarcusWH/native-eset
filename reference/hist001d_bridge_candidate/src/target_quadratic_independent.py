@@ -2,6 +2,11 @@
 """Independent all-cell exact proof of source quadratic-target interpolant bound.
 No primary target_quadratic_exact code imported. No source physical claim.
 """
+# Preserve historical comparator source/claim checks under -O/-OO by
+# prohibiting optimized execution until assertion guards are refactored.
+if not __debug__:
+    raise RuntimeError('HIST001D_SOURCE_BRIDGE_OPTIMIZED_EXECUTION_REJECTED')
+
 import hashlib,json,struct
 from pathlib import Path
 from fractions import Fraction

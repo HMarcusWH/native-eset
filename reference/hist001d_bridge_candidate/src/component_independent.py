@@ -4,6 +4,11 @@ Uses independent weighted interpolation and reconstructs intervals from original
 frozen records, without importing the primary component_interval module.
 """
 from __future__ import annotations
+
+# Preserve historical comparator source/claim checks under -O/-OO by
+# prohibiting optimized execution until assertion guards are refactored.
+if not __debug__:
+    raise RuntimeError('HIST001D_SOURCE_BRIDGE_OPTIMIZED_EXECUTION_REJECTED')
 import json,hashlib,struct,zipfile
 from pathlib import Path
 from fractions import Fraction

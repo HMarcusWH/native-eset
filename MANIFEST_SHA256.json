@@ -253,14 +253,14 @@
     "reference/hist001d_bridge_candidate/src/bridge_adversarial_qa.py": "ffec7b6a0172733996e4b0918ea471416e8d9fc331521efe2cc5cd0be69de926",
     "reference/hist001d_bridge_candidate/src/bridge_exact.py": "ec62be84a883b343583a9e53e1d5d3566c476ac2e1ab06394b8e1b3b3a29cd98",
     "reference/hist001d_bridge_candidate/src/bridge_independent.py": "d29ba2c0331dd5169b765fad57cd26da2ae3f48d9cb8efa163681a870de50ea6",
-    "reference/hist001d_bridge_candidate/src/component_independent.py": "878026a458f95abcb664b0e204ddb80647a16a91f18e28dfd8ec6c5f32bd445b",
-    "reference/hist001d_bridge_candidate/src/component_interval.py": "bdbbcc7a577c750e53ade72b31a9deaa1c5b8675e5bde14efeab2a9728cab950",
+    "reference/hist001d_bridge_candidate/src/component_independent.py": "c4f70e716d6a3d0660a1aecaaef194f501a502dfadf8cc0130b398787eb07abd",
+    "reference/hist001d_bridge_candidate/src/component_interval.py": "7a29bbe97d22124b1c5ba5dec5bd17ed7c19582c12d13464c46c6af938a8d785",
     "reference/hist001d_bridge_candidate/src/original_component_trace.py": "979243876c427db3c21cf772814895cb4200f87b1bef2f9bb086d133ecf087b3",
     "reference/hist001d_bridge_candidate/src/reproduce_bridge.py": "084f4959068245d9295e724f7ba95e637cd8af2841c1e8048c0510ae30c1f458",
     "reference/hist001d_bridge_candidate/src/source_replay_from_archives.py": "6ce7600847a1ac1cdfc2fa77fee76bb8fee0ed1dec51c1d0329350acd95f5d60",
-    "reference/hist001d_bridge_candidate/src/target_quadratic_exact.py": "427c9699ef4a6e3ab62a8bd615aab3de09744097dd388a7ea0600cf83c8aa444",
-    "reference/hist001d_bridge_candidate/src/target_quadratic_independent.py": "3c43637d530ddef3292d71ced9263e79f24c18c2f99f6c6e47e91c56bac86f45",
-    "tests/historical/test_hist001d_source_bridge_math_source_free.py": "fcdc5957436a9182f45e0c66a7f2e5593100daa259f94941d9e67a31f834fe18"
+    "reference/hist001d_bridge_candidate/src/target_quadratic_exact.py": "1135efaf048f9e29610dfc1ed793df32dddea4d5450cdc5cb289e993f614df15",
+    "reference/hist001d_bridge_candidate/src/target_quadratic_independent.py": "dbf93f698685a675c175a5a56cc71abc4ac314db55df831c5ef307fc45ffad34",
+    "tests/historical/test_hist001d_source_bridge_math_source_free.py": "9ca91cbcac6d27f466a36199f448326a4a629245bcc678fe42ca04bfecd85ab4"
   },
   "manifest_version": 1
 }

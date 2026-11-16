@@ -3,6 +3,11 @@
 Source-executed historical arrays are identity-matched to the prior 180 H arrays;
 proxy mass intervals are the pinned strict antecedent, NOT fresh continuum proofs.
 """
+# Preserve historical comparator source/claim checks under -O/-OO by
+# prohibiting optimized execution until assertion guards are refactored.
+if not __debug__:
+    raise RuntimeError('HIST001D_SOURCE_BRIDGE_OPTIMIZED_EXECUTION_REJECTED')
+
 from fractions import Fraction as F
 import bisect,struct,json,hashlib,zipfile,io,sys
 from pathlib import Path

@@ -9,6 +9,11 @@ The midpoint values give independent exact lower bounds on the SUPREMUM.
 NOT an original full-source continuous residual-error theorem.
 """
 from __future__ import annotations
+
+# Preserve historical comparator source/claim checks under -O/-OO by
+# prohibiting optimized execution until assertion guards are refactored.
+if not __debug__:
+    raise RuntimeError('HIST001D_SOURCE_BRIDGE_OPTIMIZED_EXECUTION_REJECTED')
 import hashlib,json,struct,sys
 from pathlib import Path
 from fractions import Fraction as Q
