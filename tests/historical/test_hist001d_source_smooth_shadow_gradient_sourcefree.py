@@ -1,5 +1,7 @@
 """Synthetic method tests only; never call these original-source verification."""
 import sys
+import subprocess as _hist_subprocess
+import sys as _hist_sys
 from pathlib import Path
 from fractions import Fraction
 import numpy as np
@@ -72,9 +74,6 @@ def test_invalid_parameter_or_domain_rejected():
     with pytest.raises(ValueError):source_mass_and_analytic_gradient(np.array([0.]),**args)
     with pytest.raises(ValueError):source_mass_and_analytic_gradient(np.array([2.]),**(args|{'delta':1.1}))
 
-
-import subprocess as _hist_subprocess
-import sys as _hist_sys
 
 @pytest.mark.parametrize("module",["reference/hist001d_smooth_msh_gradient_candidate/independent_verify.py"])
 def test_historical_optimized_python_is_forbidden_for_assert_guards(module):
