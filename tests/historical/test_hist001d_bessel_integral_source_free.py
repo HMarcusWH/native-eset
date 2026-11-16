@@ -117,7 +117,11 @@ def test_source_audit_rejects_wrong_inherited_node_sha():
 
 def test_quick_verifier_rejects_failed_claim_guard_under_optimized_python(monkeypatch, tmp_path):
     import json
-    import verify_release as vr
+    import importlib.util
+    spec=importlib.util.spec_from_file_location(
+        'hist001d_pr60_verify_release_for_tests',SOURCE/'verify_release.py')
+    vr=importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(vr)
     result={"synthetic": True}
     evidence=tmp_path/"results"
     evidence.mkdir()
