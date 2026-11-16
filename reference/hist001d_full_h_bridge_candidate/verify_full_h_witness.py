@@ -79,7 +79,8 @@ class CheckLens:
             C=(N1*P0-N0*P1)/h
             qlo=min(N0/P0,N1/P1)
             qp_upper=max(F(0),C/min(P0,P1)**2)
-            assert 2*qlo-U*qp_upper>0
+            if 2*qlo-U*qp_upper<=0:
+                raise ValueError(f'circularized aperture monotonicity unproved on source cell {j}')
 
 def check_coverage(leaves,L,U,kind):
     if not leaves:raise ValueError('empty '+kind)
@@ -96,7 +97,8 @@ def verify(finite,source,diag,band):
     if R['schema']!='HIST001D_MARCH180_SOURCE_CONSISTENT_FINITE_FULL_H_CROSSING_CELL_V1' or B['all_six_crossing_aperture_bands_positive'] is not True:
         raise ValueError('wrong artifact schema')
     if R['physical_provider_admitted'] or R['empirical_validation']!='NOT_ESTABLISHED':raise ValueError('promoted claim')
-    if len(R['lenses'])!=len(B['lenses'])!=6:raise ValueError('missing lens')
+    if len(R['lenses'])!=6 or len(B['lenses'])!=6:
+        raise ValueError('missing or extra lens')
     countglobal=0;countderiv=0
     for i,entry in enumerate(R['lenses']):
         if entry['lens']!=LENSES[i] or B['lenses'][i]['lens']!=LENSES[i]:raise ValueError('wrong lens')

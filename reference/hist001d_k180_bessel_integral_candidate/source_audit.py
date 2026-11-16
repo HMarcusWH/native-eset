@@ -41,14 +41,17 @@ def open_inputs(saturation:bytes):
 
 def audit_lens(src,c,a,prev,mode='crossing'):
     lens=c['lens_id']
-    assert lens==a['lens_id']
+    if lens!=a.get('lens_id'):
+        raise ValueError('source lens identity mismatch')
     raw=src.read('inputs/'+c['node_file'])
-    assert len(raw)==180*64 and sha(raw)==c['node_sha256']
+    if len(raw)!=180*64 or sha(raw)!=c['node_sha256']:
+        raise ValueError('original 180-node source bytes or SHA mismatch')
     rows=list(struct.iter_unpack('>8d',raw))
     p={k:fraction_double(a['source_scalar_binary64_hex'][k]) for k in ('Mb','Md','a','Rd','delta','r0','n')}
     C=fraction_double(a['source_scalar_binary64_hex']['C4pi'])
     oldrec=json.loads(prev.read('results/all180_rational_'+lens.replace('+','p')+'.json'))
-    assert oldrec['source_180_node_sha256']==c['node_sha256']
+    if oldrec.get('source_180_node_sha256')!=c['node_sha256']:
+        raise ValueError('inherited 180-node SHA mismatch')
     # Source-selected root cell from the original all180 frozen-source crossing receipt,
     # NOT guessed from the node record's projection columns.
     cb=json.loads(prev.read('results/crossing_band_producer.json'))

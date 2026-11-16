@@ -57,6 +57,30 @@ def rational_sample_root(r0,r1,y0,y1):
     if y0==y1:raise ValueError('flat sampled interpolation')
     return (r0*y1-r1*y0)/(y1-y0)
 
+def require_six_lens_groups(cap, qmeta, sampled, finite):
+    """Reject missing, duplicated, extra and reordered original 6-lens inputs.
+
+    The five- or three-record scenario must not silently zip-truncate.
+    This method is intentionally source-free and tested with -O and -OO.
+    """
+    expected = list(LENSES)
+    sources = (
+        ('original 180-node capture', cap, 'lens_id'),
+        ('original q metadata', qmeta, 'lens_id'),
+        ('sampled H-pair source', sampled, 'lens_id'),
+        ('finite PL mathematical parent', finite, 'lens'),
+    )
+    for label, rows, field in sources:
+        if not isinstance(rows, list) or len(rows) != len(expected):
+            raise ValueError('UNRESOLVED: missing/extra source lens rows in '+label)
+        try:
+            seen = [r[field] for r in rows]
+        except (TypeError, KeyError) as exc:
+            raise ValueError('UNRESOLVED: invalid source lens field in '+label) from exc
+        if seen != expected:
+            raise ValueError('UNRESOLVED: source lens identity/order mismatch in '+label)
+
+
 def verify_manifest(z):
     meta=json.loads(z.read('MANIFEST_SHA256.json'))
     if not isinstance(meta.get('files'),dict):raise ValueError('no parent manifest')
@@ -113,10 +137,8 @@ def read_locked(sat_path,h_path):
     with zipfile.ZipFile(io.BytesIO(h_bytes)) as h:
         verify_manifest(h)
         full=json.loads(h.read('results/full_H_finite_receipt.json'))
-    assert [c['lens_id'] for c in cap]==list(LENSES)
-    assert [c['lens_id'] for c in qmeta]==list(LENSES)
-    assert [c['lens_id'] for c in meta['lenses']]==list(LENSES)
-    assert [c['lens'] for c in full['lenses']]==list(LENSES)
+    # Proof/source identity requirements must remain live with python -O/-OO.
+    require_six_lens_groups(cap, qmeta, meta['lenses'], full['lenses'])
     if set(strict_rows)!=set(LENSES) or set(scale_rows)!=set(LENSES):raise ValueError('original strict output lens keys')
     return cap,qmeta,arrays,meta['lenses'],samples,full['lenses'],strict_rows,scale_rows
 
