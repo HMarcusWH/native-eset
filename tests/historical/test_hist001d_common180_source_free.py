@@ -108,3 +108,14 @@ def test_schema_synthetic_six_lens_controls():
     f['claims']['physical_provider_admitted']=False
     f['lenses'][0]['component_bounds'][0]['max_real_radius_source_stencil_vs_piecewise_linear_bound_upper_msun']='0'
     with pytest.raises(ValueError):A['check'](f,checker)
+
+
+def test_source180_archive_fails_closed_under_optimized_python():
+    # Source-free negative only: no original March inputs are required.
+    import subprocess, sys
+    cmd=[sys.executable,'-OO','-c',
+         'import runpy,sys; p=runpy.run_path(sys.argv[1]); p["main"]()',
+         str(SRC/'verify_archive.py')]
+    p=subprocess.run(cmd,capture_output=True,text=True,timeout=15)
+    assert p.returncode != 0
+    assert 'SIX_FROZEN_SOURCE_NODE_FILES_REQUIRED' in p.stderr

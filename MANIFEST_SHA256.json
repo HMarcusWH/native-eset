@@ -255,8 +255,8 @@
     "reference/hist001d_common180_candidate/frozen_kernel_exact_producer.py": "c539d74ef4f681311dbb19235d4c5b690059a054bf32fe904d530c5a5a1fd297",
     "reference/hist001d_common180_candidate/frozen_kernel_independent_checker.py": "cf97375564ad121d03ef15a3714c5cb85191535993d10f931915e4ee9b70c699",
     "reference/hist001d_common180_candidate/reproduce.py": "4ed59537dcbb9d1ad0d7941ab494bebf7e1aa238e128ada5bffe486517ac8707",
-    "reference/hist001d_common180_candidate/verify_archive.py": "84de9fee91019967e63ac482c9b97c22489ff9a8e36b7cbd84e157efac0f85dc",
-    "tests/historical/test_hist001d_common180_source_free.py": "8dd25acc37f0bd5e1c612379d33bd962ab9cc44a045f5d68a96cf692d4ad7217"
+    "reference/hist001d_common180_candidate/verify_archive.py": "0f9e7c174d039039ba224ba0e82306390e867aac9b691287f1a526c2097b2246",
+    "tests/historical/test_hist001d_common180_source_free.py": "ca7e62fbbd983eda4687dc376cdb4b3031c30d29ac145bb2faac75d0f7eeff96"
   },
   "manifest_version": 1
 }
