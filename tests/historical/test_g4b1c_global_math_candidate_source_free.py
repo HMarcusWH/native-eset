@@ -9,6 +9,8 @@ from __future__ import annotations
 import hashlib
 import importlib.util
 import sys
+import subprocess as _hist_subprocess
+import sys as _hist_sys
 from decimal import Decimal, localcontext
 from fractions import Fraction as F
 from pathlib import Path
@@ -153,9 +155,6 @@ def test_fail_closed_without_external_source_bundle():
     assert "NOT_ESTABLISHED" in doc and "NOT_PEER_REVIEWED" in doc
     assert "MARCH_180x120_NOT_PROVED" in doc
 
-
-import subprocess as _hist_subprocess
-import sys as _hist_sys
 
 @pytest.mark.parametrize("module",["research/historical/g4b1c_global_math_candidate/g4b1c_global_math_lib.py"])
 def test_historical_optimized_python_is_forbidden_for_assert_guards(module):
