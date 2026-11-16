@@ -1,4 +1,11 @@
 """Self-rehashed proof alterations must not change source/claim authority (NONPROMOTING)."""
+
+# This historical candidate relies on Python assert for proof-critical
+# input/source checks. Until reviewed replacement guards exist, reject -O/-OO
+# rather than silently executing with those safeguards disabled.
+if not __debug__:
+    raise RuntimeError('HIST001D_COMPONENT_PL_OPTIMIZED_EXECUTION_REJECTED')
+
 import copy,hashlib,json,tempfile
 from pathlib import Path
 import independent_verify as ver

@@ -81,3 +81,16 @@ def test_science_model_schema_is_explicit_not_source_root_theorem():
                          'J1021+2028','J1111+2234','J1135+3720'}
     for center,span in GUARDS.values():
         assert F(span)==F(3,100)
+
+
+@pytest.mark.parametrize('module',[
+    'producer.py','independent_verify.py','full180_math.py',
+    'verify_bundle.py','adversarial_qa.py'])
+def test_assert_dependent_candidate_fails_closed_in_optimized_python(module):
+    # No protected data: candidate execution must stop before stripped guards.
+    import subprocess
+    proc=subprocess.run([sys.executable,'-OO','-c',
+                         'import runpy,sys;runpy.run_path(sys.argv[1])',
+                         str(ROOT/module)],capture_output=True,text=True,timeout=15)
+    assert proc.returncode != 0
+    assert 'HIST001D_COMPONENT_PL_OPTIMIZED_EXECUTION_REJECTED' in proc.stderr

@@ -1,5 +1,11 @@
 """Complete manifest and bounded exact stage runner, not a physical theorem."""
 from __future__ import annotations
+
+# This historical candidate relies on Python assert for proof-critical
+# input/source checks. Until reviewed replacement guards exist, reject -O/-OO
+# rather than silently executing with those safeguards disabled.
+if not __debug__:
+    raise RuntimeError('HIST001D_COMPONENT_PL_OPTIMIZED_EXECUTION_REJECTED')
 import argparse,hashlib,json,subprocess,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
