@@ -34,7 +34,8 @@ def run_quick():
     if stored!=expected:raise ValueError('independent fraction arithmetic summary replay differs')
     reports=[json.loads((ROOT/'results'/f'lens_{i}.json').read_text()) for i in range(6)]
     cross=json.loads((ROOT/'results/cross_resolution.json').read_text())
-    assert validate(reports,out,cross)
+    if not validate(reports,out,cross):
+        raise ValueError('independent Bessel report claim guard rejected source evidence')
     from compare_inherited import run as compare_old
     overlap=compare_old(ROOT/'inputs/saturation_parent_v1r1.zip',ROOT/'results')
     if (json.dumps(overlap,sort_keys=True,indent=2)+'\n').encode()!=(ROOT/'results/prior_power_series_overlap.json').read_bytes():
