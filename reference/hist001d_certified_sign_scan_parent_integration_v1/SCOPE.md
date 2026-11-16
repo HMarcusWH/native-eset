@@ -9,3 +9,18 @@ The November 7 root bracketer, reexecuted from clean pinned source, certifies 6/
 Every result carries parent SHA, source SHA, engine rational interval trace digests, proof identity, no-promotion flags, and an explicit `UNRESOLVED` state on any source/engine mismatch, missing theorem, incomplete domain or precision/budget failure. Structural self-rehash is not scientific verification; source replay is required. Parent SHA pins are provenance, not external peer review or a cryptographic signature.
 
 No physics/observational/cosmology claim, no physical Weyl metric/dynamics+lensing result, no unseen holdout, no restored D3 covariance, no current v1.7.2 equivalence, and no no-particle-CDM claim. No canonical Theory-State or GitHub `main` mutation.
+
+## 16 November replay provenance repair (not a new mathematical receipt)
+
+For successful clean-extraction `--full` audit runs, the public verifier now
+records the actual Python/runtime/numerical-library versions, selected numerical
+environment variables, exact executed subprocess commands, exit statuses and
+bounded stdout/stderr diagnostics and SHA-256 digests. This execution metadata
+is explicitly separate from the deterministic protected mathematical receipts.
+The original protected scanner ZIP and its existing 67-test source-only release
+are preserved without byte mutation. The updated GitHub source-only workflow
+tests the 69-test successor scanner branch and 20 adapter-side tests.
+
+The new verification wrapper has **not** been independently rerun against
+protected input archives in this branch change, and no new source-dependent
+scientific acceptance or physical promotion is asserted.
