@@ -106,3 +106,15 @@ def test_d120_archive_manifest_schema_rejected_under_optimized_python(tmp_path):
                      capture_output=True,text=True,timeout=15)
     assert p.returncode!=0
     assert 'D120_Q_MANIFEST_SCHEMA_MISMATCH' in p.stderr
+
+
+@pytest.mark.parametrize('module',[
+    'adversarial_qa.py','aggregate.py','capture_disk120.py',
+    'disk120_math.py','independent_verify.py','q_producer.py'])
+def test_d120_q_assert_dependent_modules_reject_optimized_python(module):
+    import subprocess,sys
+    p=subprocess.run([sys.executable,'-OO','-c',
+                      'import runpy,sys;runpy.run_path(sys.argv[1])',
+                      str(SOURCE/module)],capture_output=True,text=True,timeout=15)
+    assert p.returncode!=0
+    assert 'HIST001D_D120_Q_OPTIMIZED_EXECUTION_REJECTED' in p.stderr

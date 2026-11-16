@@ -1,4 +1,9 @@
 """Read-only source-locked historical March D120 angular nodes and source-knot results."""
+# Source-dependent candidate has proof-critical Python assertions; fail closed
+# under -O/-OO until all are replaced with unconditional guards.
+if not __debug__:
+    raise RuntimeError('HIST001D_D120_Q_OPTIMIZED_EXECUTION_REJECTED')
+
 import csv,hashlib,io,json,math,struct,zipfile
 from pathlib import Path
 import numpy as np

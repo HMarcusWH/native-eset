@@ -2,6 +2,11 @@
 No import of producer files.
 """
 from __future__ import annotations
+
+# Source-dependent candidate has proof-critical Python assertions; fail closed
+# under -O/-OO until all are replaced with unconditional guards.
+if not __debug__:
+    raise RuntimeError('HIST001D_D120_Q_OPTIMIZED_EXECUTION_REJECTED')
 import bisect,csv,hashlib,io,json,math,struct,time,zipfile
 from fractions import Fraction as Rational
 from pathlib import Path
