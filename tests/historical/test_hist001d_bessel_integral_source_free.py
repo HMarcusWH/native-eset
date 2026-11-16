@@ -98,7 +98,8 @@ def test_source_audit_rejects_bad_original_node_bytes():
         audit_lens(FakeSource(), c, {"lens_id": c["lens_id"]}, None)
 
 def test_source_audit_rejects_wrong_inherited_node_sha():
-    import hashlib, json
+    import hashlib
+    import json
     from source_audit import audit_lens
     raw=bytes(180*64)
     digest=hashlib.sha256(raw).hexdigest()
