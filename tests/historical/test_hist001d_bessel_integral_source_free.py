@@ -1,6 +1,7 @@
 """Source-free mathematical and fail-closed tests for independent real-integral K0,K1."""
 from fractions import Fraction as Q
 from pathlib import Path
+import subprocess
 import sys
 import pytest
 
@@ -116,7 +117,7 @@ def test_source_audit_rejects_wrong_inherited_node_sha():
     with pytest.raises(ValueError, match="inherited 180-node SHA"):
         audit_lens(FakeSource(), c, a, FakePrevious())
 
-def test_quick_verifier_rejects_failed_claim_guard_under_optimized_python(monkeypatch, tmp_path):
+def test_quick_verifier_rejects_failed_claim_guard_with_canonical_lf_bytes(monkeypatch, tmp_path):
     import json
     import importlib.util
     spec=importlib.util.spec_from_file_location(
@@ -127,7 +128,7 @@ def test_quick_verifier_rejects_failed_claim_guard_under_optimized_python(monkey
     evidence=tmp_path/"results"
     evidence.mkdir()
     (tmp_path/"inputs").mkdir()
-    (evidence/"stencil_summary.json").write_text(json.dumps(result,sort_keys=True,indent=2)+"\n")
+    (evidence/"stencil_summary.json").write_bytes((json.dumps(result,sort_keys=True,indent=2)+"\n").encode("utf-8"))
     for i in range(6):
         (evidence/f"lens_{i}.json").write_text("{}")
     (evidence/"cross_resolution.json").write_text("{}")
@@ -161,3 +162,59 @@ def test_quick_verifier_uses_sibling_claim_guard_despite_cached_foreign_name(mon
     assert verifier.validate.__globals__["SAT_SHA"] != foreign_audit.SAT_SHA
     assert verifier.validate.__globals__["SOURCE_SHA"] != foreign_audit.SOURCE_SHA
     assert verifier.validate.__globals__["LENS"][0] == "J0822+1828"
+
+
+@pytest.mark.parametrize("optimization_flag", ["-O", "-OO"])
+def test_quick_verifier_rejects_failed_guard_in_optimized_python(optimization_flag, tmp_path):
+    # Exercise the real optimized interpreter, not only a mocked Python call.
+    code = (
+        "import importlib.util, json, sys\n"
+        "from pathlib import Path\n"
+        "source=Path(sys.argv[1]); root=Path(sys.argv[2]); sys.path.insert(0,str(source))\n"
+        "spec=importlib.util.spec_from_file_location('hist001d_k180_opt_test',source/'verify_release.py')\n"
+        "vr=importlib.util.module_from_spec(spec); spec.loader.exec_module(vr)\n"
+        "result={'synthetic':True}; out=root/'results'; out.mkdir()\n"
+        "(root/'inputs').mkdir()\n"
+        "(out/'stencil_summary.json').write_bytes((json.dumps(result,sort_keys=True,indent=2)+'\\n').encode())\n"
+        "for j in range(6): (out/f'lens_{j}.json').write_text('{}')\n"
+        "(out/'cross_resolution.json').write_text('{}')\n"
+        "vr.ROOT=root; vr.verify=lambda *args:result; vr.validate=lambda *args:False\n"
+        "vr.run_quick()\n"
+    )
+    process = subprocess.run(
+        [sys.executable, optimization_flag, "-c", code, str(SOURCE), str(tmp_path)],
+        cwd=SOURCE.parents[1],
+        capture_output=True,
+        text=True,
+        timeout=20,
+        check=False,
+    )
+    assert process.returncode != 0
+    assert "independent Bessel report claim guard rejected source evidence" in process.stderr
+    assert "independent fraction arithmetic summary replay differs" not in process.stderr
+
+
+def test_adversarial_qa_resolves_sibling_modules_with_foreign_cache(monkeypatch):
+    import importlib.util
+    import types
+    foreign_guard = types.ModuleType("claim_guard")
+    def foreign_validate(*_args):
+        return True
+    foreign_guard.validate = foreign_validate
+    foreign_qa = types.ModuleType("adversarial_qa")
+    def foreign_run():
+        return {"untrusted": True}
+    foreign_qa.run = foreign_run
+    monkeypatch.setitem(sys.modules, "claim_guard", foreign_guard)
+    monkeypatch.setitem(sys.modules, "adversarial_qa", foreign_qa)
+    spec = importlib.util.spec_from_file_location(
+        "hist001d_k180_adversarial_name_isolation_test", SOURCE / "verify_release.py")
+    assert spec is not None and spec.loader is not None
+    verifier = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(verifier)
+    qa_run = verifier._load_local_adversarial_run()
+    assert qa_run is not foreign_run
+    assert Path(qa_run.__code__.co_filename).resolve() == (SOURCE / "adversarial_qa.py").resolve()
+    local_validate = qa_run.__globals__["validate"]
+    assert local_validate is not foreign_validate
+    assert Path(local_validate.__code__.co_filename).resolve() == (SOURCE / "claim_guard.py").resolve()
