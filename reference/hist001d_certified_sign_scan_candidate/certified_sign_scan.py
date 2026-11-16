@@ -12,6 +12,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+from pathlib import Path
 import re
 import struct
 from dataclasses import dataclass
@@ -67,6 +68,11 @@ def canonical_json(obj: Any) -> bytes:
 
 def digest(obj: Any) -> str:
     return hashlib.sha256(canonical_json(obj)).hexdigest()
+
+
+def scanner_implementation_sha256() -> str:
+    """SHA-256 of the actual scanner source file at the execution site."""
+    return hashlib.sha256(Path(__file__).resolve(strict=True).read_bytes()).hexdigest()
 
 
 def rational(value: Any) -> Fraction:
@@ -386,6 +392,10 @@ def scan(api: StrictSignAPI | None, contract: SourceContract, *, mode: str = "TH
                "canonical_theory_state_changed": False,
                "parent_attestation": parent,
                "lens_results": results}
+    # Archived synthetic V1 receipts remain identical. Every real-source
+    # receipt now binds the executing scanner file, not only model/source IDs.
+    if contract.scope == "SOURCE_REPLAYED_CANDIDATE_MATH":
+        payload["scanner_implementation_sha256"] = scanner_implementation_sha256()
     return {**payload, "receipt_sha256": digest(payload)}
 
 
@@ -400,6 +410,11 @@ def validate_receipt(receipt: Mapping[str, Any], *, require_real_source: bool = 
     payload = {k: v for k, v in receipt.items() if k != "receipt_sha256"}
     if not is_sha(receipt.get("receipt_sha256")) or digest(payload) != receipt["receipt_sha256"]:
         raise Unresolved("RECEIPT_HASH_MISMATCH")
+    if receipt.get("verification_scope") == "SOURCE_REPLAYED_CANDIDATE_MATH":
+        if receipt.get("scanner_implementation_sha256") != scanner_implementation_sha256():
+            raise Unresolved("SCANNER_EXECUTED_SOURCE_MISMATCH")
+    elif "scanner_implementation_sha256" in receipt:
+        raise Unresolved("SYNTHETIC_SOURCE_IDENTITY_UNEXPECTED")
     if (receipt.get("model_id") != MODEL_ID or receipt.get("source_sha256") != SOURCE_SHA256 or
         receipt.get("bracketing_package_sha256") != BRACKET_ZIP_SHA256 or
         receipt.get("mathematical_claim_scope") != "HISTORICAL_SOURCE_CONNECTED_EXACT_REAL_ONLY"):

@@ -17,7 +17,7 @@
   },
   "required_statuses": ["CERTIFIED_CONDITIONAL", "UNRESOLVED"],
   "fail_closed_exit_code": 2,
-  "advertised_source_free_test_count": 67,
+  "advertised_source_free_test_count": 69,
   "advertised_adversarial_mutation_count": 36,
   "current_status": "SOURCE_ONLY_SCANNER_IMPLEMENTED_PARENT_SOURCE_REPLAY_PENDING",
   "scientific_authority_promoted": false,
