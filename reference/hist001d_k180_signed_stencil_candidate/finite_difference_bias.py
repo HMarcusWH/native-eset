@@ -48,13 +48,16 @@ def phi_interval(A,r,bits=104):
     check=integer*integer*v.denominator == v.numerator<<(2*bits)
     root_lower=F(integer,scale)
     root_upper=F(integer if check else integer+1,scale)
-    assert root_lower**2<=v<=root_upper**2
+    if not root_lower**2 <= v <= root_upper**2:
+        raise ValueError('UNRESOLVED: square-root cylinder interval failed outward enclosure')
     pL,pU=F(1)-root_upper,F(1)-root_lower
-    if not F(0)<=pL<=pU<=F(1):raise AssertionError('invalid cylinder kernel enclosure')
+    if not F(0)<=pL<=pU<=F(1):raise ValueError('UNRESOLVED: invalid cylinder kernel enclosure')
     return pL,pU
 
 def signed_node_interval(Alo,Ahi,r,w,err):
     if not 0<=Alo<=Ahi:raise ValueError('nonnegative ordered band')
+    if not r or len(r)!=len(w) or len(r)!=len(err):
+        raise ValueError('UNRESOLVED: signed stencil source node/weight/interval length mismatch')
     lo=hi=F(0)
     for x,weight,(el,eu) in zip(r,w,err):
         if not weight>0 or el>eu:raise ValueError('positive frozen weights / signed interval order')
@@ -63,7 +66,7 @@ def signed_node_interval(Alo,Ahi,r,w,err):
         candidates=(el*pl,el*pu,eu*pl,eu*pu)
         lo+=weight*min(candidates)
         hi+=weight*max(candidates)
-    assert lo<=hi
+    if lo>hi:raise ValueError('UNRESOLVED: inverted signed stencil sum interval')
     return lo,hi
 
 def rat_tuple(q):return [str(q.numerator),str(q.denominator)]

@@ -49,10 +49,12 @@ def sqrt_outward(v,bits=84):
         mid=(lo+hi)//2
         if mid*mid*den <= num:lo=mid
         else:hi=mid
-    assert lo*lo*den<=num<(lo+1)*(lo+1)*den
+    if not lo*lo*den <= num < (lo+1)*(lo+1)*den:
+        raise ValueError('UNRESOLVED: independent integer-bisection square root floor invalid')
     cap=lo if lo*lo*den==num else lo+1
     low=F(lo,1<<bits);up=F(cap,1<<bits)
-    assert low*low<=v<=up*up
+    if not low*low <= v <= up*up:
+        raise ValueError('UNRESOLVED: independent square root outward interval invalid')
     return low,up
 
 def phi_box(a,r):
@@ -61,6 +63,8 @@ def phi_box(a,r):
     sr=sqrt_outward(1-a*a/(r*r));return F(1)-sr[1],F(1)-sr[0]
 
 def box_sum(r,w,e,left,right):
+    if not r or len(r)!=len(w) or len(r)!=len(e):
+        raise ValueError('UNRESOLVED: independent signed stencil list length mismatch')
     lower=upper=F(0)
     for j in range(len(r)):
         e0,e1=e[j];p0=phi_box(left,r[j])[0];p1=phi_box(right,r[j])[1]
