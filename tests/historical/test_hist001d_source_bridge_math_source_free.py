@@ -71,7 +71,8 @@ def test_archived_exact_source_references_are_immutable():
     'component_independent.py','component_interval.py',
     'target_quadratic_exact.py','target_quadratic_independent.py'])
 def test_source_bridge_proof_scripts_reject_optimized_python(module):
-    import subprocess,sys
+    import subprocess
+    import sys
     p=subprocess.run([sys.executable,'-OO','-c',
                       'import runpy,sys;runpy.run_path(sys.argv[1])',
                       str(ARCH/module)],capture_output=True,text=True,timeout=15)
