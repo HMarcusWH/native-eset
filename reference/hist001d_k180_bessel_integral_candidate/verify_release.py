@@ -7,7 +7,21 @@ from __future__ import annotations
 import argparse,hashlib,zipfile,json,subprocess,sys,tempfile,concurrent.futures
 from pathlib import Path
 from stencil_verify import verify
-from claim_guard import validate
+# Resolve the sibling guard by file identity: other historical candidates also
+# define claim_guard.py, and pytest can cache a different one in sys.modules.
+import importlib.util as _hist_importlib_util
+
+def _load_local_claim_guard():
+    path = Path(__file__).resolve().with_name("claim_guard.py")
+    spec = _hist_importlib_util.spec_from_file_location(
+        "hist001d_k180_bessel_integral_claim_guard", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("K180 sibling claim guard cannot be loaded")
+    module = _hist_importlib_util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.validate
+
+validate = _load_local_claim_guard()
 ROOT=Path(__file__).resolve().parents[2]
 
 def sha(data):return hashlib.sha256(data).hexdigest()
