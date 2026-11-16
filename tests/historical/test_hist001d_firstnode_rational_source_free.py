@@ -1,6 +1,8 @@
 """Mathematical unit/negative checks. Source-free, not six-lens original archival replay."""
 from __future__ import annotations
 import sys
+import subprocess as _hist_subprocess
+import sys as _hist_sys
 from fractions import Fraction as Q
 from pathlib import Path
 import pytest
@@ -87,9 +89,6 @@ def test_model_claim_firewall_source_free():
         assert "'"+field+"':False" in s
     assert "'empirical_validation':'NOT_ESTABLISHED'" in s
 
-
-import subprocess as _hist_subprocess
-import sys as _hist_sys
 
 @pytest.mark.parametrize("module",["reference/hist001d_first_node_rational_candidate/adversarial_first_node.py"])
 def test_historical_proof_module_rejects_optimized_python(module):
