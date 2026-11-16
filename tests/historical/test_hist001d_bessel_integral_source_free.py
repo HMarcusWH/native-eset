@@ -136,3 +136,18 @@ def test_quick_verifier_rejects_failed_claim_guard_under_optimized_python(monkey
     monkeypatch.setattr(vr, "validate", lambda *args: False)
     with pytest.raises(ValueError, match="claim guard rejected"):
         vr.run_quick()
+
+def test_quick_verifier_uses_sibling_claim_guard_despite_cached_foreign_name(monkeypatch):
+    import importlib.util
+    import types
+    foreign = types.ModuleType("claim_guard")
+    foreign.validate = lambda *_args: True
+    monkeypatch.setitem(sys.modules, "claim_guard", foreign)
+    spec = importlib.util.spec_from_file_location(
+        "hist001d_k180_claim_guard_identity_test", SOURCE / "verify_release.py")
+    assert spec and spec.loader
+    verifier = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(verifier)
+    assert verifier.validate is not foreign.validate
+    assert Path(verifier.validate.__code__.co_filename).resolve() == (
+        SOURCE / "claim_guard.py").resolve()
