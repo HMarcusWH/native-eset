@@ -6,6 +6,10 @@ Kernel bounds are rational and cover every real R in a registered cell, subject
 only to the declared finite source and mathematical continuum baryon model.
 """
 from __future__ import annotations
+
+# Historical proof checks use assertions; optimized Python must fail closed.
+if not __debug__:
+    raise RuntimeError('HIST001D_G4B1C_GLOBAL_OPTIMIZED_EXECUTION_REJECTED')
 from bisect import bisect_right
 from fractions import Fraction as Q
 from functools import lru_cache

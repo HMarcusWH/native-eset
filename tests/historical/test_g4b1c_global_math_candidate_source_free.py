@@ -152,3 +152,16 @@ def test_fail_closed_without_external_source_bundle():
     doc = (ROOT / "docs" / "HIST001D_D2E_G4B1C_GLOBAL_ROOT_COUNT_MATH_CANDIDATE.md").read_text()
     assert "NOT_ESTABLISHED" in doc and "NOT_PEER_REVIEWED" in doc
     assert "MARCH_180x120_NOT_PROVED" in doc
+
+
+import subprocess as _hist_subprocess
+import sys as _hist_sys
+
+@pytest.mark.parametrize("module",["research/historical/g4b1c_global_math_candidate/g4b1c_global_math_lib.py"])
+def test_historical_optimized_python_is_forbidden_for_assert_guards(module):
+    path=Path(__file__).resolve().parents[2]/module
+    p=_hist_subprocess.run([_hist_sys.executable,"-OO","-c",
+       "import runpy,sys;runpy.run_path(sys.argv[1])",str(path)],
+       capture_output=True,text=True,timeout=15)
+    assert p.returncode!=0
+    assert "HIST001D_G4B1C_GLOBAL_OPTIMIZED_EXECUTION_REJECTED" in p.stderr

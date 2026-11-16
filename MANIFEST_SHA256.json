@@ -253,11 +253,11 @@
     "research/historical/g4b1c_global_math_candidate/README_GLOBAL_FINITE_PROXY_ROOT_COUNT_CANDIDATE.md": "e4cbfd323d1aea484bbddb20c0d717073ce3e0cd9dcb5c067555a220bf042b9b",
     "research/historical/g4b1c_global_math_candidate/g4b1c_global_adversarial_qa.py": "31feb52b2b2ba6251d8edb2cb3c3ee268097ca58122de24e5d931127c2089cc2",
     "research/historical/g4b1c_global_math_candidate/g4b1c_global_independent_verifier.py": "8807b61ad743035a17aa74d775c95c6b55cc8c7bf2077e40b9aedd80c9bee9b5",
-    "research/historical/g4b1c_global_math_candidate/g4b1c_global_math_lib.py": "7985255688073ebf63e4f723c424a05995c04e5edf3c7b095f8978b40f953b2d",
+    "research/historical/g4b1c_global_math_candidate/g4b1c_global_math_lib.py": "3e68d77e2d73dd0ca979f993d7b55cde72b5c0d3072af78203ed247ccef28770",
     "research/historical/g4b1c_global_math_candidate/g4b1c_global_rootcount_producer.py": "0520b0ddec25db68ccc29e15806d8cffe869673602145d7f43b59ee489573d6d",
     "research/historical/g4b1c_global_math_candidate/reproduce_g4b1c_global_finite_proxy_v1.py": "914b5cced57c030c176c7548ae6b505e68688907b4c5f5aa3780c36cbe033c91",
     "research/historical/g4b1c_global_math_candidate/source_input_adapter.py": "38813d07b6ade04a08d5dcdb864cf1cd63a285efc535df707b1e9fcaaf089584",
-    "tests/historical/test_g4b1c_global_math_candidate_source_free.py": "df20e54958bebdfcd31fc6aad14e239eb24471fad31582f049c17f043346517e"
+    "tests/historical/test_g4b1c_global_math_candidate_source_free.py": "870fdc115a6be259f882dfd74a360e6ab35f1338e61c020908a466f1f00903ee"
   },
   "manifest_version": 1
 }
