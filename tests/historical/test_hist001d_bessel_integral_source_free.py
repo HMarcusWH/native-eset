@@ -141,8 +141,15 @@ def test_quick_verifier_uses_sibling_claim_guard_despite_cached_foreign_name(mon
     import importlib.util
     import types
     foreign = types.ModuleType("claim_guard")
-    foreign.validate = lambda *_args: True
+    def malicious_validate(*_args):
+        return True
+    foreign.validate = malicious_validate
     monkeypatch.setitem(sys.modules, "claim_guard", foreign)
+    foreign_audit = types.ModuleType("source_audit")
+    foreign_audit.SAT_SHA = "0" * 64
+    foreign_audit.SOURCE_SHA = "0" * 64
+    foreign_audit.LENS = ["WRONG"]
+    monkeypatch.setitem(sys.modules, "source_audit", foreign_audit)
     spec = importlib.util.spec_from_file_location(
         "hist001d_k180_claim_guard_identity_test", SOURCE / "verify_release.py")
     assert spec and spec.loader
@@ -151,3 +158,6 @@ def test_quick_verifier_uses_sibling_claim_guard_despite_cached_foreign_name(mon
     assert verifier.validate is not foreign.validate
     assert Path(verifier.validate.__code__.co_filename).resolve() == (
         SOURCE / "claim_guard.py").resolve()
+    assert verifier.validate.__globals__["SAT_SHA"] != foreign_audit.SAT_SHA
+    assert verifier.validate.__globals__["SOURCE_SHA"] != foreign_audit.SOURCE_SHA
+    assert verifier.validate.__globals__["LENS"][0] == "J0822+1828"

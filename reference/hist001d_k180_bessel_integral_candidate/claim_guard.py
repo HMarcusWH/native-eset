@@ -4,7 +4,22 @@ Do not mistake this QA for recomputation of Bessel integrals. The full
 source-only mathematical verification and protected replay are separate.
 """
 from fractions import Fraction as F
-from source_audit import SAT_SHA, SOURCE_SHA, LENS
+# Every HIST001D candidate may have a top-level source_audit module. Resolve
+# this candidate's source identity from its sibling, not from sys.modules.
+import importlib.util as _hist_importlib_util
+from pathlib import Path as _HistPath
+
+def _load_local_source_identity():
+    path = _HistPath(__file__).resolve().with_name("source_audit.py")
+    spec = _hist_importlib_util.spec_from_file_location(
+        "hist001d_k180_bessel_integral_claim_source_audit", path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("K180 sibling source audit cannot be loaded")
+    module = _hist_importlib_util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.SAT_SHA, module.SOURCE_SHA, module.LENS
+
+SAT_SHA, SOURCE_SHA, LENS = _load_local_source_identity()
 
 def validate(reports, summary, cross):
     if not isinstance(reports,list) or len(reports)!=6:raise ValueError('six protected receipts required')
