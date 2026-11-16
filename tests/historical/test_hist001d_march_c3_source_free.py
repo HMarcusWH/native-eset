@@ -3,6 +3,8 @@ from __future__ import annotations
 from fractions import Fraction as Q
 from pathlib import Path
 import sys
+import subprocess as _hist_subprocess
+import sys as _hist_sys
 import pytest
 ARCHIVE_SRC=Path(__file__).resolve().parents[1]/'src'
 REPO_SRC=Path(__file__).resolve().parents[2]/'reference'/'hist001d_march_c3_candidate'
@@ -105,9 +107,6 @@ def test_claim_firewall_source_free_static():
         assert f"'{key}':False" in source
     assert "'external_mathematical_review':'NOT_DONE'" in source
 
-
-import subprocess as _hist_subprocess
-import sys as _hist_sys
 
 @pytest.mark.parametrize("module",["reference/hist001d_march_c3_candidate/produce.py"])
 def test_historical_proof_module_rejects_optimized_python(module):
