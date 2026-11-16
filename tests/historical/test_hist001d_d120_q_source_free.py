@@ -94,7 +94,9 @@ def test_quadratic_Bernstein_aperture_derivative_algebra():
 
 def test_d120_archive_manifest_schema_rejected_under_optimized_python(tmp_path):
     # Purely synthetic; no historical source-parent files required.
-    import json, subprocess, sys
+    import json
+    import subprocess
+    import sys
     (tmp_path/'MANIFEST_SHA256.json').write_text(
         json.dumps({'schema':'INVALID_SCHEMA','files':{}}))
     script=("import runpy,sys; from pathlib import Path;"
@@ -112,7 +114,8 @@ def test_d120_archive_manifest_schema_rejected_under_optimized_python(tmp_path):
     'adversarial_qa.py','aggregate.py','capture_disk120.py',
     'disk120_math.py','independent_verify.py','q_producer.py'])
 def test_d120_q_assert_dependent_modules_reject_optimized_python(module):
-    import subprocess,sys
+    import subprocess
+    import sys
     p=subprocess.run([sys.executable,'-OO','-c',
                       'import runpy,sys;runpy.run_path(sys.argv[1])',
                       str(SOURCE/module)],capture_output=True,text=True,timeout=15)
