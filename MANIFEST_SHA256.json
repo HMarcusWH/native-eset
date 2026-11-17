@@ -249,7 +249,15 @@
     "docs/HIST001D_D2E_G4B1A_CERTIFIED_REAL_CELL_BARYON_BOXES_STACKED_DRAFT.md": "ca5a2a472d86a437bcb5d9d7484cc5c0a121f044b57ab396c632fdcba405964f",
     "src/native_eset/numerics/hist001d_g4b1b_supplied_finite_H.py": "3bca8df03ab1a5d256999c265dfc61bbb2a0834ee63ba9a35ff0da4bb3a6e54b",
     "tests/historical/test_hist001d_g4b1b_supplied_finite_H.py": "75cab5e7a461e0a6394c0a0884cc393ad303db43501ea58fddc5b7d05e7ffd50",
-    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34"
+    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34",
+    "docs/HIST001D_MARCH180_DEFINED_COMPONENT_PL_COMPARATOR_ROOT_COUNT_CANDIDATE.md": "41fdcda89f44aa0d3964bbe020a926232a95125e41d4b404975e1cc3f30bb1b7",
+    "reference/hist001d_full180_comparator_candidate/README.md": "402013437b68f416c7da36666bffac0088ad199c8b019132d228112a3a59eb5d",
+    "reference/hist001d_full180_comparator_candidate/adversarial_qa.py": "dd93ce23cd4df737422d7f0707fa7a72be1ab62fdbe9c4b238a32ff25d3c8738",
+    "reference/hist001d_full180_comparator_candidate/full180_math.py": "2f7e18450faf0bd66f792bbd84f4a4da33fd95f5d41827b87d26bb3f2d733776",
+    "reference/hist001d_full180_comparator_candidate/independent_verify.py": "3f34f1e47901a9ae7cf8cbde88903c2271b3fd084c05f25648c690800940206c",
+    "reference/hist001d_full180_comparator_candidate/producer.py": "5fc5055bb271616a23cb48e46daa29ba2929cecb36372abe45d627fb03e2f958",
+    "reference/hist001d_full180_comparator_candidate/verify_bundle.py": "72f648907102a1144dd8810b1bbd0d55101111c5ec068833aee3cd6cfb5814a1",
+    "tests/historical/test_hist001d_full180_comparator_source_free.py": "27cfcd5329fe8077cc10a88de81c09f1e4716b382e727cad345fa57161992ecd"
   },
   "manifest_version": 1
 }
