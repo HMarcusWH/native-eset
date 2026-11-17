@@ -249,7 +249,15 @@
     "docs/HIST001D_D2E_G4B1A_CERTIFIED_REAL_CELL_BARYON_BOXES_STACKED_DRAFT.md": "ca5a2a472d86a437bcb5d9d7484cc5c0a121f044b57ab396c632fdcba405964f",
     "src/native_eset/numerics/hist001d_g4b1b_supplied_finite_H.py": "3bca8df03ab1a5d256999c265dfc61bbb2a0834ee63ba9a35ff0da4bb3a6e54b",
     "tests/historical/test_hist001d_g4b1b_supplied_finite_H.py": "75cab5e7a461e0a6394c0a0884cc393ad303db43501ea58fddc5b7d05e7ffd50",
-    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34"
+    "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34",
+    "docs/HIST001D_ORIGINAL_MARCH_180_FROZEN_STENCIL_SCOPE_CANDIDATE.md": "8689be0b36f21558f42a293c20f2fb47d2584b0caf0b2acfa095a4e847dff853",
+    "reference/hist001d_common180_candidate/capture_original_180.py": "d223b74e2b80cdaaa2163d87967503996be75ae0a79d40f299b8224b5a6a2a12",
+    "reference/hist001d_common180_candidate/frozen_kernel_adversarial_qa.py": "0089d2dd3cefff6123f31ff0fc81838feaf110a766eafa0781e83e9ff82d995c",
+    "reference/hist001d_common180_candidate/frozen_kernel_exact_producer.py": "b377104aa7c7e688e7e93968bde7aa9abf34f1b6358870af66a989d7ea1c0b18",
+    "reference/hist001d_common180_candidate/frozen_kernel_independent_checker.py": "ce792dc3ace9939c4b3ed003f4ca624df42365310c6ea50e1023076be2c9a9c1",
+    "reference/hist001d_common180_candidate/reproduce.py": "4ed59537dcbb9d1ad0d7941ab494bebf7e1aa238e128ada5bffe486517ac8707",
+    "reference/hist001d_common180_candidate/verify_archive.py": "0f9e7c174d039039ba224ba0e82306390e867aac9b691287f1a526c2097b2246",
+    "tests/historical/test_hist001d_common180_source_free.py": "b82cef9094597284a893f4c6ab3d29351d33c1a9f9e38c5698ab286994712b65"
   },
   "manifest_version": 1
 }
