@@ -2,7 +2,7 @@
   "files": {
     ".env.example": "62ac70b3f1d73ae3fd485fb1b336c5ac08f6b7822baa2d6189315e93744ec312",
     ".gitattributes": "9e23f4c78a5fbe073aa3847510a05b35c18767e86253f14e3508a6a02c931a65",
-    ".github/workflows/ci.yaml": "f1402ce899fc5e086bdcc7bf4e4f0c1f9b8c05909bda6cbb5e7c5e40bfa1450c",
+    ".github/workflows/ci.yaml": "3d0012861f5798b135a5bd944822da31d50a355063f02078e633751a5d02c90a",
     ".github/workflows/hist001d_certified_sign_scanner.yml": "4cc1c988b72104da68f36ea2723afc7c758a1647203c3bb4f3fd0323ce850594",
     ".github/workflows/hist001d_source_bound_scanner_ci.yml": "c3bd6d5f8ee31377995e7e41e62e34522309104a91a824c2bdbe3c29fc1d1960",
     ".gitignore": "0fc020a952cc1ba9d5b6a873843b5129cfee4a902102bd3196b41c08028ae7fa",
@@ -42,6 +42,7 @@
     "docs/HIST001D_D2E_G4B1B_SUPPLIED_FINITE_MODEL_H_STACKED_DRAFT.md": "37661a494d2ff411e00b1196a2e8a1544a38d6f83ea3455794f15c30ec6f7f34",
     "docs/HIST001D_D2E_G4B1_EXACT_BOUNDARY_BRIDGE_STACKED_DRAFT.md": "98167f8ba883004ac5cfdb5355a4820aed24df37ace5b2ebea07836538c54a22",
     "docs/HIST001D_D2E_RELEASE_STATUS.md": "b45f4b174ae2a14051c76d1c2c1f160e4a2ac0abc345541d74da474f131853d1",
+    "docs/HIST001_CI_AND_MERGE_GATES.md": "9ee2af43f8b098c2361eb38493bcb4480695b233f5a5829f77ed28ba0bc04819",
     "docs/HIST001_INTEGRATION_PLAN.md": "e9543eea4fddec2fa2e384dafda36bd7d18ddc2fbe31284ccef704c58014bf13",
     "docs/RELEASE_PROTOCOL.md": "6e46e3443c0ed49128b930eb4a095f64c327daec2a1ee432d65047c3ac47365d",
     "docs/THREAT_MODEL.md": "20312bdaee294c9a4472d12a092954bd7cea3eaf5037fcbe946e426e6b0adae0",
