@@ -1,0 +1,25 @@
+name: HIST001D source-only certified sign scanner
+on:
+  pull_request:
+    paths:
+      - 'reference/hist001d_certified_sign_scan_candidate/**'
+      - '.github/workflows/hist001d_certified_sign_scanner.yml'
+  push:
+    branches:
+      - 'hist001d/source-only-certified-binary64-sign-scanner-2026-11-07'
+  workflow_dispatch:
+jobs:
+  source-only:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.10', '3.12', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Verify source-only SHA manifest, tests, and adversarial ledger
+        run: python reference/hist001d_certified_sign_scan_candidate/verify_release.py
