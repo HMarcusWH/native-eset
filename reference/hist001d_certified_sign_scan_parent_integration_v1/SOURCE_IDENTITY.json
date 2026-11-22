@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-08",
+  "empirical_validation": "NOT_ESTABLISHED",
+  "global_independent_recheck_receipt_sha256": "878823bb4a4e9355802d33f97d47a9472181dc7a6d5f99395dc3f3103b413935",
+  "global_unique_real_root_parent_sha256": "ee677eea7f2f7bcf5c90347f5c54658988090340d888870c7e60071263693fff",
+  "global_uniqueness_full_producer_regenerated": false,
+  "original_float_signs_certified": false,
+  "original_source_46plus3_sha256": "fa7e77300d7a6e5f095d3781c23eb96bc57fea4c38f76b155278079d7f19913a",
+  "physical_provider_admitted": false,
+  "root_bracket_archive_sha256": "252d502a1a6607751c5604de221767a10ff6f28e253b0c92d4988773e65ebb29",
+  "scanner_source_only_parent_sha256": "73943c3fbb1cafd504f3e5d6d3d1d2855553144e18b24952f19ef0150cd63038",
+  "schema": "HIST001D_SIGN_SCANNER_SOURCE_BOUND_BRIDGE_METADATA_V1",
+  "scientific_authority_promoted": false
+}
