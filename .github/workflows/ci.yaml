@@ -5,6 +5,11 @@ on:
     branches: [main]
 permissions:
   contents: read
+# Cancel obsolete checks only for the same PR, never for a main-branch push.
+# Main pushes use unique run IDs to preserve every postmerge verification run.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   test:
     strategy:
