@@ -27,6 +27,7 @@ SOURCE_LOCK_SHA256 = "fa7e77300d7a6e5f095d3781c23eb96bc57fea4c38f76b155278079d7f
 MAX_ZIP_BYTES = 5_000_000
 MAX_MEMBER_BYTES = 6_000_000
 MAX_EXPANDED_BYTES = 20_000_000
+MAX_RECEIPT_BYTES = 64_000
 KITS = {
     "adapter": {
         "sha256": "11830c0729f3fe805b038e449c4c579d90ec3cb44f40cb76877c4e68cef1995b",
@@ -93,11 +94,21 @@ def assert_zip_safe(path: Path):
 def replay_one(kind: str, kit: Path) -> dict:
     require(kind in KITS, "unknown evidence kind")
     spec = KITS[kind]
-    require(sha256(kit) == spec["sha256"], "external immutable kit SHA mismatch: " + kind)
-    assert_zip_safe(kit)
+    require(kit.is_file() and not kit.is_symlink(), "missing or linked source kit")
+    # Authenticate a bounded private snapshot, not a path reopened after hashing.
     with tempfile.TemporaryDirectory(prefix="eset-g4b1c-" + kind + "-") as tmp:
-        temp = Path(tmp)
-        with zipfile.ZipFile(kit) as archive:
+        root = Path(tmp)
+        with kit.open("rb") as source:
+            data = source.read(MAX_ZIP_BYTES + 1)
+        require(len(data) <= MAX_ZIP_BYTES, "source kit exceeds bounded size")
+        snapshot = root / "source.zip"
+        snapshot.write_bytes(data)
+        require(sha256(snapshot) == spec["sha256"],
+                "external immutable kit SHA mismatch: " + kind)
+        assert_zip_safe(snapshot)
+        temp = root / "replay"
+        temp.mkdir()
+        with zipfile.ZipFile(snapshot) as archive:
             archive.extractall(temp)
         entry = temp / spec["entry"]
         require(entry.is_file() and not entry.is_symlink(), "missing replay entry point")
@@ -127,6 +138,7 @@ def run_all(paths: dict[str, Path]) -> dict:
         "source_model": MODEL,
         "source_lock_sha256": SOURCE_LOCK_SHA256,
         "four_kits_authenticated_and_replayed": True,
+        "replay_executed_in_this_process": True,
         "results": results,
         "six_source_lenses": 6,
         "source_nodal_pairs": 69120,
@@ -144,13 +156,21 @@ def run_all(paths: dict[str, Path]) -> dict:
     }
 
 
+def unique_json_object(pairs):
+    result = {}
+    for key, value in pairs:
+        require(key not in result, "duplicate JSON receipt field")
+        result[key] = value
+    return result
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     for kind in KITS:
         parser.add_argument("--" + kind.replace("_", "-"), type=Path)
     parser.add_argument("--only", choices=tuple(KITS), help="Bounded per-kit replay (one process per scientific kit)")
     parser.add_argument("--aggregate", type=Path, nargs=4,
-                        help="Merge four independently emitted source-replay receipts; does not reexecute")
+                        help="Check four receipt identities only; does not authenticate or replay kits")
     parser.add_argument("--out", type=Path)
     arguments = parser.parse_args(argv)
     try:
@@ -161,8 +181,11 @@ def main(argv=None) -> int:
             fragments = []
             for path in arguments.aggregate:
                 require(path.is_file() and not path.is_symlink(), "missing per-kit replay receipt")
-                item = json.loads(path.read_bytes())
-                require(set(item) == {"schema", "status", "result"} and
+                with path.open("rb") as receipt:
+                    raw_receipt = receipt.read(MAX_RECEIPT_BYTES + 1)
+                require(len(raw_receipt) <= MAX_RECEIPT_BYTES, "receipt exceeds bounded size")
+                item = json.loads(raw_receipt, object_pairs_hook=unique_json_object)
+                require(type(item) is dict and set(item) == {"schema", "status", "result"} and
                         item["schema"] == "HIST001D_G4B1C_REPLAY_ONE_KIT_V1" and
                         item["status"] == "PASS_SCOPED_ONE_KIT_ONLY",
                         "invalid per-kit replay receipt")
@@ -171,13 +194,13 @@ def main(argv=None) -> int:
                     "kind", "kit_sha256", "source_kit_original_46plus3_sha256",
                     "entrypoint", "replay_exit", "transcript_sha256", "scope"},
                     "unexpected per-kit receipt field or physical claim")
-                require(result.get("kind") in KITS and
+                require(type(result.get("kind")) is str and result["kind"] in KITS and
                         result.get("entrypoint") == KITS[result["kind"]]["entry"] and
                         isinstance(result.get("transcript_sha256"), str) and
                         len(result["transcript_sha256"]) == 64 and
                         all(c in "0123456789abcdef" for c in result["transcript_sha256"]) and
                         result.get("kit_sha256") == KITS[result["kind"]]["sha256"] and
-                        result.get("replay_exit") == 0 and
+                        type(result.get("replay_exit")) is int and result["replay_exit"] == 0 and
                         result.get("source_kit_original_46plus3_sha256") == SOURCE_LOCK_SHA256 and
                         result.get("scope") == "LOCAL_CONDITIONAL_FINITE_MATHEMATICAL_PROXY_ONLY",
                         "per-kit source replay receipt claim/identity mismatch")
@@ -186,13 +209,18 @@ def main(argv=None) -> int:
                     "missing/duplicated independent scientific replay kind")
             obj = {
                 "schema": "HIST001D_G4B1C_EXTERNAL_KIT_REPLAY_GATE_V1",
-                "status": "PASS_SCOPED_ARCHIVE_REPLAY_ONLY",
+                "status": "PASS_SCOPED_RECEIPT_IDENTITY_ONLY",
                 "source_model": MODEL, "source_lock_sha256": SOURCE_LOCK_SHA256,
-                "four_kits_authenticated_and_replayed": True,
+                "four_receipt_identities_consistent": True,
+                "four_kits_authenticated_and_replayed": False,
+                "replay_executed_in_this_process": False,
+                "execution_provenance_verified": False,
                 "results": sorted(fragments,key=lambda x:list(KITS).index(x["kind"])),
-                "six_source_lenses": 6,"source_nodal_pairs": 69120,
-                "existence_bracket_width_kpc": "1/10",
-                "finite_proxy_root_existence_only": True,
+                "declared_six_source_lenses": 6,
+                "declared_source_nodal_pairs": 69120,
+                "declared_existence_bracket_width_kpc": "1/10",
+                "declared_candidate_scope": "CONDITIONAL_FINITE_PROXY_ROOT_EXISTENCE_ONLY",
+                "finite_proxy_root_existence_only": False,
                 "full_root_count_or_uniqueness_certified": False,"tangencies_excluded": False,
                 "original_march_180x120_numeric_all_R_root_theorem": False,
                 "original_source_nodal_density_continuum_error_certified": False,
@@ -218,7 +246,8 @@ def main(argv=None) -> int:
             arguments.out.write_bytes(raw)
         print(raw.decode(), end="")
         return 0
-    except (OSError, EvidenceGateError, zipfile.BadZipFile, subprocess.TimeoutExpired) as exc:
+    except (OSError, EvidenceGateError, zipfile.BadZipFile, subprocess.TimeoutExpired,
+            json.JSONDecodeError, UnicodeError, RecursionError) as exc:
         print(json.dumps({"status":"FAIL_CLOSED","error":str(exc)}, sort_keys=True))
         return 2
 

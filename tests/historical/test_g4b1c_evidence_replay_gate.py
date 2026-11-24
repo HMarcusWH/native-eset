@@ -105,8 +105,68 @@ def test_aggregate_only_provenance_scope(tmp_path,capsys):
         files.append(str(p))
     assert gate.main(["--aggregate",*files]) == 0
     o=json.loads(capsys.readouterr().out)
-    assert o["four_kits_authenticated_and_replayed"] is True
+    assert o["status"] == "PASS_SCOPED_RECEIPT_IDENTITY_ONLY"
+    assert o["four_receipt_identities_consistent"] is True
+    assert o["four_kits_authenticated_and_replayed"] is False
+    assert o["replay_executed_in_this_process"] is False
+    assert o["execution_provenance_verified"] is False
+    assert o["finite_proxy_root_existence_only"] is False
     assert o["original_march_180x120_numeric_all_R_root_theorem"] is False
     assert o["full_root_count_or_uniqueness_certified"] is False
     assert o["physical_provider_admitted"] is False
     assert o["empirical_validation"] == "NOT_ESTABLISHED"
+
+
+@pytest.mark.parametrize("bad_value", [False, 0.0, "0", None])
+def test_aggregate_requires_integer_replay_exit(tmp_path, capsys, bad_value):
+    files = []
+    for kind in gate.KITS:
+        obj = _partial(kind, replay_exit=bad_value) if kind == "adapter" else _partial(kind)
+        p = tmp_path / (kind + ".json")
+        p.write_text(json.dumps(obj), encoding="utf8")
+        files.append(str(p))
+    assert gate.main(["--aggregate", *files]) == 2
+    assert json.loads(capsys.readouterr().out)["status"] == "FAIL_CLOSED"
+
+
+@pytest.mark.parametrize("bad_receipt", ["{", "[]", '[{}]', '{"schema":1,"schema":2}'])
+def test_aggregate_malformed_receipt_fails_closed(tmp_path, capsys, bad_receipt):
+    files = []
+    for kind in gate.KITS:
+        p = tmp_path / (kind + ".json")
+        p.write_text(bad_receipt if kind == "adapter" else json.dumps(_partial(kind)),
+                     encoding="utf8")
+        files.append(str(p))
+    assert gate.main(["--aggregate", *files]) == 2
+    assert json.loads(capsys.readouterr().out)["status"] == "FAIL_CLOSED"
+
+
+def test_replay_uses_authenticated_snapshot(tmp_path, monkeypatch):
+    import hashlib
+    from types import SimpleNamespace
+
+    original = tmp_path / "kit.zip"
+    with zipfile.ZipFile(original, "w") as archive:
+        archive.writestr("entry.py", "print('scoped witness')")
+    digest = hashlib.sha256(original.read_bytes()).hexdigest()
+    monkeypatch.setitem(gate.KITS, "adapter", {
+        "sha256": digest, "entry": "entry.py",
+        "expected_result": "scoped witness", "max_seconds": 1,
+    })
+    old_assert_zip_safe = gate.assert_zip_safe
+
+    def check_snapshot(snapshot):
+        assert snapshot != original
+        assert hashlib.sha256(snapshot.read_bytes()).hexdigest() == digest
+        original.write_bytes(b"replaced after snapshot")
+        old_assert_zip_safe(snapshot)
+
+    def fake_run(command, **kwargs):
+        assert Path(command[1]).read_text(encoding="utf8") == "print('scoped witness')"
+        return SimpleNamespace(returncode=0, stdout="scoped witness", stderr="")
+
+    monkeypatch.setattr(gate, "assert_zip_safe", check_snapshot)
+    monkeypatch.setattr(gate.subprocess, "run", fake_run)
+    receipt = gate.replay_one("adapter", original)
+    assert receipt["kit_sha256"] == digest
+    assert receipt["replay_exit"] == 0
