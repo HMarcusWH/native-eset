@@ -1,0 +1,27 @@
+{
+  "adversarial": {
+    "exit_code": 0,
+    "replay_required": 1,
+    "structural_rejections": 35,
+    "total": 36
+  },
+  "date": "2026-11-07",
+  "empirical_validation": "NOT_ESTABLISHED",
+  "optimized_python_insufficient_budget": {
+    "exit_code": 2,
+    "status": "UNRESOLVED"
+  },
+  "physical_provider_admitted": false,
+  "real_exact_H_new_certification": "UNRESOLVED",
+  "schema": "HIST001D_SOURCE_ONLY_TEST_EXECUTION_V1",
+  "source_bound_replay": "NOT_RUN",
+  "standard_library_unittest": {
+    "all_pass": true,
+    "count": 67,
+    "exit_code": 0
+  },
+  "without_source_adapter": {
+    "exit_code": 2,
+    "status": "UNRESOLVED"
+  }
+}
