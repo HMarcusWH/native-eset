@@ -1,0 +1,29 @@
+name: HIST001D original March sampled float v1r2 fail-closed source-free
+on:
+  push:
+    branches:
+      - hist001d/march180-original-ieee754-final-postprocessing-2026-11-03
+  pull_request:
+    paths:
+      - 'reference/hist001d_original_float_bridge_candidate/**'
+      - 'tests/historical/test_hist001d_original_float_bridge*'
+      - '.github/workflows/hist001d_original_float_v1r2_source_only.yml'
+jobs:
+  source-only:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ['3.10', '3.12', '3.13']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install source-free test dependencies
+        run: python -m pip install numpy pytest
+      - name: Original and new fail-closed tests (40)
+        run: python -m pytest -q tests/historical/test_hist001d_original_float_bridge_source_free.py tests/historical/test_hist001d_original_float_bridge_v1r2_failclosed.py
+      - name: Original and new fail-closed tests under -OO
+        run: python -OO -m pytest -q tests/historical/test_hist001d_original_float_bridge_source_free.py tests/historical/test_hist001d_original_float_bridge_v1r2_failclosed.py
