@@ -35,3 +35,8 @@ exclude = ["reference/", "src/native_eset/graph/theory_state_resolver_v0_2_1.py"
 
 [tool.ruff.lint]
 select = ["E4", "E9", "F"]
+[tool.ruff.lint.per-file-ignores]
+# Preserve the exact original SHA-pinned, independently replayed mathematical
+# candidate source files byte-for-byte. These three lint categories concern
+# historic import layout/one unused import, not arithmetic or execution.
+"research/historical/g4b1c_global_math_candidate/*.py" = ["E401", "E402", "F401"]
