@@ -1,14 +1,19 @@
 """Synthetic method tests only; never call these original-source verification."""
-import sys
+import runpy
 import subprocess as _hist_subprocess
 import sys as _hist_sys
 from pathlib import Path
 from fractions import Fraction
 import numpy as np
 import pytest
-sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'reference'/'hist001d_smooth_msh_gradient_candidate'))
-from smooth_math import (source_mass_and_analytic_gradient,
-      nonuniform_gradient_exact,conditional_finite_difference_bounds)
+ROOT = Path(__file__).resolve().parents[2] / 'reference' / 'hist001d_smooth_msh_gradient_candidate'
+_MATH = runpy.run_path(str(ROOT / 'smooth_math.py'), run_name='_hist001d_smooth_gradient_math')
+source_mass_and_analytic_gradient, nonuniform_gradient_exact, conditional_finite_difference_bounds = (
+    _MATH[name] for name in (
+        'source_mass_and_analytic_gradient', 'nonuniform_gradient_exact',
+        'conditional_finite_difference_bounds',
+    )
+)
 
 @pytest.mark.parametrize('x',[[0.,1.,2.,3.],[0.,1.,3.,4.],[1.,2.,5.,10.]])
 def test_linear_source_gradient_is_exact(x):
